@@ -3,25 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  --min-viewport-width: 220px;
+  --max-viewport-width: 5000px;
+  --ideal-viewport-width: 1600;
+  --current-viewport-width: 100vw;
+  --clamped-viewport-width: clamp(
+    var(--min-viewport-width),
+    var(--current-viewport-width),
+    var(--max-viewport-width)
+  );
+  --scale: var(--clamped-viewport-width) / var(--ideal-viewport-width);
+  --size-14: calc(14 * var(--scale));
+  --size-16: calc(16 * var(--scale));
+  --size-18: calc(18 * var(--scale));
+  --size-20: calc(20 * var(--scale));
+  --size-24: calc(24 * var(--scale));
+  --size-32: calc(32 * var(--scale));
+  --size-34: calc(34 * var(--scale));
+  --size-38: calc(38 * var(--scale));
+  --size-42: calc(42 * var(--scale));
 }
