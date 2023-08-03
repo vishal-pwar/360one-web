@@ -1,9 +1,9 @@
-import BrandLogoBlack from "../../../../public/assets/icons/360-one-brand-logo-black.svg";
-import LinkedInLogo from "../../../../public/assets/icons/linkedin.svg";
-import InstagramLogo from "../../../../public/assets/icons/instagram.svg";
-import YoutubeLogo from "../../../../public/assets/icons/youtube.svg";
-import Link from "next/link";
+import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
+import InstagramLogo from "@/public/assets/icons/instagram.svg";
+import LinkedInLogo from "@/public/assets/icons/linkedin.svg";
+import YoutubeLogo from "@/public/assets/icons/youtube.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 const footerLists = [
   {

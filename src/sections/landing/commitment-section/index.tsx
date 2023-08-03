@@ -1,16 +1,16 @@
 "use client";
+import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
+import AgileIcon from "@/public/assets/icons/agile-icon.svg";
+import BadgeIcon from "@/public/assets/icons/badge-icon.svg";
+import BulbIcon from "@/public/assets/icons/bulb-icon.svg";
+import ClockIcon from "@/public/assets/icons/clock-icon.svg";
+import GaugeIcon from "@/public/assets/icons/gauge-icon.svg";
+import HeartIcon from "@/public/assets/icons/heart-icon.svg";
+import PuzzleIcon from "@/public/assets/icons/puzzle-icon.svg";
+import StarIcon from "@/public/assets/icons/star.svg";
+import CommitmentBlurBanner from "@/public/assets/images/commitment-blur.png";
+import CommitmentBanner from "@/public/assets/images/commitment.png";
 import Image from "next/image";
-import CommitmentBanner from "../../../../public/assets/images/commitment.png";
-import CommitmentBlurBanner from "../../../../public/assets/images/commitment-blur.png";
-import BrandLogoBlack from "../../../../public/assets/icons/360-one-brand-logo-black.svg";
-import BadgeIcon from "../../../../public/assets/icons/badge-icon.svg";
-import GaugeIcon from "../../../../public/assets/icons/gauge-icon.svg";
-import StarIcon from "../../../../public/assets/icons/star.svg";
-import BulbIcon from "../../../../public/assets/icons/bulb-icon.svg";
-import HeartIcon from "../../../../public/assets/icons/heart-icon.svg";
-import PuzzleIcon from "../../../../public/assets/icons/puzzle-icon.svg";
-import ClockIcon from "../../../../public/assets/icons/clock-icon.svg";
-import AgileIcon from "../../../../public/assets/icons/agile-icon.svg";
 import { useEffect, useState } from "react";
 import CardsList from "../cards-list";
 

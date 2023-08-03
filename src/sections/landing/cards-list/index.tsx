@@ -20,8 +20,8 @@ const CardsList = ({ cardsList }: CardsListProps) => {
                   before:content[''] before:absolute before:top-0 before:right-0 before:w-[calc(1*var(--scale))] ${
                     index % 2 === 1 ? "before:h-0" : "before:h-[80%]"
                   } before:bg-[#979797] after:content[''] after:absolute after:bottom-0 after:left-[50%] after:-translate-x-[50%] after:h-[calc(1*var(--scale))] after:bg-[#979797] ${
-              rowNumber === totalRows ? "after:w-[100%]" : "after:w-[94%]"
-            }`}
+                    rowNumber === totalRows ? "after:w-[100%]" : "after:w-[94%]"
+                  }`}
           >
             <div className="w-[calc(60*var(--scale))] h-[calc(60*var(--scale))] mb-[calc(19*var(--scale))]">
               <Image
