@@ -1,5 +1,5 @@
+import HomepagePerspective from "@/public/assets/images/homepage-perspective.jpg";
 import Image from "next/image";
-import HomepagePerspective from "../../../../public/assets/images/homepage-perspective.jpg";
 import Link from "next/link";
 
 const blogsList = [
@@ -70,7 +70,7 @@ const PerspectiveSection = () => {
         >
           {blogsList.map((blogItem, index) => {
             return (
-              <div className="flex flex-col pt-[52px]">
+              <div key={index} className="flex flex-col pt-[52px]">
                 <span className="text-[calc(1*var(--size-16))] leading-[1.25] tracking-[calc(0.58*var(--scale))] block pb-[calc(16*var(--scale))] relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:bg-black before:w-[calc(35*var(--scale))] before:h-[calc(2*var(--scale))]">
                   {blogItem.date}
                 </span>

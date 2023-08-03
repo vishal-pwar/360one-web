@@ -1,5 +1,5 @@
+import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
-import PlayIcon from "../../../../public/assets/icons/playIcon.svg";
 
 const BannerSection = () => {
   return (

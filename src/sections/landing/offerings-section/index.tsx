@@ -1,13 +1,13 @@
 "use client";
+import AssetTopRightBrandmark from "@/public/assets/icons/360-one-brandmark-asset-top-right-white.svg";
+import WealthTopRightBrandmark from "@/public/assets/icons/360-one-brandmark-wealth-top-right-white.svg";
+import AssetBannerBlurBanner from "@/public/assets/images/asset-banner-blur.jpg";
+import AssetBanner from "@/public/assets/images/asset-banner-clear.jpg";
+import WealthManagementBlurBanner from "@/public/assets/images/wealth-banner-blur.jpg";
+import WealthManagementBanner from "@/public/assets/images/wealth-banner-clear.jpg";
 import Image from "next/image";
-import WealthManagementBanner from "../../../../public/assets/images/wealth-banner-clear.jpg";
-import WealthManagementBlurBanner from "../../../../public/assets/images/wealth-banner-blur.jpg";
-import AssetBanner from "../../../../public/assets/images/asset-banner-clear.jpg";
-import AssetBannerBlurBanner from "../../../../public/assets/images/asset-banner-blur.jpg";
-import WealthTopRightBrandmark from "../../../../public/assets/icons/360-one-brandmark-wealth-top-right-white.svg";
-import AssetTopRightBrandmark from "../../../../public/assets/icons/360-one-brandmark-asset-top-right-white.svg";
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const OfferingsSection = () => {
   const [isScrolling, setIsScrolling] = useState(false);

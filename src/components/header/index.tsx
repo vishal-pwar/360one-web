@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
-import BrandLogoBlack from "../../../../public/assets/icons/360-one-brand-logo-black.svg";
+import { Link } from "@/components/link";
+import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 const headerNavItems = [
@@ -83,12 +83,7 @@ const Header = () => {
                   key={navItem.name}
                   className="relative"
                 >
-                  <Link
-                    href={navItem.route}
-                    className="text-[calc(1*var(--size-18))] h-full block hover:font-bold"
-                  >
-                    {navItem.name}
-                  </Link>
+                  <Link href={navItem.route}>{navItem.name}</Link>
                   <span
                     className={`absolute bottom-0 left-1/2 w-[45px] h-[2px] bg-black -translate-x-1/2 ease-out duration-500 ${
                       activeId === index ? "scale-x-1" : "scale-x-0"
