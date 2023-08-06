@@ -10,11 +10,11 @@ const headerNavItems = [
   },
   {
     name: "About us",
-    route: "/",
+    route: "/about-us",
   },
   {
     name: "360 ONE Wealth",
-    route: "/",
+    route: "/wealth-management",
   },
   {
     name: "360 ONE Asset",

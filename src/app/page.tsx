@@ -3,7 +3,7 @@ import Header from "@/components/header";
 import BannerSection from "@/sections/landing/banner-section";
 import CommitmentSection from "@/sections/landing/commitment-section";
 import OfferingsSection from "@/sections/landing/offerings-section";
-import PerspectiveSection from "@/sections/landing/perspective-section";
+import PerspectiveSection from "@/components/perspective-section";
 
 export default function Home() {
   return (
