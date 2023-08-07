@@ -33,7 +33,9 @@ const OfferingsSection = () => {
         clearTimeout(scrollEndTimeout);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <section className="mt-[calc(40*var(--scale))]">
       <div

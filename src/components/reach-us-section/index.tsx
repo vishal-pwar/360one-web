@@ -1,19 +1,31 @@
 import Image from "next/image";
 import UserIcon from "../../../public/assets/icons/outline-communication-user.svg";
 
-const ReachUsSection = () => {
+interface ReachUsSectionProps {
+  reachUsSectionContent: {
+    backgroundColor: string;
+    layerColor: string;
+  };
+}
+
+const ReachUsSection = ({ reachUsSectionContent }: ReachUsSectionProps) => {
+  const { backgroundColor, layerColor } = reachUsSectionContent;
   return (
     <section className="relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
       <div className="p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="flex justify-between gap-[calc(58*var(--scale))] items-start">
-          <div className="bg-[#fd7740] min-w-[calc(580*var(--scale))] h-[calc(329*var(--scale))] pl-[calc(128*var(--scale))] flex flex-col justify-center relative mt-[calc(-100*var(--scale))] ml-[calc(-126*var(--scale))]">
+          <div
+            className={`bg-[${backgroundColor}] min-w-[calc(580*var(--scale))] h-[calc(329*var(--scale))] pl-[calc(128*var(--scale))] flex flex-col justify-center relative mt-[calc(-100*var(--scale))] ml-[calc(-126*var(--scale))]`}
+          >
             <h2 className="text-[calc(1*var(--size-42))] leading-[1.05] tracking-[calc(1*var(--scale))] text-white mb-[calc(8*var(--scale))] font-bold">
               Reach Us
             </h2>
             <p className="text-[calc(1*var(--size-20))] text-white leading-[1.7] opacity-[0.8]">
               Reach out to us for more details
             </p>
-            <div className="w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] bg-[#fd9266] bottom-[calc(-48*var(--scale))] left-[calc(62*var(--scale))] absolute -z-10"></div>
+            <div
+              className={`w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] bg-[${layerColor}] bottom-[calc(-48*var(--scale))] left-[calc(62*var(--scale))] absolute -z-10`}
+            ></div>
           </div>
           <div className="flex flex-1 flex-col gap-[calc(16*var(--scale))]">
             <div className="flex items-center gap-[calc(16*var(--scale))]">
