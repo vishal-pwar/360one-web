@@ -4,35 +4,32 @@ import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
 interface SuiteSectionProps {
-  sectionContent: {
+  title: string;
+  subtitle: string;
+  externalRoute: string;
+  blurImg: StaticImageData;
+  clearImg: StaticImageData;
+  icon: StaticImageData;
+  cardBackgroundColor: string;
+  section: string;
+  cardsList: {
     title: string;
-    subtitle: string;
-    externalRoute: string;
-    blurImg: StaticImageData;
-    clearImg: StaticImageData;
+    body: string;
     icon: StaticImageData;
-    cardBackgroundColor: string;
-    section: string;
-    cardsList: {
-      title: string;
-      content: string;
-      icon: StaticImageData;
-    }[];
-  };
+  }[];
 }
 
-const SuiteSection = ({ sectionContent }: SuiteSectionProps) => {
-  const {
-    title,
-    subtitle,
-    externalRoute,
-    blurImg,
-    clearImg,
-    icon,
-    cardsList,
-    section,
-    cardBackgroundColor,
-  } = sectionContent;
+const SuiteSection = ({
+  title,
+  subtitle,
+  externalRoute,
+  blurImg,
+  clearImg,
+  icon,
+  cardsList,
+  section,
+  cardBackgroundColor,
+}: SuiteSectionProps) => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [activeId, setActiveId] = useState<number>(-1);
   let scrollEndTimeout: NodeJS.Timeout | null = null;
@@ -155,7 +152,7 @@ const SuiteSection = ({ sectionContent }: SuiteSectionProps) => {
                           activeId === index && "block"
                         } `}
                       >
-                        {cardItem.content}
+                        {cardItem.body}
                       </p>
                     </div>
                   );

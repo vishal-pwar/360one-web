@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         "wealth-orange": "#fd7740",
         "asset-purple": "#5a32ff",
+        "wealth-orange-80": "#FF6E4D",
+        "asset-purple-80": "#6666FF",
         "wealth-orange-60": "#FF9478",
         "asset-purple-60": "#8C8CFF",
       },

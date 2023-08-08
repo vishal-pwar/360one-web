@@ -73,7 +73,7 @@ const OfferingsSection = () => {
           </div>
           {/* use parallex */}
           <div className="absolute bottom-[-18%] w-[calc(667*var(--scale))] min-h-[calc(418*var(--scale))] z-10">
-            <div className="w-full h-full px-[calc(60*var(--scale))] pb-[calc(40*var(--scale))] pt-[calc(60*var(--scale))] text-white bg-[#fd7740]">
+            <div className="w-full h-full px-[calc(60*var(--scale))] pb-[calc(40*var(--scale))] pt-[calc(60*var(--scale))] text-white bg-wealth-orange">
               <h2 className="text-[calc(1*var(--size-38))] mb-[calc(16*var(--scale))] font-bold">
                 360 ONE Wealth
               </h2>
@@ -123,7 +123,7 @@ const OfferingsSection = () => {
             />
           </div>
           <div className="right-0 absolute bottom-[-18%] w-[calc(667*var(--scale))] min-h-[calc(418*var(--scale))] z-10">
-            <div className="w-full h-full px-[calc(60*var(--scale))] pb-[calc(40*var(--scale))] pt-[calc(60*var(--scale))] text-white bg-[#5a32ff]">
+            <div className="w-full h-full px-[calc(60*var(--scale))] pb-[calc(40*var(--scale))] pt-[calc(60*var(--scale))] text-white bg-asset-purple">
               <h2 className="text-[calc(1*var(--size-38))] mb-[calc(16*var(--scale))] font-bold">
                 360 ONE Asset
               </h2>
