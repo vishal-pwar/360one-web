@@ -1,8 +1,9 @@
+import { getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 
 interface CardsListProps {
   cardsList: {
-    content: string;
+    title: string;
     icon: any;
   }[];
 }
@@ -15,7 +16,7 @@ const CardsList = ({ cardsList }: CardsListProps) => {
         const rowNumber = Math.ceil((index + 1) / 2);
         return (
           <div
-            key={card.content}
+            key={card.title}
             className={`w-full h-full flex flex-col items-center relative justify-center px-[calc(66*var(--scale))] 
                   before:content[''] before:absolute before:top-0 before:right-0 before:w-[calc(1*var(--scale))] ${
                     index % 2 === 1 ? "before:h-0" : "before:h-[80%]"
@@ -26,12 +27,14 @@ const CardsList = ({ cardsList }: CardsListProps) => {
             <div className="w-[calc(60*var(--scale))] h-[calc(60*var(--scale))] mb-[calc(19*var(--scale))]">
               <Image
                 className="w-full h-full object-contain object-center"
-                src={card.icon}
+                src={getStrapiMedia(card.icon.data.attributes.url)}
                 alt="card-icon"
+                width={35}
+                height={35}
               />
             </div>
             <span className="leading-[1.5] text-[calc(1*var(--size-16))] text-center block mb-auto">
-              {card.content}
+              {card.title}
             </span>
           </div>
         );
