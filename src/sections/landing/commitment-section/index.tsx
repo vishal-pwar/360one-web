@@ -77,7 +77,9 @@ const CommitmentSection = () => {
         clearTimeout(scrollEndTimeout);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <section className="p-[calc(100*var(--scale))calc(125*var(--scale))calc(50*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
       <div className="flex flex-col">

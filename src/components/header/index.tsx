@@ -10,15 +10,15 @@ const headerNavItems = [
   },
   {
     name: "About us",
-    route: "/",
+    route: "/about-us",
   },
   {
     name: "360 ONE Wealth",
-    route: "/",
+    route: "/wealth-management",
   },
   {
     name: "360 ONE Asset",
-    route: "/",
+    route: "/asset-management",
   },
   {
     name: "Investor Relations",
@@ -83,7 +83,9 @@ const Header = () => {
                   key={navItem.name}
                   className="relative"
                 >
-                  <Link href={navItem.route}>{navItem.name}</Link>
+                  <Link onClick={() => setActiveId(index)} href={navItem.route}>
+                    {navItem.name}
+                  </Link>
                   <span
                     className={`absolute bottom-0 left-1/2 w-[45px] h-[2px] bg-black -translate-x-1/2 ease-out duration-500 ${
                       activeId === index ? "scale-x-1" : "scale-x-0"
