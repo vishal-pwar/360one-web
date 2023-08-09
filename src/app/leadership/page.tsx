@@ -1,6 +1,6 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import SliderSection from "@/sections/leadership/slider-section";
+import SliderSection from "@/sections/leadership/bod-slider-section";
 
 const LeadershipPage = () => {
   return (
