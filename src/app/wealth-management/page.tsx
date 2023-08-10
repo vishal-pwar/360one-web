@@ -113,7 +113,7 @@ const WealthManagement = () => {
       <Header />
       <Banner {...wealthManagementBannerContent} />
       <SuiteSection {...suiteSectionContent} />
-      <PerspectiveSection {...perspectiveSectionContent} />
+      <PerspectiveSection />
       <ReachUsSection {...wealthReachUsSectionContent} />
       <Footer />
     </>

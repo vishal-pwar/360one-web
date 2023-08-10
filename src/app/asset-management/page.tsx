@@ -122,7 +122,7 @@ const AssetManagement = () => {
       <Header />
       <Banner {...assetManagementBannerContent} />
       <SuiteSection {...suiteSectionContent} />
-      <PerspectiveSection {...perspectiveSectionContent} />
+      <PerspectiveSection />
       <ReachUsSection {...assetReachUsSectionContent} />
       <Footer />
     </>
