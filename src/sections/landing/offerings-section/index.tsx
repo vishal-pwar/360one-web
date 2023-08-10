@@ -66,7 +66,7 @@ const OfferingsSection = async () => {
               </p>
               <button className="text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
                 <Link
-                  href={firstProduct?.link}
+                  href={firstProduct?.link || "/"}
                   className="w-full h-full flex justify-center items-center"
                 >
                   {firstProduct?.cta}
@@ -114,7 +114,7 @@ const OfferingsSection = async () => {
               </p>
               <button className="text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
                 <Link
-                  href={secondProduct?.link}
+                  href={secondProduct?.link || "/"}
                   className="w-full h-full flex justify-center items-center"
                 >
                   {secondProduct?.cta}

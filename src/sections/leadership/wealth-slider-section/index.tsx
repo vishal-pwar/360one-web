@@ -1,5 +1,4 @@
 "use client";
-import SwiperCardsNavigation from "@/components/swiper-cards";
 import NileshVikramsey from "@/public/assets/images/nilesh-vikramsey.png";
 import NirmalJain from "@/public/assets/images/nirmal-jain.png";
 import Venkatraman from "@/public/assets/images/venkataraman-rajamani.png";
@@ -53,11 +52,12 @@ const boardOfDirectorsCards = [
 ];
 
 const content = {
-  title: "360 ONE",
-  subtitle: "Know the team that anchors 360 ONE",
+  title: "360 ONE Wealth",
+  subtitle:
+    "Meet the team that is the driving force behind our wealth management business.",
 };
 
-const TeamSliderSection = () => {
+const WealthSliderSection = () => {
   const swiperNavPrevRef = useRef<HTMLDivElement>(null);
   const swiperNavNextRef = useRef<HTMLDivElement>(null);
   const [currentSlideId, setCurrentSlideId] = useState<number>(1);
@@ -69,39 +69,25 @@ const TeamSliderSection = () => {
     setCurrentSlideId((prevNumber) => (prevNumber > 1 ? prevNumber - 1 : 10));
   };
   return (
-    <section className="">
-      <div className="p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
-        <div className="pb-[calc(39*var(--scale))] border-black border-solid border-b-[calc(2*var(--scale))]">
-          <h2 className="text-[calc(1*var(--size-38))] font-bold leading-[1.26] tracking-[calc(0.9*var(--scale))] mb-[calc(8*var(--scale))]">
-            Our Leadership
-          </h2>
-          <p className="text-[calc(1*var(--size-20))] leading-[1.75] max-w-[calc(950*var(--scale))] opacity-[0.8]">
-            Meet the professionals that lead 360 One’s wealth and asset business
-            to help clients achieve more.
-          </p>
-        </div>
-      </div>
-      <section
-        className="flex flex-row-reverse pt-[calc(63*var(--scale))] pb-[calc(80*var(--scale))] items-center relative before:bg-black before:w-[calc(760*var(--scale))] 
-      before:-z-10 before:content-[''] before:absolute before:left-0 before:top-0 before:h-full before:transition before:ease-in-out before:duration-300"
-      >
-        <SliderSection
-          nextRef={swiperNavNextRef}
-          prevRef={swiperNavPrevRef}
-          cards={boardOfDirectorsCards}
-          handleNext={handleNext}
-          handlePrevious={handlePrevious}
-          currentSlideId={currentSlideId}
-          totalSlides={boardOfDirectorsCards.length}
-          width={68}
-          content={content}
-          contentFillColor="white"
-          slidesPerView={3.2}
-          hasPadding
-        />
-      </section>
+    <section
+      className="pt-[calc(98*var(--scale))] pb-[calc(53*var(--scale))] mt-[calc(64*var(--scale))] flex items-center relative 
+      before:bg-wealth-orange before:w-[calc(646*var(--scale))] before:right-0 before:-z-10 before:content-[''] before:absolute before:top-0 before:h-full
+      after:content-[''] after:bg-wealth-orange after:absolute after:top-[calc(-60*var(--scale))] after:w-[calc(60*var(--scale))] after:right-[calc(645*var(--scale))] after:h-[calc(60*var(--scale))] after:z-20"
+    >
+      <SliderSection
+        nextRef={swiperNavNextRef}
+        prevRef={swiperNavPrevRef}
+        cards={boardOfDirectorsCards}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
+        currentSlideId={currentSlideId}
+        totalSlides={boardOfDirectorsCards.length}
+        content={content}
+        contentFillColor="white"
+      />
+      <div className="w-[calc(40*var(--scale))] h-[calc(245*var(--scale))] bg-white absolute top-[50%] right-0 -translate-y-[50%]"></div>
     </section>
   );
 };
 
-export default TeamSliderSection;
+export default WealthSliderSection;

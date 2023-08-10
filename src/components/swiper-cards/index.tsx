@@ -12,19 +12,21 @@ interface SwiperCardsNavigationProps {
   prevSwiperRef: MutableRefObject<HTMLElement | null>;
   nextSwiperRef: MutableRefObject<HTMLElement | null>;
   cards: { name: string; designation: string; image: StaticImageData }[];
+  slidesPerView?: number;
 }
 
 const SwiperCardsNavigation = ({
   prevSwiperRef,
   nextSwiperRef,
   cards,
+  slidesPerView = 3,
 }: SwiperCardsNavigationProps) => {
   const [showCardContent, setShowCardContent] = useState(false);
   return (
     <>
       <Swiper
         className="h-full w-full"
-        slidesPerView={3}
+        slidesPerView={slidesPerView}
         spaceBetween={12}
         loop
         navigation={{
