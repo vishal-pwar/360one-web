@@ -57,7 +57,7 @@ const SwiperCardsNavigation = ({
               onClick={() => setShowCardContent(true)}
             >
               <Image
-                className="w-[calc(326*var(--scale))] h-full object-cover object-center select-none"
+                className="w-full h-full object-cover object-center select-none"
                 src={card.image}
                 alt={`${card.name}-${card.designation}`}
                 title={`${card.name}-${card.designation}`}

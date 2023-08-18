@@ -1,10 +1,18 @@
-import { getPerspectiveSection } from "@/services/landing";
+import { getHomePerspectiveSection } from "@/services/landing";
+import { getAssetPerspectiveSection } from "@/services/asset-management";
 import { formatDate, getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 import Link from "next/link";
 
-const PerspectiveSection = async () => {
-  const response = await getPerspectiveSection();
+interface PerspectiveSectionProps {
+  page: string;
+}
+
+const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
+  const response =
+    page === "asset"
+      ? await getAssetPerspectiveSection()
+      : await getHomePerspectiveSection();
 
   const firstPost = response?.data?.attributes?.perspective?.posts?.data?.[0];
   const otherPosts = [
@@ -27,8 +35,8 @@ const PerspectiveSection = async () => {
           <Image
             className="w-[calc(552*var(--scale))] max-w-[calc(552*var(--scale))] h-[calc(366*var(--scale))] mb-[calc(32*var(--scale))]"
             src={url}
+            height={366}
             width={552}
-            height={336}
             alt="Wealth Management Industry"
             title="Wealth Management Industry"
           />
@@ -40,7 +48,9 @@ const PerspectiveSection = async () => {
           </p>
           <button className="text-black border-black p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
             <Link
-              href="/"
+              href={firstPost?.attributes?.link || "/"}
+              target="_blank"
+              rel="noreferrer noopener"
               className="w-full h-full flex justify-center items-center"
             >
               Read More
@@ -65,6 +75,8 @@ const PerspectiveSection = async () => {
                 <button className="text-black border-black mt-auto w-fit p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
                   <Link
                     href={blogItem.attributes.link || "/"}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className="w-full h-full flex justify-center items-center"
                   >
                     Read More

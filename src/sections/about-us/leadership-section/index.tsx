@@ -1,6 +1,10 @@
+import { getLeadershipSection } from "@/services/about";
 import LeadershipSlider from "../leadership-slider";
 
-const LeadershipSection = () => {
+const LeadershipSection = async () => {
+  const response = await getLeadershipSection();
+  const { title, text, cards, link } = response?.data?.attributes?.leadership;
+
   return (
     <section
       className="relative overflow-hidden mb-[calc(84*var(--scale))] 
@@ -9,16 +13,12 @@ const LeadershipSection = () => {
       <div className="p-[calc(48*var(--scale))calc(126*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="flex flex-col items-end">
           <h2 className="text-[calc(1*var(--size-38))] mr-auto mb-[calc(8*var(--scale))] ml-[calc(98*var(--scale))] font-bold text-black tracking-[calc(-0.9*var(--scale))]">
-            360 ONE Leadership
+            {title}
           </h2>
           <p className="text-[calc(1*var(--size-20))] leading-[1.8] mr-auto mb-[calc(9*var(--scale))] ml-[calc(98*var(--scale))] max-w-[calc(1006*var(--scale))] text-black">
-            Our culture of high performance and personalized attention have been
-            founding principles throughout our journey over the last 14 years.
-            Our leadership has been instrumental in shaping our client-centric
-            approach since inception.
+            {text}
           </p>
-
-          <LeadershipSlider />
+          <LeadershipSlider cards={cards} link={link} />
         </div>
       </div>
     </section>

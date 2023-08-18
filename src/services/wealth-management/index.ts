@@ -1,25 +1,26 @@
 import { fetchContent } from "@/utils/fetch-content";
 
-export async function getHeroSection() {
+export async function getWealthHeroSection() {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-  const path = `/landing-page`;
+  const path = `/wealth`;
   const urlParamsObject = {
-    populate: { hero: { populate: ["video"] } },
+    populate: { hero: { populate: { icon: true, image: true } } },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const response = await fetchContent(path, urlParamsObject, options);
   return response;
 }
 
-export async function getCommitmentSection() {
+export async function getWealthSuiteSection() {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-  const path = `/landing-page`;
+  const path = `/wealth`;
   const urlParamsObject = {
     populate: {
-      commitment: {
+      suite: {
         populate: {
-          sections: { populate: { cards: { populate: { icon: true } } } },
+          cards: { populate: { icon: true } },
           image: true,
+          icon: true,
         },
       },
     },
@@ -29,26 +30,9 @@ export async function getCommitmentSection() {
   return response;
 }
 
-export async function getOfferingsSection() {
+export async function getWealthPerspectiveSection() {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-  const path = `/landing-page`;
-  const urlParamsObject = {
-    populate: {
-      offering: {
-        populate: {
-          products: { populate: ["image", "logo"] },
-        },
-      },
-    },
-  };
-  const options = { headers: { Authorization: `Bearer ${token}` } };
-  const response = await fetchContent(path, urlParamsObject, options);
-  return response;
-}
-
-export async function getHomePerspectiveSection() {
-  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-  const path = `/landing-page`;
+  const path = `/wealth`;
   const urlParamsObject = {
     populate: {
       perspective: {
@@ -56,6 +40,19 @@ export async function getHomePerspectiveSection() {
           posts: { populate: ["thumbnail"] },
         },
       },
+    },
+  };
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await fetchContent(path, urlParamsObject, options);
+  return response;
+}
+
+export async function getWealthReachUsSection() {
+  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+  const path = `/wealth`;
+  const urlParamsObject = {
+    populate: {
+      reachUs: true,
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };

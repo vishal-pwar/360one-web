@@ -1,61 +1,27 @@
 "use client";
 import Image from "next/image";
-import YatinShahClear from "../../../../public/assets/images/yatinShah-clear.jpg";
-import YatinShahBlur from "../../../../public/assets/images/yatinShah-blur.jpg";
-import KaranClear from "../../../../public/assets/images/karan.png";
-import KaranBlur from "../../../../public/assets/images/karanbhagat-blur.jpg";
-import AnoopMaheshwariBlur from "../../../../public/assets/images/anupMaheshwari-blur.jpg";
-import AnoopMaheshwariClear from "../../../../public/assets/images/anupMaheshwari-clear.jpg";
-import AnirudhTapariaClear from "../../../../public/assets/images/Anirudha-taparia.jpg";
-import AnirudhTapariaBlur from "../../../../public/assets/images/Anirudha-taparia-blur.jpg";
 import LeftArrow from "../../../../public/assets/icons/left-arrow.svg";
 import RightArrow from "../../../../public/assets/icons/right-arrow.svg";
 import { useState } from "react";
 import { Link } from "@/ui";
+import { getStrapiMedia } from "@/utils/api-helpers";
 
-let leaderCards = [
-  {
-    name: "Anirudha Taparia",
-    designation: "Co-Founder and Joint CEO",
-    about:
-      "Anirudha has more than two decades of experience in the financial services industry across consumer, commercial and private banking. He has been instrumental in building 360 ONE’s wealth and asset management business globally. He is responsible for the wealth advisory practice across business verticals and geographies",
-    clearImage: AnirudhTapariaClear,
-    blurImage: AnirudhTapariaBlur,
-    translateY: "translate-y-[calc(42*var(--scale))]",
-  },
-  {
-    name: "Anup Maheshwari",
-    designation: "Co-Founder and CIO",
-    about:
-      "Anup has more than 25 years of experience in financial services. He focuses on investment and strategy for 360 ONE’s business including mutual funds and Alternative Investment Funds (AIFs). He plays a key role in meeting the company's aggressive growth goals while also being responsible for product development and devising an innovative investment strategy",
-    clearImage: AnoopMaheshwariClear,
-    blurImage: AnoopMaheshwariBlur,
-    translateY: "translate-y-[calc(105*var(--scale))]",
-  },
+interface LeadershipSliderProps {
+  cards: any;
+  link: string;
+}
 
-  {
-    name: "Yatin Shah",
-    designation: "Co-founder, 360 ONE",
-    about:
-      "Yatin has more than two decades of experience in the financial services industry across equity research and private wealth management. He focuses on 360 ONE’s wealth advisory practice apart from client services, marketing and client experiences. He is responsible for introducing the 360 ONE proposition to new clients, as well as expanding the relationship with existing clients",
-    clearImage: YatinShahClear,
-    blurImage: YatinShahBlur,
-    translateY: "translate-y-[calc(-36*var(--scale))]",
-  },
-  {
-    name: "Karan Bhagat",
-    designation: "Founder, MD and CEO, 360 ONE ",
-    about:
-      "Karan has more than two decades of experience in the financial services industry. He provides direction and leadership towards the achievement of 360 ONE's strategic goals and objectives. He has built a team of talented professionals, who work with and for some of the most distinguished family offices, institutions and wealthy families in India and abroad",
-    clearImage: KaranClear,
-    blurImage: KaranBlur,
-    translateY: "translate-y-[calc(20*var(--scale))]",
-  },
-];
+const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
+  const lastIndex = cards.length - 1;
+  const [leadershipCards, setLeadershipCards] = useState([...cards]);
 
-const LeadershipSlider = () => {
-  const lastIndex = leaderCards.length - 1;
-  const [leadershipCards, setLeadershipCards] = useState([...leaderCards]);
+  const variableCardHeightStyles = [
+    "translate-y-[calc(42*var(--scale))]",
+    "translate-y-[calc(105*var(--scale))]",
+    "translate-y-[calc(-36*var(--scale))]",
+    "translate-y-[calc(20*var(--scale))]",
+  ];
+
   const handleNext = () => {
     setLeadershipCards((prev) => {
       const newArr = [...prev];
@@ -86,7 +52,7 @@ const LeadershipSlider = () => {
                   ? "w-[calc(781*var(--scale))]"
                   : "w-[calc(212*var(--scale))]"
               } ${
-                index !== lastIndex && card.translateY
+                index !== lastIndex && variableCardHeightStyles[index]
               } ml-[16px] overflow-hidden relative transition-all duration-500 ease-[ease] delay-[0s]`}
             >
               <div
@@ -98,17 +64,19 @@ const LeadershipSlider = () => {
               >
                 <Image
                   className={`w-full h-full object-cover object-top`}
-                  src={card.clearImage}
-                  alt="Yatin Shah - Co-founder, 360 ONE"
-                  title="Yatin Shah - Co-founder, 360 ONE"
+                  src={getStrapiMedia(card?.clearImage?.data?.attributes?.url)}
+                  alt={`${card.name} - ${card.designation}`}
+                  title={`${card.name} - ${card.designation}`}
+                  fill={true}
                 />
                 <Image
                   className={`absolute top-0 left-0 w-full h-full object-cover object-top ${
                     index === lastIndex && "hidden"
                   } `}
-                  src={card.blurImage}
-                  alt="Anup Maheshwari - Co-Founder and CIO, Asset"
-                  title="Anup Maheshwari - Co-Founder and CIO, Asset"
+                  src={getStrapiMedia(card?.blurImage?.data?.attributes?.url)}
+                  alt={`${card.name} - ${card.designation}`}
+                  title={`${card.name} - ${card.designation}`}
+                  fill={true}
                 />
               </div>
               <div
@@ -149,7 +117,7 @@ const LeadershipSlider = () => {
                     text-black border-black p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]"
       >
         <Link
-          href="/leadership"
+          href={link}
           className="w-full h-full flex justify-center items-center"
         >
           View our Board & Leaders

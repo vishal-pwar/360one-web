@@ -12,7 +12,7 @@ export default function Home() {
       <BannerSection />
       <CommitmentSection />
       <OfferingsSection />
-      <PerspectiveSection />
+      <PerspectiveSection page="home" />
       <Footer />
     </>
   );
