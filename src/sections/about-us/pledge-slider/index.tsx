@@ -1,39 +1,15 @@
 "use client";
 import Image from "next/image";
-import LeftArrow from "../../../../public/assets/icons/left-arrow.svg";
-import RightArrow from "../../../../public/assets/icons/right-arrow.svg";
-import CsrParfi from "../../../../public/assets/images/csr-parfi.jpg";
-import CsrIndustry from "../../../../public/assets/images/csr-industree.jpg";
-import CsrArth from "../../../../public/assets/images/csr-arth.jpg";
-import CsrCiie from "../../../../public/assets/images/csr-ciie.jpg";
 import { useState } from "react";
+import { getStrapiMedia } from "@/utils/api-helpers";
 
-const pledgeCardsList = [
-  {
-    title: "Outcome-based, pay-for-success, co-pay paradigm",
-    body: "We provided best-in-class training and pan-India placement to underprivileged youth from Jharkhand. Improved leverage through co-funding resulted in 2.5X students getting trained and placed, and up to 4X increase in their earnings. Partner: PARFI",
-    image: CsrParfi,
-  },
-  {
-    title: "Smart financing solution",
-    body: "We contributed to a ‘zero-interest revolving grant’ that provided cash flow and access to working capital for vulnerable women artisans who lacked creditworthiness and financial footprint to afford loans from mainstream providers. Capacity building training, access to raw materials and market linkages were also offered. Partners: Collective Good Foundation & Industree Foundation.",
-    image: CsrIndustry,
-  },
-  {
-    title: "Financial literacy & behavioural change program",
-    body: "Improved borrowing behaviour is a matter of consistent practice and discipline. This financial literacy & inclusion program provided nano and micro entrepreneurs training and access to commercial capital, coupled with positive communication nudges and incentives for timely repayment of loans and good credit behaviour. Partners: Collective Good Foundation & Arth.",
-    image: CsrArth,
-  },
-  {
-    title: "Fintech incubator for inclusive finance start-ups",
-    body: "We entered into a partnership with India’s leading inclusive fintech incubation platform at IIM-A called CIIE.CO that provides transformational support to inclusive lending start-ups that serve low- and middle-income segments. Partner: CIIE.CO",
-    image: CsrCiie,
-  },
-];
+interface PledgeSliderProps {
+  cards: any;
+}
 
-const PledgeSlider = () => {
+const PledgeSlider = ({ cards }: PledgeSliderProps) => {
   const firstIndex = 0;
-  const [pledgeCards, setPledgeCards] = useState([...pledgeCardsList]);
+  const [pledgeCards, setPledgeCards] = useState([...cards]);
   const handlePrev = () => {
     setPledgeCards((prev) => {
       const newArr = [...prev];
@@ -66,18 +42,20 @@ const PledgeSlider = () => {
                 }  flex flex-row-reverse mt-auto flex-shrink-0 relative`}
               >
                 <Image
-                  className="transition-all duration-500 ease-[ease] delay-500 w-[calc(401*var(--scale))] h-full object-cover object-[center_18%]"
-                  src={card.image}
+                  className="w-[calc(401*var(--scale))] h-full object-cover object-[center_18%]"
+                  src={getStrapiMedia(card?.image?.data?.attributes?.url)}
                   alt="pledge-slider-image"
+                  width={401}
+                  height={702}
                 />
                 <div
                   className={`${
                     index === firstIndex
                       ? "w-[calc(395*var(--scale))]"
                       : "hidden"
-                  } transition-all duration-500 ease-[ease] delay-0 p-[calc(50*var(--scale))] pt-[calc(105*var(--scale))] h-[calc(618*var(--scale))] bg-[#e7e2e0] mt-auto relative`}
+                  } p-[calc(50*var(--scale))] pt-[calc(105*var(--scale))] h-[calc(618*var(--scale))] bg-[#e7e2e0] mt-auto relative`}
                 >
-                  <div className="absolute top-[calc(52*var(--scale))] gap-[calc(18.3*var(--scale))] flex items-center transition-all duration-0 ease-[ease] delay-[0s]">
+                  <div className="absolute top-[calc(52*var(--scale))] gap-[calc(18.3*var(--scale))] flex items-center ">
                     <div
                       onClick={handlePrev}
                       className="w-[calc(53.7*var(--scale))] h-[calc(14*var(--scale))] cursor-pointer flex items-center justify-center opacity-[0.2] hover:opacity-[1]"
@@ -113,11 +91,11 @@ const PledgeSlider = () => {
                       </svg>
                     </div>
                   </div>
-                  <h3 className="text-[calc(28*var(--scale))] leading-[1.14] mb-[calc(24*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))] transition-all duration-0 ease-in-out delay-0">
+                  <h3 className="text-[calc(28*var(--scale))] leading-[1.14] mb-[calc(24*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))]">
                     {card.title}
                   </h3>
-                  <p className="text-[calc(1*var(--size-18))] leading-[1.4] tracking-[calc(0.65*var(--scale))] transition-all duration-0 ease-in-out delay-0">
-                    {card.body}
+                  <p className="text-[calc(1*var(--size-18))] leading-[1.4] tracking-[calc(0.65*var(--scale))]">
+                    {card.text}
                   </p>
                 </div>
               </div>

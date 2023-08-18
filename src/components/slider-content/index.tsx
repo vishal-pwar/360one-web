@@ -78,13 +78,17 @@ const SliderContent = ({
               </svg>
             </div>
             <div
-              className={`text-[calc(1*var(--size-20))] ml-auto select-none text-${contentFillColor}`}
+              className={`text-[calc(1*var(--size-20))] ml-auto select-none text-${contentFillColor} flex`}
             >
-              <span className="text-[calc(30*var(--scale))] text-inherit select-none">
+              <span className="text-[calc(30*var(--scale))] text-${contentFillColor} select-none">
                 {currentSlideId}
               </span>
-              {" / "}
-              <span className="select-none text-inherit">{totalSlides}</span>
+              <span className="text-[calc(30*var(--scale))] text-${contentFillColor} select-none">
+                /
+              </span>
+              <span className="select-none text-[calc(30*var(--scale))] text-${contentFillColor}">
+                {totalSlides}
+              </span>
             </div>
           </div>
         </div>

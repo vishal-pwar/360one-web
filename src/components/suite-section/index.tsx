@@ -1,68 +1,24 @@
-"use client";
 import { Link } from "@/ui";
 import Image, { StaticImageData } from "next/image";
-import { useEffect, useState } from "react";
+import { ScrollImage } from "../scroll-image";
+import { getAssetSuiteSection } from "@/services/asset-management";
+import { getStrapiMedia } from "@/utils/api-helpers";
+import SuiteCards from "../suite-cards";
+import { getWealthSuiteSection } from "@/services/wealth-management";
 
 interface SuiteSectionProps {
-  title: string;
-  subtitle: string;
-  externalRoute: string;
-  blurImg: StaticImageData;
-  clearImg: StaticImageData;
-  icon: StaticImageData;
-  cardBackgroundColor: string;
-  section: string;
-  cardsList: {
-    title: string;
-    body: string;
-    icon: StaticImageData;
-  }[];
+  page: string;
 }
 
-const SuiteSection = ({
-  title,
-  subtitle,
-  externalRoute,
-  blurImg,
-  clearImg,
-  icon,
-  cardsList,
-  section,
-  cardBackgroundColor,
-}: SuiteSectionProps) => {
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [activeId, setActiveId] = useState<number>(-1);
-  let scrollEndTimeout: NodeJS.Timeout | null = null;
-
-  const handleMouseEnter = (id: number) => {
-    setActiveId(id);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveId(-1);
-  };
-
-  const handleScroll = () => {
-    setIsScrolling(true);
-
-    if (scrollEndTimeout) {
-      clearTimeout(scrollEndTimeout);
-    }
-    scrollEndTimeout = setTimeout(() => {
-      setIsScrolling(false);
-    }, 800);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollEndTimeout) {
-        clearTimeout(scrollEndTimeout);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+const SuiteSection = async ({ page }: SuiteSectionProps) => {
+  const response =
+    page === "asset"
+      ? await getAssetSuiteSection()
+      : await getWealthSuiteSection();
+  const { title, text, link, image, icon, cards } =
+    response?.data?.attributes?.suite;
+  const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
+  const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
   return (
     <section className="overflow-x-clip">
@@ -75,11 +31,11 @@ const SuiteSection = ({
             <div className="w-[calc(1*var(--scale))] bg-[#979797]"></div>
             <div>
               <p className="text-[calc(1*var(--size-20))] mb-[calc(24*var(--scale))] leading-[1.7] max-w-[calc(725*var(--scale))]">
-                {subtitle}
+                {text}
               </p>
               <button className="text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
                 <Link
-                  href={externalRoute}
+                  href={link}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="w-full h-full flex justify-center items-center"
@@ -91,73 +47,33 @@ const SuiteSection = ({
           </div>
           <div className="relative flex flex-col gap-[calc(56*var(--scale))] before:content-[''] before:absolute before:bg-[#e7e2e0] before:w-[calc(1517*var(--scale))] before:h-[calc(1117*var(--scale))] before:top-[calc(-91*var(--scale))] before:left-[calc(-43*var(--scale))] before:-z-20">
             <div className="h-[calc(560*var(--scale))] w-full relative">
-              <Image
-                className={`absolute top-0 left-0 w-full h-full z-10 object-cover object-[left_center] transition-opacity ease-in duration-300 ${
-                  isScrolling ? "opacity-1" : "opacity-0"
-                }`}
-                src={blurImg}
+              <ScrollImage
+                className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
+                src={imageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
+                fill={true}
               />
               <Image
                 className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-                src={clearImg}
+                src={imageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
+                fill={true}
               />
               <div className="flex justify-center items-center absolute w-[calc(117*var(--scale))] h-[calc(115*var(--scale))] top-[calc(-45*var(--scale))] right-[calc(37*var(--scale))] z-10 bg-white">
                 <Image
-                  src={icon}
+                  src={iconUrl}
                   className="w-[calc(56.5*var(--scale))] h-[calc(75*var(--scale))]"
                   alt="360 One Wealth Management"
                   title="360 One Wealth Management"
+                  height={75}
+                  width={56.5}
                 />
               </div>
             </div>
             <div className="h-[calc(358*var(--scale))] w-[109%] mt-auto flex items-end z-10">
-              <div className="flex items-end gap-[calc(16*var(--scale))] h-[calc(600*var(--scale))] overflow-x-scroll w-[120%] pr-[calc(20*var(--scale))]">
-                {cardsList.map((cardItem, index) => {
-                  return (
-                    <div
-                      key={cardItem.title}
-                      className={`min-w-[calc(439*var(--scale))] h-[calc(358*var(--scale))] bg-white p-[calc(30*var(--scale))calc(40*var(--scale))] flex flex-col overflow-hidden transition ease-linear duration-300
-                                hover:max-h-[calc(900*var(--scale))] hover:h-full hover:mt-0 hover:transition hover:ease-in-out hover:duration-300 hover:text-white hover:min-h-[calc(550*var(--scale))] ${
-                                  section === "asset"
-                                    ? "hover:bg-asset-purple"
-                                    : "hover:bg-wealth-orange"
-                                } `}
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <div
-                        className={`w-[calc(53*var(--scale))] h-[calc(64*var(--scale))] mb-[calc(24*var(--scale))] mt-auto ${
-                          activeId === index && "hidden"
-                        }`}
-                      >
-                        <Image
-                          src={cardItem.icon}
-                          className={`w-full h-full transition ease-in-out duration-300 ${
-                            activeId === index &&
-                            "mt-[calc(-90*var(--scale))] -translate-y-[100px]"
-                          }`}
-                          alt="360 One Wealth Management"
-                          title="360 One Wealth Management"
-                        />
-                      </div>
-                      <h5 className="text-[calc(1*var(--size-24))] tracking-[calc(0.87*var(--scale))] font-bold mb-[calc(12*var(--scale))]">
-                        {cardItem.title}
-                      </h5>
-                      <p
-                        className={`text-[calc(1*var(--size-20))] opacity-[0.8] leading-[1.4] line-clamp-3 ${
-                          activeId === index && "block"
-                        } `}
-                      >
-                        {cardItem.body}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
+              <SuiteCards cards={cards} page={page} />
             </div>
           </div>
         </div>

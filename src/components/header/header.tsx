@@ -11,32 +11,6 @@ export const Header = ({ items }: { items: any }) => {
     setActiveId(id);
   };
 
-  const navItems = [
-    {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "About Us",
-      href: "/about-us",
-    },
-    {
-      name: "360 ONE Wealth",
-      href: "/wealth-management",
-    },
-    {
-      name: "360 ONE Asset",
-      href: "/asset-management",
-    },
-    {
-      name: "Investor Relations",
-      href: "/",
-    },
-    {
-      name: "Reach Us",
-      href: "/",
-    },
-  ];
   const handleMouseLeave = () => {
     setActiveId(-1);
   };
@@ -75,7 +49,7 @@ export const Header = ({ items }: { items: any }) => {
         </Link>
         <nav className="flex">
           <ul className="flex gap-[calc(50*var(--scale))] list-none h-[45%] m-0 p-0">
-            {navItems.map((navItem: any, index: any) => {
+            {items.map((navItem: any, index: any) => {
               return (
                 <li
                   onMouseEnter={() => handleMouseEnter(index)}
@@ -84,8 +58,8 @@ export const Header = ({ items }: { items: any }) => {
                   className="relative"
                 >
                   <Link
-                    onClick={() => setActiveId(index)}
                     href={navItem.href || "/"}
+                    target={`${navItem.external ? "_blank" : ""}`}
                   >
                     {navItem.name}
                   </Link>
