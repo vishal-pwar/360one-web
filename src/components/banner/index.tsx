@@ -1,19 +1,24 @@
 import Image, { StaticImageData } from "next/image";
 
 interface BannerProps {
-  bannerSectionContent: {
-    image: StaticImageData;
-    cardBackgroundColor: string;
-    cardLayerColor: string;
-    title: string;
-    content: string;
-    icon: StaticImageData;
-  };
+  image: StaticImageData;
+  cardBackgroundColor: string;
+  cardLayerColor: string;
+  title: string;
+  body: string;
+  icon: StaticImageData;
+  section: string;
 }
 
-const Banner = ({ bannerSectionContent }: BannerProps) => {
-  const { image, cardBackgroundColor, cardLayerColor, title, content, icon } =
-    bannerSectionContent;
+const Banner = ({
+  image,
+  cardBackgroundColor,
+  cardLayerColor,
+  title,
+  body,
+  icon,
+  section,
+}: BannerProps) => {
   return (
     <section className="mb-[calc(190*var(--scale))] ">
       <div className="py-0 px-[calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
@@ -35,17 +40,25 @@ const Banner = ({ bannerSectionContent }: BannerProps) => {
               title="360 One Wealth Management"
             />
             <div
-              className={`w-full p-[calc(57*var(--scale))] bg-${cardBackgroundColor} flex flex-col gap-[calc(16*var(--scale))] z-10`}
+              className={`w-full p-[calc(57*var(--scale))] ${
+                section === "asset" && "bg-asset-purple"
+              } ${
+                section === "wealth" && "bg-wealth-orange"
+              } flex flex-col gap-[calc(16*var(--scale))] z-10`}
             >
               <h3 className="text-[calc(1*var(--size-38))] leading-[1.21] max-w-[calc(465*var(--scale))] text-white mb-[calc(8*var(--scale))] font-bold">
                 {title}
               </h3>
               <p className="text-[calc(1*var(--size-20))] text-white leading-[1.5] opacity-[0.8]">
-                {content}
+                {body}
               </p>
             </div>
             <div
-              className={`absolute w-[calc(195*var(--scale))] h-[calc(112*var(--scale))] top-[calc(96*var(--scale))] bg-${cardLayerColor} right-[calc(55*var(--scale))]`}
+              className={`absolute w-[calc(195*var(--scale))] h-[calc(112*var(--scale))] top-[calc(96*var(--scale))] ${
+                section === "asset" && "bg-asset-purple-60"
+              } ${
+                section === "wealth" && "bg-wealth-orange-60"
+              } right-[calc(55*var(--scale))]`}
             ></div>
           </div>
         </div>

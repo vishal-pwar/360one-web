@@ -29,7 +29,7 @@ const JourneySection = () => {
             </Link>
           </button>
         </div>
-        <div className="h-[calc(600*var(--scale))] w-[109.32%] relative bg-black">
+        <div className="h-[calc(600*var(--scale))] w-[108.55%] relative bg-black">
           <video
             className="object-contain bg-black h-full w-full"
             src="/assets/videos/360onejourney.mp4"

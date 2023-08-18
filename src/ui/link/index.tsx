@@ -5,7 +5,7 @@ import React from "react";
 const linkStyles = cva(["text-primary-main"], {
   variants: {
     variants: {
-      text: "text-[calc(1*var(--size-18))] h-full block hover:font-bold",
+      text: "h-full block hover:font-bold",
     },
   },
   defaultVariants: {
