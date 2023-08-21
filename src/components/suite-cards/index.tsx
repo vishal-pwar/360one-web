@@ -24,8 +24,8 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
         return (
           <div
             key={cardItem?.title}
-            className={`min-w-[calc(439*var(--scale))] h-[calc(358*var(--scale))] bg-white p-[calc(30*var(--scale))calc(40*var(--scale))] flex flex-col overflow-hidden transition ease-linear duration-300
-                                hover:max-h-[calc(900*var(--scale))] hover:h-full hover:mt-0 hover:transition hover:ease-in-out hover:duration-300 hover:text-white hover:min-h-[calc(550*var(--scale))] ${
+            className={`max-lg:min-w-[calc(281*var(--scale))] max-lg:p-[calc(21*var(--scale))calc(25*var(--scale))] max-lg:h-[calc(230*var(--scale))] min-w-[calc(439*var(--scale))] h-[calc(358*var(--scale))] bg-white p-[calc(30*var(--scale))calc(40*var(--scale))] flex flex-col overflow-hidden transition ease-linear duration-300
+                                max-lg:hover:min-h-[calc(350*var(--scale))] hover:max-h-[calc(900*var(--scale))] hover:h-max hover:mt-0 hover:transition hover:ease-in-out hover:duration-300 hover:text-white hover:min-h-[calc(550*var(--scale))] ${
                                   page === "asset"
                                     ? "hover:bg-asset-purple"
                                     : "hover:bg-wealth-orange"
@@ -34,7 +34,7 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
             onMouseLeave={handleMouseLeave}
           >
             <div
-              className={`w-[calc(53*var(--scale))] h-[calc(64*var(--scale))] mb-[calc(24*var(--scale))] mt-auto ${
+              className={`max-lg:w-[calc(34*var(--scale))] max-lg:h-[calc(41*var(--scale))] max-lg:mb-[calc(16*var(--scale))] w-[calc(53*var(--scale))] h-[calc(64*var(--scale))] mb-[calc(24*var(--scale))] mt-auto ${
                 activeId === index && "hidden"
               }`}
             >
@@ -50,11 +50,11 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
                 width={53}
               />
             </div>
-            <h5 className="text-[calc(1*var(--size-24))] tracking-[calc(0.87*var(--scale))] font-bold mb-[calc(12*var(--scale))]">
+            <h5 className="max-lg:text-[calc(18*var(--scale))] max-lg:mb-[calc(8*var(--scale))] text-[calc(1*var(--size-24))] tracking-[calc(0.87*var(--scale))] font-bold mb-[calc(12*var(--scale))]">
               {cardItem?.title}
             </h5>
             <p
-              className={`text-[calc(1*var(--size-20))] opacity-[0.8] leading-[1.4] line-clamp-3 ${
+              className={`max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-20))] opacity-[0.8] leading-[1.4] line-clamp-3 ${
                 activeId === index && "block"
               } `}
             >

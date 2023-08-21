@@ -11,6 +11,9 @@ module.exports = {
         "wealth-orange-60": "#FF9478",
         "asset-purple-60": "#8C8CFF",
       },
+      screens: {
+        sm: "414px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

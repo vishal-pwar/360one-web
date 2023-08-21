@@ -22,7 +22,7 @@ export async function fetchContent<T = unknown>(
   try {
     // Merge default and user options
     const mergedOptions: RequestInit = {
-      next: { revalidate: 60 },
+      next: { revalidate: 1 },
       headers: {
         "Content-Type": "application/json",
       },
