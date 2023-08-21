@@ -24,10 +24,12 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
   } = response?.data?.attributes?.reachUs;
   return (
     <section className="relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
-      <div className="p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
-        <div className="flex justify-between gap-[calc(58*var(--scale))] items-start">
+      <div className="max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+        <div className="max-lg:gap-[calc(20*var(--scale))] flex justify-between gap-[calc(58*var(--scale))] items-start">
           <div
-            className={` ${page === "asset" && "bg-asset-purple"} ${
+            className={`max-lg:min-w-[calc(368*var(--scale))] max-lg:h-[calc(209*var(--scale))] max-lg:pl-[calc(40*var(--scale))] max-lg:ml-[calc(-80*var(--scale))] max-lg:mt-[calc(-63*var(--scale))] ${
+              page === "asset" && "bg-asset-purple"
+            } ${
               page === "wealth" && "bg-wealth-orange"
             } min-w-[calc(580*var(--scale))] h-[calc(329*var(--scale))] pl-[calc(128*var(--scale))] flex flex-col justify-center relative mt-[calc(-100*var(--scale))] ml-[calc(-126*var(--scale))]`}
           >
@@ -38,26 +40,26 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
               {text}
             </p>
             <div
-              className={`w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] ${
+              className={`max-lg:w-[calc(123*var(--scale))] max-lg:h-[calc(71*var(--scale))] max-lg:bottom-[calc(-30*var(--scale))] max-lg:left-[calc(40*var(--scale))] w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] ${
                 page === "asset" && "bg-asset-purple-60"
               } ${
                 page === "wealth" && "bg-wealth-orange-60"
               } bottom-[calc(-48*var(--scale))] left-[calc(62*var(--scale))] absolute -z-10`}
             ></div>
           </div>
-          <div className="flex flex-1 flex-col gap-[calc(16*var(--scale))]">
-            <div className="flex items-center gap-[calc(16*var(--scale))]">
+          <div className="max-lg:gap-[calc(6.2*var(--scale))] flex flex-1 flex-col gap-[calc(16*var(--scale))]">
+            <div className="max-lg:gap-[calc(8.2*var(--scale))] flex items-center gap-[calc(16*var(--scale))]">
               <Image
-                className="w-[calc(40*var(--scale))] h-[calc(40*var(--scale))]"
+                className="max-lg:w-[calc(24*var(--scale))] max-lg:h-[calc(24*var(--scale))] w-[calc(40*var(--scale))] h-[calc(40*var(--scale))]"
                 src={UserIcon}
                 alt="user"
                 title="user"
               />
-              <h4 className="text-[calc(1*var(--size-24))] font-semibold text-white leading-[1.75]">
+              <h4 className="max-lg:text-[calc(17*var(--scale))] text-[calc(1*var(--size-24))] font-semibold text-white leading-[1.75]">
                 Connect with us:
               </h4>
             </div>
-            <div className="flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
+            <div className="max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
               <p className="text-[calc(1*var(--size-16))] opacity-[0.8] leading-[1.67]">
                 Centralised Service Desk:
                 <span className="text-[calc(1*var(--size-18))] font-bold block">
@@ -78,20 +80,20 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
               </p>
             </div>
           </div>
-          <div className="w-[calc(2*var(--scale))] bg-[#979797] h-[calc(268*var(--scale))]"></div>
-          <div className="flex flex-1 flex-col gap-[calc(16*var(--scale))]">
-            <div className="flex items-center gap-[calc(16*var(--scale))]">
+          <div className="max-lg:hidden w-[calc(2*var(--scale))] bg-[#979797] h-[calc(268*var(--scale))]"></div>
+          <div className="max-lg:gap-[calc(6.2*var(--scale))] flex flex-1 flex-col gap-[calc(16*var(--scale))]">
+            <div className="max-lg:gap-[calc(8.2*var(--scale))] flex items-center gap-[calc(16*var(--scale))]">
               <Image
-                className="w-[calc(40*var(--scale))] h-[calc(40*var(--scale))]"
+                className="max-lg:w-[calc(24*var(--scale))] max-lg:h-[calc(24*var(--scale))] w-[calc(40*var(--scale))] h-[calc(40*var(--scale))]"
                 src={UserIcon}
                 alt="user"
                 title="user"
               />
-              <h4 className="text-[calc(1*var(--size-24))] font-semibold text-white leading-[1.75]">
+              <h4 className="max-lg:text-[calc(17*var(--scale))] text-[calc(1*var(--size-24))] font-semibold text-white leading-[1.75]">
                 Corporate Address:
               </h4>
             </div>
-            <div className="flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
+            <div className="max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
               <p className="text-[calc(1*var(--size-16))] opacity-[0.8] leading-[1.67]">
                 {address}
               </p>

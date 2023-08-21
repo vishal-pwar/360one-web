@@ -41,26 +41,27 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
   };
 
   return (
-    <div className="w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
+    <div className="max-lg:mt-[calc(40*var(--scale))] max-lg:min-h-[calc(593*var(--scale))] max-lg:pt-[calc(57*var(--scale))] w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
       <div className="relative w-full h-full z-10 flex flex-row transition-transform box-content">
         {leadershipCards.map((card, index) => {
           return (
             <div
               key={card.name}
-              className={`flex h-[calc(590*var(--scale))]  ${
+              className={`flex max-lg:ml-[calc(11.2*var(--scale))] ${
                 index === lastIndex
-                  ? "w-[calc(781*var(--scale))]"
-                  : "w-[calc(212*var(--scale))]"
+                  ? "max-lg:w-[calc(499*var(--scale))] max-lg:h-[calc(430*var(--scale))] w-[calc(781*var(--scale))] h-[calc(590*var(--scale))]"
+                  : "max-lg:w-[calc(135*var(--scale))] max-lg:h-[calc(351*var(--scale))] w-[calc(212*var(--scale))] h-[calc(590*var(--scale))]"
               } ${
                 index !== lastIndex && variableCardHeightStyles[index]
-              } ml-[16px] overflow-hidden relative transition-all duration-500 ease-[ease] delay-[0s]`}
+              } ml-[16px] overflow-hidden relative`}
             >
+              {/* transition-all duration-500 ease-[ease] delay-[0s] */}
               <div
                 className={` ${
                   index === lastIndex
-                    ? "w-[calc(326*var(--scale))]"
-                    : "w-[calc(212*var(--scale))]"
-                }  relative transition-all duration-500 ease-[ease] delay-[0s]`}
+                    ? "max-lg:w-[calc(208*var(--scale))] w-[calc(326*var(--scale))]"
+                    : "max-lg:w-[calc(135*var(--scale))] w-[calc(212*var(--scale))]"
+                } relative transition-all duration-500 ease-[ease] delay-300`}
               >
                 <Image
                   className={`w-full h-full object-cover object-top`}
@@ -72,7 +73,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                 <Image
                   className={`absolute top-0 left-0 w-full h-full object-cover object-top ${
                     index === lastIndex && "hidden"
-                  } `}
+                  }`}
                   src={getStrapiMedia(card?.blurImage?.data?.attributes?.url)}
                   alt={`${card.name} - ${card.designation}`}
                   title={`${card.name} - ${card.designation}`}
@@ -80,17 +81,18 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                 />
               </div>
               <div
-                className={`w-[calc(455*var(--scale))] px-[calc(50*var(--scale))] pt-[calc(80*var(--scale))] pb-[calc(20*var(--scale))] transition-all duration-500 ease-[ease] delay-[0s] bg-white ${
+                className={`max-lg:w-[calc(291*var(--scale))] max-lg:px-[calc(32*var(--scale))] max-lg:pt-[calc(50*var(--scale))] max-lg:pb-[calc(10*var(--scale))] w-[calc(455*var(--scale))] px-[calc(50*var(--scale))] pt-[calc(80*var(--scale))] pb-[calc(20*var(--scale))] bg-white ${
                   index !== lastIndex && "hidden"
                 }`}
               >
-                <h4 className="text-[calc(28*var(--scale))] leading-[1.5] mb-[calc(4*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))] transition-all duration-300 ease-in-out delay-300">
+                {/* transition-all duration-500 ease-[ease] delay-[0s] */}
+                <h4 className="max-lg:text-[calc(18*var(--scale))] max-lg:leading-[1.49] max-lg:tracking-[calc(0.65*var(--scale))] max-lg:mb-[calc(1.6*var(--scale))] text-[calc(28*var(--scale))] leading-[1.5] mb-[calc(4*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))] ">
                   {card.name}
                 </h4>
-                <span className="text-[calc(1*var(--size-16))] leading-[1.63] block mb-[calc(33*var(--scale))] text-black tracking-[calc(0.58*var(--scale))] transition-all duration-300 ease-in-out delay-300">
+                <span className="max-lg:text-[calc(1*var(--size-14))] max-lg:leading-[1.39] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:mb-[calc(21*var(--scale))] text-[calc(1*var(--size-16))] leading-[1.63] block mb-[calc(33*var(--scale))] text-black tracking-[calc(0.58*var(--scale))] ">
                   {card.designation}
                 </span>
-                <p className="text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] text-left transition-all duration-300 ease-in-out delay-300">
+                <p className="max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.43] max-lg:tracking-[calc(0.51*var(--scale))] text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] text-left">
                   {card.about}
                 </p>
               </div>
@@ -98,22 +100,22 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
           );
         })}
       </div>
-      <div className="flex items-center justify-center gap-[calc(18*var(--scale))] bg-black w-[calc(218*var(--scale))] h-[calc(82*var(--scale))] absolute top-0 right-0 z-20">
+      <div className="max-lg:w-[calc(139*var(--scale))] max-lg:h-[calc(56*var(--scale))] flex items-center justify-center gap-[calc(18*var(--scale))] bg-black w-[calc(218*var(--scale))] h-[calc(82*var(--scale))] absolute top-0 right-0 z-20">
         <button
           onClick={handlePrev}
-          className="cursor-pointer bg-none outline-none border-none flex items-center justify-center w-[calc(54*var(--scale))] h-[calc(14*var(--scale))] opacity-[0.2] hover:opacity-[1]"
+          className="max-lg:w-[calc(34*var(--scale))] max-lg:h-[calc(9*var(--scale))] cursor-pointer bg-none outline-none border-none flex items-center justify-center w-[calc(54*var(--scale))] h-[calc(14*var(--scale))] opacity-[0.2] hover:opacity-[1]"
         >
           <Image className="h-full w-full" src={LeftArrow} alt="left-arrow" />
         </button>
         <button
           onClick={handleNext}
-          className="cursor-pointer bg-none outline-none border-none flex items-center justify-center w-[calc(54*var(--scale))] h-[calc(14*var(--scale))] opacity-[1]"
+          className="max-lg:w-[calc(34*var(--scale))] max-lg:h-[calc(9*var(--scale))] cursor-pointer bg-none outline-none border-none flex items-center justify-center w-[calc(54*var(--scale))] h-[calc(14*var(--scale))] opacity-[1]"
         >
           <Image className="h-full w-full" src={RightArrow} alt="right-arrow" />
         </button>
       </div>
       <button
-        className="w-[calc(280*var(--scale))] ml-auto z-10 absolute bottom-[calc(20*var(--scale))] right-0
+        className="max-lg:w-[calc(246*var(--scale))] max-lg:bottom-[calc(40*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] w-[calc(280*var(--scale))] ml-auto z-10 absolute bottom-[calc(20*var(--scale))] right-0
                     text-black border-black p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]"
       >
         <Link

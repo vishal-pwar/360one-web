@@ -33,8 +33,8 @@ export const ScrollImage = (props: ImageProps) => {
   return (
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image
-      className={`absolute top-0 left-0 w-full h-full z-10 object-cover object-[left_center] transition-opacity ease-in duration-300 ${
-        isScrolling ? "opacity-1" : "opacity-0"
+      className={`max-sm:object-right absolute top-0 left-0 w-full h-full z-10 object-cover object-[left_center] transition-opacity ease-in duration-300 ${
+        isScrolling ? "opacity-1" : "opacity-1"
       }`}
       {...props}
     />

@@ -7,8 +7,8 @@ const RecognitionSection = async () => {
 
   return (
     <section>
-      <div className="pt-[calc(113*var(--scale))] pb-[calc(65*var(--scale))] px-[calc(126*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
-        <div className="relative before:content-[''] before:absolute before:left-0 before:w-full before before:h-[calc(2*var(--scale))] before:bottom-[calc(-65*var(--scale))] before:bg-black">
+      <div className="max-lg:pt-[calc(72*var(--scale))] max-lg:pb-[calc(40*var(--scale))] max-lg:px-[calc(80*var(--scale))] pt-[calc(113*var(--scale))] pb-[calc(65*var(--scale))] px-[calc(126*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+        <div className="max-lg:before:bottom-[calc(-40*var(--scale))] relative before:content-[''] before:absolute before:left-0 before:w-full before before:h-[calc(2*var(--scale))] before:bottom-[calc(-65*var(--scale))] before:bg-black">
           <h2 className="text-[calc(1*var(--size-38))] leading-[1.16] tracking-[calc(-0.9*var(--scale))] mb-[calc(8*var(--scale))] font-bold">
             {title}
           </h2>

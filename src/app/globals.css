@@ -23,3 +23,46 @@
   --size-38: calc(38 * var(--scale));
   --size-42: calc(42 * var(--scale));
 }
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    --ideal-viewport-width: 1024;
+    --size-14: calc(12 * var(--scale));
+    --size-16: calc(14 * var(--scale));
+    --size-18: calc(16 * var(--scale));
+    --size-20: calc(16 * var(--scale));
+    --size-24: calc(20 * var(--scale));
+    --size-32: calc(24 * var(--scale));
+    --size-34: calc(22 * var(--scale));
+    --size-38: calc(24 * var(--scale));
+    --size-42: calc(24 * var(--scale));
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --ideal-viewport-width: 768;
+    --size-14: calc(12 * var(--scale));
+    --size-16: calc(16 * var(--scale));
+    --size-18: calc(16 * var(--scale));
+    --size-20: calc(16 * var(--scale));
+    --size-24: calc(20 * var(--scale));
+    --size-34: calc(16 * var(--scale));
+    --size-38: calc(24 * var(--scale));
+    --size-42: calc(24 * var(--scale));
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  :root {
+    --ideal-viewport-width: 375;
+    --size-14: calc(12 * var(--scale));
+    --size-16: calc(14 * var(--scale));
+    --size-18: calc(16 * var(--scale));
+    --size-20: calc(14 * var(--scale));
+    --size-24: calc(18 * var(--scale));
+    --size-34: calc(18 * var(--scale));
+    --size-38: calc(20 * var(--scale));
+    --size-42: calc(20 * var(--scale));
+  }
+}
