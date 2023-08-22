@@ -22,6 +22,8 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
     firstPost?.attributes?.thumbnail?.data?.attributes?.url
   );
 
+  if (!firstPost || !otherPosts) return null;
+
   return (
     <section className="max-sm:pt-[calc(16*var(--scale))] max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-md:pt-[calc(190*var(--scale))] max-md:px-[calc(62*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-lg:pt-[calc(50*var(--scale))] max-lg:p-[calc(24*var(--scale))calc(80*var(--scale))] px-[calc(125*var(--scale))] pt-[calc(100*var(--scale))] pb-[calc(50*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
       <h2 className="max-md:mb-[calc(8*var(--scale))] max-lg:mb-[calc(8*var(--scale))] text-[calc(1*var(--size-42))] tracking-[calc(-1*var(--scale))] font-bold mb-[calc(24*var(--scale))]">
