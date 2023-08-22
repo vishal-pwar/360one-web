@@ -71,7 +71,7 @@ const BodSliderSection = () => {
   };
   return (
     <section
-      className="max-lg:pt-[calc(122*var(--scale))] pt-[calc(210*var(--scale))] relative flex items-center py-[calc(53.5*var(--scale))]
+      className="max-sm:hidden max-lg:pt-[calc(122*var(--scale))] pt-[calc(210*var(--scale))] relative flex items-center py-[calc(53.5*var(--scale))]
       before:content-[''] before:-z-10 before:absolute before:left-0 before:top-0 before:h-full before:w-[calc(954*var(--scale))] before:bg-[#c1b6b1]
       "
     >

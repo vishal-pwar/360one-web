@@ -69,7 +69,7 @@ const TeamSliderSection = () => {
     setCurrentSlideId((prevNumber) => (prevNumber > 1 ? prevNumber - 1 : 10));
   };
   return (
-    <section className="">
+    <section className="max-sm:hidden">
       <div className="p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="pb-[calc(39*var(--scale))] border-black border-solid border-b-[calc(2*var(--scale))]">
           <h2 className="text-[calc(1*var(--size-38))] font-bold leading-[1.26] tracking-[calc(0.9*var(--scale))] mb-[calc(8*var(--scale))]">

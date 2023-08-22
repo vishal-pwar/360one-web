@@ -83,7 +83,7 @@ export const Header = ({ items }: { items: any }) => {
     <header
       className={`max-sm:p-[calc(24*var(--scale))calc(22*var(--scale))] max-md:p-[calc(20*var(--scale))calc(29*var(--scale))] max-lg:p-[calc(30*var(--scale))calc(37*var(--scale))] p-[calc(49*var(--scale))calc(51*var(--scale))] w-full fixed top-0 z-30 duration-300 ${
         small
-          ? "max-lg:py-[calc(20*var(--scale))] py-[calc(20*var(--scale))] border-b border-color-[rgb(233, 233, 233)]"
+          ? "max-sm:py-[calc(20*var(--scale))] max-lg:py-[calc(20*var(--scale))] py-[calc(20*var(--scale))] border-b border-color-[rgb(233, 233, 233)]"
           : ""
       } ${responsiveNavActive ? "bg-black" : "bg-white"}`}
     >
@@ -170,6 +170,7 @@ export const Header = ({ items }: { items: any }) => {
                         <Link
                           className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
                           href={item.url}
+                          onClick={handleResponsiveNav}
                         >
                           <span className="max-sm:text-[calc(16*var(--scale))] text-[calc(1*var(--size-20))]">
                             {item.title.top}
