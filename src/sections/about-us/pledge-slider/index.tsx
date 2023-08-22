@@ -28,8 +28,8 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
     });
   };
   return (
-    <div className="max-lg:min-w-[calc(603*var(--scale))] min-w-[calc(947*var(--scale))] w-full overflow-hidden">
-      <div className="max-lg:h-[calc(416*var(--scale))] w-auto flex flex-row overflow-hidden h-[calc(702*var(--scale))]">
+    <div className="max-sm:max-w-full max-sm:min-w-full max-sm:h-[calc(602*var(--scale))] max-lg:min-w-[calc(603*var(--scale))] min-w-[calc(947*var(--scale))] w-full overflow-hidden">
+      <div className="max-sm:w-full max-sm:h-full max-lg:h-[calc(416*var(--scale))] w-auto flex flex-row overflow-hidden h-[calc(702*var(--scale))]">
         <div className="relative w-full h-full z-10 flex transition-transform box-content">
           {pledgeCards.map((card, index) => {
             return (
@@ -37,12 +37,12 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                 key={card.title}
                 className={`transition-all duration-500 ease-[ease] delay-0 ${
                   index === firstIndex
-                    ? "max-lg:w-[calc(542*var(--scale))] max-lg:h-[calc(416*var(--scale))] w-[calc(796*var(--scale))] h-[calc(702*var(--scale))] mr-[calc(17*var(--scale))]"
+                    ? "max-sm:w-full max-sm:mr-0 max-sm:h-[calc(399*var(--scale))] max-lg:w-[calc(542*var(--scale))] max-lg:h-[calc(416*var(--scale))] w-[calc(796*var(--scale))] h-[calc(702*var(--scale))] mr-[calc(17*var(--scale))]"
                     : "max-lg:w-[calc(245*var(--scale))] max-lg:h-[calc(177*var(--scale))] w-[calc(401*var(--scale))] h-[calc(277*var(--scale))] mr-0"
-                }  flex flex-row-reverse mt-auto flex-shrink-0 relative`}
+                } max-sm:flex-col max-sm:mt-0 flex flex-row-reverse mt-auto flex-shrink-0 relative`}
               >
                 <Image
-                  className="max-lg:w-[calc(245*var(--scale))] w-[calc(401*var(--scale))] h-full object-cover object-[center_18%]"
+                  className="max-sm:h-[calc(203*var(--scale))] max-sm:w-[calc(353*var(--scale))] max-lg:w-[calc(245*var(--scale))] w-[calc(401*var(--scale))] h-full object-cover object-[center_18%]"
                   src={getStrapiMedia(card?.image?.data?.attributes?.url)}
                   alt="pledge-slider-image"
                   width={401}
@@ -51,14 +51,14 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                 <div
                   className={`${
                     index === firstIndex
-                      ? "max-lg:w-[calc(297*var(--scale))] max-lg:h-[calc(391*var(--scale))] max-lg:pt-[calc(69*var(--scale))] max-lg:pl-[calc(57.6*var(--scale))] max-lg:pr-[calc(35.4*var(--scale))] w-[calc(395*var(--scale))]"
+                      ? "max-md:w-[calc(353*var(--scale))] max-sm:h-[calc(399*var(--scale))] max-sm:pl-[calc(22*var(--scale))] max-sm:pr-[calc(54*var(--scale))] max-sm:pt-[calc(73*var(--scale))] max-lg:w-[calc(297*var(--scale))] max-lg:h-[calc(391*var(--scale))] max-lg:pt-[calc(69*var(--scale))] max-lg:pl-[calc(57.6*var(--scale))] max-lg:pr-[calc(35.4*var(--scale))] w-[calc(395*var(--scale))]"
                       : "hidden max-lg:w-[calc(245*var(--scale))] max-lg:h-[calc(177*var(--scale))]"
                   } max-lg:pl-[calc(57.6*var(--scale))] max-lg:pr-[calc(35.4*var(--scale))] max-lg:pt-[calc(69*var(--scale))] p-[calc(50*var(--scale))] pt-[calc(105*var(--scale))] h-[calc(618*var(--scale))] bg-[#e7e2e0] mt-auto relative`}
                 >
-                  <div className="max-lg:top-[calc(30*var(--scale))] max-lg:gap-[calc(11.7*var(--scale))] absolute top-[calc(52*var(--scale))] gap-[calc(18.3*var(--scale))] flex items-center ">
+                  <div className="max-sm:top-[calc(31*var(--scale))] max-sm:gap-[calc(10*var(--scale))] max-lg:top-[calc(30*var(--scale))] max-lg:gap-[calc(11.7*var(--scale))] absolute top-[calc(52*var(--scale))] gap-[calc(18.3*var(--scale))] flex items-center ">
                     <div
                       onClick={handlePrev}
-                      className="max-lg:w-[calc(34.3*var(--scale))] max-lg:h-[calc(9*var(--scale))] w-[calc(53.7*var(--scale))] h-[calc(14*var(--scale))] cursor-pointer flex items-center justify-center opacity-[0.2] hover:opacity-[1]"
+                      className="max-sm:w-[calc(42.7*var(--scale))] max-sm:h-[calc(11*var(--scale))] max-lg:w-[calc(34.3*var(--scale))] max-lg:h-[calc(9*var(--scale))] w-[calc(53.7*var(--scale))] h-[calc(14*var(--scale))] cursor-pointer flex items-center justify-center opacity-[0.2] hover:opacity-[1]"
                     >
                       <svg
                         width="54"
@@ -75,7 +75,7 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                     </div>
                     <div
                       onClick={handleNext}
-                      className="max-lg:w-[calc(34.3*var(--scale))] max-lg:h-[calc(9*var(--scale))] w-[calc(53.7*var(--scale))] h-[calc(14*var(--scale))] cursor-pointer flex items-center justify-center"
+                      className="max-sm:w-[calc(42.7*var(--scale))] max-sm:h-[calc(11*var(--scale))] max-lg:w-[calc(34.3*var(--scale))] max-lg:h-[calc(9*var(--scale))] w-[calc(53.7*var(--scale))] h-[calc(14*var(--scale))] cursor-pointer flex items-center justify-center"
                     >
                       <svg
                         width="54"
@@ -91,10 +91,10 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                       </svg>
                     </div>
                   </div>
-                  <h3 className="max-lg:text-[calc(18*var(--scale))] max-lg:leading-[1.11] max-lg:mb-[calc(15*var(--scale))] text-[calc(28*var(--scale))] leading-[1.14] mb-[calc(24*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))]">
+                  <h3 className="max-sm:text-[calc(20*var(--scale))] max-sm:leading-[1.4] max-sm:mb-[calc(8*var(--scale))] max-lg:text-[calc(18*var(--scale))] max-lg:leading-[1.11] max-lg:mb-[calc(15*var(--scale))] text-[calc(28*var(--scale))] leading-[1.14] mb-[calc(24*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))]">
                     {card.title}
                   </h3>
-                  <p className="max-lg:leading-[1.1] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-18))] leading-[1.4] tracking-[calc(0.65*var(--scale))]">
+                  <p className="max-sm:text-[calc(14*var(--scale))] max-sm:leading-[1.4] max-lg:leading-[1.1] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-18))] leading-[1.4] tracking-[calc(0.65*var(--scale))]">
                     {card.text}
                   </p>
                 </div>

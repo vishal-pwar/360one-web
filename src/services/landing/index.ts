@@ -4,7 +4,7 @@ export async function getHeroSection() {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
   const path = `/landing-page`;
   const urlParamsObject = {
-    populate: { hero: { populate: ["video"] } },
+    populate: { hero: { populate: ["video", "icon"] } },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const response = await fetchContent(path, urlParamsObject, options);

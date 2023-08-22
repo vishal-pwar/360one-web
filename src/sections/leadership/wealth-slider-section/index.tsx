@@ -70,7 +70,7 @@ const WealthSliderSection = () => {
   };
   return (
     <section
-      className="pt-[calc(98*var(--scale))] pb-[calc(53*var(--scale))] mt-[calc(64*var(--scale))] flex items-center relative 
+      className="max-sm:hidden pt-[calc(98*var(--scale))] pb-[calc(53*var(--scale))] mt-[calc(64*var(--scale))] flex items-center relative 
       before:bg-wealth-orange before:w-[calc(646*var(--scale))] before:right-0 before:-z-10 before:content-[''] before:absolute before:top-0 before:h-full
       after:content-[''] after:bg-wealth-orange after:absolute after:top-[calc(-60*var(--scale))] after:w-[calc(60*var(--scale))] after:right-[calc(645*var(--scale))] after:h-[calc(60*var(--scale))] after:z-20"
     >

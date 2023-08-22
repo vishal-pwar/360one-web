@@ -70,7 +70,7 @@ const AssetSliderSection = () => {
   };
   return (
     <section
-      className="flex flex-row-reverse items-center relative pt-[calc(79*var(--scale))] pb-[calc(72*var(--scale))] my-[calc(100*var(--scale))]
+      className="max-sm:hidden flex flex-row-reverse items-center relative pt-[calc(79*var(--scale))] pb-[calc(72*var(--scale))] my-[calc(100*var(--scale))]
     before:bg-asset-purple before:w-[calc(1061*var(--scale))] before:left-0 before:-z-10 before:content-[''] before:absolute before:top-0 before:h-full
     after:content-[''] after:bg-asset-purple after:absolute after:bottom-[calc(-60*var(--scale))] after:w-[calc(60*var(--scale))] after:left-[calc(1061*var(--scale))] after:h-[calc(60*var(--scale))] after:z-20
    "

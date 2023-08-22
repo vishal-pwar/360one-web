@@ -9,9 +9,10 @@ interface CardsListProps {
 }
 
 const CardsList = ({ cardsList }: CardsListProps) => {
+  const cards = cardsList.splice(0, 4);
   return (
     <div className="max-sm:pt-[calc(8*var(--scale))] max-sm:gap-0 max-sm:flex max-sm:flex-col max-md:pt-[calc(40*var(--scale))] grid grid-cols-2 auto-rows-auto place-items-center gap-y-[calc(20*var(--scale))] pt-[calc(41*var(--scale))] flex-1">
-      {cardsList.map((card, index) => {
+      {cards.map((card, index) => {
         const totalRows = Math.ceil(cardsList.length / 2);
         const rowNumber = Math.ceil((index + 1) / 2);
         return (

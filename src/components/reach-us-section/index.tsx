@@ -23,11 +23,11 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
     mediaNumber,
   } = response?.data?.attributes?.reachUs;
   return (
-    <section className="relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
-      <div className="max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
-        <div className="max-lg:gap-[calc(20*var(--scale))] flex justify-between gap-[calc(58*var(--scale))] items-start">
+    <section className="max-md:before:w-full relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
+      <div className="max-sm:pt-[calc(93*var(--scale))] max-sm:pb-[calc(35*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+        <div className="max-sm:flex-col max-sm:gap-[calc(23*var(--scale))] max-lg:gap-[calc(20*var(--scale))] flex justify-between gap-[calc(58*var(--scale))] items-start">
           <div
-            className={`max-lg:min-w-[calc(368*var(--scale))] max-lg:h-[calc(209*var(--scale))] max-lg:pl-[calc(40*var(--scale))] max-lg:ml-[calc(-80*var(--scale))] max-lg:mt-[calc(-63*var(--scale))] ${
+            className={`max-sm:min-w-[calc(280*var(--scale))] max-sm:max-w-[calc(280*var(--scale))] max-sm:h-[calc(108*var(--scale))] max-sm:left-0 max-sm:ml-0 max-sm:pl-[calc(21*var(--scale))] max-sm:bottom-[calc(100%-(29*var(--scale)))] max-md:absolute max-lg:min-w-[calc(368*var(--scale))] max-lg:h-[calc(209*var(--scale))] max-lg:pl-[calc(40*var(--scale))] max-lg:ml-[calc(-80*var(--scale))] max-lg:mt-[calc(-63*var(--scale))] ${
               page === "asset" && "bg-asset-purple"
             } ${
               page === "wealth" && "bg-wealth-orange"
@@ -40,7 +40,7 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
               {text}
             </p>
             <div
-              className={`max-lg:w-[calc(123*var(--scale))] max-lg:h-[calc(71*var(--scale))] max-lg:bottom-[calc(-30*var(--scale))] max-lg:left-[calc(40*var(--scale))] w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] ${
+              className={`max-sm:w-[calc(123*var(--scale))] max-sm:h-[calc(44*var(--scale))] max-sm:left-[calc(21*var(--scale))] max-lg:w-[calc(123*var(--scale))] max-lg:h-[calc(71*var(--scale))] max-lg:bottom-[calc(-30*var(--scale))] max-lg:left-[calc(40*var(--scale))] w-[calc(194*var(--scale))] h-[calc(112*var(--scale))] ${
                 page === "asset" && "bg-asset-purple-60"
               } ${
                 page === "wealth" && "bg-wealth-orange-60"
@@ -59,7 +59,7 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
                 Connect with us:
               </h4>
             </div>
-            <div className="max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
+            <div className="max-md:gap-[calc(16*var(--scale))] max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
               <p className="text-[calc(1*var(--size-16))] opacity-[0.8] leading-[1.67]">
                 Centralised Service Desk:
                 <span className="text-[calc(1*var(--size-18))] font-bold block">
@@ -80,7 +80,7 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
               </p>
             </div>
           </div>
-          <div className="max-lg:hidden w-[calc(2*var(--scale))] bg-[#979797] h-[calc(268*var(--scale))]"></div>
+          <div className="max-sm:h-[calc(2*var(--scale))] max-sm:w-full max-sm:block max-sm:opacity-[0.5] max-lg:hidden w-[calc(2*var(--scale))] bg-[#979797] h-[calc(268*var(--scale))]"></div>
           <div className="max-lg:gap-[calc(6.2*var(--scale))] flex flex-1 flex-col gap-[calc(16*var(--scale))]">
             <div className="max-lg:gap-[calc(8.2*var(--scale))] flex items-center gap-[calc(16*var(--scale))]">
               <Image
@@ -93,7 +93,7 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
                 Corporate Address:
               </h4>
             </div>
-            <div className="max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
+            <div className="max-md:gap-[calc(16*var(--scale))] max-lg:pl-[calc(33*var(--scale))] flex flex-col gap-[calc(24*var(--scale))] text-white pl-[calc(58*var(--scale))]">
               <p className="text-[calc(1*var(--size-16))] opacity-[0.8] leading-[1.67]">
                 {address}
               </p>

@@ -17,7 +17,7 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
   const firstPost = response?.data?.attributes?.perspective?.posts?.data?.[0];
   const otherPosts = [
     ...(response?.data?.attributes?.perspective?.posts?.data || []),
-  ]?.slice(1, 4);
+  ]?.slice(1, 5);
   const url = getStrapiMedia(
     firstPost?.attributes?.thumbnail?.data?.attributes?.url
   );
