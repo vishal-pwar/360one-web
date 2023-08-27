@@ -22,6 +22,9 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
     mediaEmail,
     mediaNumber,
   } = response?.data?.attributes?.reachUs;
+
+  if (!title || !text || !address) return null;
+
   return (
     <section className="max-md:before:w-full relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
       <div className="max-sm:pt-[calc(93*var(--scale))] max-sm:pb-[calc(35*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">

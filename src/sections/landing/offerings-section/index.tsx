@@ -23,6 +23,8 @@ const OfferingsSection = async () => {
     secondProduct?.logo?.data?.attributes?.url
   );
 
+  if (!firstProduct || !secondProduct) return null;
+
   return (
     <section className="max-sm:mt-0 mt-[calc(40*var(--scale))] max-sm:pb-[calc(330*var(--scale))]">
       <div

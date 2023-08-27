@@ -16,6 +16,8 @@ const Banner = async ({ page }: BannerProps) => {
   const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
+  if (!title || !text || !image) return null;
+
   return (
     <section className="max-sm:mb-0 max-lg:mb-[calc(170*var(--scale))] mb-[calc(190*var(--scale))]">
       <div className="max-sm:pt-[calc(100.5*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-sm:pb-[calc(10*var(--scale))] max-lg:pl-[calc(86*var(--scale))] max-lg:pr-[calc(35*var(--scale))] max-lg:pt-[calc(122*var(--scale))] pt-[calc(178*var(--scale))] pb-0 px-[calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">

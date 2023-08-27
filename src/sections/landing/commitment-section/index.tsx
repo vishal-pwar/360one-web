@@ -13,6 +13,8 @@ const CommitmentSection = async () => {
   const firstSection = sections[0];
   const secondSection = sections[1];
 
+  if (!title || !text || !image || !sections) return null;
+
   return (
     <section className="max-sm:pt-[calc(40*var(--scale))] max-sm:pb-0 max-sm:px-[calc(22*var(--scale))] max-lg:pt-[calc(60*var(--scale))] max-lg:px-[calc(62*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-lg:pb-[calc(24*var(--scale))] p-[calc(100*var(--scale))calc(125*var(--scale))calc(50*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
       <div className="flex flex-col">
@@ -56,7 +58,7 @@ const CommitmentSection = async () => {
               {firstSection.text}
             </p>
           </div>
-          <CardsList cardsList={firstSection.cards} />
+          {firstSection.cards && <CardsList cardsList={firstSection.cards} />}
         </div>
         <div className="max-sm:block max-md:flex-col max-md:gap-0 flex gap-[calc(77*var(--scale))]">
           <div className="max-sm:pt-[calc(50*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(40*var(--scale))] max-md:pt-[calc(40*var(--scale))] max-md:pb-0 max-md:w-full max-lg:pl-[calc(21*var(--scale))] max-lg:pr-[calc(53*var(--scale))] max-lg:py-[calc(70*var(--scale))] max-lg:relative py-[calc(105*var(--scale))] pl-[calc(53 * var(--scale))] pr-[calc(74*var(--scale))] relative w-[40%]">
@@ -67,7 +69,7 @@ const CommitmentSection = async () => {
               {secondSection.text}
             </p>
           </div>
-          <CardsList cardsList={secondSection.cards} />
+          {secondSection.cards && <CardsList cardsList={secondSection.cards} />}
         </div>
       </div>
     </section>
