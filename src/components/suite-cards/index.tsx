@@ -19,7 +19,7 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
   };
 
   return (
-    <div className="max-sm:h-[calc(574*var(--scale))] max-sm:mb-[calc(-80*var(--scale))] flex items-end gap-[calc(16*var(--scale))] h-[calc(600*var(--scale))] overflow-x-scroll w-[120%] pr-[calc(20*var(--scale))]">
+    <div className="max-sm:h-[calc(574*var(--scale))] max-sm:mb-[calc(-80*var(--scale))] flex items-end gap-[calc(16*var(--scale))] h-[calc(600*var(--scale))] overflow-x-scroll scrollbar w-[120%] pr-[calc(20*var(--scale))]">
       {cards?.map((cardItem: any, index: number) => {
         return (
           <div
@@ -50,11 +50,11 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
                 width={53}
               />
             </div>
-            <h5 className="max-md:text-[calc(14*var(--scale))] max-lg:text-[calc(18*var(--scale))] max-lg:mb-[calc(8*var(--scale))] text-[calc(1*var(--size-24))] tracking-[calc(0.87*var(--scale))] font-bold mb-[calc(12*var(--scale))]">
+            <h5 className="max-lg:text-[calc(18*var(--scale))] max-lg:mb-[calc(8*var(--scale))] text-[calc(1*var(--size-24))] tracking-[calc(0.87*var(--scale))] font-bold mb-[calc(12*var(--scale))]">
               {cardItem?.title}
             </h5>
             <p
-              className={`max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-20))] opacity-[0.8] leading-[1.4] line-clamp-3 ${
+              className={`max-md:text-[calc(14*var(--scale))] max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-20))] opacity-[0.8] leading-[1.4] line-clamp-3 ${
                 activeId === index && "block"
               } `}
             >

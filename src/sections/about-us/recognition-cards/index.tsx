@@ -8,13 +8,21 @@ interface RecognitionCardsProps {
 const RecognitionCards = ({ cards }: RecognitionCardsProps) => {
   const cardsList = cards.slice(0, 4);
   return (
-    <div className="max-sm:flex-col max-sm:gap-[calc(20*var(--scale))] max-md:flex-wrap flex justify-between gap-[calc(10*var(--scale))]">
+    <div className="max-sm:flex-col max-sm:gap-[calc(20*var(--scale))] max-md:flex-wrap max-md:gap-0 flex justify-between gap-[calc(10*var(--scale))]">
       {cardsList.map((card: any, index: number) => {
         return (
           <>
-            <div className="max-sm:w-full max-sm:max-w-full max-md:relative max-lg:max-w-[calc(164*var(--scale))] max-w-[calc(278*var(--scale))] flex flex-col">
+            <div
+              className={`max-sm:w-full max-sm:max-w-full max-md:relative max-md:w-[45%] max-md:max-w-[45%] max-lg:max-w-[calc(164*var(--scale))] max-w-[calc(278*var(--scale))] flex flex-col
+              max-sm:before:hidden ${
+                (index === cardsList.length - 1 ||
+                  index === cardsList.length - 2) &&
+                "max-md:before:hidden"
+              } max-md:before:content-[''] max-md:before:absolute max-md:before:w-full max-md:before:h-[calc(1*var(--scale))] max-md:before:bg-[#979797] max-md:before:bottom-[calc(20*var(--scale))]
+            `}
+            >
               <Image
-                className="max-sm:w-[calc(40*var(--scale))] max-sm:h-[calc(37*var(--scale))] max-sm:mb-[calc(8*var(--scale))] w-[calc(46*var(--scale))] h-[calc(42*var(--scale))] mb-[calc(8*var(--scale))]"
+                className="max-sm:w-[calc(40*var(--scale))] max-sm:h-[calc(37*var(--scale))] max-sm:mb-[calc(8*var(--scale))] max-md:w-[calc(40*var(--scale))] max-md:h-[calc(37*var(--scale))] w-[calc(46*var(--scale))] h-[calc(42*var(--scale))] mb-[calc(8*var(--scale))]"
                 src={getStrapiMedia(card?.icon?.data?.attributes?.url)}
                 alt="accolades"
                 title="accolades"
@@ -39,8 +47,11 @@ const RecognitionCards = ({ cards }: RecognitionCardsProps) => {
             </div>
             <div
               className={`${
-                index === cardsList.length - 1 && "max-sm:hidden"
-              } max-sm:h-[calc(1*var(--scale))] max-sm:w-full max-lg:w-[calc(0.6*var(--scale))] w-[calc(1*var(--scale))] h-auto bg-[#979797]`}
+                index === cardsList.length - 1 &&
+                "max-sm:hidden max-md:hidden max-lg:hidden hidden"
+              } ${
+                index % 2 !== 0 && "max-md:hidden"
+              } max-sm:block max-sm:h-[calc(1*var(--scale))] max-sm:w-full max-md:h-[calc(274*var(--scale))] max-lg:w-[calc(0.6*var(--scale))] w-[calc(1*var(--scale))] h-auto bg-[#979797]`}
             ></div>
           </>
         );

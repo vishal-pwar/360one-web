@@ -27,10 +27,12 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
 
   return (
     <section className="max-md:before:w-full relative mt-[calc(122*var(--scale))] before:content-[''] before:absolute before:h-full before:w-[92.2%] before:bg-black before:-z-10 before:right-0">
-      <div className="max-sm:pt-[calc(93*var(--scale))] max-sm:pb-[calc(35*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+      <div className="max-sm:pt-[calc(93*var(--scale))] max-sm:pb-[calc(35*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-md:w-full max-md:pt-[calc(118*var(--scale))] max-md:pb-[calc(68*var(--scale))] max-md:pl-[calc(62*var(--scale))] max-md:pr-[calc(40*var(--scale))] max-lg:pr-[calc(14*var(--scale))] max-lg:py-[calc(34*var(--scale))] max-lg:pl-[calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="max-sm:flex-col max-sm:gap-[calc(23*var(--scale))] max-lg:gap-[calc(20*var(--scale))] flex justify-between gap-[calc(58*var(--scale))] items-start">
           <div
-            className={`max-sm:min-w-[calc(280*var(--scale))] max-sm:max-w-[calc(280*var(--scale))] max-sm:h-[calc(108*var(--scale))] max-sm:left-0 max-sm:ml-0 max-sm:pl-[calc(21*var(--scale))] max-sm:bottom-[calc(100%-(29*var(--scale)))] max-md:absolute max-lg:min-w-[calc(368*var(--scale))] max-lg:h-[calc(209*var(--scale))] max-lg:pl-[calc(40*var(--scale))] max-lg:ml-[calc(-80*var(--scale))] max-lg:mt-[calc(-63*var(--scale))] ${
+            className={`max-sm:min-w-[calc(280*var(--scale))] max-sm:max-w-[calc(280*var(--scale))] max-sm:h-[calc(108*var(--scale))] max-sm:left-0 max-sm:ml-0 max-sm:pl-[calc(21*var(--scale))] max-sm:bottom-[calc(100%-(29*var(--scale)))] 
+            max-md:absolute max-md:bottom-[calc(100%-(60*var(--scale)))] max-md:w-[calc(440*var(--scale))] max-md:h-[calc(183*var(--scale))]
+            max-lg:min-w-[calc(368*var(--scale))] max-lg:h-[calc(209*var(--scale))] max-lg:pl-[calc(40*var(--scale))] max-lg:ml-[calc(-80*var(--scale))] max-lg:mt-[calc(-63*var(--scale))] ${
               page === "asset" && "bg-asset-purple"
             } ${
               page === "wealth" && "bg-wealth-orange"

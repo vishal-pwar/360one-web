@@ -23,10 +23,10 @@ const VideoPLayer = ({
               onClick={handleClose}
             >
               <div
-                className={`h-[3px] w-5 rounded-[calc(50*var(--scale))] transition-all duration-300 rotate-[405deg] bg-black absolute top-[50%] left-0`}
+                className={`max-sm:h-[2px] h-[3px] w-5 rounded-[calc(50*var(--scale))] transition-all duration-300 rotate-[405deg] bg-black absolute top-[43%] left-0`}
               ></div>
               <div
-                className={`h-[3px] w-5 rounded-[calc(50*var(--scale))] transition-all duration-300 -rotate-[405deg] bg-black absolute top-[50%] left-0`}
+                className={`max-sm:h-[2px] h-[3px] w-5 rounded-[calc(50*var(--scale))] transition-all duration-300 -rotate-[405deg] bg-black absolute top-[43%] left-0`}
               ></div>
             </div>
             <div className="bg-black absolute top-[50%] -translate-y-[50%] object-contain overflow-hidden">

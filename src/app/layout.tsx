@@ -1,18 +1,6 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const hankenGrotesk = Hanken_Grotesk({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
+import { hankenGrotesk, spaceGrotesk } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Asset and Wealth Management Services in India - 360 ONE",
@@ -32,7 +20,9 @@ export default function RootLayout({
         type="image/x-icon"
         href="/assets/favicons/favicon.png"
       />
-      <body className={spaceGrotesk.className}>{children}</body>
+      <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
