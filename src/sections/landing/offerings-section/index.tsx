@@ -26,7 +26,7 @@ const OfferingsSection = async () => {
   if (!firstProduct || !secondProduct) return null;
 
   return (
-    <section className="max-sm:mt-0 mt-[calc(40*var(--scale))] max-sm:pb-[calc(330*var(--scale))]">
+    <section className="max-sm:mt-0 mt-[calc(40*var(--scale))] max-sm:pb-[calc(330*var(--scale))] max-md:mb-[calc(40*var(--scale))]">
       <div
         className="max-sm:py-[calc(22*var(--scale))] max-sm:px-[calc(20*var(--scale))] max-sm:before:w-full max-sm:before:h-[40%] max-sm:after:w-[93%] max-sm:after:h-[calc(447*var(--scale))] max-sm:after:bottom-[calc(-80*var(--scale))] max-md:pb-[calc(121*var(--scale))] max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] max-md:before:left-0 max-md:before:w-[90%] max-md:before:h-[33%] max-md:after:right-0 max-md:after:w-[85%] max-md:after:h-[37%] max-md:bottom-0  max-lg:pt-[calc(60*var(--scale))] max-lg:pb-[calc(110*var(--scale))] max-lg:px-[calc(80*var(--scale))] max-lg:before:h-[calc(600*var(--scale))] max-lg:before:left-[calc(36*var(--scale))] max-lg:before:w-[82%] relative p-[calc(82*var(--scale))calc(125*var(--scale))calc(215*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto 
       before:content-[''] before:w-[85%] before:h-[calc(800*var(--scale))] before:bg-black before:top-0 before:left-0 before:absolute before:z-0 after:content-[''] 

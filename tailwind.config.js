@@ -12,7 +12,11 @@ module.exports = {
         "asset-purple-60": "#8C8CFF",
       },
       screens: {
-        sm: "414px",
+        sm: "450px",
+      },
+      fontFamily: {
+        "space-grotesk": "var(--font-space-grotesk)",
+        "hanken-grotesk": "var(--font-hanken-grotesk)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: calc(10 * var(--scale));
+    height: calc(10 * var(--scale));
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #cfcfcf;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 100vh;
+    border: 3px solid black;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: black;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-space-grotesk);
+}
+
+p,
+li,
+span {
+  font-family: var(--font-hanken-grotesk);
+}
+
 :root {
   --min-viewport-width: 220px;
   --max-viewport-width: 5000px;
@@ -53,7 +89,7 @@
   }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 450px) {
   :root {
     --ideal-viewport-width: 375;
     --size-14: calc(12 * var(--scale));

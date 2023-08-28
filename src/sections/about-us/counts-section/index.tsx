@@ -8,8 +8,8 @@ const CountsSection = async () => {
 
   return (
     <section className="max-sm:h-auto h-[calc(288*var(--scale))] flex items-center bg-black">
-      <div className="max-sm:flex-col max-md:gap-[calc(37*var(--scale))] max-lg:gap-[calc(173*var(--scale))] max-lg:p-[calc(48*var(--scale))calc(80*var(--scale))] py-[calc(51*var(--scale))] flex justify-between px-[calc(126*var(--scale))] text-white items-center gap-[calc(262*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
-        <div className="max-sm:flex-col max-sm:gap-[calc(30*var(--scale))] max-md:w-full max-md:justify-between flex flex-1 gap-[calc(102*var(--scale))] items-center text-white">
+      <div className="max-sm:flex-col max-md:gap-[calc(37*var(--scale))] max-md:p-[calc(48*var(--scale))calc(28*var(--scale))] max-lg:gap-[calc(173*var(--scale))] max-lg:p-[calc(48*var(--scale))calc(80*var(--scale))] py-[calc(51*var(--scale))] flex justify-between px-[calc(126*var(--scale))] text-white items-center gap-[calc(262*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+        <div className="max-sm:flex-col max-sm:gap-[calc(30*var(--scale))] max-md:gap-[calc(20*var(--scale))] max-md:w-full max-md:justify-between flex flex-1 gap-[calc(102*var(--scale))] items-center text-white">
           {cards?.map((countItem: any, index: number) => {
             return (
               <Fragment key={countItem.text}>
@@ -25,7 +25,7 @@ const CountsSection = async () => {
               </Fragment>
             );
           })}
-          <button className="max-sm:text-[calc(12*var(--scale))] max-md:w-[calc(172*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] w-[calc(212*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
+          <button className="max-sm:text-[calc(12*var(--scale))] max-md:w-[calc(172*var(--scale))] max-md:h-[calc(40*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] w-[calc(212*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
             <Link
               href={link}
               target="_blank"
