@@ -35,7 +35,7 @@ h5 {
 p,
 li,
 span {
-  font-family: var(--font-hanken-grotesk);
+  font-family: var(--font-space-grotesk);
 }
 
 :root {
