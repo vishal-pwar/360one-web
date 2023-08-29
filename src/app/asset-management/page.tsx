@@ -13,7 +13,7 @@ const AssetManagement = () => {
       <SuiteSection page="asset" />
       <PerspectiveSection page="asset" />
       <ReachUsSection page="asset" />
-      <Footer />
+      <Footer page="asset" />
     </>
   );
 };

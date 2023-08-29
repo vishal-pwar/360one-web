@@ -27,13 +27,14 @@ const BodSliderSection = ({ cards, content }: { cards: any; content: any }) => {
       max-sm:before:h-[calc(458*var(--scale))] max-sm:before:w-full max-md:before:w-[calc(588*var(--scale))] max-md:before:h-[calc(457*var(--scale))] max-md:before:left-0 max-md:before:top-[inherit] max-md:before:bottom-0 max-lg:before:w-[calc(588*var(--scale))] max-lg:before:h-full max-lg:before:left-[calc(63*var(--scale))] before:content-[''] before:-z-10 before:absolute before:left-0 before:top-0 before:h-full before:w-[calc(954*var(--scale))] before:bg-[#c1b6b1]
       "
     >
-      <SliderSection
-        nextRef={swiperNavNextRef}
-        prevRef={swiperNavPrevRef}
-        cards={cards}
-        width={65.2}
-        slidesPerView={3}
-      />
+      <div className="max-sm:w-full max-md:w-[96%] max-lg:w-[71%] w-[65.2%]">
+        <SliderSection
+          nextRef={swiperNavNextRef}
+          prevRef={swiperNavPrevRef}
+          cards={cards}
+          slidesPerView={3}
+        />
+      </div>
       <div className="max-sm:w-full max-md:w-full max-md:max-w-[calc(592*var(--scale))] h-full flex-1 select-none">
         <div className="max-sm:pb-[calc(59*var(--scale))] max-sm:pr-[calc(20*var(--scale))] max-md:pl-[calc(28*var(--scale))] max-md:pr-[calc(35*var(--scale))] max-md:pt-0 max-md:pb-[calc(48*var(--scale))] max-lg:pl-[calc(30*var(--scale))] max-lg:pr-[calc(35*var(--scale))] max-lg:py-[calc(24*var(--scale))] h-full w-full max-w-[calc(1600*var(--scale))] m-auto p-[calc(50*var(--scale))calc(125*var(--scale))]">
           <SliderContent

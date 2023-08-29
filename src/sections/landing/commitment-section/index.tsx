@@ -40,7 +40,7 @@ const CommitmentSection = async () => {
             height={1680}
             width={3990}
           />
-          <div className="max-sm:bottom-[calc(-54*var(--scale))] max-sm:left-[calc(16*var(--scale))] max-md:w-[calc(70*var(--scale))] max-md:h-[calc(70*var(--scale))] max-md:p-[calc(15*var(--scale))calc(16*var(--scale))] max-md:bottom-[calc(-60*var(--scale))] max-md:left-[calc(20*var(--scale))] max-lg:w-[calc(93*var(--scale))] max-lg:h-[calc(92*var(--scale))] max-lg:p-[calc(20*var(--scale))calc(21*var(--scale))] max-lg:bottom-[calc(-52*var(--scale))] w-[calc(146*var(--scale))] h-[calc(146*var(--scale))] absolute p-[calc(30*var(--scale))calc(33*var(--scale))] bg-white b-[calc(-41*var(--scale))] left-[calc(53*var(--scale))] bottom-[calc(-41*var(--scale))] z-10 -translate-y-[31.7409px] transition ease-in duration-150">
+          <div className="max-sm:bottom-[calc(-54*var(--scale))] max-sm:left-[calc(16*var(--scale))] max-md:w-[calc(70*var(--scale))] max-md:h-[calc(70*var(--scale))] max-md:p-[calc(15*var(--scale))calc(16*var(--scale))] max-md:bottom-[calc(-60*var(--scale))] max-md:left-[calc(20*var(--scale))] max-lg:w-[calc(93*var(--scale))] max-lg:h-[calc(92*var(--scale))] max-lg:p-[calc(20*var(--scale))calc(21*var(--scale))] max-lg:bottom-[calc(-52*var(--scale))] w-[calc(146*var(--scale))] h-[calc(146*var(--scale))] absolute p-[calc(30*var(--scale))calc(33*var(--scale))] bg-white b-[calc(-41*var(--scale))] left-[calc(53*var(--scale))] bottom-[calc(-50*var(--scale))] z-10 -translate-y-[31.7409px] transition ease-in duration-150">
             <Image
               className="w-full h-full rotate-90"
               src={BrandLogoBlack}
@@ -58,10 +58,12 @@ const CommitmentSection = async () => {
               {firstSection.text}
             </p>
           </div>
-          {firstSection.cards && <CardsList cardsList={firstSection.cards} />}
+          {firstSection.cards && (
+            <CardsList cardsList={firstSection.cards} hasDivider />
+          )}
         </div>
         <div className="max-sm:block max-md:flex-col max-md:gap-0 flex gap-[calc(77*var(--scale))]">
-          <div className="max-sm:pt-[calc(50*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(40*var(--scale))] max-md:pt-[calc(40*var(--scale))] max-md:pb-0 max-md:w-full max-lg:pl-[calc(21*var(--scale))] max-lg:pr-[calc(53*var(--scale))] max-lg:py-[calc(70*var(--scale))] max-lg:relative py-[calc(105*var(--scale))] pl-[calc(53 * var(--scale))] pr-[calc(74*var(--scale))] relative w-[40%]">
+          <div className="max-sm:pt-[calc(50*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(40*var(--scale))] max-md:pt-[calc(40*var(--scale))] max-md:pb-0 max-md:w-full max-lg:pl-[calc(21*var(--scale))] max-lg:pr-[calc(53*var(--scale))] max-lg:py-[calc(70*var(--scale))] max-lg:relative py-[calc(105*var(--scale))] pl-[calc(53*var(--scale))] pr-[calc(74*var(--scale))] relative w-[40%]">
             <h3 className="max-md:max-w-[calc(300*var(--scale))] max-md:leading-[1.2] max-lg:mb-[calc(8*var(--scale))] max-lg:leading-[1.42] text-[calc(1*var(--size-32))] leading-[1] max-w-[calc(346*var(--scale))] mt-[0] mb-[calc(23*var(--scale))] font-bold">
               {secondSection.title}
             </h3>

@@ -44,6 +44,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
     <div className="max-sm:min-h-[calc(680*var(--scale))] max-sm:pb-[calc(144*var(--scale))] max-sm:mt-0 max-sm:pt-[calc(10*var(--scale))] max-md:pt-[calc(52*var(--scale))] max-md:min-h-[calc(542*var(--scale))] max-md:pb-[calc(64*var(--scale))] max-md:w-full max-lg:mt-[calc(40*var(--scale))] max-lg:min-h-[calc(593*var(--scale))] max-lg:pt-[calc(57*var(--scale))] w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
       <div className="relative w-full h-full z-10 flex flex-row transition-transform box-content">
         {leadershipCards.map((card, index) => {
+          const translateY = `translate-y-[calc(${card.imageVerticalOffset}*var(--scale))]`;
           return (
             <div
               key={card.name}
@@ -52,7 +53,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                   ? "max-sm:w-[calc(320*var(--scale))] max-sm:h-fit max-md:w-[calc(399*var(--scale))] max-md:h-[calc(426*var(--scale))] max-lg:w-[calc(499*var(--scale))] max-lg:h-[calc(430*var(--scale))] w-[calc(781*var(--scale))] h-[calc(590*var(--scale))]"
                   : "max-sm:hidden max-md:w-[calc(102*var(--scale))] max-lg:w-[calc(135*var(--scale))] max-lg:h-[calc(351*var(--scale))] w-[calc(212*var(--scale))] h-[calc(590*var(--scale))]"
               } ${
-                index !== lastIndex && variableCardHeightStyles[index]
+                index !== lastIndex && translateY
               } ml-[16px] overflow-hidden relative transition-all duration-500 ease-[ease] delay-[0s]`}
             >
               {/* transition-all duration-500 ease-[ease] delay-[0s] */}

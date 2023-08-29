@@ -31,12 +31,13 @@ const WealthSliderSection = ({
       max-md:before:w-[calc(620*var(--scale))] max-lg:before:w-[calc(428*var(--scale))] before:bg-wealth-orange before:w-[calc(646*var(--scale))] before:right-0 before:-z-10 before:content-[''] before:absolute before:top-0 before:h-full
       max-md:after:hidden max-lg:after:w-[calc(40*var(--scale))] max-lg:after:h-[calc(40*var(--scale))] max-lg:after:top-[calc(-40*var(--scale))] max-lg:after:right-[calc(428*var(--scale))] after:content-[''] after:bg-wealth-orange after:absolute after:top-[calc(-60*var(--scale))] after:w-[calc(60*var(--scale))] after:right-[calc(645*var(--scale))] after:h-[calc(60*var(--scale))] after:z-20"
     >
-      <SliderSection
-        nextRef={swiperNavNextRef}
-        prevRef={swiperNavPrevRef}
-        width={65.2}
-        cards={cards}
-      />
+      <div className="max-sm:w-full max-md:w-[96%] max-lg:w-[71%] w-[65.2%]">
+        <SliderSection
+          nextRef={swiperNavNextRef}
+          prevRef={swiperNavPrevRef}
+          cards={cards}
+        />
+      </div>
       <div className="max-md:ml-auto max-md:mr-[calc(57*var(--scale))] max-md:w-full max-md:max-w-[calc(532*var(--scale))] h-full flex-1 select-none">
         <div className="max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(20*var(--scale))] max-md:pl-[calc(28*var(--scale))] max-md:pr-[calc(35*var(--scale))] max-md:pt-0 max-md:pb-[calc(48*var(--scale))] max-lg:pl-[calc(30*var(--scale))] max-lg:pr-[calc(35*var(--scale))] max-lg:py-[calc(24*var(--scale))] h-full w-full max-w-[calc(1600*var(--scale))] m-auto p-[calc(50*var(--scale))calc(125*var(--scale))]">
           <SliderContent

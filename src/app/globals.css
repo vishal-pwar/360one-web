@@ -22,6 +22,9 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: black;
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 h1,
