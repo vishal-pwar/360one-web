@@ -170,8 +170,8 @@ export const Header = ({ items }: { items: any }) => {
           </div>
 
           {responsiveNavActive && (
-            <nav className="translate-y-0 absolute z-10 top-[80%] left-0 w-full bg-black pb-[calc(60*var(--scale))] transition-all duration-[0.8s] ease-in-out delay-0 overflow-y-auto">
-              <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
+            <nav className="translate-y-0 absolute z-[400] max-sm:h-screen top-[80%] left-0 w-full bg-black pb-[calc(60*var(--scale))] transition-all duration-[0.8s] ease-in-out delay-0 overflow-y-auto">
+              <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:h-full max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
                 <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(30*var(--scale))]">
                   {responsiveNavItems.map((item, index) => {
                     return (
