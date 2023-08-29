@@ -13,6 +13,7 @@ const responsiveNavItems = [
       top: "",
       bottom: "Home",
     },
+    external: false,
     url: "/",
   },
   {
@@ -20,6 +21,7 @@ const responsiveNavItems = [
       top: "About",
       bottom: "Us",
     },
+    external: false,
     url: "/about-us",
   },
   {
@@ -27,6 +29,7 @@ const responsiveNavItems = [
       top: "360 ONE",
       bottom: "Wealth",
     },
+    external: false,
     url: "/wealth-management",
   },
   {
@@ -34,6 +37,7 @@ const responsiveNavItems = [
       top: "360 ONE",
       bottom: "Asset",
     },
+    external: false,
     url: "/asset-management",
   },
   {
@@ -41,14 +45,16 @@ const responsiveNavItems = [
       top: "Investor",
       bottom: "Relations",
     },
-    url: "/",
+    external: true,
+    url: "https://www.360.one/investor-relations.html",
   },
   {
     title: {
       top: "Reach",
       bottom: "Us",
     },
-    url: "/",
+    external: true,
+    url: "https://www.iiflwealth.com/Connect/Reach-Us",
   },
 ];
 
@@ -179,6 +185,7 @@ export const Header = ({ items }: { items: any }) => {
                         <Link
                           className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
                           href={item.url}
+                          target={`${item.external ? "_blank" : ""}`}
                           onClick={handleResponsiveNav}
                         >
                           <span className="max-sm:text-[calc(16*var(--scale))] text-[calc(1*var(--size-20))]">
