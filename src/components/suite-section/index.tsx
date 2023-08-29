@@ -21,7 +21,10 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
   return (
-    <section className="max-sm:mt-[calc(26*var(--scale))] overflow-x-clip">
+    <section
+      id="#suite"
+      className="max-sm:mt-[calc(26*var(--scale))] overflow-x-clip"
+    >
       <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:pb-[calc(85*var(--scale))] max-md:pt-[calc(48*var(--scale))] max-md:pb-[calc(62*var(--scale))] max-md:px-[calc(28*var(--scale))] max-lg:p-[calc(24*var(--scale))calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="max-sm:before:w-[calc(100%+14px)] max-sm:before:left-[50%] max-sm:before:h-[calc(298*var(--scale))] max-sm:before:top-[calc(-20*var(--scale))] max-sm:before:-translate-x-[50%] max-md:before:w-[calc(698*var(--scale))] max-md:before:h-[calc(470*var(--scale))] max-md:before:left-[calc(-62*var(--scale))] max-lg:before:w-[calc(828*var(--scale))] max-lg:before:h-[calc(400*var(--scale))] max-lg:before:top-[calc(-60*var(--scale))] relative before:content-[''] before:absolute before:bg-black before:w-[calc(1247*var(--scale))] before:h-[calc(735*var(--scale))] before:top-[calc(-91*var(--scale))] before:left-[calc(-125*var(--scale))] before:-z-10">
           <div className="max-sm:flex-col max-sm:gap-[calc(9*var(--scale))] max-sm:px-[calc(14*var(--scale))] max-md:mb-[calc(37*var(--scale))] max-lg:gap-[calc(33*var(--scale))] max-lg:mb-[calc(47*var(--scale))] flex text-white gap-[calc(53*var(--scale))] mb-[calc(80*var(--scale))]">

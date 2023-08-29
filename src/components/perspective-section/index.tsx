@@ -3,6 +3,7 @@ import { getAssetPerspectiveSection } from "@/services/asset-management";
 import { formatDate, getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 import Link from "next/link";
+import { getWealthPerspectiveSection } from "@/services/wealth-management";
 
 interface PerspectiveSectionProps {
   page: string;
@@ -12,6 +13,8 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
   const response =
     page === "asset"
       ? await getAssetPerspectiveSection()
+      : page === "wealth"
+      ? await getWealthPerspectiveSection()
       : await getHomePerspectiveSection();
 
   const firstPost = response?.data?.attributes?.perspective?.posts?.data?.[0];
@@ -47,7 +50,7 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
             title="Wealth Management Industry"
           />
           <span className="max-md:mb-[calc(10*var(--scale))] text-[calc(1*var(--size-16))] tracking-[calc(0.58*var(--scale))] leading-[1.63] mb-[calc(25*var(--scale))] block">
-            {formatDate(firstPost?.attributes?.publishedAt)}
+            {formatDate(firstPost?.attributes?.datePublished)}
           </span>
           <p className="max-sm:leading-[1.67] max-sm:tracking-[calc(-0.43*var(--scale))] max-md:leading-[1.19] max-md:tracking-[calc(0.51*var(--scale))] max-md:mb-[calc(20*var(--scale))] leading-[1.25] mb-[calc(25*var(--scale))] text-[calc(1*var(--size-24))] font-bold max-w-[calc(468*var(--scale))]">
             {firstPost?.attributes?.title}
@@ -80,7 +83,7 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
                 } max-lg:py-[calc(23*var(--scale))] max-lg:relative max-lg:before:content-[''] max-lg:before:absolute max-lg:before:w-full max-lg:before:opacity-[0.5] max-lg:before:bg-[#979797] max-lg:before:bottom-0 flex flex-col pt-[52px] }`}
               >
                 <span className="max-sm:text-[calc(12*var(--scale))] max-sm:tracking-[calc(0.43*var(--scale))] max-lg:flex max-lg:gap-[calc(10*var(--scale))]  text-[calc(1*var(--size-16))] leading-[1.25] tracking-[calc(0.58*var(--scale))] block pb-[calc(16*var(--scale))] relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:bg-black before:w-[calc(35*var(--scale))] before:h-[calc(2*var(--scale))]">
-                  {formatDate(blogItem.attributes.publishedAt)}
+                  {formatDate(blogItem.attributes.datePublished)}
                 </span>
                 <h3 className="max-sm:text-[calc(16*var(--scale))] max-sm:tracking-[calc(0.58*var(--scale))] max-lg:before:mt-[calc(16*var(--scale))] max-lg:mb-[calc(17*var(--scale))] text-[calc(1*var(--size-20))] leading-[1.5] tracking-[calc(0.72*var(--scale))] block font-bold mt-[calc(20*var(--scale))] mb-[calc(44*var(--scale))]">
                   {blogItem.attributes.title}

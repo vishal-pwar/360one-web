@@ -59,3 +59,22 @@ export async function getWealthReachUsSection() {
   const response = await fetchContent(path, urlParamsObject, options);
   return response;
 }
+
+export async function getWealthFooter() {
+  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+  const path = `/wealth`;
+  const urlParamsObject = {
+    populate: {
+      footer: {
+        populate: {
+          socials: {
+            populate: ["icon"],
+          },
+        },
+      },
+    },
+  };
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await fetchContent(path, urlParamsObject, options);
+  return response;
+}

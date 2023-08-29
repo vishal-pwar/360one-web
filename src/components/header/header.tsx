@@ -4,6 +4,8 @@ import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import ScrollUp from "../scroll-up";
+import { usePathname } from "next/navigation";
 
 const responsiveNavItems = [
   {
@@ -54,6 +56,7 @@ export const Header = ({ items }: { items: any }) => {
   const [small, setSmall] = useState(false);
   const [responsiveNavActive, setResponsiveNavActive] = useState(false);
   const [activeId, setActiveId] = useState<number>(-1);
+  const pathname = usePathname();
   const handleMouseEnter = (id: number) => {
     setActiveId(id);
   };
@@ -87,6 +90,7 @@ export const Header = ({ items }: { items: any }) => {
           : ""
       } ${responsiveNavActive ? "bg-black" : "bg-white"}`}
     >
+      <ScrollUp />
       <div className="max-md:items-center w-full max-w-[calc(1600*var(--scale))] flex justify-between">
         <Link
           href="/"
@@ -119,6 +123,9 @@ export const Header = ({ items }: { items: any }) => {
                   className="relative"
                 >
                   <Link
+                    className={`text-[calc(1*var(--size-18))] ${
+                      navItem.href === pathname && "font-bold"
+                    }`}
                     href={navItem.href || "/"}
                     target={`${navItem.external ? "_blank" : ""}`}
                   >
@@ -126,7 +133,9 @@ export const Header = ({ items }: { items: any }) => {
                   </Link>
                   <span
                     className={`absolute bottom-0 left-1/2 w-[45px] h-[2px] bg-black -translate-x-1/2 ease-out duration-500 ${
-                      activeId === index ? "scale-x-1" : "scale-x-0"
+                      activeId === index || navItem.href === pathname
+                        ? "scale-x-1"
+                        : "scale-x-0"
                     }`}
                   ></span>
                 </li>

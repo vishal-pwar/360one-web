@@ -13,7 +13,7 @@ const WealthManagement = () => {
       <SuiteSection page="wealth" />
       <PerspectiveSection page="wealth" />
       <ReachUsSection page="wealth" />
-      <Footer />
+      <Footer page="wealth" />
     </>
   );
 };
