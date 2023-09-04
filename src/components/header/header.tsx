@@ -76,7 +76,7 @@ export const Header = ({ items }: { items: any }) => {
   };
 
   const handleSetSmall = () => {
-    setSmall(window.scrollY > 100);
+    setSmall(window.scrollY > 1);
   };
 
   useEffect(() => {
@@ -94,7 +94,9 @@ export const Header = ({ items }: { items: any }) => {
         small
           ? "max-sm:py-[calc(20*var(--scale))] max-lg:py-[calc(20*var(--scale))] py-[calc(20*var(--scale))] border-b border-color-[rgb(233, 233, 233)]"
           : ""
-      } ${responsiveNavActive ? "bg-black" : "bg-white"}`}
+      } transition-[background-color] ease-in duration-500 ${
+        responsiveNavActive ? "bg-black" : "bg-white"
+      }`}
     >
       <ScrollUp />
       <div className="max-md:items-center w-full max-w-[calc(1600*var(--scale))] flex justify-between">
@@ -175,33 +177,37 @@ export const Header = ({ items }: { items: any }) => {
             ></div>
           </div>
 
-          {responsiveNavActive && (
-            <nav className="translate-y-0 absolute z-[400] max-sm:h-screen top-[80%] left-0 w-full bg-black pb-[calc(60*var(--scale))] transition-all duration-[0.8s] ease-in-out delay-0 overflow-y-auto">
-              <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:h-full max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
-                <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(30*var(--scale))]">
-                  {responsiveNavItems.map((item, index) => {
-                    return (
-                      <li key={item.title.bottom + item.title.top}>
-                        <Link
-                          className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
-                          href={item.url}
-                          target={`${item.external ? "_blank" : ""}`}
-                          onClick={handleResponsiveNav}
-                        >
-                          <span className="max-sm:text-[calc(16*var(--scale))] text-[calc(1*var(--size-20))]">
-                            {item.title.top}
-                          </span>
-                          <span className="max-sm:text-[calc(24*var(--scale))] text-[calc(1*var(--size-38))]">
-                            {item.title.bottom}
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </nav>
-          )}
+          {/* {responsiveNavActive && ( */}
+          <nav
+            className={`${
+              responsiveNavActive ? "translate-y-0" : "translate-y-[-120%]"
+            } flex transition-transform ease-in-out duration-[0.8s] absolute z-[400] max-sm:h-screen top-[80%] left-0 w-full bg-black pb-[calc(60*var(--scale))] overflow-y-auto`}
+          >
+            <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:h-full max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
+              <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(30*var(--scale))]">
+                {responsiveNavItems.map((item, index) => {
+                  return (
+                    <li key={item.title.bottom + item.title.top}>
+                      <Link
+                        className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
+                        href={item.url}
+                        target={`${item.external ? "_blank" : ""}`}
+                        onClick={handleResponsiveNav}
+                      >
+                        <span className="max-sm:text-[calc(16*var(--scale))] text-[calc(1*var(--size-20))]">
+                          {item.title.top}
+                        </span>
+                        <span className="max-sm:text-[calc(24*var(--scale))] text-[calc(1*var(--size-38))]">
+                          {item.title.bottom}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </nav>
+          {/* )} */}
         </div>
       </div>
     </header>
