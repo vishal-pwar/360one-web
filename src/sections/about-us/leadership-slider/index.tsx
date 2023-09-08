@@ -12,57 +12,70 @@ interface LeadershipSliderProps {
 }
 
 const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
-  const lastIndex = cards.length - 1;
   const [leadershipCards, setLeadershipCards] = useState([...cards]);
-
-  const variableCardHeightStyles = [
-    "translate-y-[calc(42*var(--scale))]",
-    "translate-y-[calc(105*var(--scale))]",
-    "translate-y-[calc(-36*var(--scale))]",
-    "translate-y-[calc(20*var(--scale))]",
-  ];
+  const newArray = [...cards, ...cards, ...cards];
+  const [scrollPos, setScrollPos] = useState(0);
+  const [transitionDuration, setTransitionDuration] = useState(500);
 
   const handleNext = () => {
-    setLeadershipCards((prev) => {
-      const newArr = [...prev];
-      const lastElement = newArr.pop();
-      newArr.unshift(lastElement!);
-      return newArr;
-    });
+    if (scrollPos === 4) setTransitionDuration(0);
+    else setTransitionDuration(500);
+    setScrollPos((prev) => (prev % 4) + 1);
   };
 
   const handlePrev = () => {
-    setLeadershipCards((prev) => {
-      const newArr = [...prev];
-      const firstElement = newArr.shift();
-      newArr.push(firstElement!);
-      return newArr;
-    });
+    if (scrollPos === -4) setTransitionDuration(0);
+    else setTransitionDuration(500);
+    setScrollPos((prev) => (prev % 4) - 1);
   };
+
+  const getHorizontalOffset = () => {
+    if (scrollPos === 0)
+      return "max-sm:translate-x-[calc(-2480*var(--scale))] max-md:translate-x-[calc(-458*var(--scale))] max-lg:translate-x-[calc(-584.8*var(--scale))] translate-x-[calc(-920*var(--scale))]";
+    if (scrollPos === 1)
+      return "max-sm:translate-x-[calc(-2830*var(--scale))] max-md:translate-x-[calc(-567.2*var(--scale))] max-lg:translate-x-[calc(-731*var(--scale))] translate-x-[calc(-1152*var(--scale))]";
+    if (scrollPos === 2)
+      return "max-sm:translate-x-[calc(-3180*var(--scale))] max-md:translate-x-[calc(-676.4*var(--scale))] max-lg:translate-x-[calc(-877.2*var(--scale))] translate-x-[calc(-1384*var(--scale))]";
+    if (scrollPos === 3)
+      return "max-sm:translate-x-[calc(-3530*var(--scale))] max-md:translate-x-[calc(-785.6*var(--scale))] max-lg:translate-x-[calc(-1023.4*var(--scale))] translate-x-[calc(-1608*var(--scale))]";
+    if (scrollPos === 4)
+      return "max-sm:translate-x-[calc(-3880*var(--scale))] max-md:translate-x-[calc(-894.8*var(--scale))] max-lg:translate-x-[calc(-1169.6*var(--scale))] translate-x-[calc(-1842*var(--scale))]";
+    if (scrollPos === -1)
+      return "max-sm:translate-x-[calc(-2130*var(--scale))] max-md:translate-x-[calc(-348.8*var(--scale))] max-lg:translate-x-[calc(-438.6*var(--scale))] translate-x-[calc(-688*var(--scale))]";
+    if (scrollPos === -2)
+      return "max-sm:translate-x-[calc(-1780*var(--scale))] max-md:translate-x-[calc(-239.6*var(--scale))] max-lg:translate-x-[calc(-292.4*var(--scale))] translate-x-[calc(-456*var(--scale))]";
+    if (scrollPos === -3)
+      return "max-sm:translate-x-[calc(-1430*var(--scale))] max-md:translate-x-[calc(-130.4*var(--scale))] max-lg:translate-x-[calc(-146.2*var(--scale))] translate-x-[calc(-224*var(--scale))]";
+    if (scrollPos === -4)
+      return "max-sm:translate-x-[calc(-1080*var(--scale))] max-md:translate-x-[calc(-21.2*var(--scale))] translate-x-0";
+  };
+
+  const translateX = getHorizontalOffset();
 
   return (
     <div className="max-sm:min-h-[calc(680*var(--scale))] max-sm:pb-[calc(144*var(--scale))] max-sm:mt-0 max-sm:pt-[calc(10*var(--scale))] max-md:pt-[calc(52*var(--scale))] max-md:min-h-[calc(542*var(--scale))] max-md:pb-[calc(64*var(--scale))] max-md:w-full max-lg:mt-[calc(40*var(--scale))] max-lg:min-h-[calc(593*var(--scale))] max-lg:pt-[calc(57*var(--scale))] w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
-      <div className="relative w-full h-full z-10 flex flex-row transition-transform box-content">
-        {leadershipCards.map((card, index) => {
+      <div className="relative h-full z-10 flex flex-row transition-transform box-content overflow-visible">
+        {newArray.map((card, index) => {
+          const lastIndex = 7 + scrollPos;
           const translateY = `translate-y-[calc(${card.imageVerticalOffset}*var(--scale))]`;
           return (
             <div
               key={card.name}
-              className={`max-sm:ml-[calc(30*var(--scale))] max-sm:flex-col flex max-md:ml-[calc(7.1*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ${
+              className={`max-sm:min-w-[calc(320*var(--scale))] max-sm:w-[calc(320*var(--scale))] max-sm:h-fit max-sm:ml-[calc(30*var(--scale))] max-sm:flex-col max-sm:translate-y-0 flex-wrap flex max-md:ml-[calc(7.1*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ${
                 index === lastIndex
-                  ? "max-sm:w-[calc(320*var(--scale))] max-sm:h-fit max-md:w-[calc(399*var(--scale))] max-md:h-[calc(426*var(--scale))] max-lg:w-[calc(499*var(--scale))] max-lg:h-[calc(430*var(--scale))] w-[calc(781*var(--scale))] h-[calc(590*var(--scale))]"
-                  : "max-sm:hidden max-md:w-[calc(102*var(--scale))] max-lg:w-[calc(135*var(--scale))] max-lg:h-[calc(351*var(--scale))] w-[calc(212*var(--scale))] h-[calc(590*var(--scale))]"
-              } ${
-                index !== lastIndex && translateY
-              } ml-[16px] overflow-hidden relative transition-all duration-500 ease-[ease] delay-[0s]`}
+                  ? "max-md:w-[calc(399*var(--scale))] max-md:h-[calc(426*var(--scale))] max-lg:min-w-[calc(499*var(--scale))] max-lg:h-[calc(430*var(--scale))] min-w-[calc(781*var(--scale))] h-[calc(590*var(--scale))]"
+                  : "max-md:h-[calc(263*var(--scale))] max-md:w-[calc(102*var(--scale))] max-md:min-w-[calc(102*var(--scale))] max-lg:min-w-[calc(135*var(--scale))] max-lg:h-[calc(351*var(--scale))] min-w-[calc(212*var(--scale))] h-[calc(590*var(--scale))]"
+              } ${index !== lastIndex && translateY}
+             ${translateX}
+              max-md:ml-[calc(7.2*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ml-[calc(18*var(--scale))] overflow-hidden relative transition-transform duration-${transitionDuration} ease-[ease] delay-[0s]`}
             >
               {/* transition-all duration-500 ease-[ease] delay-[0s] */}
               <div
-                className={` ${
+                className={`max-sm:w-full max-sm:h-[calc(216*var(--scale))] ${
                   index === lastIndex
-                    ? "max-sm:w-full max-sm:h-[calc(216*var(--scale))] max-md:w-[calc(156*var(--scale))] max-md:h-[calc(280*var(--scale))] max-lg:w-[calc(208*var(--scale))] w-[calc(326*var(--scale))]"
+                    ? "max-md:w-[calc(156*var(--scale))] max-md:h-[calc(280*var(--scale))] max-lg:w-[calc(208*var(--scale))] w-[calc(326*var(--scale))]"
                     : "max-md:w-[calc(102*var(--scale))] max-md:h-[calc(263*var(--scale))] max-lg:w-[calc(135*var(--scale))] w-[calc(212*var(--scale))]"
-                } relative transition-all duration-500 ease-[ease] delay-300`}
+                } relative transition-all duration-500 ease-[ease] delay-0`}
               >
                 <Image
                   className={`max-sm:hidden max-md:w-[calc(156*var(--scale))] max-md:h-[calc(280*var(--scale))] w-full h-full object-cover object-top`}
@@ -81,9 +94,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                   fill={true}
                 />
                 <Image
-                  className={`hidden w-full h-full object-cover object-top ${
-                    index === lastIndex ? "max-sm:block" : ""
-                  } ${index === lastIndex - 1 && "max-sm:block"}`}
+                  className={`hidden w-full h-full object-cover object-top max-sm:block`}
                   src={getStrapiMedia(card?.mobileImage?.data?.attributes?.url)}
                   alt={`${card.name} - ${card.designation}`}
                   title={`${card.name} - ${card.designation}`}
@@ -94,7 +105,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                 className={`max-sm:w-full max-sm:h-[calc(350*var(--scale))] max-sm:max-h-max max-sm:px-[calc(28*var(--scale))] max-sm:pt-[calc(28*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:ml-0 max-sm:overflow-hidden
                 max-md:ml-[calc(-70*var(--scale))] max-md:w-[calc(313*var(--scale))] max-md:pl-[calc(86*var(--scale))] max-md:pr-[calc(17*var(--scale))] max-md:pt-[calc(38*var(--scale))] max-md:pb-[calc(10*var(--scale))]
                 max-lg:w-[calc(291*var(--scale))] max-lg:px-[calc(32*var(--scale))] max-lg:pt-[calc(50*var(--scale))] max-lg:pb-[calc(10*var(--scale))] w-[calc(455*var(--scale))] px-[calc(50*var(--scale))] pt-[calc(80*var(--scale))] pb-[calc(20*var(--scale))] bg-white ${
-                  index !== lastIndex && "hidden"
+                  index !== lastIndex && "max-sm:block hidden"
                 }`}
               >
                 {/* transition-all duration-500 ease-[ease] delay-[0s] */}
@@ -112,7 +123,7 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
           );
         })}
       </div>
-      <div className="max-sm:top-[initial] max-sm:bottom-[calc(85*var(--scale))] max-sm:right-[initial] max-sm:left-[calc(39*var(--scale))] max-sm:w-[calc(167*var(--scale))] max-sm:h-[calc(59*var(--scale))] max-sm:gap-[calc(12*var(--scale))] max-md:w-[calc(118*var(--scale))] max-md:h-[calc(52*var(--scale))] max-md:gap-[calc(5*var(--scale))] max-lg:w-[calc(139*var(--scale))] max-lg:h-[calc(56*var(--scale))] flex items-center justify-center gap-[calc(18*var(--scale))] bg-black w-[calc(218*var(--scale))] h-[calc(82*var(--scale))] absolute top-0 right-0 z-20">
+      <div className="max-sm:top-[initial] max-sm:bottom-[calc(85*var(--scale))] max-sm:right-[initial] max-sm:left-[calc(0*var(--scale))] max-sm:w-[calc(167*var(--scale))] max-sm:h-[calc(59*var(--scale))] max-sm:gap-[calc(12*var(--scale))] max-md:w-[calc(118*var(--scale))] max-md:h-[calc(52*var(--scale))] max-md:gap-[calc(5*var(--scale))] max-lg:w-[calc(139*var(--scale))] max-lg:h-[calc(56*var(--scale))] flex items-center justify-center gap-[calc(18*var(--scale))] bg-black w-[calc(218*var(--scale))] h-[calc(82*var(--scale))] absolute top-0 right-0 z-20">
         <button
           onClick={handlePrev}
           className="max-md:w-[calc(36*var(--scale))] max-lg:w-[calc(34*var(--scale))] max-lg:h-[calc(9*var(--scale))] cursor-pointer bg-none outline-none border-none flex items-center justify-center w-[calc(54*var(--scale))] h-[calc(14*var(--scale))] opacity-[0.2] hover:opacity-[1]"
