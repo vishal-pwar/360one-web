@@ -59,14 +59,16 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
                 src={imageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
-                fill={true}
+                width={1330}
+                height={560}
               />
               <Image
                 className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
                 src={imageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
-                fill={true}
+                width={1330}
+                height={560}
               />
               <div className="max-sm:w-[calc(66*var(--scale))] max-sm:h-[calc(66*var(--scale))] max-sm:right-[calc(-31*var(--scale))] max-sm:top-[calc(16*var(--scale))] max-md:right-[calc(19*var(--scale))] max-lg:w-[calc(82*var(--scale))] max-lg:h-[calc(81*var(--scale))] max-lg:top-[calc(-33*var(--scale))] flex justify-center items-center absolute w-[calc(117*var(--scale))] h-[calc(115*var(--scale))] top-[calc(-45*var(--scale))] right-[calc(37*var(--scale))] z-10 bg-white">
                 <Image
@@ -74,8 +76,8 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
                   className="max-sm:w-[calc(33*var(--scale))] max-sm:h-[calc(45*var(--scale))] max-lg:w-[calc(41*var(--scale))] max-lg:h-[calc(56*var(--scale))] w-[calc(56.5*var(--scale))] h-[calc(75*var(--scale))]"
                   alt="360 One Wealth Management"
                   title="360 One Wealth Management"
-                  height={75}
-                  width={56.5}
+                  height={100}
+                  width={76}
                 />
               </div>
             </div>

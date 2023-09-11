@@ -39,7 +39,12 @@ export async function getLeadershipSection() {
       leadership: {
         populate: {
           cards: {
-            populate: { clearImage: true, blurImage: true, mobileImage: true },
+            populate: {
+              clearImage: true,
+              blurImage: true,
+              mobileImage: true,
+              imageVerticalOffset: true,
+            },
           },
         },
       },
