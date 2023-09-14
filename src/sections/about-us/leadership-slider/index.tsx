@@ -50,13 +50,12 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
   };
 
   const translateX = getHorizontalOffset();
-
   return (
     <div className="max-sm:min-h-[calc(680*var(--scale))] max-sm:pb-[calc(144*var(--scale))] max-sm:mt-0 max-sm:pt-[calc(10*var(--scale))] max-md:pt-[calc(52*var(--scale))] max-md:min-h-[calc(542*var(--scale))] max-md:pb-[calc(64*var(--scale))] max-md:w-full max-lg:mt-[calc(40*var(--scale))] max-lg:min-h-[calc(593*var(--scale))] max-lg:pt-[calc(57*var(--scale))] w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
       <div className="relative h-full z-10 flex flex-row transition-transform box-content overflow-visible">
         {newCardsArray.map((card, index) => {
           const lastIndex = 7 + scrollPos;
-          const translateY = `translate-y-[calc(${card.imgVerticalOffset}*var(--scale))]`;
+          const translateY = `translate-y-[calc(${card.imageVerticalOffset}*var(--scale))]`;
           return (
             <div
               key={card.name + index}
@@ -66,7 +65,9 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                   : "max-md:h-[calc(263*var(--scale))] max-md:w-[calc(102*var(--scale))] max-md:min-w-[calc(102*var(--scale))] max-lg:min-w-[calc(135*var(--scale))] max-lg:h-[calc(351*var(--scale))] min-w-[calc(212*var(--scale))] h-[calc(590*var(--scale))]"
               } ${
                 index !== lastIndex && translateY
-              } max-md:ml-[calc(7.2*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ml-[calc(18*var(--scale))] overflow-hidden relative transition-transform duration-${transitionDuration} ease-[ease] delay-[0s] ${translateX}`}
+              } max-md:ml-[calc(7.2*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ml-[calc(18*var(--scale))] overflow-hidden relative transition-transform ${
+                transitionDuration === 0 ? "duration-0" : "duration-500"
+              } ease-[ease] delay-0 ${translateX}`}
             >
               {/* transition-all duration-500 ease-[ease] delay-[0s] */}
               <div

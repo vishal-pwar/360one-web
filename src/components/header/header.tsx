@@ -90,11 +90,11 @@ export const Header = ({ items }: { items: any }) => {
 
   return (
     <header
-      className={`max-sm:p-[calc(24*var(--scale))calc(22*var(--scale))] max-md:p-[calc(20*var(--scale))calc(29*var(--scale))] max-lg:p-[calc(30*var(--scale))calc(37*var(--scale))] p-[calc(49*var(--scale))calc(51*var(--scale))] w-full fixed top-0 z-30 duration-300 ${
+      className={`max-sm:p-[calc(24*var(--scale))calc(22*var(--scale))] max-md:p-[calc(20*var(--scale))calc(29*var(--scale))] max-lg:p-[calc(30*var(--scale))calc(37*var(--scale))] p-[calc(49*var(--scale))calc(51*var(--scale))] w-full fixed top-0 z-30 ${
         small
           ? "max-sm:py-[calc(20*var(--scale))] max-lg:py-[calc(20*var(--scale))] py-[calc(20*var(--scale))] border-b border-color-[rgb(233, 233, 233)]"
           : ""
-      } transition-[background-color] ease-in duration-500 ${
+      } transition-all ease-[ease] duration-300 ${
         responsiveNavActive ? "bg-black" : "bg-white"
       }`}
     >

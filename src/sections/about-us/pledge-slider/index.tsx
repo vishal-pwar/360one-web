@@ -65,7 +65,9 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
             return (
               <div
                 key={card.title + index}
-                className={`transition-all duration-${transitionDuration} ease-[ease] delay-0 ${translateX} ${
+                className={`transition-all ${
+                  transitionDuration === 0 ? "duration-0" : "duration-500"
+                } ease-[ease] delay-0 ${translateX} ${
                   index === lastIndex
                     ? "max-sm:w-full max-sm:h-full max-md:w-[calc(652*var(--scale))] max-md:h-[calc(378*var(--scale))] max-lg:w-[calc(542*var(--scale))] max-lg:h-[calc(416*var(--scale))] w-[calc(796*var(--scale))] h-[calc(702*var(--scale))]"
                     : "max-lg:w-[calc(245*var(--scale))] max-lg:h-[calc(177*var(--scale))] w-[calc(401*var(--scale))] h-[calc(277*var(--scale))] mr-0"
