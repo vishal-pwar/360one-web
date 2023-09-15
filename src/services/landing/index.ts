@@ -19,7 +19,8 @@ export async function getCommitmentSection() {
       commitment: {
         populate: {
           sections: { populate: { cards: { populate: { icon: true } } } },
-          image: true,
+          clearImage: true,
+          blurImage: true,
         },
       },
     },
