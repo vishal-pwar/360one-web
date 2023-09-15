@@ -104,11 +104,11 @@ const SwiperCardsNavigation = ({
         {cards.map((card: any, index: number) => {
           return (
             <SwiperSlide
-              className={`max-lg:overflow-hidden flex !flex-row ${
+              className={`max-lg:overflow-hidden flex ${
                 activeSlideId === index
-                  ? "max-sm:!w-[calc(331*var(--scale))] max-md:!w-[calc(714*var(--scale))] max-lg:!w-[calc(743*var(--scale))] !w-[calc(992*var(--scale))]"
+                  ? "max-sm:!w-[calc(331*var(--scale))] max-sm:after:w-0 max-md:!w-[calc(714*var(--scale))] max-lg:!w-[calc(743*var(--scale))] !w-[calc(992*var(--scale))]"
                   : "max-sm:!w-[291.1px] max-md:!w-[calc(232*var(--scale))] max-lg:!w-[calc(232*var(--scale))] !w-[calc(326*var(--scale))]"
-              } relative shrink-0 h-full max-sm:after:w-[291.1px] max-md:after:w-[231px] max-lg:after:w-[calc(232*var(--scale))] after:w-[calc(326*var(--scale))] after:content-[''] after:absolute after:h-[calc(270*var(--scale))] after:bottom-0 after:left-0 after:bg-gradient-to-b after:from-[#00000000] after:to-[#0b0b0b]`}
+              } relative shrink-0 h-full max-sm:after:w-[291.1px] max-md:after:w-[calc(232*var(--scale))] max-lg:after:w-[calc(232*var(--scale))] after:w-[calc(326*var(--scale))] after:content-[''] after:absolute after:h-[calc(270*var(--scale))] after:bottom-0 after:left-0 after:bg-gradient-to-b after:from-[#00000000] after:to-[#0b0b0b]`}
               key={card.name}
               onClick={() => handleOpenDetailsPanel(index)}
             >
@@ -137,23 +137,23 @@ const SwiperCardsNavigation = ({
               <div
                 className={`absolute top-0 bg-white h-full flex flex-col p-0 transition-[width] duration-300 ease-[ease] ${
                   activeSlideId === index
-                    ? "max-sm:w-[calc(331*var(--scale))] max-md:w-[calc(482*var(--scale))] max-lg:w-[calc(511*var(--scale))] w-[calc(666*var(--scale))] max-sm:left-full max-lg:left-[calc(232*var(--scale))] left-[calc(326*var(--scale))] max-sm:p-[calc(24*var(--scale))] max-sm:pr-[calc(30*var(--scale))] max-md:py-[calc(31*var(--scale))] max-md:pl-[calc(41*var(--scale))] max-md:pr-[calc(28*var(--scale))] max-lg:p-[calc(40*var(--scale))] max-lg:pr-[calc(70*var(--scale))] py-[calc(60*var(--scale))] pl-[calc(70*var(--scale))] pr-[calc(57*var(--scale))] z-10"
+                    ? "max-sm:w-[calc(331*var(--scale))] max-md:w-[calc(482*var(--scale))] max-lg:w-[calc(511*var(--scale))] w-[calc(666*var(--scale))] max-sm:left-0 max-lg:left-[calc(232*var(--scale))] left-[calc(326*var(--scale))] max-sm:p-[calc(24*var(--scale))] max-sm:pr-[calc(30*var(--scale))] max-md:py-[calc(31*var(--scale))] max-md:pl-[calc(41*var(--scale))] max-md:pr-[calc(28*var(--scale))] max-lg:p-[calc(40*var(--scale))] max-lg:pr-[calc(70*var(--scale))] py-[calc(60*var(--scale))] pl-[calc(70*var(--scale))] pr-[calc(57*var(--scale))] z-10"
                     : "w-0 p-0 -z-10 opacity-0"
                 }`}
               >
                 <div className={`${isVisible ? "block" : "hidden"}`}>
                   <h4
-                    className={`max-lg:text-[calc(20*var(--scale))] max-lg:leading-[1.34] max-lg:mb-[calc(1.3*var(--scale))] text-[calc(28*var(--scale))] font-bold text-black leading-[1.5] tracking-[calc(1.01*var(--scale))] mb-[calc(4*var(--scale))] select-none text-left`}
+                    className={`max-sm:text-[calc(18*var(--scale))] max-lg:text-[calc(20*var(--scale))] max-lg:leading-[1.34] max-lg:mb-[calc(1.3*var(--scale))] text-[calc(28*var(--scale))] font-bold text-black leading-[1.5] tracking-[calc(1.01*var(--scale))] mb-[calc(4*var(--scale))] select-none text-left`}
                   >
                     {card.name}
                   </h4>
                   <span
-                    className={`max-md:mb-[calc(16*var(--scale))] max-md:text-[calc(14*var(--scale))] max-lg:mb-[calc(21.4*var(--scale))] text-[calc(1*var(--size-16))] leading-[1.63] tracking-[calc(0.58*var(--scale))] mb-[calc(32*var(--scale))] block text-left select-none`}
+                    className={`max-sm:mb-[calc(14*var(--scale))] max-md:mb-[calc(16*var(--scale))] max-md:text-[calc(14*var(--scale))] max-lg:mb-[calc(21.4*var(--scale))] text-[calc(1*var(--size-16))] leading-[1.63] tracking-[calc(0.58*var(--scale))] mb-[calc(32*var(--scale))] block text-left select-none`}
                   >
                     {card.designation}
                   </span>
                   <p
-                    className={`max-md:text-[calc(14*var(--scale))] max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.71] max-lg:tracking-[calc(0.51*var(--scale))] text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] block text-left select-none`}
+                    className={`max-sm:text-[calc(13*var(--scale))] max-md:text-[calc(14*var(--scale))] max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.71] max-lg:tracking-[calc(0.51*var(--scale))] text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] block text-left select-none`}
                   >
                     {card.about}
                   </p>
