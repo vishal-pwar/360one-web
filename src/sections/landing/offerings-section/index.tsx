@@ -10,14 +10,20 @@ const OfferingsSection = async () => {
   const firstProduct = response?.data?.attributes?.offering?.products?.[0];
   const secondProduct = response?.data?.attributes?.offering?.products?.[1];
 
-  const firstImageUrl = getStrapiMedia(
-    firstProduct?.image?.data?.attributes?.url
+  const firstClearImageUrl = getStrapiMedia(
+    firstProduct?.clearImage?.data?.attributes?.url
+  );
+  const firstBlurImageUrl = getStrapiMedia(
+    firstProduct?.blurImage?.data?.attributes?.url
   );
   const firstIconUrl = getStrapiMedia(
     firstProduct?.logo?.data?.attributes?.url
   );
-  const secondImageUrl = getStrapiMedia(
-    secondProduct?.image?.data?.attributes?.url
+  const secondClearImageUrl = getStrapiMedia(
+    secondProduct?.clearImage?.data?.attributes?.url
+  );
+  const secondBlurImageUrl = getStrapiMedia(
+    secondProduct?.blurImage?.data?.attributes?.url
   );
   const secondIconUrl = getStrapiMedia(
     secondProduct?.logo?.data?.attributes?.url
@@ -42,15 +48,8 @@ const OfferingsSection = async () => {
           {/* translate-y-[11.315px] transition ease-linear duration-150 */}
           <div className="max-sm:ml-0 max-sm:w-[111.5%] max-sm:h-[calc(303*var(--scale))] max-md:w-[92%] max-md:ml-[calc(98*var(--scale))] h-full w-[91.4%] ml-auto relative">
             <ScrollImage
-              src={firstImageUrl}
-              alt="Wealth management"
-              width={1234}
-              height={633}
-              title="Wealth management services"
-            />
-            <Image
-              className="max-sm:object-right absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-              src={firstImageUrl}
+              src={firstClearImageUrl}
+              blurImageUrl={firstBlurImageUrl}
               width={1234}
               height={633}
               alt="Wealth management"
@@ -90,16 +89,9 @@ const OfferingsSection = async () => {
         </div>
         <div className="max-sm:mt-[calc(120*var(--scale))] max-md:mt-[calc(300*var(--scale))] max-md:h-[calc(303*var(--scale))] max-lg:ml-0 max-lg:mt-[calc(150*var(--scale))] max-lg:h-[calc(404*var(--scale))] mt-[calc(266*var(--scale))] w-full h-[calc(632*var(--scale))] relative">
           <div className="max-sm:mr-0 max-sm:ml-0 max-sm:w-[112%] max-sm:left-[-6%] max-sm:h-[calc(303*var(--scale))] max-md:ml-[calc(-37*var(--scale))] max-md:w-[92%] ml-0 mr-auto w-[91.4%] h-full relative z-10">
-            {/* <ScrollImage
-              src={secondImageUrl}
-              width={1234}
-              height={633}
-              alt="Asset management services"
-              title="Asset management services in India"
-            /> */}
-            <Image
-              className="absolute top-0 w-full h-full object-cover object-[left_center]"
-              src={secondImageUrl}
+            <ScrollImage
+              src={secondClearImageUrl}
+              blurImageUrl={secondBlurImageUrl}
               width={1234}
               height={633}
               alt="Asset management services"

@@ -3,7 +3,18 @@
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
-export const ScrollImage = (props: ImageProps) => {
+interface ScrollImageProps extends ImageProps {
+  blurImageUrl: string;
+}
+
+export const ScrollImage = ({
+  src,
+  blurImageUrl,
+  width,
+  height,
+  alt,
+  title,
+}: ScrollImageProps) => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   let scrollEndTimeout: NodeJS.Timeout | null = null;
@@ -16,7 +27,7 @@ export const ScrollImage = (props: ImageProps) => {
     }
     scrollEndTimeout = setTimeout(() => {
       setIsScrolling(false);
-    }, 800);
+    }, 500);
   };
 
   useEffect(() => {
@@ -31,12 +42,25 @@ export const ScrollImage = (props: ImageProps) => {
   }, []);
 
   return (
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <Image
-      className={`max-sm:object-right absolute top-0 left-0 w-full h-full z-10 object-cover object-[left_center] transition-opacity ease-in duration-300 ${
-        isScrolling ? "opacity-1" : "opacity-1"
-      }`}
-      {...props}
-    />
+    <>
+      <Image
+        className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
+        src={src}
+        alt={alt}
+        title={title}
+        width={width}
+        height={height}
+      />
+      <Image
+        className={`absolute top-0 left-0 w-full h-full object-cover object-[left_center] transition-all duration-300 ease-in ${
+          isScrolling ? "opacity-[1]" : "opacity-0"
+        }`}
+        src={blurImageUrl}
+        alt={alt}
+        title={title}
+        width={width}
+        height={height}
+      />
+    </>
   );
 };

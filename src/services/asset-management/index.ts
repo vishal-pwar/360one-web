@@ -19,7 +19,8 @@ export async function getAssetSuiteSection() {
       suite: {
         populate: {
           cards: { populate: { icon: true } },
-          image: true,
+          clearImage: true,
+          blurImage: true,
           icon: true,
         },
       },

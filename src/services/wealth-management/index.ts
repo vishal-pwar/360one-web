@@ -19,7 +19,8 @@ export async function getWealthSuiteSection() {
       suite: {
         populate: {
           cards: { populate: { icon: true } },
-          image: true,
+          clearImage: true,
+          blurImage: true,
           icon: true,
         },
       },

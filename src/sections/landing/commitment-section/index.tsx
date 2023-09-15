@@ -25,13 +25,6 @@ const CommitmentSection = async () => {
           {text}
         </p>
         <div className="max-sm:h-[calc(172*var(--scale))] max-sm:ml-[calc(22*var(--scale))] max-md:h-[calc(268*var(--scale))] max-lg:h-[calc(358*var(--scale))] w-full h-[calc(560*var(--scale))] relative">
-          <ScrollImage
-            src={url}
-            alt="360 ONE Commitment"
-            title="The 360 ONE Commitment"
-            height={1680}
-            width={3990}
-          />
           <Image
             className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
             src={url}

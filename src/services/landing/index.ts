@@ -36,7 +36,7 @@ export async function getOfferingsSection() {
     populate: {
       offering: {
         populate: {
-          products: { populate: ["image", "logo"] },
+          products: { populate: ["clearImage", "blurImage", "logo"] },
         },
       },
     },

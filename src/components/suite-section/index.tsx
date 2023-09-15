@@ -15,9 +15,10 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
     page === "asset"
       ? await getAssetSuiteSection()
       : await getWealthSuiteSection();
-  const { title, text, link, image, icon, cards } =
+  const { title, text, link, clearImage, blurImage, icon, cards } =
     response?.data?.attributes?.suite;
-  const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
+  const clearImageUrl = getStrapiMedia(clearImage?.data?.attributes?.url);
+  const blurImageUrl = getStrapiMedia(blurImage?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
   return (
@@ -55,16 +56,8 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
           >
             <div className="max-sm:left-[calc(-28*var(--scale))] max-sm:h-[calc(200*var(--scale))] max-sm:w-[calc(323*var(--scale))] max-md:h-[calc(338*var(--scale))] max-lg:h-[calc(404*var(--scale))] h-[calc(560*var(--scale))] w-full relative">
               <ScrollImage
-                className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-                src={imageUrl}
-                alt="The 360 ONE Wealth Suite"
-                title="The 360 ONE Wealth Suite"
-                width={1330}
-                height={560}
-              />
-              <Image
-                className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-                src={imageUrl}
+                src={clearImageUrl}
+                blurImageUrl={blurImageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
                 width={1330}
