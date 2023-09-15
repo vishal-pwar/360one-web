@@ -12,6 +12,7 @@ export async function getFooter() {
         populate: ["icon"],
       },
       legals: true,
+      copyrights: true,
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };

@@ -6,23 +6,11 @@ import { getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 import Link from "next/link";
 
-const copyrightBannerList = [
-  {
-    title: "Copyright © 2023",
-  },
-  {
-    title: "360 ONE WAM LIMITED.",
-  },
-  {
-    title: "All rights Reserved.",
-  },
-];
-
 const Footer = async ({ page = "home" }: { page?: string }) => {
   const response = await getFooter();
   const assetResponse = await getAssetFooter();
   const wealthResponse = await getWealthFooter();
-  const { sections, legals } = response?.data?.attributes;
+  const { sections, legals, copyrights } = response?.data?.attributes;
   const { socials } =
     page === "home"
       ? response?.data?.attributes
@@ -110,13 +98,13 @@ const Footer = async ({ page = "home" }: { page?: string }) => {
             );
           })}
           <span className="max-sm:w-full max-sm:ml-0 max-sm:text-left max-sm:flex-row max-sm:flex-wrap max-md:w-[calc(203*var(--scale))] max-md:text-right max-md:flex max-md:flex-col max-lg:w-auto max-lg:text-right ml-auto flex gap-[5px]">
-            {copyrightBannerList.map((item) => {
+            {copyrights?.map((item: any) => {
               return (
                 <span
                   className="max-sm:w-full max-sm:justify-start max-md:text-right max-lg:flex max-lg:flex-row max-md:justify-end max-md:w-full"
-                  key={item.title}
+                  key={item.text}
                 >
-                  {item.title}
+                  {item.text}
                 </span>
               );
             })}
