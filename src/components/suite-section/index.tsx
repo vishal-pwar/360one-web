@@ -15,9 +15,10 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
     page === "asset"
       ? await getAssetSuiteSection()
       : await getWealthSuiteSection();
-  const { title, text, link, image, icon, cards } =
+  const { title, text, link, clearImage, blurImage, icon, cards } =
     response?.data?.attributes?.suite;
-  const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
+  const clearImageUrl = getStrapiMedia(clearImage?.data?.attributes?.url);
+  const blurImageUrl = getStrapiMedia(blurImage?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
   return (
@@ -25,7 +26,7 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
       id="#suite"
       className="max-sm:mt-[calc(26*var(--scale))] overflow-x-clip"
     >
-      <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:pb-[calc(85*var(--scale))] max-md:pt-[calc(48*var(--scale))] max-md:pb-[calc(62*var(--scale))] max-md:px-[calc(28*var(--scale))] max-lg:p-[calc(24*var(--scale))calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+      <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:pb-[calc(85*var(--scale))] max-md:pt-[calc(48*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-md:px-[calc(28*var(--scale))] max-lg:p-[calc(24*var(--scale))calc(80*var(--scale))] p-[calc(50*var(--scale))calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="max-sm:before:w-[calc(100%+14px)] max-sm:before:left-[50%] max-sm:before:h-[calc(298*var(--scale))] max-sm:before:top-[calc(-20*var(--scale))] max-sm:before:-translate-x-[50%] max-md:before:w-[calc(698*var(--scale))] max-md:before:h-[calc(470*var(--scale))] max-md:before:left-[calc(-62*var(--scale))] max-lg:before:w-[calc(828*var(--scale))] max-lg:before:h-[calc(400*var(--scale))] max-lg:before:top-[calc(-60*var(--scale))] relative before:content-[''] before:absolute before:bg-black before:w-[calc(1247*var(--scale))] before:h-[calc(735*var(--scale))] before:top-[calc(-91*var(--scale))] before:left-[calc(-125*var(--scale))] before:-z-10">
           <div className="max-sm:flex-col max-sm:gap-[calc(9*var(--scale))] max-sm:px-[calc(14*var(--scale))] max-md:mb-[calc(37*var(--scale))] max-lg:gap-[calc(33*var(--scale))] max-lg:mb-[calc(47*var(--scale))] flex text-white gap-[calc(53*var(--scale))] mb-[calc(80*var(--scale))]">
             <h2 className="max-sm:leading-[1.4]  max-lg:max-w-[calc(137*var(--scale))] max-lg:leading-[1.15] text-[calc(1*var(--size-38))] leading-[1.16] tracking-[calc(-0.9*var(--scale))] font-bold my-auto mx-0 max-w-[calc(228*var(--scale))]">
@@ -55,18 +56,12 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
           >
             <div className="max-sm:left-[calc(-28*var(--scale))] max-sm:h-[calc(200*var(--scale))] max-sm:w-[calc(323*var(--scale))] max-md:h-[calc(338*var(--scale))] max-lg:h-[calc(404*var(--scale))] h-[calc(560*var(--scale))] w-full relative">
               <ScrollImage
-                className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-                src={imageUrl}
+                src={clearImageUrl}
+                blurImageUrl={blurImageUrl}
                 alt="The 360 ONE Wealth Suite"
                 title="The 360 ONE Wealth Suite"
-                fill={true}
-              />
-              <Image
-                className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-                src={imageUrl}
-                alt="The 360 ONE Wealth Suite"
-                title="The 360 ONE Wealth Suite"
-                fill={true}
+                width={1330}
+                height={560}
               />
               <div className="max-sm:w-[calc(66*var(--scale))] max-sm:h-[calc(66*var(--scale))] max-sm:right-[calc(-31*var(--scale))] max-sm:top-[calc(16*var(--scale))] max-md:right-[calc(19*var(--scale))] max-lg:w-[calc(82*var(--scale))] max-lg:h-[calc(81*var(--scale))] max-lg:top-[calc(-33*var(--scale))] flex justify-center items-center absolute w-[calc(117*var(--scale))] h-[calc(115*var(--scale))] top-[calc(-45*var(--scale))] right-[calc(37*var(--scale))] z-10 bg-white">
                 <Image
@@ -74,8 +69,8 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
                   className="max-sm:w-[calc(33*var(--scale))] max-sm:h-[calc(45*var(--scale))] max-lg:w-[calc(41*var(--scale))] max-lg:h-[calc(56*var(--scale))] w-[calc(56.5*var(--scale))] h-[calc(75*var(--scale))]"
                   alt="360 One Wealth Management"
                   title="360 One Wealth Management"
-                  height={75}
-                  width={56.5}
+                  height={100}
+                  width={76}
                 />
               </div>
             </div>

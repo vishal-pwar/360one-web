@@ -24,7 +24,7 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
         return (
           <div
             key={cardItem?.title}
-            className={`max-sm:min-w-[calc(247*var(--scale))] max-sm:p-[calc(20*var(--scale))calc(25*var(--scale))] max-sm:translate-y-[calc(-80*var(--scale))] max-lg:min-w-[calc(281*var(--scale))] max-lg:p-[calc(21*var(--scale))calc(25*var(--scale))] max-lg:h-[calc(230*var(--scale))] min-w-[calc(439*var(--scale))] h-[calc(358*var(--scale))] bg-white p-[calc(30*var(--scale))calc(40*var(--scale))] flex flex-col overflow-hidden transition ease-linear duration-300
+            className={`max-sm:min-w-[calc(247*var(--scale))] max-sm:p-[calc(20*var(--scale))calc(25*var(--scale))] max-sm:translate-y-[calc(-80*var(--scale))] max-sm:hover:translate-y-[calc(0*var(--scale))] max-lg:min-w-[calc(281*var(--scale))] max-lg:p-[calc(21*var(--scale))calc(25*var(--scale))] max-lg:h-[calc(230*var(--scale))] min-w-[calc(439*var(--scale))] h-[calc(358*var(--scale))] bg-white p-[calc(30*var(--scale))calc(40*var(--scale))] flex flex-col justify-start overflow-hidden transition ease-linear duration-300
                                 max-lg:hover:min-h-[calc(350*var(--scale))] hover:max-h-[calc(900*var(--scale))] hover:h-max hover:mt-0 hover:transition hover:ease-in-out hover:duration-300 hover:text-white hover:min-h-[calc(550*var(--scale))] ${
                                   page === "asset"
                                     ? "hover:bg-asset-purple"
@@ -35,7 +35,7 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
           >
             <div
               className={`max-lg:w-[calc(34*var(--scale))] max-lg:h-[calc(41*var(--scale))] max-lg:mb-[calc(16*var(--scale))] w-[calc(53*var(--scale))] h-[calc(64*var(--scale))] mb-[calc(24*var(--scale))] mt-auto ${
-                activeId === index && "hidden"
+                activeId === index && "opacity-0 fixed"
               }`}
             >
               <Image

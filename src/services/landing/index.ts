@@ -19,7 +19,8 @@ export async function getCommitmentSection() {
       commitment: {
         populate: {
           sections: { populate: { cards: { populate: { icon: true } } } },
-          image: true,
+          clearImage: true,
+          blurImage: true,
         },
       },
     },
@@ -36,7 +37,7 @@ export async function getOfferingsSection() {
     populate: {
       offering: {
         populate: {
-          products: { populate: ["image", "logo"] },
+          products: { populate: ["clearImage", "blurImage", "logo"] },
         },
       },
     },

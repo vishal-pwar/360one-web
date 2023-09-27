@@ -18,7 +18,7 @@ const VideoPLayer = ({
     <>
       {isVisible ? (
         videoUrl && (
-          <div className="fixed top-0 left-0 right-0 bottom-0 h-auto w-full z-[400] bg-black m-0 p-0 overflow-hidden flex items-center justify-center no-scrollbar">
+          <div className="fixed top-0 left-0 right-0 bottom-0 h-full w-full z-[400] bg-black m-0 p-0 overflow-hidden flex items-center justify-center no-scrollbar">
             <div
               className="absolute top-[calc(30*var(--scale))] right-[calc(30*var(--scale))] h-[calc(30*var(--scale))] w-[calc(30*var(--scale))] cursor-pointer z-20"
               onClick={handleClose}
@@ -27,6 +27,7 @@ const VideoPLayer = ({
             </div>
             <div className="bg-black absolute top-[50%] -translate-y-[50%] object-contain overflow-hidden">
               <video
+                className="object-contain h-screen w-screen"
                 src={videoUrl}
                 autoPlay
                 loop

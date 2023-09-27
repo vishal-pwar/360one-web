@@ -7,13 +7,15 @@ import CardsList from "../cards-list";
 
 const CommitmentSection = async () => {
   const response = await getCommitmentSection();
-  const { title, text, image, sections } = response.data.attributes.commitment;
-  const url = getStrapiMedia(image.data.attributes.url);
+  const { title, text, clearImage, blurImage, sections } =
+    response.data.attributes.commitment;
+  const clearImageUrl = getStrapiMedia(clearImage.data.attributes.url);
+  const blurImageUrl = getStrapiMedia(blurImage.data.attributes.url);
 
   const firstSection = sections[0];
   const secondSection = sections[1];
 
-  if (!title || !text || !image || !sections) return null;
+  if (!title || !text || !clearImage || !sections) return null;
 
   return (
     <section className="max-sm:pt-[calc(40*var(--scale))] max-sm:pb-0 max-sm:px-[calc(22*var(--scale))] max-lg:pt-[calc(60*var(--scale))] max-lg:px-[calc(62*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-lg:pb-[calc(24*var(--scale))] p-[calc(100*var(--scale))calc(125*var(--scale))calc(50*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
@@ -26,15 +28,8 @@ const CommitmentSection = async () => {
         </p>
         <div className="max-sm:h-[calc(172*var(--scale))] max-sm:ml-[calc(22*var(--scale))] max-md:h-[calc(268*var(--scale))] max-lg:h-[calc(358*var(--scale))] w-full h-[calc(560*var(--scale))] relative">
           <ScrollImage
-            src={url}
-            alt="360 ONE Commitment"
-            title="The 360 ONE Commitment"
-            height={1680}
-            width={3990}
-          />
-          <Image
-            className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
-            src={url}
+            src={clearImageUrl}
+            blurImageUrl={blurImageUrl}
             alt="360 ONE Commitment"
             title="The 360 ONE Commitment"
             height={1680}

@@ -20,9 +20,9 @@ const Banner = async ({ page }: BannerProps) => {
 
   return (
     <section className="max-sm:mb-0 max-md:mb-[calc(230*var(--scale))] max-lg:mb-[calc(170*var(--scale))] mb-[calc(190*var(--scale))]">
-      <div className="max-sm:pt-[calc(100.5*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-sm:pb-[calc(10*var(--scale))] max-md:pt-[calc(92.5*var(--scale))] max-md:px-[calc(29*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-lg:pl-[calc(86*var(--scale))] max-lg:pr-[calc(35*var(--scale))] max-lg:pt-[calc(122*var(--scale))] pt-[calc(178*var(--scale))] pb-0 px-[calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
+      <div className="max-sm:pt-[calc(110.5*var(--scale))] max-sm:px-[calc(22*var(--scale))] max-sm:pb-[calc(10*var(--scale))] max-md:pt-[calc(102.5*var(--scale))] max-md:px-[calc(29*var(--scale))] max-md:pb-[calc(48*var(--scale))] max-lg:pl-[calc(86*var(--scale))] max-lg:pr-[calc(35*var(--scale))] max-lg:pt-[calc(122*var(--scale))] pt-[calc(178*var(--scale))] pb-0 px-[calc(125*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
         <div className="relative">
-          <div className="max-sm:w-[calc(308*var(--scale))] max-sm:h-[calc(200*var(--scale))] max-sm:ml-[calc(-21*var(--scale))] max-md:w-[calc(653*var(--scale))] max-md:h-[calc(362*var(--scale))] max-lg:w-[calc(767*var(--scale))] max-lg:h-[calc(405*var(--scale))] w-[calc(1200*var(--scale))] h-[calc(632*var(--scale))] relative">
+          <div className="max-sm:w-[calc(308*var(--scale))] max-sm:h-[calc(200*var(--scale))] max-sm:ml-[calc(-22*var(--scale))] max-md:w-[calc(653*var(--scale))] max-md:h-[calc(362*var(--scale))] max-lg:w-[calc(767*var(--scale))] max-lg:h-[calc(405*var(--scale))] w-[calc(1200*var(--scale))] h-[calc(632*var(--scale))] relative">
             <Image
               className="w-full h-full object-cover object-center"
               src={imageUrl}

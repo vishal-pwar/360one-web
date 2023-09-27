@@ -27,17 +27,7 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: var(--font-space-grotesk);
-}
-
-p,
-li,
-span {
+body {
   font-family: var(--font-space-grotesk);
 }
 
@@ -63,7 +53,7 @@ span {
   --size-42: calc(42 * var(--scale));
 }
 
-@media only screen and (max-width: 1024px) {
+@media not all and (min-width: 1024px) {
   :root {
     --ideal-viewport-width: 1024;
     --size-14: calc(12 * var(--scale));
@@ -78,7 +68,7 @@ span {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media not all and (min-width: 768px) {
   :root {
     --ideal-viewport-width: 768;
     --size-14: calc(12 * var(--scale));
@@ -92,7 +82,7 @@ span {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media not all and (min-width: 450px) {
   :root {
     --ideal-viewport-width: 375;
     --size-14: calc(12 * var(--scale));
