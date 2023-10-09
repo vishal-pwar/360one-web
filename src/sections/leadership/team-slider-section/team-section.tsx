@@ -1,7 +1,7 @@
 "use client";
-import { useRef, useState } from "react";
-import SliderSection from "@/components/slider-section";
 import SliderContent from "@/components/slider-content";
+import SliderSection from "@/components/slider-section";
+import { useRef, useState } from "react";
 
 const TeamSliderSection = ({
   cards,
@@ -39,7 +39,7 @@ const TeamSliderSection = ({
         </div>
       </div>
       <section
-        className={`max-sm:pt-[calc(30*var(--scale))] max-sm:pb-[calc(37*var(--scale))] max-md:pt-[calc(45*var(--scale))] max-md:pb-[calc(28*var(--scale))] max-md:flex-col-reverse max-md:items-start max-lg:pt-[calc(38.5*var(--scale))] max-lg:pb-[calc(33.5*var(--scale))] flex flex-row-reverse pt-[calc(63*var(--scale))] pb-[calc(80*var(--scale))] items-center relative 
+        className={`overflow-hidden max-sm:pt-[calc(30*var(--scale))] max-sm:pb-[calc(37*var(--scale))] max-md:pt-[calc(45*var(--scale))] max-md:pb-[calc(28*var(--scale))] max-md:flex-col-reverse max-md:items-start max-lg:pt-[calc(38.5*var(--scale))] max-lg:pb-[calc(33.5*var(--scale))] flex flex-row-reverse pt-[calc(63*var(--scale))] pb-[calc(80*var(--scale))] items-center relative 
         before:transition-all before:ease-in-out before:duration-300 before:bg-black ${
           activeSlideId > -1
             ? "max-md:before:w-full max-lg:before:w-[calc(998*var(--scale))] max-lg:before:translate-x-0 before:w-[calc(1476*var(--scale))] before:translate-x-[8.4%]"
