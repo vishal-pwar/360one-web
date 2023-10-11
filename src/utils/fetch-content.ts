@@ -1,24 +1,36 @@
 import qs from "qs";
 import { getStrapiURL } from "./api-helpers";
 
-export type FetchResponse<T> = {
-  data: {
-    id: number;
-    attributes: {
-      createdAt: string;
-      updatedAt: string;
-      publishedAt: string;
-      [key: string]: any;
-    } & T;
-  };
+export type FetchResponse<T, A> = {
+  data: A extends true
+    ? [
+        {
+          id: number;
+          attributes: {
+            createdAt: string;
+            updatedAt: string;
+            publishedAt: string;
+            [key: string]: any;
+          } & T;
+        },
+      ]
+    : {
+        id: number;
+        attributes: {
+          createdAt: string;
+          updatedAt: string;
+          publishedAt: string;
+          [key: string]: any;
+        } & T;
+      };
   meta: {};
 };
 
-export async function fetchContent<T = unknown>(
+export async function fetchContent<T = unknown, A = false>(
   path: string,
   urlParamsObject = {},
   options: RequestInit = {}
-): Promise<FetchResponse<T>> {
+): Promise<FetchResponse<T, A>> {
   try {
     // Merge default and user options
     const mergedOptions: RequestInit = {

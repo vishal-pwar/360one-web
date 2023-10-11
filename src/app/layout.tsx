@@ -1,5 +1,9 @@
-import NextSEOComponent from "@/components/next-seo/NextSEO";
-import { getCanonical } from "@/services/canonical";
+import Popup from "@/components/popup";
+import { headers } from "next/headers";
+
+import NextSEOComponent from "@/components/next-seo";
+import { getOrganizationCanonical } from "@/services/organization-canonical";
+import { getPopup } from "@/services/pop-up";
 import type { Metadata } from "next";
 import { hankenGrotesk, spaceGrotesk } from "./fonts";
 import "./globals.css";
@@ -15,25 +19,28 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const response = await getCanonical();
-  const { address, contactPoint, ...canonical } = response?.data?.attributes;
+  const res = await getPopup();
+  const popupDetails = res?.data?.attributes;
+  const headersList = headers();
+  const url = headersList.get("x-url") || "";
+  const orgs = await getOrganizationCanonical();
+  const canonical = orgs.data.find(
+    (c) => c.attributes.page.data.attributes.url === url
+  );
 
   return (
     <html className="scroll-smooth" lang="en">
       <head>
-        <NextSEOComponent
-          address={address}
-          canonical={canonical}
-          contactPoint={contactPoint}
-        />
         <link
           rel="icon"
           type="image/x-icon"
           href="/assets/favicons/favicon.png"
         />
+        {canonical && <NextSEOComponent canonicalData={canonical} />}
       </head>
 
       <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
+        <Popup popup={popupDetails} />
         {children}
       </body>
     </html>
