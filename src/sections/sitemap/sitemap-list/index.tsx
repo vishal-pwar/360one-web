@@ -16,7 +16,6 @@ type Props = {
 
 const SitemapList = (props: Props) => {
   const { pages } = props;
-  console.log(pages);
   return (
     <div className="mt-[100px] max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-md:p-[calc(34*var(--scale))calc(62*var(--scale))] max-lg:p-[calc(34*var(--scale))calc(80*var(--scale))] w-full p-[calc(50*var(--scale))calc(125*var(--scale))]">
       <h1 className="font-bold text-2xl">360 ONE</h1>
