@@ -1,10 +1,13 @@
 import Popup from "@/components/popup";
+
 import { headers } from "next/headers";
 
+import Mixpanel from "@/components/mixpanel";
 import NextSEOComponent from "@/components/next-seo";
 import { getMetadata } from "@/services/meta-data";
 import { getOrganizationCanonical } from "@/services/organization-canonical";
 import { getPopup } from "@/services/pop-up";
+import React from "react";
 import { hankenGrotesk, spaceGrotesk } from "./fonts";
 import "./globals.css";
 
@@ -56,6 +59,7 @@ export default async function RootLayout({
       </head>
 
       <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
+        <Mixpanel />
         <Popup popup={popupDetails} />
         {children}
       </body>

@@ -11,7 +11,6 @@ type PopupDetails = {
 
 const Popup = (props: PopupDetails) => {
   const { popup } = props;
-  console.log(popup);
   return (
     <div>
       <div>{popup?.title}</div>
