@@ -3,58 +3,80 @@ import { Link } from "@/components/link";
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ScrollUp from "../scroll-up";
-import { usePathname } from "next/navigation";
 
 const responsiveNavItems = [
   {
-    title: {
-      top: "",
-      bottom: "Home",
-    },
+    title: "Home",
     external: false,
     url: "/",
   },
   {
-    title: {
-      top: "About",
-      bottom: "Us",
-    },
+    title: "About Us",
+
     external: false,
     url: "/about-us",
   },
   {
-    title: {
-      top: "360 ONE",
-      bottom: "Wealth",
-    },
+    title: "360 ONE Wealth",
+
     external: false,
     url: "/wealth-management",
   },
   {
-    title: {
-      top: "360 ONE",
-      bottom: "Asset",
-    },
+    title: "360 ONE Asset",
+
     external: false,
     url: "/asset-management",
   },
   {
-    title: {
-      top: "Investor",
-      bottom: "Relations",
-    },
+    title: "Investor Relations",
+
     external: true,
     url: "https://www.360.one/investor-relations.html",
   },
   {
-    title: {
-      top: "Reach",
-      bottom: "Us",
-    },
+    title: "Reach Us",
     external: true,
     url: "https://www.iiflwealth.com/Connect/Reach-Us",
+  },
+  {
+    title: "Client Login",
+    url: "#",
+    children: [
+      {
+        title: "Portfolio Login",
+        href: "https://wealthlogin.360.one/Wealth/#/login",
+        external: true,
+      },
+      {
+        title: "Online Trading",
+        href: "https://onlinetrade.360.one/Express5/login#",
+        external: true,
+      },
+      {
+        title: "360 ONE Private Login",
+        href: "https://wapp-private.360.one/wealthspectrum/app/loginWith",
+        external: true,
+      },
+      {
+        title: "View PMS portfolio",
+        href: "https://wappamc.360.one/wealthspectrum/app/login",
+        external: true,
+      },
+      {
+        title: "Invest in MF online",
+        href: "https://iiflmf.com/",
+        external: true,
+      },
+      {
+        title: "Distributor Login",
+        href: "https://wappamc.360.one/wealthspectrum/app/login",
+        external: true,
+      },
+    ],
   },
 ];
 
@@ -127,25 +149,50 @@ export const Header = ({ items }: { items: any }) => {
                 <li
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
-                  key={navItem.name}
+                  key={index}
                   className="relative"
                 >
                   <Link
                     className={`text-[calc(1*var(--size-18))] ${
                       navItem.href === pathname && "font-bold"
-                    }`}
+                    } peer`}
                     href={navItem.href || "/"}
                     target={`${navItem.external ? "_blank" : ""}`}
                   >
                     {navItem.name}
                   </Link>
-                  <span
-                    className={`absolute bottom-0 left-1/2 w-[45px] h-[2px] bg-black -translate-x-1/2 ease-out duration-500 ${
-                      activeId === index || navItem.href === pathname
-                        ? "scale-x-1"
-                        : "scale-x-0"
-                    }`}
-                  ></span>
+                  {navItem.children?.length === 0 && (
+                    <span
+                      className={`absolute bottom-0 left-1/2 w-[45px] h-[2px] bg-black -translate-x-1/2 ease-out duration-500 ${
+                        activeId === index || navItem.href === pathname
+                          ? "scale-x-1"
+                          : "scale-x-0"
+                      }`}
+                    ></span>
+                  )}
+                  {navItem.children?.length > 0 && (
+                    <div
+                      key={navItem.name}
+                      className="hidden p-3 peer-hover:block hover:block absolute right-0 w-40 bg-white border border-gray-300 rounded shadow-lg z-10"
+                    >
+                      <ul className="flex flex-col gap-5">
+                        {navItem.children.map((child: any) => (
+                          <li key={child.name}>
+                            <Link
+                              href={child.href || "/"}
+                              target={`${child.external ? "_blank" : ""}`}
+                              key={child.title}
+                              className={`text-[calc(1*var(--size-18))] ${
+                                navItem.href === pathname && "font-bold"
+                              } peer`}
+                            >
+                              {child.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </li>
               );
             })}
@@ -184,25 +231,47 @@ export const Header = ({ items }: { items: any }) => {
             } flex transition-transform ease-in-out duration-[0.8s] absolute z-[400] max-sm:h-screen top-[80%] left-0 w-full bg-black pb-[calc(60*var(--scale))] overflow-y-auto`}
           >
             <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:h-full max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
-              <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(30*var(--scale))]">
+              <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(20*var(--scale))]">
                 {responsiveNavItems.map((item, index) => {
-                  return (
-                    <li key={item.title.bottom + item.title.top}>
-                      <Link
-                        className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
-                        href={item.url}
-                        target={`${item.external ? "_blank" : ""}`}
-                        onClick={handleResponsiveNav}
-                      >
-                        <span className="max-sm:text-[calc(16*var(--scale))] text-[calc(1*var(--size-20))]">
-                          {item.title.top}
+                  if (item.children) {
+                    return (
+                      <>
+                        <span className=" text-white font-bold max-sm:text-[calc(18*var(--scale))] text-[calc(1*var(--size-38))]">
+                          {item.title}
                         </span>
-                        <span className="max-sm:text-[calc(24*var(--scale))] text-[calc(1*var(--size-38))]">
-                          {item.title.bottom}
-                        </span>
-                      </Link>
-                    </li>
-                  );
+                        {item.children.map((c) => {
+                          return (
+                            <li key={c.title}>
+                              <Link
+                                className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
+                                href={c.href}
+                                target={`${c.external ? "_blank" : ""}`}
+                                onClick={handleResponsiveNav}
+                              >
+                                <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
+                                  | {c.title}
+                                </span>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </>
+                    );
+                  } else
+                    return (
+                      <li key={item.title}>
+                        <Link
+                          className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
+                          href={item.url}
+                          target={`${item.external ? "_blank" : ""}`}
+                          onClick={handleResponsiveNav}
+                        >
+                          <span className="max-sm:text-[calc(18*var(--scale))] text-[calc(1*var(--size-38))]">
+                            {item.title}
+                          </span>
+                        </Link>
+                      </li>
+                    );
                 })}
               </ul>
             </div>
