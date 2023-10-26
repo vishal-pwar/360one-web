@@ -121,7 +121,7 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
             : ""
         } transition-all ease-[ease] duration-300 ${
           responsiveNavActive ? "bg-black" : "bg-white"
-        } ${ticker ? "top-10" : "top-0"} `}
+        } ${ticker ? "top-8" : "top-0"} `}
       >
         <ScrollUp />
         <div className="max-md:items-center w-full max-w-[calc(1600*var(--scale))] flex justify-between">
