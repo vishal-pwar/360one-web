@@ -57,10 +57,10 @@ export default async function RootLayout({
         />
         {canonical && <NextSEOComponent canonicalData={canonical} />}
       </head>
-
       <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
         <Mixpanel />
         <Popup popup={popupDetails} />
+
         {children}
       </body>
     </html>
