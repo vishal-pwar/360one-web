@@ -12,6 +12,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@types/react-html-parser": "^2.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "mixpanel-browser": "^2.47.0",
@@ -20,6 +21,7 @@
     "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-html-parser": "^2.0.2",
     "swiper": "^10.1.0"
   },
   "devDependencies": {

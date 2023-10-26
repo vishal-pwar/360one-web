@@ -1,9 +1,8 @@
-import Popup from "@/components/popup";
-
 import { headers } from "next/headers";
 
 import Mixpanel from "@/components/mixpanel";
 import NextSEOComponent from "@/components/next-seo";
+import Popup from "@/components/popup";
 import { getMetadata } from "@/services/meta-data";
 import { getOrganizationCanonical } from "@/services/organization-canonical";
 import { getPopup } from "@/services/pop-up";
@@ -38,10 +37,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await getPopup();
-  const popupDetails = res?.data?.attributes;
   const headersList = headers();
   const url = headersList.get("x-url") || "";
+  const res = await getPopup();
+  const popupData = res.data.find(
+    (p) => p.attributes.page.data.attributes.url === url
+  );
+
   const orgs = await getOrganizationCanonical();
   const canonical = orgs.data.find(
     (c) => c.attributes.page.data.attributes.url === url
@@ -59,8 +61,7 @@ export default async function RootLayout({
       </head>
       <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
         <Mixpanel />
-        <Popup popup={popupDetails} />
-
+        <Popup popup={popupData} />
         {children}
       </body>
     </html>
