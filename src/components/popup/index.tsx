@@ -47,7 +47,7 @@ const Popup = (props: PopupDetails) => {
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-black opacity-50"></div>
-          <div className="relative bg-white rounded shadow-lg min-w-[600px] min-h-[500px] flex flex-col md:flex-row gap-5">
+          <div className="relative bg-white rounded shadow-lg w-[min(100%,700px)] h-[min(100%,500px)] flex flex-col md:flex-row gap-5">
             <div className="absolute top-0 left-0 p-4">
               <Image
                 className="w-full h-full"
@@ -73,7 +73,7 @@ const Popup = (props: PopupDetails) => {
                   if (node.name === "h1") {
                     return node.children?.map((c, i) => (
                       <h1
-                        className="max-lg:w-[calc(235*var(--scale))] text-[calc(1*var(--size-38))] font-bold whitespace-nowrap"
+                        className="max-lg:w-[calc(235*var(--scale))] text-[calc(1*var(--size-38))] font-bold"
                         key={c.data}
                       >
                         {c.data}

@@ -8,8 +8,8 @@ const Ticker = (props: TickerProps) => {
 
   return (
     <div className="text-white z-40 fixed top-0 bg-black w-full">
-      <div className="relative flex overflow-x-hidden">
-        <div className="py-1 animate-marquee whitespace-nowrap hover:pause">
+      <div className="relative overflow-x-hidden group">
+        <div className="py-1 flex justify-end animate-marquee whitespace-nowrap group-hover:pause">
           {ticker?.attributes?.href.length > 0 ? (
             <Link
               href={ticker.attributes.href}

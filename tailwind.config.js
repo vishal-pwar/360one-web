@@ -25,11 +25,11 @@ module.exports = {
       },
     },
     animation: {
-      marquee: "marquee 25s linear infinite",
+      marquee: "marquee 10s linear infinite",
     },
     keyframes: {
       marquee: {
-        "0%": { transform: "translateX(100%)" },
+        "0%": { transform: "translateX(20%)" },
         "100%": { transform: "translateX(-100%)" },
       },
     },
