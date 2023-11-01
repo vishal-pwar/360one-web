@@ -7,6 +7,8 @@ export async function getPopup() {
     populate: {
       image: true,
       page: true,
+      button: true,
+      list: true,
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
