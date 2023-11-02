@@ -61,7 +61,7 @@ export default async function RootLayout({
       </head>
       <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
         <Mixpanel />
-        <Popup popup={popupData} />
+        {popupData ? <Popup popup={popupData} /> : null}
         {children}
       </body>
     </html>

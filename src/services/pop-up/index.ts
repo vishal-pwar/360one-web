@@ -9,6 +9,7 @@ export async function getPopup() {
       page: true,
       button: true,
       list: true,
+      ctaUrl: true,
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
