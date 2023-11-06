@@ -18,6 +18,26 @@ export function getStrapiMedia(url: string | null) {
   return `${getStrapiURL()}${url}`;
 }
 
+export function identifyFilename(urlString: string) {
+  const url = new URL(urlString);
+  const filename = url.pathname.substring(url.pathname.lastIndexOf("/") + 1);
+  return filename ?? "doc.pdf";
+}
+
+export const downloadFiles = async (urls: string[]) => {
+  if (!urls) return;
+  for (const url of urls) {
+    if (url.length === 0) continue;
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.download = identifyFilename(url);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
 export function formatDate(dateString: string) {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
