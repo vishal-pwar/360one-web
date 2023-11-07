@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+
   .scrollbar::-webkit-scrollbar {
     width: calc(10 * var(--scale));
     height: calc(10 * var(--scale));
