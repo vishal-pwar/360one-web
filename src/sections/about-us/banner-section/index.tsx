@@ -5,11 +5,19 @@ import VideoPLayer from "@/components/video-player";
 
 const AboutBannerSection = async () => {
   const response = await getAboutHeroSection();
-  const { title, text, video, bannerImage, icon } =
-    response?.data?.attributes?.hero;
+  const title = response?.data?.attributes?.hero?.title;
+  const text = response?.data?.attributes?.hero?.text;
+  const video = response?.data?.attributes?.hero?.video;
+  const bannerImage = response?.data?.attributes?.hero?.bannerImage;
+  const icon = response?.data?.attributes?.hero?.icon;
   const bannerImageUrl = getStrapiMedia(bannerImage?.data?.attributes?.url);
   const videoUrl = getStrapiMedia(video?.data?.attributes?.url);
   const playIconUrl = getStrapiMedia(icon?.data?.attributes?.url);
+
+  console.log(
+    "response?.data?.attributes?.hero------------------->",
+    response?.data
+  );
 
   return (
     <section className="relative">

@@ -10,13 +10,15 @@ const Footer = async ({ page = "home" }: { page?: string }) => {
   const response = await getFooter();
   const assetResponse = await getAssetFooter();
   const wealthResponse = await getWealthFooter();
-  const { sections, legals, copyrights } = response?.data?.attributes;
-  const { socials } =
+  const sections = response?.data?.attributes?.sections;
+  const legals = response?.data?.attributes?.legals;
+  const copyrights = response?.data?.attributes?.copyrights;
+  const socials =
     page === "home"
-      ? response?.data?.attributes
+      ? response?.data?.attributes?.socials
       : page === "asset"
-      ? assetResponse?.data?.attributes?.footer
-      : wealthResponse?.data.attributes?.footer;
+      ? assetResponse?.data?.attributes?.footer?.socials
+      : wealthResponse?.data.attributes?.footer?.socials;
 
   return (
     <footer className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-md:p-[calc(34*var(--scale))calc(62*var(--scale))] max-lg:p-[calc(34*var(--scale))calc(80*var(--scale))] w-full p-[calc(50*var(--scale))calc(125*var(--scale))]">

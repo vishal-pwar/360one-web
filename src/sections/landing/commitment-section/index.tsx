@@ -7,13 +7,16 @@ import CardsList from "../cards-list";
 
 const CommitmentSection = async () => {
   const response = await getCommitmentSection();
-  const { title, text, clearImage, blurImage, sections } =
-    response.data.attributes.commitment;
-  const clearImageUrl = getStrapiMedia(clearImage.data.attributes.url);
-  const blurImageUrl = getStrapiMedia(blurImage.data.attributes.url);
+  const title = response?.data?.attributes?.commitment?.title;
+  const text = response?.data?.attributes?.commitment?.text;
+  const clearImage = response?.data?.attributes?.commitment?.clearImage;
+  const blurImage = response?.data?.attributes?.commitment?.blurImage;
+  const sections = response?.data?.attributes?.commitment?.sections;
+  const clearImageUrl = getStrapiMedia(clearImage?.data?.attributes?.url);
+  const blurImageUrl = getStrapiMedia(blurImage?.data?.attributes?.url);
 
-  const firstSection = sections[0];
-  const secondSection = sections[1];
+  const firstSection = sections?.[0];
+  const secondSection = sections?.[1];
 
   if (!title || !text || !clearImage || !sections) return null;
 

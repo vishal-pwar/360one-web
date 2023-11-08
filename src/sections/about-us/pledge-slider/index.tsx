@@ -8,7 +8,7 @@ interface PledgeSliderProps {
 }
 
 const PledgeSlider = ({ cards }: PledgeSliderProps) => {
-  const newCardsArray = [...cards, ...cards, ...cards];
+  const newCardsArray = cards ? [...cards, ...cards, ...cards] : [];
   const [scrollPos, setScrollPos] = useState(0);
   const [transitionDuration, setTransitionDuration] = useState(500);
   const [isVisible, setIsVisible] = useState(true);

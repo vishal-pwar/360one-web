@@ -40,12 +40,12 @@ export default async function RootLayout({
   const headersList = headers();
   const url = headersList.get("x-url") || "";
   const res = await getPopup();
-  const popupData = res.data.find(
+  const popupData = res?.data?.find(
     (p) => p.attributes.page.data.attributes.url === url
   );
 
   const orgs = await getOrganizationCanonical();
-  const canonical = orgs.data.find(
+  const canonical = orgs?.data?.find(
     (c) => c.attributes.page.data.attributes.url === url
   );
 

@@ -3,7 +3,9 @@ import PledgeSlider from "../pledge-slider";
 
 const PledgeSection = async () => {
   const response = await getPledgeSection();
-  const { title, text, cards } = response?.data?.attributes?.pledge;
+  const title = response?.data?.attributes?.pledge?.title;
+  const text = response?.data?.attributes?.pledge?.text;
+  const cards = response?.data?.attributes?.pledge?.cards;
 
   return (
     <section>
@@ -13,10 +15,12 @@ const PledgeSection = async () => {
             <h2 className="max-md:text-[calc(20*var(--scale))] max-md:w-full text-[calc(1*var(--size-38))] mb-[calc(8*var(--scale))] whitespace-nowrap font-bold">
               {title}
             </h2>
-            <div
-              className="max-md:text-[calc(14*var(--scale))] max-md:leading-[1.43] max-md:w-full max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.43] flex flex-col leading-[1.65] text-[calc(1*var(--size-20))]"
-              dangerouslySetInnerHTML={{ __html: text }}
-            ></div>
+            {text && (
+              <div
+                className="max-md:text-[calc(14*var(--scale))] max-md:leading-[1.43] max-md:w-full max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.43] flex flex-col leading-[1.65] text-[calc(1*var(--size-20))]"
+                dangerouslySetInnerHTML={{ __html: text }}
+              ></div>
+            )}
           </div>
           <PledgeSlider cards={cards} />
         </div>

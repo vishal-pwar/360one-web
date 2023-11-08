@@ -6,8 +6,11 @@ import VideoPLayer from "@/components/video-player";
 
 const JourneySection = async () => {
   const response = await getJourneySection();
-  const { title, text, document, video, icon } =
-    response?.data?.attributes?.journey;
+  const title = response?.data?.attributes?.journey?.title;
+  const text = response?.data?.attributes?.journey?.text;
+  const document = response?.data?.attributes?.journey?.document;
+  const video = response?.data?.attributes?.journey?.video;
+  const icon = response?.data?.attributes?.journey?.icon;
   const documentUrl = getStrapiMedia(document?.data?.attributes?.url);
   const videoUrl = getStrapiMedia(video?.data?.attributes?.url);
   const playIconUrl = getStrapiMedia(icon?.data?.attributes?.url);

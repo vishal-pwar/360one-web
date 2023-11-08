@@ -3,7 +3,10 @@ import LeadershipSlider from "../leadership-slider";
 
 const LeadershipSection = async () => {
   const response = await getLeadershipSection();
-  const { title, text, cards, link } = response?.data?.attributes?.leadership;
+  const title = response?.data?.attributes?.leadership?.title;
+  const text = response?.data?.attributes?.leadership?.text;
+  const cards = response?.data?.attributes?.leadership?.cards;
+  const link = response?.data?.attributes?.leadership?.link;
 
   return (
     <section

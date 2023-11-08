@@ -6,10 +6,10 @@ interface AboutUsCardsProps {
 }
 
 const AboutUsCards = ({ cards }: AboutUsCardsProps) => {
-  const cardsList = cards.slice(0, 6);
+  const cardsList = cards?.slice(0, 6);
   return (
     <div className="max-sm:flex max-sm:flex-col max-sm:gap-y-[calc(17*var(--scale))] max-md:gap-y-[calc(23*var(--scale))] max-md:grid-rows-2 max-lg:gap-y-[calc(40*var(--scale))] flex-1 grid grid-cols-2 grid-rows-2 place-items-center gap-y-[calc(71*var(--scale))] py-[calc(10*var(--scale))]">
-      {cardsList.map((card: any, index: number) => {
+      {cardsList?.map((card: any, index: number) => {
         const totalRows = Math.ceil(cardsList.length / 2);
         const rowNumber = Math.ceil((index + 1) / 2);
         return (

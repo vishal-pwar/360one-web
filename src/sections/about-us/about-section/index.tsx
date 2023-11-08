@@ -4,7 +4,10 @@ import AboutUsCards from "../about-us-cards";
 
 const AboutUsSection = async () => {
   const response = await getAboutUsSection();
-  const { title, text, video, cards } = response?.data?.attributes?.aboutUs;
+  const title = response?.data?.attributes?.aboutUs?.title;
+  const text = response?.data?.attributes?.aboutUs?.text;
+  const video = response?.data?.attributes?.aboutUs?.video;
+  const cards = response?.data?.attributes?.aboutUs?.cards;
   const videoUrl = getStrapiMedia(video?.data?.attributes?.url);
 
   return (

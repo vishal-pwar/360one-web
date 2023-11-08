@@ -12,7 +12,7 @@ interface LeadershipSliderProps {
 }
 
 const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
-  const newCardsArray = [...cards, ...cards, ...cards];
+  const newCardsArray = cards ? [...cards, ...cards, ...cards] : [];
   const [scrollPos, setScrollPos] = useState(0);
   const [transitionDuration, setTransitionDuration] = useState(500);
 

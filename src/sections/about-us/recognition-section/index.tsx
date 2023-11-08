@@ -3,7 +3,9 @@ import RecognitionCards from "../recognition-cards";
 
 const RecognitionSection = async () => {
   const response = await getRecognitionSection();
-  const { title, text, cards } = response?.data?.attributes?.recognition;
+  const title = response?.data?.attributes?.recognition?.title;
+  const text = response?.data?.attributes?.recognition?.text;
+  const cards = response?.data?.attributes?.recognition?.cards;
 
   return (
     <section>

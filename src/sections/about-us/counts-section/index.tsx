@@ -4,7 +4,8 @@ import { Fragment } from "react";
 
 const CountsSection = async () => {
   const response = await getCountSection();
-  const { link, cards } = response?.data?.attributes?.count;
+  const link = response?.data?.attributes?.count?.links;
+  const cards = response?.data?.attributes?.count?.cards;
 
   return (
     <section className="max-sm:h-auto h-[calc(288*var(--scale))] flex items-center bg-black">
