@@ -1,7 +1,7 @@
 import Image from "next/image";
 import UserIcon from "../../../public/assets/icons/outline-communication-user.svg";
-import { getAssetReachUsSection } from "@/services/asset-management";
-import { getWealthReachUsSection } from "@/services/wealth-management";
+import { getAssetReachUsSection } from "@/services/asset";
+import { getWealthReachUsSection } from "@/services/wealth";
 
 interface ReachUsSectionProps {
   page: string;

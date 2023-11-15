@@ -1,5 +1,5 @@
-import { getAssetHeroSection } from "@/services/asset-management";
-import { getWealthHeroSection } from "@/services/wealth-management";
+import { getAssetHeroSection } from "@/services/asset";
+import { getWealthHeroSection } from "@/services/wealth";
 import { getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 

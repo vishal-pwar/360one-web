@@ -1,7 +1,7 @@
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
-import { getAssetFooter } from "@/services/asset-management";
+import { getAssetFooter } from "@/services/asset";
 import { getFooter } from "@/services/footer";
-import { getWealthFooter } from "@/services/wealth-management";
+import { getWealthFooter } from "@/services/wealth";
 import { getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 import Link from "next/link";

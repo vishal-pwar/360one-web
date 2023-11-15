@@ -24,13 +24,13 @@ const responsiveNavItems = [
     title: "360 ONE Wealth",
 
     external: false,
-    url: "/wealth-management",
+    url: "/wealth",
   },
   {
     title: "360 ONE Asset",
 
     external: false,
-    url: "/asset-management",
+    url: "/asset",
   },
   {
     title: "Investor Relations",

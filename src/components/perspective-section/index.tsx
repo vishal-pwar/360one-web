@@ -1,9 +1,9 @@
 import { getHomePerspectiveSection } from "@/services/landing";
-import { getAssetPerspectiveSection } from "@/services/asset-management";
+import { getAssetPerspectiveSection } from "@/services/asset";
 import { formatDate, getStrapiMedia } from "@/utils/api-helpers";
 import Image from "next/image";
 import Link from "next/link";
-import { getWealthPerspectiveSection } from "@/services/wealth-management";
+import { getWealthPerspectiveSection } from "@/services/wealth";
 
 interface PerspectiveSectionProps {
   page: string;

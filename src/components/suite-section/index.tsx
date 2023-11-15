@@ -1,10 +1,10 @@
 import { Link } from "@/ui";
 import Image, { StaticImageData } from "next/image";
 import { ScrollImage } from "../scroll-image";
-import { getAssetSuiteSection } from "@/services/asset-management";
+import { getAssetSuiteSection } from "@/services/asset";
 import { getStrapiMedia } from "@/utils/api-helpers";
 import SuiteCards from "../suite-cards";
-import { getWealthSuiteSection } from "@/services/wealth-management";
+import { getWealthSuiteSection } from "@/services/wealth";
 
 interface SuiteSectionProps {
   page: string;
