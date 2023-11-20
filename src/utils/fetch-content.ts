@@ -2,7 +2,7 @@ import qs from "qs";
 import { getStrapiURL } from "./api-helpers";
 
 export type FetchResponse<T, A> = {
-  data: A extends true
+  data?: A extends true
     ? [
         {
           id: number;
@@ -52,8 +52,11 @@ export async function fetchContent<T = unknown, A = false>(
     return data;
   } catch (error) {
     console.error(error);
-    throw new Error(
-      `Please check if your server is running and you set all the required tokens.`
-    );
+    return Promise.resolve({
+      meta: {},
+    });
+    // throw new Error(
+    //   `Please check if your server is running and you set all the required tokens.`
+    // );
   }
 }

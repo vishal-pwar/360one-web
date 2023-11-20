@@ -4,7 +4,7 @@ import SitemapList from "./sitemap-list";
 const Sitemap = async () => {
   const response = await getPages();
   const pages = response?.data;
-  return <SitemapList pages={pages} />;
+  return pages ? <SitemapList pages={pages} /> : null;
 };
 
 export default Sitemap;

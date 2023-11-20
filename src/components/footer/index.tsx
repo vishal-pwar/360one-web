@@ -18,7 +18,7 @@ const Footer = async ({ page = "home" }: { page?: string }) => {
       ? response?.data?.attributes?.socials
       : page === "asset"
       ? assetResponse?.data?.attributes?.footer?.socials
-      : wealthResponse?.data.attributes?.footer?.socials;
+      : wealthResponse?.data?.attributes?.footer?.socials;
 
   return (
     <footer className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-md:p-[calc(34*var(--scale))calc(62*var(--scale))] max-lg:p-[calc(34*var(--scale))calc(80*var(--scale))] w-full p-[calc(50*var(--scale))calc(125*var(--scale))]">
