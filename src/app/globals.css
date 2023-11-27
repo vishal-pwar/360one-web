@@ -29,6 +29,15 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+  .curated-swiper .swiper-wrapper {
+    display: flex;
+    align-items: end;
+  }
+  @media screen and (min-width: 1024px) {
+    .curated-swiper .swiper-wrapper {
+      gap: 24px;
+    }
+  }
 }
 
 body {
