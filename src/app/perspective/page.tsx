@@ -10,7 +10,7 @@ const page = () => {
       {/* <Header/> */}
       <Viewpoint />
       <CuratedExperence />
-      {/* <OurIps /> */}
+      <OurIps />
     </section>
   );
 };

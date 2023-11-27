@@ -1,5 +1,4 @@
 "use client";
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,8 +7,9 @@ import { Pagination } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import React from "react";
 
-interface curatedExperienceProps {
+interface ourIPsProps {
   response: any;
 }
 
@@ -32,13 +32,13 @@ const CustomProgressBar = ({
   );
 };
 
-const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
+const OurIpsSlider = ({ response }: ourIPsProps) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const totalCards = response.cards.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative">
-      <div className="lg:absolute lg:w-[55%] lg:top-[5%]">
+      <div className="lg:absolute lg:w-[40%] lg:top-[5%]">
         <div className="flex font-space-grotesk font-bold text-3xl lg:text-[42px]">
           {response.title}
         </div>
@@ -79,7 +79,6 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 <Image
                   src={arrowImage}
                   alt="right arrow"
-                  // className='bg-black'
                   onClick={() => swiperRef.current?.slideNext()}
                 />
               </button>
@@ -109,7 +108,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               key={i}
               className={`flex ${
                 activeIndex === i
-                  ? "lg:basis-[395px] xl:basis-[450px] 2xl:basis-[560px]"
+                  ? "lg:basis-[500px] xl:basis-[600px] 2xl:basis-[700px]"
                   : ""
               }`}
             >
@@ -122,14 +121,13 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   // className={`object-cover w-full ${activeIndex === i ? 'h-[500px] 2xl:h-[700px]' : 'h-64'}`}
                   className={`object-cover w-full ${
                     activeIndex === i
-                      ? "h-[500px] 2xl:h-[700px]"
-                      : "h-[500px] lg:h-64"
-                  }
-`}
+                      ? "h-[300px] 2xl:h-[450px]"
+                      : "h-[300px] lg:h-60"
+                  }`}
                 />
               </div>
               {activeIndex === i ? (
-                <div className="flex flex-col items-end p-4 sm:p-6 lg:p-8 2xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
+                <div className="flex flex-col items-end p-4 sm:p-6 lg:p-12 gap-2 xl:gap-4 w-full bg-[#FD7740]">
                   <div className="flex items-end text-left font-space-grotesk font-bold text-lg sm:text-xl xl:text-[28px] text-white">
                     {data.title}
                   </div>
@@ -145,8 +143,8 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
           );
         })}
       </Swiper>
-      <div className="flex justify-end">
-        <div className="2xl:hidden flex w-full lg:basis-[395px] xl:basis-[450px] flex-col gap-5 mt-9">
+      <div className="flex justify-end bg-[#FD7740] lg:bg-white">
+        <div className="2xl:hidden flex w-full lg:basis-[500px] xl:basis-[600px] flex-col gap-5 pt-5 px-6 lg:px-0 mb-10">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response.cards.length}
@@ -155,7 +153,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             <div className="flex font-space-grotesk font-bold text-sm sm:text-base lg:text-2xl">{`${
               activeIndex + 1
             } / ${response.cards.length}`}</div>
-            <div className="flex z-[5] gap-4">
+            <div className="flex z-[5] gap-4 items-center">
               <button
                 className={`p-0 mt-[3px] ${
                   activeIndex === 0 ? "opacity-25" : ""
@@ -180,6 +178,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 <Image
                   src={arrowImage}
                   alt="right arrow"
+                  // className='bg-black'
                   onClick={() => swiperRef.current?.slideNext()}
                 />
               </button>
@@ -191,4 +190,4 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   );
 };
 
-export default CuratedExperienceSlider;
+export default OurIpsSlider;
