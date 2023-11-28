@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const protocol = process.env.IMAGES_REMOTE_PATTERNS_PROTOCOL || "http";
 const hostname = process.env.IMAGES_REMOTE_PATTERNS_HOSTNAME || "localhost";
 const port = process.env.IMAGES_REMOTE_PATTERNS_PORT == undefined ? "1337" : "";
@@ -29,7 +28,7 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; connect-src 'self' https://api-js.mixpanel.com;",
+              "default-src 'self'; connect-src 'self' https://api-js.mixpanel.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';",
           },
           {
             key: "X-Content-Type-Options",
@@ -37,7 +36,7 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(); battery=(); geolocation=(); microphone=()",
+            value: "camera=(), battery=(), geolocation=(), microphone=()",
           },
           {
             key: "Referrer-Policy",
