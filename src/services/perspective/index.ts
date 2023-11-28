@@ -38,3 +38,16 @@ export async function getOurIpsSection() {
   const response = await fetchContent(path, urlParamsObject, options);
   return response;
 }
+
+export async function getReportsSection() {
+  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+  const path = `/perspective`;
+  const urlParamsObject = {
+    populate: {
+      Reports: { populate: { cards: { populate: { image: true } } } },
+    },
+  };
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await fetchContent(path, urlParamsObject, options);
+  return response;
+}

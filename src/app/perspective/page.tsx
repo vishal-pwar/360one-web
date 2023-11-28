@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import Viewpoint from "@/sections/perspective/viewpoint-section";
 import CuratedExperence from "@/sections/perspective/curatedExperiences-section";
 import OurIps from "@/sections/perspective/ourIP-section";
+import Reports from "@/sections/perspective/reports-section";
 
 const page = () => {
   return (
@@ -11,6 +12,7 @@ const page = () => {
       <Viewpoint />
       <CuratedExperence />
       <OurIps />
+      <Reports />
     </section>
   );
 };

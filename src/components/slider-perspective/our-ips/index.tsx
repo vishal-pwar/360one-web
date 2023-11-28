@@ -98,7 +98,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1024: {
-            slidesPerView: 5,
+            slidesPerView: totalCards >= 4 ? "4" : totalCards,
           },
         }}
       >
