@@ -28,7 +28,8 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'",
+            value:
+              "default-src 'self'; connect-src 'self' https://api-js.mixpanel.com;",
           },
           {
             key: "X-Content-Type-Options",
