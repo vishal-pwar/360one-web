@@ -6,7 +6,7 @@ export default async function index() {
 
   return (
     <section className="mt-20">
-      <OurIpsSlider response={response.data.attributes.Ips} />
+      <OurIpsSlider response={response?.data?.attributes?.Ips} />
     </section>
   );
 }

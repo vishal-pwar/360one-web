@@ -51,3 +51,21 @@ export async function getReportsSection() {
   const response = await fetchContent(path, urlParamsObject, options);
   return response;
 }
+
+export async function getInMediaSection() {
+  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+  const path = `/perspective`;
+  const urlParamsObject = {
+    populate: {
+      media: {
+        populate: {
+          blog_posts: { populate: { thumbnail: true } },
+          featured: { populate: { thumbnail: true } },
+        },
+      },
+    },
+  };
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await fetchContent(path, urlParamsObject, options);
+  return response;
+}

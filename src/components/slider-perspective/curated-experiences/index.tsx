@@ -34,26 +34,26 @@ const CustomProgressBar = ({
 
 const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = response.cards.length;
+  const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative">
       <div className="lg:absolute lg:w-[55%] lg:top-[5%]">
         <div className="flex font-space-grotesk font-bold text-3xl lg:text-[42px]">
-          {response.title}
+          {response?.title}
         </div>
         <div className="flex font-space-grotesk font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
-          {response.subheading}
+          {response?.subheading}
         </div>
         <div className="hidden 2xl:flex flex-col gap-5 ">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response.cards.length}
+            totalSlides={response?.cards?.length}
           />
           <div>
             <div className="flex font-space-grotesk font-bold text-2xl">{`${
               activeIndex + 1
-            } / ${response.cards.length}`}</div>
+            } / ${response?.cards?.length}`}</div>
             <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
               <button
                 className={`p-0 mt-[3px] ${
@@ -103,7 +103,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
           },
         }}
       >
-        {response.cards.map((data: any, i: any) => {
+        {response?.cards?.map((data: any, i: any) => {
           return (
             <SwiperSlide
               key={i}
@@ -117,7 +117,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
-                  src={data.image.data.attributes.url}
+                  src={data?.image?.data?.attributes?.url}
                   alt="slider Image"
                   // className={`object-cover w-full ${activeIndex === i ? 'h-[500px] 2xl:h-[700px]' : 'h-64'}`}
                   className={`object-cover w-full ${
@@ -131,10 +131,10 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               {activeIndex === i ? (
                 <div className="flex flex-col items-end p-4 sm:p-6 lg:p-8 2xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
                   <div className="flex items-end text-left font-space-grotesk font-bold text-lg sm:text-xl xl:text-[28px] text-white">
-                    {data.title}
+                    {data?.title}
                   </div>
                   <div className="flex items-end text-left font-space-grotesk font-medium text-sm lg:text-lg xl:text-xl text-white">
-                    {data.subheading}
+                    {data?.subheading}
                   </div>
                   <button className=" hidden 2xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
                     READ MORE
@@ -149,12 +149,12 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         <div className="2xl:hidden flex w-full lg:basis-[395px] xl:basis-[450px] flex-col gap-5 mt-9">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response.cards.length}
+            totalSlides={response?.cards?.length}
           />
           <div className="flex justify-between">
             <div className="flex font-space-grotesk font-bold text-sm sm:text-base lg:text-2xl">{`${
               activeIndex + 1
-            } / ${response.cards.length}`}</div>
+            } / ${response?.cards?.length}`}</div>
             <div className="flex z-[5] gap-4">
               <button
                 className={`p-0 mt-[3px] ${

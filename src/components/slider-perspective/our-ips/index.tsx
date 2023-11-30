@@ -34,26 +34,26 @@ const CustomProgressBar = ({
 
 const OurIpsSlider = ({ response }: ourIPsProps) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = response.cards.length;
+  const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative">
       <div className="lg:absolute lg:w-[40%] lg:top-[5%]">
         <div className="flex font-space-grotesk font-bold text-3xl lg:text-[42px]">
-          {response.title}
+          {response?.title}
         </div>
         <div className="flex font-space-grotesk font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
-          {response.subheading}
+          {response?.subheading}
         </div>
         <div className="hidden 2xl:flex flex-col gap-5 ">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response.cards.length}
+            totalSlides={response?.cards?.length}
           />
           <div>
             <div className="flex font-space-grotesk font-bold text-2xl">{`${
               activeIndex + 1
-            } / ${response.cards.length}`}</div>
+            } / ${response?.cards?.length}`}</div>
             <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
               <button
                 className={`p-0 mt-[3px] ${
@@ -102,7 +102,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           },
         }}
       >
-        {response.cards.map((data: any, i: any) => {
+        {response?.cards?.map((data: any, i: any) => {
           return (
             <SwiperSlide
               key={i}
@@ -116,7 +116,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
-                  src={data.image.data.attributes.url}
+                  src={data?.image?.data?.attributes?.url}
                   alt="slider Image"
                   // className={`object-cover w-full ${activeIndex === i ? 'h-[500px] 2xl:h-[700px]' : 'h-64'}`}
                   className={`object-cover w-full ${
@@ -129,10 +129,10 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               {activeIndex === i ? (
                 <div className="flex flex-col items-end p-4 sm:p-6 lg:p-12 gap-2 xl:gap-4 w-full bg-[#FD7740]">
                   <div className="flex items-end text-left font-space-grotesk font-bold text-lg sm:text-xl xl:text-[28px] text-white">
-                    {data.title}
+                    {data?.title}
                   </div>
                   <div className="flex items-end text-left font-space-grotesk font-medium text-sm lg:text-lg xl:text-xl text-white">
-                    {data.subheading}
+                    {data?.subheading}
                   </div>
                   <button className=" hidden 2xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
                     READ MORE
@@ -147,12 +147,12 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         <div className="2xl:hidden flex w-full lg:basis-[500px] xl:basis-[600px] flex-col gap-5 pt-5 px-6 lg:px-0 mb-10">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response.cards.length}
+            totalSlides={response?.cards?.length}
           />
           <div className="flex justify-between">
             <div className="flex font-space-grotesk font-bold text-sm sm:text-base lg:text-2xl">{`${
               activeIndex + 1
-            } / ${response.cards.length}`}</div>
+            } / ${response?.cards?.length}`}</div>
             <div className="flex z-[5] gap-4 items-center">
               <button
                 className={`p-0 mt-[3px] ${
@@ -178,7 +178,6 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 <Image
                   src={arrowImage}
                   alt="right arrow"
-                  // className='bg-black'
                   onClick={() => swiperRef.current?.slideNext()}
                 />
               </button>

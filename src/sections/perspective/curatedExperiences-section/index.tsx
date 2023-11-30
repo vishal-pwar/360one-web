@@ -6,7 +6,7 @@ const CuratedExperence = async () => {
   return (
     <section className="mt-20">
       <CuratedExperienceSlider
-        response={response.data.attributes.experiences}
+        response={response?.data?.attributes?.experiences}
       />
     </section>
   );
