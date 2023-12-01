@@ -70,14 +70,14 @@ const ReportsSlider = ({ response }: reportsprops) => {
               >
                 <div className="flex flex-col py-6 px-[22px]">
                   <div>
-                    <div className="font-space-grotesk font-bold text-white text-base md:text-base xl:text-2xl">
+                    <div className="font-bold text-white text-base md:text-base xl:text-2xl">
                       {card.title}
                     </div>
-                    <div className="font-space-grotesk font-normal text-white mt-1 mb-6 2xl:mt-4 text-sm xl:text-xl">
+                    <div className="font-normal text-white mt-1 mb-6 2xl:mt-4 text-sm xl:text-xl">
                       {card.subtitle}
                     </div>
                   </div>
-                  <button className="font-space-grotesk font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white">
+                  <button className="font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white">
                     DOWNLOAD NOW
                   </button>
                 </div>
@@ -92,7 +92,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
           totalSlides={response.cards.length}
         />
         <div className="flex justify-between mt-4">
-          <div className="flex font-space-grotesk font-bold text-sm sm:text-base lg:text-2xl">{`${
+          <div className="flex font-bold text-sm sm:text-base lg:text-2xl">{`${
             activeIndex + 1
           } / ${response.cards.length}`}</div>
           <div className="flex z-[5] gap-4 items-center">

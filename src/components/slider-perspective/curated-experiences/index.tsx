@@ -39,10 +39,10 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   return (
     <section className="relative">
       <div className="lg:absolute lg:w-[55%] lg:top-[5%]">
-        <div className="flex font-space-grotesk font-bold text-3xl lg:text-[42px]">
+        <div className="flex font-bold text-3xl lg:text-[42px]">
           {response?.title}
         </div>
-        <div className="flex font-space-grotesk font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
+        <div className="flex font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
           {response?.subheading}
         </div>
         <div className="hidden 2xl:flex flex-col gap-5 ">
@@ -51,7 +51,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             totalSlides={response?.cards?.length}
           />
           <div>
-            <div className="flex font-space-grotesk font-bold text-2xl">{`${
+            <div className="flex font-bold text-2xl">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
             <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
@@ -130,10 +130,10 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               </div>
               {activeIndex === i ? (
                 <div className="flex flex-col items-end p-4 sm:p-6 lg:p-8 2xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
-                  <div className="flex items-end text-left font-space-grotesk font-bold text-lg sm:text-xl xl:text-[28px] text-white">
+                  <div className="flex items-end text-left font-bold text-lg sm:text-xl xl:text-[28px] text-white">
                     {data?.title}
                   </div>
-                  <div className="flex items-end text-left font-space-grotesk font-medium text-sm lg:text-lg xl:text-xl text-white">
+                  <div className="flex items-end text-left font-medium text-sm lg:text-lg xl:text-xl text-white">
                     {data?.subheading}
                   </div>
                   <button className=" hidden 2xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
@@ -152,7 +152,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             totalSlides={response?.cards?.length}
           />
           <div className="flex justify-between">
-            <div className="flex font-space-grotesk font-bold text-sm sm:text-base lg:text-2xl">{`${
+            <div className="flex font-bold text-sm sm:text-base lg:text-2xl">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
             <div className="flex z-[5] gap-4">

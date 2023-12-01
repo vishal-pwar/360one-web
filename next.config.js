@@ -2,6 +2,7 @@
 // const isProd = process.env.NODE_ENV === "production";
 // const cmsUrl = new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL);
 const nextConfig = {
+  optimizeFonts: false,
   images: {
     domains: ["localhost", "s3.localhost.localstack.cloud"],
     // remotePatterns: [

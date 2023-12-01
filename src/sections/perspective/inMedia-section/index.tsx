@@ -7,14 +7,14 @@ const Media = async () => {
   return (
     <section className="mt-16 xl:mt-20 xl:flex flex-1 xl:h-[900px]">
       <div className="bg-black flex flex-col xl:flex-[6] pt-10 xl:pt-16 xl:pr-20">
-        <div className="font-space-grotesk font-bold text-[28px] md:text-[32px] xl:text-[42px] text-white">
+        <div className="font-bold text-[28px] md:text-[32px] xl:text-[42px] text-white">
           {response?.data?.attributes?.media?.title}
         </div>
-        <div className="font-space-grotesk font-normal text-base md:text-lg xl:text-xl mt-3 xl:mt-4 mb-10 text-white">
+        <div className="font-normal text-base md:text-lg xl:text-xl mt-3 xl:mt-4 mb-10 text-white">
           {response?.data?.attributes?.media?.subtitle}
         </div>
         <div className="relative">
-          <div className="absolute bg-[#FD7740] font-space-grotesk font-bold text-sm text-white px-6 py-2 mt-6 xl:px-16 xl:py-4 xl:mt-6">
+          <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 xl:px-16 xl:py-4 xl:mt-6">
             FEATURED
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -27,7 +27,7 @@ const Media = async () => {
             className="flex w-full h-56 sm:h-64 md:h-72 xl:h-[330px] object-cover"
           />
         </div>
-        <div className="flex font-space-grotesk font-normal text-white text-sm mt-6 mb-2 xl:text-base md:mt-7 2xl:mt-9">
+        <div className="flex font-normal text-white text-sm mt-6 mb-2 xl:text-base md:mt-7 2xl:mt-9">
           <div>
             {
               response?.data?.attributes?.media?.featured?.data?.attributes
@@ -42,7 +42,7 @@ const Media = async () => {
             )}
           </div>
         </div>
-        <div className="font-space-grotesk font-bold text-base text-white md:text-lg lg:text-2xl">
+        <div className="font-bold text-base text-white md:text-lg lg:text-2xl">
           {response?.data?.attributes?.media?.featured?.data?.attributes?.title}
         </div>
         <button className="border-2 border-white py-3 text-white mt-6 mb-11 xl:mt-9 w-full sm:w-52">
@@ -71,13 +71,13 @@ const Media = async () => {
                   )}
 
                   <div>
-                    <div className="font-space-grotesk font-light text-sm mt-5 mb-2">
+                    <div className="font-light text-sm mt-5 mb-2">
                       {blog?.attributes?.tag}
                     </div>
-                    <div className="font-space-grotesk font-medium xl:font-bold text-base">
+                    <div className="font-medium xl:font-bold text-base">
                       {blog?.attributes?.title}
                     </div>
-                    <div className="flex font-space-grotesk font-normal text-sm mt-3 mb-6">
+                    <div className="flex font-normal text-sm mt-3 mb-6">
                       <div>{blog?.attributes?.publishers}</div>
                       <div className="mx-1">|</div>
                       <div>{formatDate(blog?.attributes?.publishedAt)}</div>
