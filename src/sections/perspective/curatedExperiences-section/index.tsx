@@ -4,7 +4,7 @@ import CuratedExperienceSlider from "@/components/slider-perspective/curated-exp
 const CuratedExperence = async () => {
   const response = await getCuratedExperienceSection();
   return (
-    <section className="mt-20">
+    <section className="p-2">
       <CuratedExperienceSlider
         response={response?.data?.attributes?.experiences}
       />

@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "16px",
+      },
       colors: {
         "wealth-orange": "#fd7740",
         "asset-purple": "#5a32ff",
@@ -13,6 +17,9 @@ module.exports = {
       },
       screens: {
         sm: "450px",
+        phablet: "600px",
+        tablet: "1200px",
+        desktop: "1600px",
       },
       fontFamily: {
         "space-grotesk": "var(--font-space-grotesk)",

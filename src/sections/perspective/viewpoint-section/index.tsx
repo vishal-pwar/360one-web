@@ -1,8 +1,8 @@
-import { getPerspectiveSection } from "@/services/perspective";
+import { getViewpointSection } from "@/services/perspective";
 import MediaCard from "@/components/perspective-mediaCard";
 
 const Viewpoint = async () => {
-  const response = await getPerspectiveSection();
+  const response = await getViewpointSection();
   const title = response?.data?.attributes?.viewpoint?.title;
   const description = response?.data?.attributes?.viewpoint?.description;
 
@@ -13,7 +13,7 @@ const Viewpoint = async () => {
   const fifthCard = response?.data?.attributes?.viewpoint?.cards?.[4];
 
   return (
-    <section>
+    <section className="mt-2 p-3">
       <div className="font-bold text-4xl">{title}</div>
       <div className="font-normal text-xl leading-6 mt-4 mb-10 max-w-4xl">
         {description}
@@ -53,7 +53,7 @@ const Viewpoint = async () => {
             </article>
           ) : null}
         </div>
-        <div className="gap-6 w-full hidden xl:flex">
+        <div className="gap-6 w-full hidden phablet:flex">
           {thirdCard?.title?.length > 0 ? (
             <article className="flex flex-[4] flex-col">
               <p className="flex justify-center items-center font-semibold text-sm  text-white bg-orange-400 py-4 px-9 absolute mt-6">

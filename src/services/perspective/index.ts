@@ -1,6 +1,19 @@
 import { fetchContent } from "@/utils/fetch-content";
 
-export async function getPerspectiveSection() {
+export async function getBannerSection() {
+  const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
+  const path = `/perspective`;
+  const urlParamsObject = {
+    populate: {
+      Banner: { populate: { cards: { populate: { media: true } } } },
+    },
+  };
+  const options = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await fetchContent(path, urlParamsObject, options);
+  return response;
+}
+
+export async function getViewpointSection() {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
   const path = `/perspective`;
   const urlParamsObject = {

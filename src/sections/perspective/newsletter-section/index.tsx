@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Newsletter = () => {
   return (
-    <section className="flex flex-col mt-11 md:mt-12 lg:mt-20 2xl:mt-32 lg:flex-row lg:flex-1">
+    <section className="flex flex-col mt-11 md:mt-12 lg:mt-20 2xl:mt-32 lg:flex-row lg:flex-1 p-2">
       <div className="lg:flex-[5]">
         <Image
           src={NewsletterImage}
@@ -13,7 +13,7 @@ const Newsletter = () => {
         />
       </div>
 
-      <div className="bg-[#FD7740] 2xl:p-24 lg:px-16 lg:flex-[7]">
+      <div className="lg:bg-[#FD7740] 2xl:p-24 lg:px-16 lg:flex-[7]">
         <div className="font-bold text-white text-3xl xl:text-[42px] mt-6 lg:mt-16 2xl:mt-0 mb-2 md:mb-3 2xl:mb-4">
           Perspective Newsletter
         </div>
