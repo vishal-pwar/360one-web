@@ -60,11 +60,11 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
     <div className="max-sm:max-w-full max-sm:min-w-full max-sm:h-[calc(602*var(--scale))] max-md:min-w-[103.9%] max-lg:min-w-[calc(603*var(--scale))] min-w-[calc(947*var(--scale))] w-full overflow-hidden">
       <div className="max-sm:w-full max-sm:h-full max-md:h-[calc(378*var(--scale))] max-md:w-[calc(916*var(--scale))] max-lg:h-[calc(416*var(--scale))] w-auto flex flex-row overflow-hidden h-[calc(702*var(--scale))]">
         <div className="relative w-full h-full z-10 flex transition-transform box-content">
-          {newCardsArray.map((card, index) => {
+          {newCardsArray?.map((card, index) => {
             const lastIndex = 4 + scrollPos;
             return (
               <div
-                key={card.title + index}
+                key={card?.title + index}
                 className={`transition-all ${
                   transitionDuration === 0 ? "duration-0" : "duration-500"
                 } ease-[ease] delay-0 ${translateX} ${
@@ -124,11 +124,11 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                     </div>
                   </div>
                   <h3 className="max-sm:text-[calc(20*var(--scale))] max-sm:leading-[1.4] max-sm:mb-[calc(8*var(--scale))] max-md:text-[calc(16*var(--scale))] max-md:leading-[0.94] max-md:mb-[calc(16*var(--scale))] max-lg:text-[calc(18*var(--scale))] max-lg:leading-[1.11] max-lg:mb-[calc(15*var(--scale))] text-[calc(28*var(--scale))] leading-[1.14] mb-[calc(24*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))]">
-                    {card.title}
+                    {card?.title}
                   </h3>
                   {isVisible && (
                     <p className="max-sm:text-[calc(14*var(--scale))] max-sm:leading-[1.4] max-md:text-[calc(13.5*var(--scale))] max-md:leading-[1.2] max-lg:leading-[1.1] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:text-[calc(1*var(--size-16))] text-[calc(1*var(--size-18))] leading-[1.4] tracking-[calc(0.65*var(--scale))]">
-                      {card.text}
+                      {card?.text}
                     </p>
                   )}
                 </div>

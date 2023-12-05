@@ -101,7 +101,7 @@ const SwiperCardsNavigation = ({
           });
         }}
       >
-        {cards.map((card: any, index: number) => {
+        {cards?.map((card: any, index: number) => {
           return (
             <SwiperSlide
               className={`max-lg:overflow-hidden flex ${
@@ -120,17 +120,17 @@ const SwiperCardsNavigation = ({
                 <Image
                   className="max-sm:w-[291.1px] max-md:w-[calc(232*var(--scale))] max-lg:w-[calc(232*var(--scale))] w-full h-full object-cover object-center select-none"
                   src={getStrapiMedia(card?.image?.data?.attributes?.url)}
-                  alt={`${card.name}-${card.designation}`}
-                  title={`${card.name}-${card.designation}`}
+                  alt={`${card?.name}-${card?.designation}`}
+                  title={`${card?.name}-${card?.designation}`}
                   width={500}
                   height={750}
                 />
                 <div className="max-lg:px-[calc(24*var(--scale))] max-lg:max-w-[calc(232*var(--scale))] absolute bottom-0 px-[calc(40*var(--scale))] min-h-[calc(120*var(--scale))] z-10 flex flex-col w-full max-w-[calc(326*var(--scale))]">
                   <h3 className="text-[calc(1*var(--size-24))] font-bold text-white leading-[1.17] tracking-[calc(0.87*var(--scale))] mb-[calc(6*var(--scale))] select-none text-left">
-                    {card.name}
+                    {card?.name}
                   </h3>
                   <p className="text-[calc(1*var(--size-16))] opacity-[0.8] font-[500] text-white tracking-[calc(0.58*var(--scale))] select-none text-left">
-                    {card.designation}
+                    {card?.designation}
                   </p>
                 </div>
               </div>
@@ -145,17 +145,17 @@ const SwiperCardsNavigation = ({
                   <h4
                     className={`max-sm:text-[calc(18*var(--scale))] max-lg:text-[calc(20*var(--scale))] max-lg:leading-[1.34] max-lg:mb-[calc(1.3*var(--scale))] text-[calc(28*var(--scale))] font-bold text-black leading-[1.5] tracking-[calc(1.01*var(--scale))] mb-[calc(4*var(--scale))] select-none text-left`}
                   >
-                    {card.name}
+                    {card?.name}
                   </h4>
                   <span
                     className={`max-sm:mb-[calc(14*var(--scale))] max-md:mb-[calc(16*var(--scale))] max-md:text-[calc(14*var(--scale))] max-lg:mb-[calc(21.4*var(--scale))] text-[calc(1*var(--size-16))] leading-[1.63] tracking-[calc(0.58*var(--scale))] mb-[calc(32*var(--scale))] block text-left select-none`}
                   >
-                    {card.designation}
+                    {card?.designation}
                   </span>
                   <p
                     className={`max-sm:text-[calc(13*var(--scale))] max-md:text-[calc(14*var(--scale))] max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.71] max-lg:tracking-[calc(0.51*var(--scale))] text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] block text-left select-none`}
                   >
-                    {card.about}
+                    {card?.about}
                   </p>
                   <div
                     onClick={handleCloseDetailsPanel}

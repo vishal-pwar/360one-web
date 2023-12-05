@@ -12,7 +12,11 @@ const Banner = async ({ page }: BannerProps) => {
     page === "asset"
       ? await getAssetHeroSection()
       : await getWealthHeroSection();
-  const { title, text, image, icon } = response?.data?.attributes?.hero;
+  const title = response?.data?.attributes?.hero;
+  const text = response?.data?.attributes?.hero;
+  const image = response?.data?.attributes?.hero;
+  const icon = response?.data?.attributes?.hero;
+
   const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 

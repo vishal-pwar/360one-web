@@ -10,7 +10,7 @@ const HeaderWrapper = async () => {
 
   const ticker = await getTicker();
   const tickerData = ticker?.data?.find(
-    (t) => t.attributes.page.data.attributes.url === url
+    (t) => t?.attributes?.page?.data?.attributes?.url === url
   );
 
   return (

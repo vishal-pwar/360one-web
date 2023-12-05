@@ -78,25 +78,25 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
         before:content-[''] before:absolute before:w-full before:bg-[#979797] before:opacity-[0.5] before:h-[calc(1*var(--scale))] before:left-[50%] before:top-[57%] before:-translate-x-[50%] before:-translate-y-[50%] 
         after:content-[''] after:absolute after:w-[calc(1*var(--scale))] after:bg-[#979797] after:opacity-[0.5] after:h-[103%] after:left-[50%] after:top-[50%] after:-translate-x-[50%] after:-translate-y-[50%]"
         >
-          {otherPosts.map((blogItem, index) => {
+          {otherPosts?.map((blogItem, index, arr) => {
             return (
               <div
                 key={index}
                 className={`${index === 0 ? "max-lg:pt-0" : ""} ${
-                  index === otherPosts.length - 1
+                  index === arr?.length - 1
                     ? "max-lg:pb-0 max-lg:before:h-0"
                     : "max-lg:before:h-[calc(1*var(--scale))]"
                 } max-lg:py-[calc(23*var(--scale))] max-lg:relative max-lg:before:content-[''] max-lg:before:absolute max-lg:before:w-full max-lg:before:opacity-[0.5] max-lg:before:bg-[#979797] max-lg:before:bottom-0 flex flex-col pt-[52px] }`}
               >
                 <span className="max-sm:text-[calc(12*var(--scale))] max-sm:tracking-[calc(0.43*var(--scale))] max-lg:flex max-lg:gap-[calc(10*var(--scale))]  text-[calc(1*var(--size-16))] leading-[1.25] tracking-[calc(0.58*var(--scale))] block pb-[calc(16*var(--scale))] relative before:content-[''] before:absolute before:bottom-0 before:left-0 before:bg-black before:w-[calc(35*var(--scale))] before:h-[calc(2*var(--scale))]">
-                  {formatDate(blogItem.attributes.datePublished)}
+                  {formatDate(blogItem?.attributes?.datePublished)}
                 </span>
                 <h3 className="max-sm:text-[calc(16*var(--scale))] max-sm:tracking-[calc(0.58*var(--scale))] max-lg:before:mt-[calc(16*var(--scale))] max-lg:mb-[calc(17*var(--scale))] text-[calc(1*var(--size-20))] leading-[1.5] tracking-[calc(0.72*var(--scale))] block font-bold mt-[calc(20*var(--scale))] mb-[calc(44*var(--scale))]">
-                  {blogItem.attributes.title}
+                  {blogItem?.attributes?.title}
                 </h3>
                 <button className="max-sm:text-[calc(12*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] text-black border-black mt-auto w-fit p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
                   <Link
-                    href={blogItem.attributes.link || "/"}
+                    href={blogItem?.attributes?.link || "/"}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="w-full h-full flex justify-center items-center"
