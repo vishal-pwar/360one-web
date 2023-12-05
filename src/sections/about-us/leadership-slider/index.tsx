@@ -53,12 +53,12 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
   return (
     <div className="max-sm:min-h-[calc(680*var(--scale))] max-sm:pb-[calc(144*var(--scale))] max-sm:mt-0 max-sm:pt-[calc(10*var(--scale))] max-md:pt-[calc(52*var(--scale))] max-md:min-h-[calc(542*var(--scale))] max-md:pb-[calc(64*var(--scale))] max-md:w-full max-lg:mt-[calc(40*var(--scale))] max-lg:min-h-[calc(593*var(--scale))] max-lg:pt-[calc(57*var(--scale))] w-[109.5%] justify-end pt-[calc(82*var(--scale))] pb-[calc(105*var(--scale))] relative mt-[calc(50*var(--scale))] overflow-hidden ">
       <div className="relative h-full z-10 flex flex-row transition-transform box-content overflow-visible">
-        {newCardsArray.map((card, index) => {
+        {newCardsArray?.map((card, index) => {
           const lastIndex = 7 + scrollPos;
-          const translateY = `translate-y-[calc(${card.imageVerticalOffset}*var(--scale))]`;
+          const translateY = `translate-y-[calc(${card?.imageVerticalOffset}*var(--scale))]`;
           return (
             <div
-              key={card.name + index}
+              key={card?.name + index}
               className={`max-sm:min-w-[calc(320*var(--scale))] max-sm:w-[calc(320*var(--scale))] max-sm:h-fit max-sm:ml-[calc(30*var(--scale))] max-sm:flex-col max-sm:translate-y-0 flex-wrap flex max-md:ml-[calc(7.1*var(--scale))] max-lg:ml-[calc(11.2*var(--scale))] ${
                 index === lastIndex
                   ? "max-md:w-[calc(399*var(--scale))] max-md:h-[calc(426*var(--scale))] max-lg:min-w-[calc(499*var(--scale))] max-lg:h-[calc(430*var(--scale))] min-w-[calc(781*var(--scale))] h-[calc(590*var(--scale))]"
@@ -80,8 +80,8 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                 <Image
                   className={`max-sm:hidden max-md:w-[calc(156*var(--scale))] max-md:h-[calc(280*var(--scale))] w-full h-full object-cover object-top`}
                   src={getStrapiMedia(card?.clearImage?.data?.attributes?.url)}
-                  alt={`${card.name} - ${card.designation}`}
-                  title={`${card.name} - ${card.designation}`}
+                  alt={`${card?.name} - ${card?.designation}`}
+                  title={`${card?.name} - ${card?.designation}`}
                   height={584}
                   width={326}
                 />
@@ -90,16 +90,16 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
                     index === lastIndex && "hidden"
                   }`}
                   src={getStrapiMedia(card?.blurImage?.data?.attributes?.url)}
-                  alt={`${card.name} - ${card.designation}`}
-                  title={`${card.name} - ${card.designation}`}
+                  alt={`${card?.name} - ${card?.designation}`}
+                  title={`${card?.name} - ${card?.designation}`}
                   height={550}
                   width={212}
                 />
                 <Image
                   className={`hidden w-full h-full object-cover object-top max-sm:block`}
                   src={getStrapiMedia(card?.mobileImage?.data?.attributes?.url)}
-                  alt={`${card.name} - ${card.designation}`}
-                  title={`${card.name} - ${card.designation}`}
+                  alt={`${card?.name} - ${card?.designation}`}
+                  title={`${card?.name} - ${card?.designation}`}
                   height={216}
                   width={308}
                 />
@@ -113,13 +113,13 @@ const LeadershipSlider = ({ cards, link }: LeadershipSliderProps) => {
               >
                 {/* transition-all duration-500 ease-[ease] delay-[0s] */}
                 <h4 className="max-sm:text-[calc(18*var(--scale))] max-sm:mb-[calc(8.5*var(--scale))] max-md:leading-[1.26] max-md:mb-[calc(4.2*var(--scale))] max-md:tracking-[calc(0.58*var(--scale))] max-md:text-[calc(16*var(--scale))] max-lg:text-[calc(18*var(--scale))] max-lg:leading-[1.49] max-lg:tracking-[calc(0.65*var(--scale))] max-lg:mb-[calc(1.6*var(--scale))] text-[calc(28*var(--scale))] leading-[1.5] mb-[calc(4*var(--scale))] font-bold text-black tracking-[calc(1.01*var(--scale))] ">
-                  {card.name}
+                  {card?.name}
                 </h4>
                 <span className="max-sm:mb-[calc(16.5*var(--scale))] max-md:leading-[1.04] max-md:mb-[calc(8.7*var(--scale))] max-md:tracking-[calc(0.43*var(--scale))] max-lg:text-[calc(1*var(--size-14))] max-lg:leading-[1.39] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:mb-[calc(21*var(--scale))] text-[calc(1*var(--size-16))] leading-[1.63] block mb-[calc(33*var(--scale))] text-black tracking-[calc(0.58*var(--scale))] ">
-                  {card.designation}
+                  {card?.designation}
                 </span>
                 <p className="max-md:text-[calc(14*var(--scale))] max-md:leading-[1.3] max-md:tracking-[calc(0.51*var(--scale))] max-lg:text-[calc(1*var(--size-16))] max-lg:leading-[1.43] max-lg:tracking-[calc(0.51*var(--scale))] text-[calc(1*var(--size-18))] leading-[1.78] tracking-[calc(0.65*var(--scale))] text-left">
-                  {card.about}
+                  {card?.about}
                 </p>
               </div>
             </div>

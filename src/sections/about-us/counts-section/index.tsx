@@ -13,13 +13,13 @@ const CountsSection = async () => {
         <div className="max-sm:flex-col max-sm:gap-[calc(30*var(--scale))] max-md:gap-[calc(20*var(--scale))] max-md:w-full max-md:justify-between flex flex-1 gap-[calc(102*var(--scale))] items-center text-white">
           {cards?.map((countItem: any, index: number) => {
             return (
-              <Fragment key={countItem.text}>
+              <Fragment key={countItem?.text}>
                 <div className="flex flex-col items-center gap-[calc(5*var(--scale))]">
                   <span className="max-md:text-[calc(20*var(--scale))] text-[calc(1*var(--size-42))] tracking-[calc(-1*var(--scale))] text-white font-bold">
-                    {countItem.count}
+                    {countItem?.count}
                   </span>
                   <span className="max-md:text-[calc(14*var(--scale))] max-md:max-w-[calc(159*var(--scale))] max-lg:max-w-[calc(169*var(--scale))] text-[calc(1*var(--size-20))] text-white text-center max-w-[calc(187*var(--scale))] leading-[1.2]">
-                    {countItem.text}
+                    {countItem?.text}
                   </span>
                 </div>
                 <div className="max-sm:w-[70%] max-sm:h-[calc(1*var(--scale))] w-[calc(1*var(--scale))] h-[calc(92*var(--scale))] opacity-[0.5] bg-[#979797]"></div>

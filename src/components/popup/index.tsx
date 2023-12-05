@@ -99,7 +99,7 @@ const Popup = (props: PopupDetails) => {
                         className="flex gap-4 mt-6 font-hanken-grotesk font-normal text-lg text-gray-600 items-start"
                       >
                         <Image src={ListImage} alt="list-image" />
-                        {i.title}
+                        {i?.title}
                       </div>
                     );
                   })}
@@ -113,7 +113,7 @@ const Popup = (props: PopupDetails) => {
                   }
                   className="w-full bg-orange-500 text-white py-3 px-12 mt-8 font-space-grotesk text-base font-semibold flex justify-center"
                 >
-                  {popup?.attributes?.button.title}
+                  {popup?.attributes?.button?.title}
                 </Link>
               ) : null}
             </div>

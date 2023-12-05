@@ -81,7 +81,7 @@ const responsiveNavItems = [
   },
 ];
 
-export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
+export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
   const [small, setSmall] = useState(false);
   const [responsiveNavActive, setResponsiveNavActive] = useState(false);
   const [activeId, setActiveId] = useState<number>(-1);
@@ -147,7 +147,7 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
           </Link>
           <nav className="max-lg:hidden flex">
             <ul className="flex gap-[calc(50*var(--scale))] list-none h-[45%] m-0 p-0">
-              {items.map((navItem: any, index: any) => {
+              {items?.map((navItem: any, index: any) => {
                 return (
                   <li
                     onMouseEnter={() => handleMouseEnter(index)}
@@ -179,17 +179,17 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
                         className="hidden p-3 peer-hover:block hover:block absolute right-0 w-40 bg-white border border-gray-300 rounded shadow-lg z-10"
                       >
                         <ul className="flex flex-col gap-5">
-                          {navItem.children.map((child: any) => (
+                          {navItem.children?.map((child: any) => (
                             <li key={child.name}>
                               <Link
-                                href={child.href || "/"}
-                                target={`${child.external ? "_blank" : ""}`}
-                                key={child.title}
+                                href={child?.href || "/"}
+                                target={`${child?.external ? "_blank" : ""}`}
+                                key={child?.title}
                                 className={`text-[calc(1*var(--size-18))] ${
                                   navItem.href === pathname && "font-bold"
                                 } peer`}
                               >
-                                {child.title}
+                                {child?.title}
                               </Link>
                             </li>
                           ))}
@@ -235,14 +235,14 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
             >
               <div className="max-sm:p-[calc(20*var(--scale))calc(22*var(--scale))] max-sm:h-full max-md:p-[calc(48*var(--scale))calc(62*var(--scale))] p-[calc(48*var(--scale))calc(80*var(--scale))] w-full m-auto">
                 <ul className="max-sm:items-start max-sm:h-full w-full flex flex-col items-center gap-[calc(20*var(--scale))]">
-                  {responsiveNavItems.map((item, index) => {
+                  {responsiveNavItems?.map((item, index) => {
                     if (item.children) {
                       return (
                         <React.Fragment key={index}>
                           <span className=" text-white font-bold max-sm:text-[calc(18*var(--scale))] text-[calc(1*var(--size-38))]">
                             {item.title}
                           </span>
-                          {item.children.map((c) => {
+                          {item.children?.map((c) => {
                             return (
                               <li key={c.title}>
                                 <Link
@@ -252,7 +252,7 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
                                   onClick={handleResponsiveNav}
                                 >
                                   <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
-                                    | {c.title}
+                                    | {c?.title}
                                   </span>
                                 </Link>
                               </li>
@@ -262,15 +262,15 @@ export const Header = ({ items, ticker }: { items: any; ticker: any }) => {
                       );
                     } else
                       return (
-                        <li key={item.title}>
+                        <li key={item?.title}>
                           <Link
                             className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
-                            href={item.url}
+                            href={item?.url}
                             target={`${item.external ? "_blank" : ""}`}
                             onClick={handleResponsiveNav}
                           >
                             <span className="max-sm:text-[calc(18*var(--scale))] text-[calc(1*var(--size-38))]">
-                              {item.title}
+                              {item?.title}
                             </span>
                           </Link>
                         </li>

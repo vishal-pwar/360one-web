@@ -38,14 +38,19 @@ export const downloadFiles = async (urls: string[]) => {
   }
 };
 
-export function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  return date.toLocaleDateString("en-US", options);
+export function formatDate(dateString?: string | number | Date) {
+  try {
+    if (!dateString) return "--";
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
+  } catch (error) {
+    return "--";
+  }
 }
 
 // ADDS DELAY TO SIMULATE SLOW API REMOVE FOR PRODUCTION
