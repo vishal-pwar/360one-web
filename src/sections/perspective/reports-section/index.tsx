@@ -6,7 +6,8 @@ const Reports = async () => {
   const response = await getReportsSection();
 
   return (
-    <section className="mt-5 sm:mt-8 md:mt-12 xl:mt-20">
+    // <section className="mt-5 sm:mt-8 md:mt-12 xl:mt-20">
+    <section className="">
       <div className="flex flex-col 2xl:flex-row">
         <div className="flex flex-col bg-black 2xl:flex-[5] 2xl:py-24 md:pl-5">
           <div className="font-bold text-white text-2xl md:text-3xl lg:text-[42px]">

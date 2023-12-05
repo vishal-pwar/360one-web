@@ -5,8 +5,8 @@ import React from "react";
 const Banner = async () => {
   const response = await getBannerSection();
   return (
-    <section className="p-6 phablet:p-12 tablet:p-0">
-      <BannerSlider response={response.data.attributes.Banner} />
+    <section className="p-6 phablet:p-12 tablet:p-0 mt-[164px]">
+      <BannerSlider response={response?.data?.attributes?.Banner} />
     </section>
   );
 };

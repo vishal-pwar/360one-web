@@ -63,7 +63,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1200: {
-            slidesPerView: totalCards >= 3 ? "3" : totalCards,
+            slidesPerView: totalCards >= 4 ? "4" : totalCards,
           },
         }}
       >
@@ -110,7 +110,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                 />
               </div>
               {activeIndex === i ? (
-                <div className="flex flex-col items-end p-6 phablet:p-8 tablet:p-10 desktop:p-15 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
+                <div className="flex flex-col items-end p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
                   <div className="flex items-end text-left font-normal text-sm text-white">
                     {data?.title}
                   </div>
@@ -131,9 +131,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           totalSlides={response?.cards?.length}
         />
         <div className="flex justify-between">
-          <div className="flex font-bold text-sm sm:text-base tablet:text-desktop">{`${
-            activeIndex + 1
-          } / ${response?.cards?.length}`}</div>
+          <div className="flex font-bold text-base tablet:text-2xl">
+            {`${activeIndex + 1} / ${response?.cards?.length}`}
+          </div>
           <div className="flex z-[5] gap-4 items-center">
             <button
               className={`p-0 mt-[3px] ${

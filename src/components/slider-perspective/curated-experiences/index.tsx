@@ -23,9 +23,9 @@ const CustomProgressBar = ({
   const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
 
   return (
-    <div className="relative h-1 bg-gray-200">
+    <div className="relative h-1 bg-slate-500">
       <div
-        className="absolute top-0 left-0 h-full bg-black transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-gray-200 transition-all duration-300"
         style={{ width: `${progressPercentage}%` }}
       />
     </div>
@@ -38,14 +38,14 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative">
-      <div className="lg:absolute lg:w-[55%] lg:top-[5%]">
-        <div className="flex font-bold text-3xl lg:text-[42px]">
+      <div className="tablet:absolute tablet:w-[55%] tablet:top-[15%]">
+        <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
         </div>
-        <div className="flex font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
+        <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
           {response?.subheading}
         </div>
-        <div className="hidden 2xl:flex flex-col gap-5 ">
+        <div className="hidden desktop:flex flex-col gap-5 mt-28">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
@@ -98,8 +98,8 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         onSlideChange={(e) => setActiveIndex(e.realIndex)}
         className="curated-swiper w-full"
         breakpoints={{
-          1024: {
-            slidesPerView: 5,
+          1200: {
+            slidesPerView: totalCards >= 4 ? 4 : totalCards,
           },
         }}
       >
@@ -109,7 +109,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               key={i}
               className={`flex ${
                 activeIndex === i
-                  ? "lg:basis-[395px] xl:basis-[450px] 2xl:basis-[560px]"
+                  ? "tablet:basis-[450px] desktop:basis-[560px]"
                   : ""
               }`}
             >
@@ -119,24 +119,22 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   key={i}
                   src={data?.image?.data?.attributes?.url}
                   alt="slider Image"
-                  // className={`object-cover w-full ${activeIndex === i ? 'h-[500px] 2xl:h-[700px]' : 'h-64'}`}
                   className={`object-cover w-full ${
                     activeIndex === i
-                      ? "h-[500px] 2xl:h-[700px]"
-                      : "h-[500px] lg:h-64"
-                  }
-`}
+                      ? "h-[366px] tablet:h-[521px] desktop:h-[800px]"
+                      : "h-[366px] tablet:h-48 desktop:h-60"
+                  }`}
                 />
               </div>
               {activeIndex === i ? (
-                <div className="flex flex-col items-end p-4 sm:p-6 lg:p-8 2xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
-                  <div className="flex items-end text-left font-bold text-lg sm:text-xl xl:text-[28px] text-white">
+                <div className="flex flex-col items-end p-4 phablet:p-9 desktop:p-12 gap-2 desktop:gap-4 w-full bottom-0 absolute">
+                  <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
                     {data?.title}
                   </div>
-                  <div className="flex items-end text-left font-medium text-sm lg:text-lg xl:text-xl text-white">
+                  <div className="flex items-end text-left font-medium text-sm tablet:text-lg desktop:text-xl text-white">
                     {data?.subheading}
                   </div>
-                  <button className=" hidden 2xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
+                  <button className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
                     READ MORE
                   </button>
                 </div>
@@ -146,13 +144,13 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         })}
       </Swiper>
       <div className="flex justify-end">
-        <div className="2xl:hidden flex w-full lg:basis-[395px] xl:basis-[450px] flex-col gap-5 mt-9">
+        <div className="desktop:hidden flex w-full tablet:basis-[450px] desktop::basis-[800px] flex-col gap-5 mt-4 phablet:mt-8 tablet:mt-9">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
           />
           <div className="flex justify-between">
-            <div className="flex font-bold text-sm sm:text-base lg:text-2xl">{`${
+            <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
             <div className="flex z-[5] gap-4">
@@ -166,7 +164,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 <Image
                   src={arrowImage}
                   alt="left arrow"
-                  className="rotate-180"
+                  className="rotate-180 opacity-5"
                   onClick={() => swiperRef.current?.slidePrev()}
                 />
               </button>

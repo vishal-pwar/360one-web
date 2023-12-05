@@ -13,59 +13,61 @@ const Viewpoint = async () => {
   const fifthCard = response?.data?.attributes?.viewpoint?.cards?.[4];
 
   return (
-    <section className="mt-2 p-3">
-      <div className="font-bold text-4xl">{title}</div>
-      <div className="font-normal text-xl leading-6 mt-4 mb-10 max-w-4xl">
+    <section className="mt-10 phablet:mt-7 tablet:mt-12 desktop:mt-24 container">
+      <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+        {title}
+      </div>
+      <div className="font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-10 tablet:mt-4 tablet:max-w-4xl">
         {description}
       </div>
       <div className="flex flex-col gap-11">
-        <div className="flex flex-col gap-3 sm:gap-4 md:flex-row lg:gap-3 xl:gap-6 w-full">
+        <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 desktop:gap-6 w-full">
           {firstCard?.title?.length > 0 ? (
-            <article className="flex flex-[7] flex-col bg-black">
-              <p className="flex z-10 justify-center items-center font-semibold text-sm text-white bg-orange-400 p-1 sm:p-2 md:py-4 md:px-8 absolute mt-6">
+            <article className="flex tablet:flex-[7] flex-col bg-black">
+              <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
                 {firstCard?.title}
               </p>
               <MediaCard
                 mediaType={firstCard?.mediaType}
                 media={firstCard?.media?.data}
                 href={firstCard?.href}
-                className="object-cover w-full h-[140px] sm:h-[180px] md:h-[380px] lg:h-[400px]"
+                className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
               />
-              <div className="flex items-center text-white bg-[#404546] p-3 font-medium text-sm sm:p-6 sm:font-bold sm:text-base md:p-12 md:text-xl">
+              <div className="flex items-center text-white bg-[#404546] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                 {firstCard?.subtitle}
               </div>
             </article>
           ) : null}
           {secondCard?.title?.length > 0 ? (
-            <article className="flex flex-[5] flex-col bg-black">
-              <p className="flex justify-center items-center font-semibold text-sm text-white bg-orange-400 p-1 sm:p-2 md:py-4 md:px-8 absolute mt-6">
+            <article className="flex tablet:flex-[5] flex-col bg-black">
+              <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
                 {secondCard?.title}
               </p>
               <MediaCard
                 mediaType={secondCard?.mediaType}
                 media={secondCard?.media}
                 href={secondCard?.href}
-                className="object-cover w-full h-[140px] sm:h-[180px] md:h-[380px] lg:h-[400px]"
+                className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
               />
-              <div className="flex items-center text-white bg-[#363A45] p-3 font-medium text-sm sm:p-6 sm:font-bold sm:text-base md:p-12 md:text-xl">
+              <div className="flex items-center text-white bg-[#404546] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                 {secondCard?.subtitle}
               </div>
             </article>
           ) : null}
         </div>
-        <div className="gap-6 w-full hidden phablet:flex">
+        <div className="hidden desktop:flex gap-6 w-full">
           {thirdCard?.title?.length > 0 ? (
             <article className="flex flex-[4] flex-col">
-              <p className="flex justify-center items-center font-semibold text-sm  text-white bg-orange-400 py-4 px-9 absolute mt-6">
+              <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                 {thirdCard?.title}
               </p>
               <MediaCard
                 mediaType={thirdCard?.mediaType}
                 media={thirdCard?.media}
                 href={thirdCard?.href}
-                className="object-cover w-full h-[300px]"
+                className="object-cover w-full h-[310px]"
               />
-              <div className="flex items-center font-semibold text-xl text-white bg-black p-9 h-full">
+              <div className="flex items-center font-bold text-xl text-white bg-black p-9 h-full">
                 {thirdCard?.subtitle}
               </div>
             </article>
@@ -73,7 +75,7 @@ const Viewpoint = async () => {
           <div className="flex flex-col flex-[8] gap-6">
             {fourthCard?.title?.length > 0 ? (
               <article className="flex">
-                <p className="flex justify-center items-center font-semibold text-sm text-white bg-orange-400 py-4 px-9 absolute mt-6">
+                <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                   {fourthCard?.title}
                 </p>
                 <MediaCard
@@ -82,14 +84,14 @@ const Viewpoint = async () => {
                   href={fourthCard?.href}
                   className="object-cover w-[400px] h-[230px]"
                 />
-                <div className="flex items-center font-bold text-2xl  text-white bg-black p-11 h-full w-full">
+                <div className="flex items-center font-bold text-3xl text-white bg-black p-12 h-full w-full">
                   {fourthCard?.subtitle}
                 </div>
               </article>
             ) : null}
             {fifthCard?.title?.length > 0 ? (
               <article className="flex">
-                <p className="flex justify-center items-center font-semibold text-sm text-white bg-orange-400 py-4 px-9 absolute mt-6">
+                <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                   {fifthCard?.title}
                 </p>
                 <MediaCard
@@ -98,7 +100,7 @@ const Viewpoint = async () => {
                   href={fifthCard?.href}
                   className="object-cover w-[400px] h-[230px]"
                 />
-                <div className="flex items-center font-bold text-2xl text-white bg-black p-11 h-full w-full">
+                <div className="flex items-center font-bold text-3xl text-white bg-black p-12 h-full w-full">
                   {fifthCard?.subtitle}
                 </div>
               </article>
@@ -106,8 +108,8 @@ const Viewpoint = async () => {
           </div>
         </div>
       </div>
-      <div className="flex sm:justify-end mt-3 md:mt-11">
-        <button className="py-4 w-full sm:w-auto px-20 font-semibold text-sm bg-black text-white border-white tracking-wide">
+      <div className="flex phablet:justify-end mt-3 phablet:mt-9 desktop:mt-12">
+        <button className="py-3 phablet:py-4 w-full phablet:w-auto phablet:px-20 font-bold text-sm bg-black text-white border-white border-2 tracking-wide">
           VIEW ALL
         </button>
       </div>

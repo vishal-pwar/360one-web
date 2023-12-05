@@ -38,14 +38,14 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative">
-      <div className="lg:absolute lg:w-[40%] lg:top-[5%]">
-        <div className="flex font-bold text-3xl lg:text-[42px]">
+      <div className="tablet:absolute tablet:w-[40%] tablet:top-[5%] p-6 phablet:p-12 tablet:p-0">
+        <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
         </div>
-        <div className="flex font-normal text-base lg:text-xl mt-3 lg:mt-4 mb-4 sm:mb-6 lg:mb-24">
+        <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 phablet:mb-9 tablet:mt-4 tablet:mb-24">
           {response?.subheading}
         </div>
-        <div className="hidden 2xl:flex flex-col gap-5 ">
+        <div className="hidden desktop:flex flex-col gap-5">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
@@ -86,6 +86,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           </div>
         </div>
       </div>
+
       <Swiper
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
@@ -97,7 +98,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         onSlideChange={(e) => setActiveIndex(e.realIndex)}
         className="curated-swiper w-full"
         breakpoints={{
-          1024: {
+          1200: {
             slidesPerView: totalCards >= 4 ? "4" : totalCards,
           },
         }}
@@ -108,7 +109,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               key={i}
               className={`flex ${
                 activeIndex === i
-                  ? "lg:basis-[500px] xl:basis-[600px] 2xl:basis-[700px]"
+                  ? "tablet:basis-[600px] desktop:basis-[700px]"
                   : ""
               }`}
             >
@@ -118,23 +119,22 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                   key={i}
                   src={data?.image?.data?.attributes?.url}
                   alt="slider Image"
-                  // className={`object-cover w-full ${activeIndex === i ? 'h-[500px] 2xl:h-[700px]' : 'h-64'}`}
                   className={`object-cover w-full ${
                     activeIndex === i
-                      ? "h-[300px] 2xl:h-[450px]"
-                      : "h-[300px] lg:h-60"
+                      ? "h-[265px] phablet:h-[440px] tablet:h-[460px]"
+                      : "h-[265px] phablet:h-[440px] tablet:h-64"
                   }`}
                 />
               </div>
               {activeIndex === i ? (
-                <div className="flex flex-col items-end p-4 sm:p-6 lg:p-12 gap-2 xl:gap-4 w-full bg-[#FD7740]">
-                  <div className="flex items-end text-left font-bold text-lg sm:text-xl xl:text-[28px] text-white">
+                <div className="flex flex-col items-end p-5 phablet:p-9 tablet:p-12 gap-2 tablet:gap-4 w-full bg-[#FD7740]">
+                  <div className="flex items-end text-left font-bold text-lg phablet:text-2xl tablet:text-[28px] text-white">
                     {data?.title}
                   </div>
-                  <div className="flex items-end text-left font-medium text-sm lg:text-lg xl:text-xl text-white">
+                  <div className="flex items-end text-left font-medium text-sm tablet:text-xl text-white">
                     {data?.subheading}
                   </div>
-                  <button className=" hidden 2xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
+                  <button className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
                     READ MORE
                   </button>
                 </div>
@@ -143,14 +143,15 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           );
         })}
       </Swiper>
-      <div className="flex justify-end bg-[#FD7740] lg:bg-white">
-        <div className="2xl:hidden flex w-full lg:basis-[500px] xl:basis-[600px] flex-col gap-5 pt-5 px-6 lg:px-0 mb-10">
+
+      <div className="flex justify-end bg-[#FD7740] tablet:bg-white">
+        <div className="desktop:hidden flex w-full tablet:basis-[500px] tablet:basis-[600px] flex-col gap-5 pt-5 px-6 tablet:px-0 mb-10">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
           />
           <div className="flex justify-between">
-            <div className="flex font-bold text-sm sm:text-base lg:text-2xl">{`${
+            <div className="flex font-bold text-sm sm:text-base tablet:text-desktop">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
             <div className="flex z-[5] gap-4 items-center">
