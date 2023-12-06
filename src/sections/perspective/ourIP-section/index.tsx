@@ -5,7 +5,7 @@ export default async function index() {
   const response = await getOurIpsSection();
 
   return (
-    <section className="mt-20 phablet:mt-0 tablet:mt-28 desktop:mt-40 tablet:container">
+    <section className="mt-20 phablet:mt-0 tablet:mt-28 desktop:mt-60 tablet:container">
       <OurIpsSlider response={response?.data?.attributes?.Ips} />
     </section>
   );

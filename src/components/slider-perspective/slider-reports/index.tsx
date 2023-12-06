@@ -35,7 +35,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <div className="flex flex-col gap-4 md:gap-8 xl:gap-10 2xl:gap-12">
+    <div className="flex flex-col gap-4 phablet:gap-8 tablet:gap-10 2xl:gap-12">
       <div>
         <Swiper
           onBeforeInit={(swiper) => {
@@ -48,32 +48,29 @@ const ReportsSlider = ({ response }: reportsprops) => {
           className="mySwiper"
           onSlideChange={(e) => setActiveIndex(e.realIndex)}
           breakpoints={{
-            481: {
+            600: {
               slidesPerView: 2,
             },
-            768: {
+            1200: {
               slidesPerView: 3,
             },
-            1280: {
+            1600: {
               slidesPerView: 4,
-            },
-            1536: {
-              slidesPerView: 4.5,
             },
           }}
         >
-          {response.cards.map((card: any, i: any) => {
+          {response?.cards?.map((card: any, i: any) => {
             return (
               <SwiperSlide
                 key={i}
-                className="bg-[#333333] mt-3 md:mt-4 2xl:mt-20"
+                className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-20"
               >
                 <div className="flex flex-col py-6 px-[22px]">
                   <div>
-                    <div className="font-bold text-white text-base md:text-base xl:text-2xl">
+                    <div className="font-bold text-white text-base phablet:text-2xl">
                       {card.title}
                     </div>
-                    <div className="font-normal text-white mt-1 mb-6 2xl:mt-4 text-sm xl:text-xl">
+                    <div className="font-normal text-white mt-1 mb-6 tablet:mt-4 tablet:mb-14 text-sm tablet:text-xl">
                       {card.subtitle}
                     </div>
                   </div>
@@ -89,12 +86,12 @@ const ReportsSlider = ({ response }: reportsprops) => {
       <div>
         <CustomProgressBar
           currentIndex={activeIndex}
-          totalSlides={response.cards.length}
+          totalSlides={response?.cards?.length}
         />
         <div className="flex justify-between mt-4">
-          <div className="flex font-bold text-sm sm:text-base lg:text-2xl">{`${
+          <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
             activeIndex + 1
-          } / ${response.cards.length}`}</div>
+          } / ${response?.cards?.length}`}</div>
           <div className="flex z-[5] gap-4 items-center">
             <button
               // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""

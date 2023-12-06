@@ -5,16 +5,16 @@ import { formatDate } from "@/utils/api-helpers";
 const Media = async () => {
   const response = await getInMediaSection();
   return (
-    <section className="mt-16 xl:mt-20 xl:flex flex-1 xl:h-[900px]">
-      <div className="bg-black flex flex-col xl:flex-[6] pt-10 xl:pt-16 xl:pr-20">
-        <div className="font-bold text-[28px] md:text-[32px] xl:text-[42px] text-white">
+    <section className="tablet:flex flex-1 tablet:h-[900px] mt-36 mb-36">
+      <div className="bg-black flex flex-col tablet:flex-[6] px-6 py-10 phablet:p-12 tablet:py-16 tablet:px-40">
+        <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px] text-white">
           {response?.data?.attributes?.media?.title}
         </div>
-        <div className="font-normal text-base md:text-lg xl:text-xl mt-3 xl:mt-4 mb-10 text-white">
+        <div className="font-normal text-base phablet:text-lg tablet:text-xl text-white mt-3 tablet:mt-4 mb-10">
           {response?.data?.attributes?.media?.subtitle}
         </div>
         <div className="relative">
-          <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 xl:px-16 xl:py-4 xl:mt-6">
+          <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 tablet:px-16 tablet:py-4 tablet:mt-6">
             FEATURED
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -24,10 +24,10 @@ const Media = async () => {
                 ?.thumbnail?.data?.attributes?.url
             }
             alt="featured card"
-            className="flex w-full h-56 sm:h-64 md:h-72 xl:h-[330px] object-cover"
+            className="flex w-full h-56 phablet:h-72 tablet:h-[300px] desktop:h-80 object-cover"
           />
         </div>
-        <div className="flex font-normal text-white text-sm mt-6 mb-2 xl:text-base md:mt-7 2xl:mt-9">
+        <div className="flex font-normal text-white text-sm tablet:text-base mt-6 phablet:mt-7 desktop:mt-9 mb-2">
           <div>
             {
               response?.data?.attributes?.media?.featured?.data?.attributes
@@ -42,23 +42,23 @@ const Media = async () => {
             )}
           </div>
         </div>
-        <div className="font-bold text-base text-white md:text-lg lg:text-2xl">
+        <div className="font-bold text-base text-white phablet:text-lg tablet:text-2xl">
           {response?.data?.attributes?.media?.featured?.data?.attributes?.title}
         </div>
-        <button className="border-2 border-white py-3 text-white mt-6 mb-11 xl:mt-9 w-full sm:w-52">
+        <button className="border-2 border-white py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52">
           READ FULL ARTICLE
         </button>
       </div>
-      <div className="xl:h-[900px] overflow-y-scroll xl:flex-[6]">
-        <div className="flex flex-col xl:h-[3300px] 2xl:h-[2100px] overflow-hidden 2xl:flex-wrap 2xl:gap-7 flex-[6] xl:pt-9 xl:px-11">
+      <div className="tablet:h-[900px] overflow-y-scroll tablet:flex-[6] bg-[#F4F0EF] px-6 py-10 phablet:px-12 tablet:py-11 tablet:px-14">
+        <div className="flex flex-col tablet:h-[3300px] desktop:h-[2100px] overflow-hidden desktop:flex-wrap desktop:gap-7 flex-[6] tablet:pt-9 tablet:px-11">
           {response?.data?.attributes?.media?.blog_posts?.data
             ?.slice(0, 13)
             ?.map((blog: any, index: number) => (
               <>
                 <div
                   key={index}
-                  className={`flex flex-col 2xl:w-1/2 md:flex-row md:gap-4 xl:gap-0 xl:flex-col ${
-                    index >= 4 ? "hidden xl:block" : ""
+                  className={`flex flex-col desktop:w-1/2 phablet:flex-row phablet:gap-4 tablet:gap-0 tablet:flex-col ${
+                    index >= 3 ? "hidden tablet:block" : ""
                   }`}
                 >
                   {blog?.attributes?.thumbnail?.data !== null && (
@@ -66,7 +66,7 @@ const Media = async () => {
                     <img
                       src={blog?.attributes?.thumbnail?.data?.attributes?.url}
                       alt="blog-post"
-                      className="w-full object-cover h-[135px] sm:h-40 md:h-[135px] lg:h-48 xl:w-96 xl:h-96 mt-5 lg:mb-5 xl:mb-0"
+                      className="w-full object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] tablet:w-96 desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
                     />
                   )}
 
@@ -74,7 +74,7 @@ const Media = async () => {
                     <div className="font-light text-sm mt-5 mb-2">
                       {blog?.attributes?.tag}
                     </div>
-                    <div className="font-medium xl:font-bold text-base">
+                    <div className="font-medium tablet:font-bold text-base">
                       {blog?.attributes?.title}
                     </div>
                     <div className="flex font-normal text-sm mt-3 mb-6">
@@ -83,12 +83,12 @@ const Media = async () => {
                       <div>{formatDate(blog?.attributes?.publishedAt)}</div>
                     </div>
                   </div>
-                  <div className="md:hidden xl:flex w-full bg-black h-[2px] opacity-5">
+                  <div className="phablet:hidden tablet:flex w-full bg-black h-[2px] opacity-5">
                     -
                   </div>
                 </div>
                 <div
-                  className={`hidden md:flex xl:hidden w-full ${
+                  className={`hidden phablet:flex tablet:hidden w-full ${
                     index >= 3 ? "hidden" : "bg-black h-[2px] opacity-5"
                   }`}
                 ></div>

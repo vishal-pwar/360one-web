@@ -11,21 +11,14 @@ import Banner from "@/sections/perspective/banner-section";
 const page = () => {
   return (
     <main className="relative">
-      <div className="absolute w-screen h-[500px] phablet:h-[600px] tablet:h-[450px] desktop:h-[500px] top-0 left-0 -z-10 bg-black" />
-      <div className="absolute w-screen h-[500px] phablet:h-[650px] tablet:h-[770px] top-[500px] left-0 -z-10 bg-[#F4F0EF]" />
-      <div className="absolute w-screen h-[665px] phablet:h-[1000px] tablet:h-[550px] desktop:h-[1350px] top-[980px] phablet:top-[1150px] tablet:top-[1265px] left-0 -z-10 bg-black" />
-      <div className="absolute w-screen h-[600px] phablet:h-[500px] tablet:h-[770px] desktop:h-[1200px] top-[1800px] phablet:top-[2500px] tablet:top-[1800px] desktop:top-[2600px] left-0 -z-10 bg-[#F4F0EF]" />
-      <div className="absolute w-screen h-[400px] phablet:h-[420px] tablet:h-[200px] top-[2330px] sm:top-[2150px] phablet:top-[3000px] md:top-[2900px] lg:top-[2800px] tablet:top-[2500px] desktop:top-[3650px] left-0 -z-10 bg-black" />
-
-      {/* <div className="absolute w-screen h-[500px] top-[500px] sm:h-[460px] sm:top-[600px] phablet:h-[460px] phablet:top-[550px] tablet:top-[450px] tablet:h-[745px] xl:h-[460px] xl:top-[600px]  left-0 -z-10 bg-slate-600" />
-      // <div className="absolute w-screen h-[665px] top-[1000px] sm:h-[820px] sm:top-[1060px] phablet:h-[920px] phablet:top-[1000px] tablet:h-[550px] tablet:top-[1195px] xl:h-[1400px] xl:top-[1050px] left-0 -z-10 bg-black" />
-      <div className="absolute w-screen h-96 top-[1550px] sm:h-[520px] sm:top-[1750px] phablet:h-[360px] phablet:top-[1800px] tablet:hidden left-0 -z-10 bg-[#FD7740]" />
-      <div className="absolute w-screen h-80 top-[1900px] sm:h-96 sm:top-[2100px] phablet:top-[2160px] tablet:h-[650px] tablet:top-[1700px] xl:top-[2400px] 2xl:h-[1000px] left-0 -z-10 bg-blue-500" />
-      <div className="absolute w-screen h-[calc(100vh-206px)] top-[3730px] left-0 -z-10 bg-gray-600" />
-      <div className="absolute w-screen h-[calc(100vh-100px)] top-[4417px] left-0 -z-10 bg-black" />
-      <div className="absolute w-screen h-72 top-[5210px] left-0 -z-10 bg-[#FD7740]" />
-      <div className="absolute w-screen h-[calc(100vh+50px)] top-[5480px] left-0 -z-10 bg-black" /> */}
-
+      <div className="absolute w-full h-[500px] phablet:h-[600px] tablet:h-[450px] desktop:h-[550px] top-0 left-0 -z-10 bg-black" />
+      <div className="absolute w-full h-[500px] phablet:h-[650px] tablet:h-[770px] top-[550px] left-0 -z-10 bg-[#F4F0EF]" />
+      <div className="absolute w-full h-[665px] phablet:h-[1000px] tablet:h-[550px] desktop:h-[1350px] top-[980px] phablet:top-[1150px] tablet:top-[1265px] left-0 -z-10 bg-black" />
+      <div className="absolute w-full h-[600px] phablet:h-[500px] tablet:h-[770px] desktop:h-[1200px] top-[1800px] phablet:top-[2500px] tablet:top-[1800px] desktop:top-[2600px] left-0 -z-10 bg-[#F4F0EF]" />
+      <div className="absolute w-full h-[400px] phablet:h-[420px] tablet:h-[200px] top-[2330px] sm:top-[2150px] phablet:top-[3000px] md:top-[2900px] lg:top-[2800px] tablet:top-[2500px] desktop:top-[3650px] left-0 -z-10 bg-black" />
+      <div className="absolute w-full h-[400px] tablet:h-[650px] desktop:h-[700px] top-[2730px] sm:top-[2550px] phablet:top-[3420px] md:top-[3320px] lg:top-[3200px] tablet:top-[2700px] desktop:top-[3850px] left-0 -z-10 bg-[#F4F0EF]" />
+      <div className="absolute w-full h-[950px] sm:h-[950px] phablet:h-[880px] md:h-[690px] lg:h-[650px] tablet:h-[1050px] desktop:h-[800px]    top-[3300px] sm:top-[3100px] phablet:top-[4240px] lg:top-[4100px] tablet:top-[3300px] desktop:top-[4540px] left-0 -z-10 bg-black" />
+      <div className="absolute w-full h-[200px] phablet:h-[280px] desktop:h-[600px] top-[4200px] sm:top-[4000px] phablet:top-[5120px] md:top-[4930px] lg:top-[4700px] tablet:top-[4350px] desktop:top-[5340px] left-0 -z-10 bg-[#FD7740]" />
       <Banner />
       <section>
         {/* <Header/> */}

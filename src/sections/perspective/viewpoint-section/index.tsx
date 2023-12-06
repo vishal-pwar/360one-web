@@ -49,7 +49,7 @@ const Viewpoint = async () => {
                 href={secondCard?.href}
                 className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
               />
-              <div className="flex items-center text-white bg-[#404546] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
+              <div className="flex items-center text-black bg-white font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                 {secondCard?.subtitle}
               </div>
             </article>
@@ -67,7 +67,7 @@ const Viewpoint = async () => {
                 href={thirdCard?.href}
                 className="object-cover w-full h-[310px]"
               />
-              <div className="flex items-center font-bold text-xl text-white bg-black p-9 h-full">
+              <div className="flex items-center font-bold text-xl text-white bg-[#404546] p-9 h-full">
                 {thirdCard?.subtitle}
               </div>
             </article>
@@ -84,7 +84,7 @@ const Viewpoint = async () => {
                   href={fourthCard?.href}
                   className="object-cover w-[400px] h-[230px]"
                 />
-                <div className="flex items-center font-bold text-3xl text-white bg-black p-12 h-full w-full">
+                <div className="flex items-center font-bold text-3xl text-white bg-[#404546] p-12 h-full w-full">
                   {fourthCard?.subtitle}
                 </div>
               </article>
@@ -100,7 +100,7 @@ const Viewpoint = async () => {
                   href={fifthCard?.href}
                   className="object-cover w-[400px] h-[230px]"
                 />
-                <div className="flex items-center font-bold text-3xl text-white bg-black p-12 h-full w-full">
+                <div className="flex items-center font-bold text-3xl text-black bg-white p-12 h-full w-full">
                   {fifthCard?.subtitle}
                 </div>
               </article>

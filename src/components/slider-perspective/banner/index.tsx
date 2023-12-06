@@ -39,7 +39,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
 
   return (
     <div className="relative">
-      <div className="tablet:absolute tablet:w-[45%] tablet:top-[5%] tablet:pl-16">
+      <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%] tablet:pl-16">
         <div className="font-bold text-[28px] tablet:text-[52px] tablet:text-6xl text-white">
           The 360 ONE
         </div>
@@ -47,7 +47,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           Perspective
         </div>
         <div className="font-normal text-lg phablet:text-xl text-white mt-2 mb-8">
-          {response.subtitle}
+          {response?.subtitle}
         </div>
       </div>
 
@@ -63,7 +63,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1200: {
-            slidesPerView: totalCards >= 4 ? "4" : totalCards,
+            slidesPerView: totalCards >= 5 ? "5" : totalCards,
           },
         }}
       >
@@ -77,11 +77,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   : ""
               }`}
             >
-              <div className="tablet:relative">
-                <div className="hidden desktop:flex desktop:absolute bg-white left-0 mt-3 text-black font-bold text-sm py-2 px-5">
+              <div className="tablet:relative bg-black">
+                <div className="hidden desktop:flex desktop:absolute bg-white left-0 mt-3 text-black font-bold text-sm py-2 px-5 z-20">
                   {data?.category}
                 </div>
-                <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5">
+                <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
                   <div
                     className={`flex items-end text-left font-normal tablet:text-sm text-white ${
                       activeIndex === i ? `hidden` : ""
@@ -105,7 +105,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   className={`object-cover w-full ${
                     activeIndex === i
                       ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px]"
-                      : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px]"
+                      : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px] opacity-40"
                   }`}
                 />
               </div>
