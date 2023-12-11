@@ -63,13 +63,15 @@ const CommitmentSection = async () => {
         <div className="max-sm:block max-md:flex-col max-md:gap-0 flex gap-[calc(77*var(--scale))]">
           <div className="max-sm:pt-[calc(50*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(40*var(--scale))] max-md:pt-[calc(40*var(--scale))] max-md:pb-0 max-md:w-full max-lg:pl-[calc(21*var(--scale))] max-lg:pr-[calc(53*var(--scale))] max-lg:py-[calc(70*var(--scale))] max-lg:relative py-[calc(105*var(--scale))] pl-[calc(53*var(--scale))] pr-[calc(74*var(--scale))] relative w-[40%]">
             <h3 className="max-md:max-w-[calc(300*var(--scale))] max-md:leading-[1.2] max-lg:mb-[calc(8*var(--scale))] max-lg:leading-[1.42] text-[calc(1*var(--size-32))] leading-[1] max-w-[calc(346*var(--scale))] mt-[0] mb-[calc(23*var(--scale))] font-bold">
-              {secondSection.title}
+              {secondSection?.title}
             </h3>
             <p className="text-[calc(1*var(--size-20))] leading-[1.6]">
-              {secondSection.text}
+              {secondSection?.text}
             </p>
           </div>
-          {secondSection.cards && <CardsList cardsList={secondSection.cards} />}
+          {secondSection?.cards && (
+            <CardsList cardsList={secondSection?.cards} />
+          )}
         </div>
       </div>
     </section>

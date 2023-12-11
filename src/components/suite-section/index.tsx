@@ -15,8 +15,13 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
     page === "asset"
       ? await getAssetSuiteSection()
       : await getWealthSuiteSection();
-  const { title, text, link, clearImage, blurImage, icon, cards } =
-    response?.data?.attributes?.suite;
+  const title = response?.data?.attributes?.suite;
+  const text = response?.data?.attributes?.suite;
+  const link = response?.data?.attributes?.suite;
+  const clearImage = response?.data?.attributes?.suite;
+  const blurImage = response?.data?.attributes?.suite;
+  const icon = response?.data?.attributes?.suite;
+  const cards = response?.data?.attributes?.suite;
   const clearImageUrl = getStrapiMedia(clearImage?.data?.attributes?.url);
   const blurImageUrl = getStrapiMedia(blurImage?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);

@@ -33,7 +33,7 @@ const Viewpoint = async () => {
                 href={firstCard?.href}
                 className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
               />
-              <div className="flex items-center text-white bg-[#404546] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
+              <div className="flex items-center text-white bg-[#333333] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                 {firstCard?.subtitle}
               </div>
             </article>
