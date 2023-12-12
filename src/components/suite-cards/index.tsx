@@ -44,7 +44,10 @@ const SuiteCards = ({ cards, page }: SuiteCardsProps) => {
                   activeId === index &&
                   "mt-[calc(-90*var(--scale))] -translate-y-[100px]"
                 }`}
-                alt="360 One Wealth Management"
+                // alt="360 One Wealth Management"
+                alt={getStrapiMedia(
+                  cardItem?.icon?.data?.attributes?.alternativeText
+                )}
                 title="360 One Wealth Management"
                 height={64}
                 width={53}

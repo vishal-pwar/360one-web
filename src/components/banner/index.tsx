@@ -12,10 +12,10 @@ const Banner = async ({ page }: BannerProps) => {
     page === "asset"
       ? await getAssetHeroSection()
       : await getWealthHeroSection();
-  const title = response?.data?.attributes?.hero;
-  const text = response?.data?.attributes?.hero;
-  const image = response?.data?.attributes?.hero;
-  const icon = response?.data?.attributes?.hero;
+  const title = response?.data?.attributes?.hero?.title;
+  const text = response?.data?.attributes?.hero?.text;
+  const image = response?.data?.attributes?.hero?.image;
+  const icon = response?.data?.attributes?.hero?.icon;
 
   const imageUrl = getStrapiMedia(image?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
@@ -30,7 +30,8 @@ const Banner = async ({ page }: BannerProps) => {
             <Image
               className="w-full h-full object-cover object-center"
               src={imageUrl}
-              alt="Wealth management"
+              // alt="Wealth management"
+              alt={image?.data?.attributes?.alternativeText}
               title="Wealth management services"
               width={3594}
               height={1899}
@@ -45,7 +46,8 @@ const Banner = async ({ page }: BannerProps) => {
             <Image
               src={iconUrl}
               className="max-sm:w-[calc(29*var(--scale))] max-sm:h-[calc(38*var(--scale))] max-md:w-[calc(35*var(--scale))] max-md:h-[calc(48*var(--scale))] max-lg:w-[calc(47*var(--scale))] max-lg:h-[calc(64*var(--scale))] w-[calc(75*var(--scale))] h-[calc(100*var(--scale))] ml-auto"
-              alt="360 One Wealth Management"
+              // alt="360 One Wealth Management"
+              alt={icon?.data?.attributes?.alternativeText}
               title="360 One Wealth Management"
               width={76}
               height={100}

@@ -76,7 +76,9 @@ const PledgeSlider = ({ cards }: PledgeSliderProps) => {
                 <Image
                   className="max-sm:h-[calc(203*var(--scale))] max-sm:w-[calc(353*var(--scale))] max-md:w-[calc(299*var(--scale))] max-lg:w-[calc(245*var(--scale))] w-[calc(401*var(--scale))] h-full object-cover object-[center_18%]"
                   src={getStrapiMedia(card?.image?.data?.attributes?.url)}
-                  alt="pledge-slider-image"
+                  alt={getStrapiMedia(
+                    card?.image?.data?.attributes?.alternativeText
+                  )}
                   width={401}
                   height={702}
                 />

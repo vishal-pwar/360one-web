@@ -16,13 +16,13 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
       ? await getAssetSuiteSection()
       : await getWealthSuiteSection();
 
-  const title = response?.data?.attributes?.suite;
-  const text = response?.data?.attributes?.suite;
-  const link = response?.data?.attributes?.suite;
-  const clearImage = response?.data?.attributes?.suite;
-  const blurImage = response?.data?.attributes?.suite;
-  const icon = response?.data?.attributes?.suite;
-  const cards = response?.data?.attributes?.suite;
+  const title = response?.data?.attributes?.suite?.title;
+  const text = response?.data?.attributes?.suite?.text;
+  const link = response?.data?.attributes?.suite?.link;
+  const clearImage = response?.data?.attributes?.suite?.clearImage;
+  const blurImage = response?.data?.attributes?.suite?.blurImage;
+  const icon = response?.data?.attributes?.suite?.icon;
+  const cards = response?.data?.attributes?.suite?.cards;
   const clearImageUrl = getStrapiMedia(clearImage?.data?.attributes?.url);
   const blurImageUrl = getStrapiMedia(blurImage?.data?.attributes?.url);
   const iconUrl = getStrapiMedia(icon?.data?.attributes?.url);
@@ -67,7 +67,10 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
               <ScrollImage
                 src={clearImageUrl}
                 blurImageUrl={blurImageUrl}
-                alt="The 360 ONE Wealth Suite"
+                // alt="The 360 ONE Wealth Suite"
+                alt={getStrapiMedia(
+                  clearImage?.data?.attributes?.alternativeText
+                )}
                 title="The 360 ONE Wealth Suite"
                 width={1330}
                 height={560}
@@ -76,7 +79,8 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
                 <Image
                   src={iconUrl}
                   className="max-sm:w-[calc(33*var(--scale))] max-sm:h-[calc(45*var(--scale))] max-lg:w-[calc(41*var(--scale))] max-lg:h-[calc(56*var(--scale))] w-[calc(56.5*var(--scale))] h-[calc(75*var(--scale))]"
-                  alt="360 One Wealth Management"
+                  //alt="360 One Wealth Management"
+                  alt={getStrapiMedia(icon?.data?.attributes?.alternativeText)}
                   title="360 One Wealth Management"
                   height={100}
                   width={76}
