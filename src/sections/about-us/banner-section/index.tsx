@@ -14,11 +14,6 @@ const AboutBannerSection = async () => {
   const videoUrl = getStrapiMedia(video?.data?.attributes?.url);
   const playIconUrl = getStrapiMedia(icon?.data?.attributes?.url);
 
-  console.log(
-    "response?.data?.attributes?.hero------------------->",
-    response?.data
-  );
-
   return (
     <section className="relative">
       <div className="max-sm:pt-[calc(100.5*var(--scale))] max-sm:mb-0 max-sm:p-[calc(20*var(--scale))calc(28*var(--scale))] max-md:pt-[calc(92.5*var(--scale))] max-md:mb-[calc(100*var(--scale))] max-md:px-[calc(28*var(--scale))] max-md:pb-[calc(19*var(--scale))] max-lg:px-[calc(80*var(--scale))] max-lg:pb-[calc(48*var(--scale))] max-lg:pt-[calc(122*var(--scale))] pt-[calc(176*var(--scale))] px-[calc(126*var(--scale))] pb-[calc(48*var(--scale))] w-full max-w-[calc(1600*var(--scale))] m-auto">
@@ -46,7 +41,10 @@ const AboutBannerSection = async () => {
             <Image
               className="w-full h-full object-contain object-center absolute top-0 left-0 opacity-[1]"
               src={bannerImageUrl}
-              alt="about-us-banner"
+              // alt="about-us-banner"
+              alt={getStrapiMedia(
+                bannerImage?.data?.attributes?.alternativeText
+              )}
               title="about-us-banner"
               height={4501}
               width={8001}

@@ -19,14 +19,14 @@ import clsx from "clsx";
 
 export async function generateMetadata() {
   const headersList = headers();
-  const url = headersList.get("x-url") || "";
+  const url = headersList?.get("x-url") || "";
   const response = await getMetadata();
-  const metaData = response.data;
+  const metaData = response?.data;
   const metaTags = metaData?.find(
-    (m) => m.attributes.page.data.attributes.url === url
+    (m) => m?.attributes?.page?.data?.attributes?.url === url
   );
-  const tags = metaTags?.attributes.metaTag?.reduce((tag: any, item: any) => {
-    tag[item.name] = item.content;
+  const tags = metaTags?.attributes?.metaTag?.reduce((tag: any, item: any) => {
+    tag[item?.name] = item?.content;
     return tag;
   }, {});
 
@@ -39,20 +39,34 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const headersList = headers();
-  const url = headersList.get("x-url") || "";
+  const url = headersList?.get("x-url") || "";
   const res = await getPopup();
   const popupData = res?.data?.find(
-    (p) => p.attributes.page.data.attributes.url === url
+    (p) => p?.attributes?.page?.data?.attributes?.url === url
   );
 
   const orgs = await getOrganizationCanonical();
   const canonical = orgs?.data?.find(
-    (c) => c.attributes.page.data.attributes.url === url
+    (c) => c?.attributes?.page?.data?.attributes?.url === url
   );
 
   return (
     <html className={clsx(spaceGrotesk.className, "scroll-smooth")} lang="en">
       <head>
+        {/* Add Google Tag Manager script */}
+        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','YOUR_GTM_CONTAINER_ID');
+            `,
+          }}
+        ></script>
+        {/* End Google Tag Manager script */}
         <link
           rel="icon"
           type="image/x-icon"
@@ -60,7 +74,17 @@ export default async function RootLayout({
         />
         {canonical && <NextSEOComponent canonicalData={canonical} />}
       </head>
-      <body>
+      <body className={`${spaceGrotesk.variable} ${hankenGrotesk.variable}`}>
+        {/* Add Google Tag Manager (noscript) immediately after the opening <body> tag */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=YOUR_GTM_CONTAINER_ID"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <Mixpanel />
         {popupData ? <Popup popup={popupData} /> : null}
         {children}

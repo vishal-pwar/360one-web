@@ -25,7 +25,10 @@ const RecognitionCards = ({ cards }: RecognitionCardsProps) => {
                 <Image
                   className="max-sm:w-[calc(40*var(--scale))] max-sm:h-[calc(37*var(--scale))] max-sm:mb-[calc(8*var(--scale))] max-md:w-[calc(40*var(--scale))] max-md:h-[calc(37*var(--scale))] w-[calc(46*var(--scale))] h-[calc(42*var(--scale))] mb-[calc(8*var(--scale))]"
                   src={getStrapiMedia(card?.icon?.data?.attributes?.url)}
-                  alt="accolades"
+                  // alt="accolades"
+                  alt={getStrapiMedia(
+                    card?.icon?.data?.attributes?.alternativeText
+                  )}
                   title="accolades"
                   width={46}
                   height={42}
@@ -40,7 +43,10 @@ const RecognitionCards = ({ cards }: RecognitionCardsProps) => {
                 <Image
                   className="max-sm:mb-[calc(8*var(--scale))] max-lg:mt-0 w-[calc(125*var(--scale))] h-[calc(86*var(--scale))] mt-auto mb-[calc(8*var(--scale))]"
                   src={getStrapiMedia(card?.image?.data?.attributes?.url)}
-                  alt="accolades"
+                  // alt="accolades"
+                  alt={getStrapiMedia(
+                    card?.image?.data?.attributes?.alternativeText
+                  )}
                   title="accolades"
                   width={125}
                   height={86}
