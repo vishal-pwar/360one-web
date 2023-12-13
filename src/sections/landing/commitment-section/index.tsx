@@ -50,14 +50,14 @@ const CommitmentSection = async () => {
         <div className="max-sm:block max-md:flex-col max-md:gap-0 flex gap-[calc(77*var(--scale))]">
           <div className="max-sm:pt-[calc(50*var(--scale))] max-sm:pb-[calc(20*var(--scale))] max-sm:pr-[calc(40*var(--scale))] max-sm:before:w-[calc(100%+(22*var(--scale)))] max-sm:before:h-[calc(380*var(--scale))] max-sm:before:left-[-4.5%] max-sm:before:translate-x-0 max-sm:before:translate-y-0 max-md:py-[calc(40*var(--scale))] max-md:w-full max-md:before:w-[calc(100%+(60*var(--scale)))] max-md:before:h-[calc(100%+(80*var(--scale)))] max-md:left-[50%] max-md:-translate-x-[45.5%] max-md:flex-col max-lg:pl-[calc(21*var(--scale))] max-lg:pr-[calc(53*var(--scale))] max-lg:py-[calc(70*var(--scale))] max-lg:relative w-[40%] py-[calc(105*var(--scale))] pl-[calc(53*var(--scale))] pr-[calc(74*var(--scale))] relative before:content[''] before:absolute before:w-[calc(100%+(53*var(--scale)))] before:h-[calc(100%+(180*var(--scale)))] before:bg-[#c1b6b1] before:bottom-0 before:right-0 before:-z-10">
             <h2 className="max-md:max-w-[calc(300*var(--scale))] max-md:gap-0 max-md:leading-[1.2] max-lg:mb-[calc(8*var(--scale))] max-lg:leading-[1.42] text-[calc(1*var(--size-32))] mt-0 mb-[calc(23*var(--scale))] mr-[3rem] leading-[1] font-bold">
-              {firstSection.title}
+              {firstSection?.title}
             </h2>
             <p className="m-0 text-[calc(1*var(--size-20))] leading-[1.6]">
-              {firstSection.text}
+              {firstSection?.text}
             </p>
           </div>
-          {firstSection.cards && (
-            <CardsList cardsList={firstSection.cards} hasDivider />
+          {firstSection?.cards && (
+            <CardsList cardsList={firstSection?.cards} hasDivider />
           )}
         </div>
         <div className="max-sm:block max-md:flex-col max-md:gap-0 flex gap-[calc(77*var(--scale))]">

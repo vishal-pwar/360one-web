@@ -3,8 +3,9 @@ import BodSliderSection from "./board-section";
 
 const BoardOfDirectorsSectionWrapper = async () => {
   const response = await getBoardOfDirectorsSection();
-  const { cards, cardTitle, cardText } =
-    response?.data?.attributes?.boardOfDirectors;
+  const cards = response?.data?.attributes?.boardOfDirectors;
+  const cardTitle = response?.data?.attributes?.boardOfDirectors;
+  const cardText = response?.data?.attributes?.boardOfDirectors;
   const content = {
     text: cardText,
     title: cardTitle,

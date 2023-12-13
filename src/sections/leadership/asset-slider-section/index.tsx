@@ -6,7 +6,9 @@ import AssetSliderSection from "./asset-section";
 
 const AssetLeadersWrapper = async () => {
   const response = await getAssetLeadersSection();
-  const { cards, cardTitle, cardText } = response?.data?.attributes?.asset;
+  const cards = response?.data?.attributes?.asset;
+  const cardTitle = response?.data?.attributes?.asset;
+  const cardText = response?.data?.attributes?.asset;
   const content = {
     text: cardText,
     title: cardTitle,

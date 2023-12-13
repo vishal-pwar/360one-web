@@ -21,7 +21,7 @@ const LeadershipSection = async () => {
           <p className="max-sm:ml-0 max-sm:leading-[1.43] max-md:ml-[calc(23*var(--scale))] max-lg:mb-[calc(11*var(--scale))] max-lg:ml-[calc(62*var(--scale))] max-lg:leading-[1.38] max-lg:max-w-[calc(686*var(--scale))] text-[calc(1*var(--size-20))] leading-[1.8] mr-auto mb-[calc(9*var(--scale))] ml-[calc(98*var(--scale))] max-w-[calc(1006*var(--scale))] text-black">
             {text}
           </p>
-          <LeadershipSlider cards={cards} link={link} />
+          {cards && link && <LeadershipSlider cards={cards} link={link} />}
         </div>
       </div>
     </section>

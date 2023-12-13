@@ -4,7 +4,6 @@ import { getStrapiMedia } from "@/utils/api-helpers";
 
 const BannerSection = async () => {
   const response = await getHeroSection();
-  // const { title, text } = response?.data?.attributes?.hero;
   const title = response?.data?.attributes?.hero?.title;
   const text = response?.data?.attributes?.hero?.text;
   const videoUrl = getStrapiMedia(

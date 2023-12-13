@@ -38,12 +38,12 @@ const AboutUsCards = ({ cards }: AboutUsCardsProps) => {
             </div>
             <div className="max-sm:flex-1 max-sm:relative">
               <h5 className="max-sm:text-left max-sm:text-[calc(16*var(--scale))] max-sm:leading-[1.51] max-md:leading-[1.51] max-md:text-[calc(14*var(--scale))] max-lg:whitespace-nowrap max-lg: leading-[2.2] text-[calc(1*var(--size-20))] text-center font-bold">
-                {card.title}
+                {card?.title}
               </h5>
               <span className="max-sm:text-left max-sm:text-[calc(14*var(--scale))] max-lg:leading-[1.35] leading-[1.43] text-[calc(1*var(--size-14))] text-center block">
-                {card.text}
+                {card?.text}
               </span>
-              {index !== cardsList.length - 1 && (
+              {index !== cardsList?.length - 1 && (
                 <div className="max-sm:w-full max-sm:mt-[calc(27*var(--scale))] max-sm:h-[calc(1*var(--scale))] max-sm:bg-[#979797]"></div>
               )}
             </div>

@@ -42,16 +42,19 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
               <p className="max-md:max-w-[calc(417*var(--scale))] max-md:mb-[calc(10*var(--scale))] max-lg:max-w-[calc(450*var(--scale))] max-lg:leading-[1.5] text-[calc(1*var(--size-20))] mb-[calc(24*var(--scale))] leading-[1.7] max-w-[calc(725*var(--scale))]">
                 {text}
               </p>
-              <button className="max-sm:text-[calc(12*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="w-full h-full flex justify-center items-center"
-                >
-                  Know More
-                </Link>
-              </button>
+
+              {typeof link === "string" && (
+                <button className="max-sm:text-[calc(12*var(--scale))] max-lg:p-[calc(4*var(--scale))calc(14*var(--scale))] max-lg:tracking-[calc(0.43*var(--scale))] max-lg:border-[calc(1.3*var(--scale))] max-lg:min-w-[calc(102*var(--scale))] max-lg:h-[calc(40*var(--scale))] max-lg:text-[calc(1*var(--size-14))] text-white border-white p-[calc(4*var(--scale))calc(12*var(--scale))] tracking-[calc(0.91*var(--scale))] border-solid border-[calc(2*var(--scale))] bg-transparent min-w-[calc(160*var(--scale))] h-[calc(50*var(--scale))] flex justify-center items-center cursor-pointer font-bold uppercase text-[calc(1*var(--size-14))]">
+                  <Link
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="w-full h-full flex justify-center items-center"
+                  >
+                    Know More
+                  </Link>
+                </button>
+              )}
             </div>
           </div>
           <div
@@ -80,7 +83,7 @@ const SuiteSection = async ({ page }: SuiteSectionProps) => {
               </div>
             </div>
             <div className="max-sm:mb-0 max-sm:gap-[calc(8*var(--scale))] max-md:gap-[calc(8*var(--scale))] max-lg:h-[calc(230*var(--scale))] h-[calc(358*var(--scale))] w-[109%] mt-auto flex items-end z-10">
-              <SuiteCards cards={cards} page={page} />
+              {cards && <SuiteCards cards={cards} page={page} />}
             </div>
           </div>
         </div>
