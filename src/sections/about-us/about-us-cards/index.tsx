@@ -31,7 +31,10 @@ const AboutUsCards = ({ cards }: AboutUsCardsProps) => {
               <Image
                 className="w-full h-full object-contain object-center"
                 src={getStrapiMedia(card?.icon?.data?.attributes?.url)}
-                alt="card-icon"
+                // alt="card-icon"
+                alt={getStrapiMedia(
+                  card?.icon?.data?.attributes?.alternativeText
+                )}
                 width={50}
                 height={50}
               />

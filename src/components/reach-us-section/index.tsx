@@ -12,13 +12,16 @@ const ReachUsSection = async ({ page }: ReachUsSectionProps) => {
     page === "asset"
       ? await getAssetReachUsSection()
       : await getWealthReachUsSection();
-  const title = response?.data?.attributes?.reachUs;
-  const text = response?.data?.attributes?.reachUs;
-  const address = response?.data?.attributes?.reachUs;
-  const serviceDeskEmail = response?.data?.attributes?.reachUs;
-  const serviceDeskNumber = response?.data?.attributes?.reachUs;
-  const mediaEmail = response?.data?.attributes?.reachUs;
-  const mediaNumber = response?.data?.attributes?.reachUs;
+
+  const title = response?.data?.attributes?.reachUs?.title;
+  const text = response?.data?.attributes?.reachUs?.text;
+  const address = response?.data?.attributes?.reachUs?.address;
+  const serviceDeskEmail =
+    response?.data?.attributes?.reachUs?.serviceDeskEmail;
+  const serviceDeskNumber =
+    response?.data?.attributes?.reachUs?.serviceDeskNumber;
+  const mediaEmail = response?.data?.attributes?.reachUs?.mediaEmail;
+  const mediaNumber = response?.data?.attributes?.reachUs?.mediaNumber;
 
   if (!title || !text || !address) return null;
 

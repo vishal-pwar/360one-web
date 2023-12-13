@@ -15,10 +15,40 @@ import Image from "next/image";
 import CloseIcon from "../../../public/assets/icons/icons8-cancel.svg";
 import { getStrapiMedia } from "@/utils/api-helpers";
 
+export type Card = {
+  id: number;
+  name: string;
+  designation: string;
+  about: string;
+  image: {
+    data: {
+      id: number;
+      attributes: {
+        name: string;
+        alternativeText: null;
+        caption: null;
+        width: number;
+        height: number;
+        formats: any;
+        hash: string;
+        ext: string;
+        mime: string;
+        size: number;
+        url: string;
+        previewUrl: null;
+        provider: string;
+        provider_metadata: null;
+        createdAt: Date;
+        updatedAt: Date;
+      };
+    };
+  };
+};
+
 interface SwiperCardsNavigationProps {
   prevSwiperRef: MutableRefObject<HTMLElement | null>;
   nextSwiperRef: MutableRefObject<HTMLElement | null>;
-  cards: any;
+  cards: Card[];
   activeSlideId?: number;
   setActiveSlideId?: Dispatch<SetStateAction<number>>;
 }
@@ -101,7 +131,7 @@ const SwiperCardsNavigation = ({
           });
         }}
       >
-        {cards?.map((card: any, index: number) => {
+        {cards?.map((card, index: number) => {
           return (
             <SwiperSlide
               className={`max-lg:overflow-hidden flex ${

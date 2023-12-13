@@ -33,7 +33,8 @@ const CommitmentSection = async () => {
           <ScrollImage
             src={clearImageUrl}
             blurImageUrl={blurImageUrl}
-            alt="360 ONE Commitment"
+            // alt="360 ONE Commitment"
+            alt={getStrapiMedia(clearImage?.data?.attributes?.alternativeText)}
             title="The 360 ONE Commitment"
             height={1680}
             width={3990}

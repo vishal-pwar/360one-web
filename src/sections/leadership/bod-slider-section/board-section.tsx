@@ -21,6 +21,7 @@ const BodSliderSection = ({ cards, content }: { cards: any; content: any }) => {
       prevNumber > 1 ? prevNumber - 1 : length
     );
   };
+
   return (
     <section
       className={`max-sm:pt-[calc(120.5*var(--scale))] max-sm:pb-[calc(23*var(--scale))] max-sm:flex-col-reverse max-md:pt-[calc(112.5*var(--scale))] max-md:pb-[calc(36*var(--scale))] max-md:flex-col-reverse max-md:items-start max-lg:pt-[calc(172*var(--scale))] max-lg:pb-[calc(45.5*var(--scale))] pt-[calc(230*var(--scale))] relative flex items-center py-[calc(53.5*var(--scale))]

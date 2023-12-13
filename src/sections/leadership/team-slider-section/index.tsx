@@ -3,11 +3,11 @@ import TeamSliderSection from "./team-section";
 
 const TeamLeadersWrapper = async () => {
   const response = await getTeamLeadersSection();
-  const cards = response?.data?.attributes?.team;
-  const cardText = response?.data?.attributes?.team;
-  const cardTitle = response?.data?.attributes?.team;
-  const title = response?.data?.attributes?.team;
-  const text = response?.data?.attributes?.team;
+  const cards = response?.data?.attributes?.team?.cards;
+  const cardText = response?.data?.attributes?.team?.cardText;
+  const cardTitle = response?.data?.attributes?.team?.cardTitle;
+  const title = response?.data?.attributes?.team?.title;
+  const text = response?.data?.attributes?.team?.text;
   const content = {
     sectionTitle: title,
     sectionText: text,
