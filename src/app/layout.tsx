@@ -42,12 +42,12 @@ export default async function RootLayout({
   const url = headersList.get("x-url") || "";
   const res = await getPopup();
   const popupData = res?.data?.find(
-    (p) => p.attributes.page.data.attributes.url === url
+    (p) => p?.attributes?.page?.data?.attributes?.url === url
   );
 
   const orgs = await getOrganizationCanonical();
   const canonical = orgs?.data?.find(
-    (c) => c.attributes.page.data.attributes.url === url
+    (c) => c?.attributes?.page?.data?.attributes?.url === url
   );
 
   return (

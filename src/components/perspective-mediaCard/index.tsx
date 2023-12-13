@@ -9,6 +9,8 @@ interface MediaCardProps {
 }
 
 const MediaCard = ({ mediaType, media, href, className }: MediaCardProps) => {
+  // console.log('vishal----------------------------------->', mediaType, media.attributes.url, href, className);
+
   const getYouTubeVideoId = (url: any) => {
     // Regular expression to match YouTube video ID
     const regex =
