@@ -45,14 +45,17 @@ const Popup = (props: PopupDetails) => {
                       popup?.attributes?.image?.data?.attributes?.url?.length,
                   })}
                   src={BrandLogoBlack}
-                  alt="360 ONE - Asset & Wealth management"
+                  // alt="360 ONE - Asset & Wealth management"
+                  alt={
+                    popup?.attributes?.image?.data?.attributes?.alternativeText
+                  }
                   title="360 One"
                 />
               </div>
               <div className="absolute top-0 right-0 p-4">
                 <Image
                   src={closeIcon}
-                  alt="closeIcon"
+                  alt="close"
                   width={20}
                   height={20}
                   onClick={closeDialog}
@@ -64,7 +67,11 @@ const Popup = (props: PopupDetails) => {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageUrl}
-                    alt="Image"
+                    // alt="Image"
+                    alt={
+                      popup?.attributes?.image?.data?.attributes
+                        ?.alternativeText
+                    }
                     sizes="100vw"
                     className="w-full h-full hidden sm:flex object-cover "
                   ></img>

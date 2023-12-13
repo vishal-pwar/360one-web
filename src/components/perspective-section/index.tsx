@@ -52,7 +52,11 @@ const PerspectiveSection = async ({ page }: PerspectiveSectionProps) => {
             src={url}
             height={366}
             width={552}
-            alt="Wealth Management Industry"
+            // alt="Wealth Management Industry"
+            alt={
+              firstPost?.attributes?.thumbnail?.data?.attributes
+                ?.alternativeText
+            }
             title="Wealth Management Industry"
           />
           <span className="max-md:mb-[calc(10*var(--scale))] text-[calc(1*var(--size-16))] tracking-[calc(0.58*var(--scale))] leading-[1.63] mb-[calc(25*var(--scale))] block">

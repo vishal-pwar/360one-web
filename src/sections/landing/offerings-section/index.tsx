@@ -52,7 +52,8 @@ const OfferingsSection = async () => {
               blurImageUrl={firstBlurImageUrl}
               width={1234}
               height={633}
-              alt="Wealth management"
+              // alt="Wealth management"
+              alt={firstProduct?.clearImage?.data?.attributes?.alternativeText}
               title="Wealth management services"
             />
           </div>
@@ -79,7 +80,8 @@ const OfferingsSection = async () => {
               <Image
                 className="max-md:w-[calc(36*var(--scale))] max-md:h-[calc(48*var(--scale))] max-lg:w-[calc(48*var(--scale))] max-lg:h-[calc(64*var(--scale))] w-[calc(75*var(--scale))] h-[calc(100*var(--scale))]"
                 src={firstIconUrl}
-                alt="360 ONE Wealth Management"
+                // alt="360 ONE Wealth Management"
+                alt={firstProduct?.logo?.data?.attributes?.alternativeText}
                 title="360 ONE Wealth Management"
                 width={76}
                 height={100}
@@ -94,7 +96,8 @@ const OfferingsSection = async () => {
               blurImageUrl={secondBlurImageUrl}
               width={1234}
               height={633}
-              alt="Asset management services"
+              // alt="Asset management services"
+              alt={secondProduct?.clearImage?.data?.attributes?.alternativeText}
               title="Asset management services in India"
             />
           </div>
@@ -121,7 +124,8 @@ const OfferingsSection = async () => {
                 src={secondIconUrl}
                 width={76}
                 height={100}
-                alt="360 ONE Asset Management"
+                // alt="360 ONE Asset Management"
+                alt={secondProduct?.logo?.data?.attributes?.alternativeText}
                 title="360 ONE Asset Management"
               />
             </div>
