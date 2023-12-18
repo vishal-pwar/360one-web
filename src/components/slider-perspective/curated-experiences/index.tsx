@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
-import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
 
 interface curatedExperienceProps {
   response: any;
@@ -23,9 +23,9 @@ const CustomProgressBar = ({
   const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
 
   return (
-    <div className="relative h-1 bg-slate-500">
+    <div className="w-full relative h-1 bg-[#4C4C4C]">
       <div
-        className="absolute top-0 left-0 h-full bg-gray-200 transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-white transition-all duration-300"
         style={{ width: `${progressPercentage}%` }}
       />
     </div>
@@ -37,7 +37,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <section className="relative">
+    <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16 tablet:pt-20">
       <div className="tablet:absolute tablet:w-[55%] tablet:top-[15%]">
         <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
@@ -113,7 +113,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   : ""
               }`}
             >
-              <div>
+              <div className="bg-black">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
@@ -121,7 +121,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   alt="slider Image"
                   className={`object-cover w-full ${
                     activeIndex === i
-                      ? "h-[366px] tablet:h-[521px] desktop:h-[800px]"
+                      ? "h-[366px] tablet:h-[521px] desktop:h-[800px] opacity-60"
                       : "h-[366px] tablet:h-48 desktop:h-60"
                   }`}
                 />
@@ -144,7 +144,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         })}
       </Swiper>
       <div className="flex justify-end">
-        <div className="desktop:hidden flex w-full tablet:basis-[450px] desktop::basis-[800px] flex-col gap-5 mt-4 phablet:mt-8 tablet:mt-9">
+        <div className="desktop:hidden w-full tablet:basis-[450px] desktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
@@ -153,7 +153,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
-            <div className="flex z-[5] gap-4">
+            <div className="z-[5] gap-4 hidden tablet:flex">
               <button
                 className={`p-0 mt-[3px] ${
                   activeIndex === 0 ? "opacity-25" : ""

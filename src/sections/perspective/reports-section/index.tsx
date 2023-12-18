@@ -6,11 +6,9 @@ const Reports = async () => {
   const response = await getReportsSection();
 
   return (
-    // <section className="mt-5 sm:mt-8 phablet:mt-12 tablet:mt-20">
-    <section className="p-6 phablet:p-12 tablet:p-0 tablet:container desktop:mt-32">
-      <div className="flex flex-col desktop:flex-row">
-        {/* <div className="flex flex-col bg-black desktop:flex-[5] desktop:py-24 phablet:pl-5"> */}
-        <div className="flex flex-col bg-black desktop:flex-[5]">
+    <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 desktop:pl-20 desktop:pt-24">
+      <div className="flex flex-col desktop:flex-row desktop:gap-10">
+        <div className="flex mt-14 flex-col bg-black desktop:flex-[5]">
           <div className="text-white font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
             {response?.data?.attributes?.Reports?.title}
           </div>

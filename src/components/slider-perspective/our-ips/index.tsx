@@ -23,9 +23,9 @@ const CustomProgressBar = ({
   const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
 
   return (
-    <div className="relative h-1 bg-gray-200">
+    <div className="w-full relative flex h-[2px] bg-[#FEA079] tablet:bg-gray-200">
       <div
-        className="absolute top-0 left-0 h-full bg-black transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-white tablet:bg-black transition-all duration-300"
         style={{ width: `${progressPercentage}%` }}
       />
     </div>
@@ -37,28 +37,26 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <section className="relative">
-      <div className="tablet:absolute tablet:w-[40%] tablet:top-[5%] p-6 phablet:p-12 tablet:p-0">
+    <section className="relative text-black">
+      <div className="tablet:absolute tablet:w-[50%] desktop:w-[55%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
         <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
         </div>
-        <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 phablet:mb-9 tablet:mt-4 tablet:mb-24">
+        <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 phablet:mb-9 tablet:mt-4 tablet:mb-12">
           {response?.subheading}
         </div>
-        <div className="hidden desktop:flex flex-col gap-5">
+        <div className="hidden tablet:flex flex-col gap-5">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
           />
-          <div>
+          <div className="flex justify-between">
             <div className="flex font-bold text-2xl">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
-            <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
+            <div className="flex z-[5] gap-4 items-center">
               <button
-                className={`p-0 mt-[3px] ${
-                  activeIndex === 0 ? "opacity-25" : ""
-                }`}
+                className={`p-0 ${activeIndex === 0 ? "opacity-25" : ""}`}
                 disabled={activeIndex === 0}
                 onClick={() => swiperRef.current?.slidePrev()}
               >
@@ -99,7 +97,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1200: {
-            slidesPerView: totalCards >= 4 ? "4" : totalCards,
+            slidesPerView: totalCards >= 7 ? "7" : totalCards,
           },
         }}
       >
@@ -145,7 +143,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
       </Swiper>
 
       <div className="flex justify-end bg-[#FD7740] tablet:bg-white">
-        <div className="desktop:hidden flex w-full tablet:basis-[500px] tablet:basis-[600px] flex-col gap-5 pt-5 px-6 tablet:px-0 mb-10">
+        <div className="tablet:hidden tablet:basis-[500px] gap-5 pt-5 px-6 tablet:px-0 mb-10 flex whitespace-nowrap items-center w-full text-white">
           <CustomProgressBar
             currentIndex={activeIndex}
             totalSlides={response?.cards?.length}
@@ -154,7 +152,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             <div className="flex font-bold text-sm sm:text-base tablet:text-desktop">{`${
               activeIndex + 1
             } / ${response?.cards?.length}`}</div>
-            <div className="flex z-[5] gap-4 items-center">
+            <div className="z-[5] gap-4 items-center hidden tablet:flex">
               <button
                 className={`p-0 mt-[3px] ${
                   activeIndex === 0 ? "opacity-25" : ""

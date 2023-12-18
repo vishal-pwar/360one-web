@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
 
 interface reportsprops {
   response: any;
@@ -22,9 +22,9 @@ const CustomProgressBar = ({
 }) => {
   const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
   return (
-    <div className="relative h-1 bg-gray-200">
+    <div className="relative w-full h-1 bg-[#4C4C4C]">
       <div
-        className="absolute top-0 left-0 h-full bg-black transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-white transition-all duration-300"
         style={{ width: `${progressPercentage}%` }}
       />
     </div>
@@ -83,16 +83,16 @@ const ReportsSlider = ({ response }: reportsprops) => {
           })}
         </Swiper>
       </div>
-      <div>
+      <div className="tablet:pr-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
         <CustomProgressBar
           currentIndex={activeIndex}
           totalSlides={response?.cards?.length}
         />
-        <div className="flex justify-between mt-4">
-          <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
+        <div className="text-white flex justify-between">
+          <div className="text-white flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
             activeIndex + 1
           } / ${response?.cards?.length}`}</div>
-          <div className="flex z-[5] gap-4 items-center">
+          <div className="text-white z-[5] gap-4 items-center hidden tablet:flex">
             <button
               // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""
               //     }`}

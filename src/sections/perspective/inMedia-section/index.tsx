@@ -5,8 +5,8 @@ import { formatDate } from "@/utils/api-helpers";
 const Media = async () => {
   const response = await getInMediaSection();
   return (
-    <section className="tablet:flex flex-1 tablet:h-[900px] mt-36 mb-36">
-      <div className="bg-black flex flex-col tablet:flex-[6] px-6 py-10 phablet:p-12 tablet:py-16 tablet:px-40">
+    <section className="tablet:flex flex-1 tablet:h-[950px] mb-36">
+      <div className="bg-black flex flex-col tablet:flex-[6] px-6 py-10 phablet:p-12 tablet:py-14 tablet:px-20">
         <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px] text-white">
           {response?.data?.attributes?.media?.title}
         </div>
@@ -49,15 +49,15 @@ const Media = async () => {
           READ FULL ARTICLE
         </button>
       </div>
-      <div className="tablet:h-[900px] overflow-y-scroll tablet:flex-[6] bg-[#F4F0EF] px-6 py-10 phablet:px-12 tablet:py-11 tablet:px-14">
-        <div className="flex flex-col tablet:h-[3300px] desktop:h-[2100px] overflow-hidden desktop:flex-wrap desktop:gap-7 flex-[6] tablet:pt-9 tablet:px-11">
+      <div className="tablet:h-[950px] overflow-y-scroll tablet:flex-[6] bg-[#F4F0EF] px-6 py-10 phablet:px-12 tablet:py-4 tablet:px-0">
+        <div className="flex flex-col tablet:h-[3000px] overflow-hidden flex-[6] tablet:pt-9 tablet:px-11">
           {response?.data?.attributes?.media?.blog_posts?.data
             ?.slice(0, 13)
             ?.map((blog: any, index: number) => (
               <>
                 <div
                   key={index}
-                  className={`flex flex-col desktop:w-1/2 phablet:flex-row phablet:gap-4 tablet:gap-0 tablet:flex-col ${
+                  className={`flex flex-col phablet:flex-row phablet:gap-4 tablet:gap-0 tablet:flex-col ${
                     index >= 3 ? "hidden tablet:block" : ""
                   }`}
                 >
