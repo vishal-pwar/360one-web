@@ -8,6 +8,7 @@ import { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface ourIPsProps {
   response: any;
@@ -33,6 +34,7 @@ const CustomProgressBar = ({
 };
 
 const OurIpsSlider = ({ response }: ourIPsProps) => {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
@@ -43,7 +45,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           {response?.title}
         </div>
         <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 phablet:mb-9 tablet:mt-4 tablet:mb-12">
-          {response?.subheading}
+          {response?.subtitle}
         </div>
         <div className="hidden tablet:flex flex-col gap-5">
           <CustomProgressBar
@@ -115,7 +117,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
-                  src={data?.image?.data?.attributes?.url}
+                  src={data?.media?.data?.attributes?.url}
                   alt="slider Image"
                   className={`object-cover w-full ${
                     activeIndex === i
@@ -130,9 +132,16 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     {data?.title}
                   </div>
                   <div className="flex items-end text-left font-medium text-sm tablet:text-xl text-white">
-                    {data?.subheading}
+                    {data?.subtitle}
                   </div>
-                  <button className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
+                  <button
+                    className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                    onClick={() => {
+                      router.push(
+                        `/perspective/Ips/${data?.article?.data?.id}/${data?.article?.data?.attributes?.article_url}`
+                      );
+                    }}
+                  >
                     READ MORE
                   </button>
                 </div>

@@ -5,7 +5,24 @@ export async function getBannerSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Banner: { populate: { cards: { populate: { media: true } } } },
+      Banner: {
+        populate: {
+          cards: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -31,7 +48,24 @@ export async function getCuratedExperienceSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      experiences: { populate: { cards: { populate: { image: true } } } },
+      experiences: {
+        populate: {
+          cards: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -44,9 +78,27 @@ export async function getOurIpsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Ips: { populate: { cards: { populate: { image: true } } } },
+      Ips: {
+        populate: {
+          cards: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   };
+
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const response = await fetchContent(path, urlParamsObject, options);
   return response;
@@ -57,7 +109,12 @@ export async function getReportsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Reports: { populate: { cards: { populate: { image: true } } } },
+      Reports: {
+        populate: {
+          blog_posts: { populate: { thumbnail: true, body: true } },
+          featured: { populate: { thumbnail: true } },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -72,7 +129,7 @@ export async function getInMediaSection() {
     populate: {
       media: {
         populate: {
-          blog_posts: { populate: { thumbnail: true } },
+          blog_posts: { populate: { thumbnail: true, body: true } },
           featured: { populate: { thumbnail: true } },
         },
       },

@@ -1,4 +1,5 @@
 "use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,6 +10,7 @@ import Image from "next/image";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import playIcon from "@/public/assets/icons/playIcon.svg";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface BannerSliderProps {
   response: any;
@@ -34,6 +36,7 @@ const CustomProgressBar = ({
 };
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
@@ -150,7 +153,14 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           <Image src={playIcon} alt="play" />
                         </div>
                       ) : (
-                        <button className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk">
+                        <button
+                          className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                          onClick={() => {
+                            router.push(
+                              `/perspective/Banner/${data?.article.data.id}/${data?.article?.data?.attributes?.article_url}`
+                            );
+                          }}
+                        >
                           READ MORE
                         </button>
                       )}

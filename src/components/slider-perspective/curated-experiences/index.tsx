@@ -8,6 +8,7 @@ import { Pagination } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
 import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
+import { useRouter } from "next/navigation";
 
 interface curatedExperienceProps {
   response: any;
@@ -33,6 +34,7 @@ const CustomProgressBar = ({
 };
 
 const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
@@ -43,7 +45,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
           {response?.title}
         </div>
         <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
-          {response?.subheading}
+          {response?.subtitle}
         </div>
         <div className="hidden desktop:flex flex-col gap-5 mt-28">
           <CustomProgressBar
@@ -117,7 +119,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
-                  src={data?.image?.data?.attributes?.url}
+                  src={data?.media?.data?.attributes?.url}
                   alt="slider Image"
                   className={`object-cover w-full ${
                     activeIndex === i
@@ -132,9 +134,16 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                     {data?.title}
                   </div>
                   <div className="flex items-end text-left font-medium text-sm tablet:text-lg desktop:text-xl text-white">
-                    {data?.subheading}
+                    {data?.subtitle}
                   </div>
-                  <button className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk">
+                  <button
+                    className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                    onClick={() => {
+                      router.push(
+                        `/perspective/experiences/${data?.article?.data?.id}/${data?.article?.data?.attributes?.article_url}`
+                      );
+                    }}
+                  >
                     READ MORE
                   </button>
                 </div>

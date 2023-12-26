@@ -93,7 +93,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   key={i}
                   className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-20"
                 >
-                  <div className="flex flex-col gap-11">
+                  <div className="flex flex-col gap-11 bg-[#F4F0EF]">
                     <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 desktop:gap-6 w-full">
                       {firstCard?.title?.length > 0 ? (
                         <article className="flex tablet:flex-[7] flex-col bg-black">
