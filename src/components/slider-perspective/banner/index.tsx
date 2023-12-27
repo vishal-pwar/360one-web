@@ -44,7 +44,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
   return (
     <>
       <div className="relative bg-black p-6 phablet:p-12 tablet:p-0">
-        <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%] tablet:pl-16">
+        <div className="tablet:absolute tablet:w-[55%] tablet:top-[20%] tablet:pl-16">
           <div className="font-bold text-[28px] tablet:text-[52px] tablet:text-6xl text-white">
             The 360 ONE
           </div>
@@ -67,7 +67,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           className="curated-swiper w-full"
           breakpoints={{
             1200: {
-              slidesPerView: totalCards >= 3 ? "3" : totalCards,
+              slidesPerView: totalCards >= 3 ? "5" : totalCards,
             },
           }}
         >
@@ -77,7 +77,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                 key={i}
                 className={`flex ${
                   activeIndex === i
-                    ? "tablet:basis-[500px] desktop:basis-[750px]"
+                    ? "tablet:basis-[500px] desktop:basis-[730px]"
                     : ""
                 }`}
               >
@@ -124,7 +124,6 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     <img
                       key={i}
                       src={data?.media?.data?.attributes?.url}
-                      // alt="banner slider Image"
                       alt={data?.media?.data?.attributes?.alternativeText}
                       className={`object-cover w-full ${
                         activeIndex === i

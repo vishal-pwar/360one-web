@@ -9,6 +9,7 @@ import { Pagination, Navigation } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import Link from "next/link";
 
 interface viewpointprops {
   response: any;
@@ -58,7 +59,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
   }, [activeIndex, cardsPerSlide]);
 
   return (
-    <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 desktop:pl-16">
+    <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 desktop:pl-16 desktop:py-[75px]">
       <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
         {title}
       </div>
@@ -88,6 +89,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
               const thirdCard = response?.cards?.[thirdPost];
               const fourthCard = response?.cards?.[fourthPost];
               const fifthCard = response?.cards?.[fifthPost];
+
               return (
                 <SwiperSlide
                   key={i}
@@ -96,7 +98,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   <div className="flex flex-col gap-11 bg-[#F4F0EF]">
                     <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 desktop:gap-6 w-full">
                       {firstCard?.title?.length > 0 ? (
-                        <article className="flex tablet:flex-[7] flex-col bg-black">
+                        <Link
+                          href={firstCard?.href}
+                          target="_blank"
+                          className="flex tablet:flex-[7] flex-col bg-black"
+                        >
                           <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
                             {firstCard?.title}
                           </p>
@@ -109,10 +115,15 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                           <div className="flex items-center text-white bg-[#333333] font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                             {firstCard?.subtitle}
                           </div>
-                        </article>
+                        </Link>
                       ) : null}
+
                       {secondCard?.title?.length > 0 ? (
-                        <article className="flex tablet:flex-[5] flex-col bg-black">
+                        <Link
+                          href={secondCard?.href}
+                          target="_blank"
+                          className="flex tablet:flex-[5] flex-col bg-black"
+                        >
                           <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
                             {secondCard?.title}
                           </p>
@@ -125,12 +136,16 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                           <div className="flex items-center text-black bg-white font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                             {secondCard?.subtitle}
                           </div>
-                        </article>
+                        </Link>
                       ) : null}
                     </div>
                     <div className="hidden desktop:flex gap-6 w-full">
                       {thirdCard?.title?.length > 0 ? (
-                        <article className="flex flex-[4] flex-col">
+                        <Link
+                          href={thirdCard?.href}
+                          target="_blank"
+                          className="flex flex-[4] flex-col"
+                        >
                           <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                             {thirdCard?.title}
                           </p>
@@ -143,11 +158,15 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                           <div className="flex items-center font-bold text-xl text-white bg-[#404546] p-9 h-full">
                             {thirdCard?.subtitle}
                           </div>
-                        </article>
+                        </Link>
                       ) : null}
                       <div className="flex flex-col flex-[8] gap-6">
                         {fourthCard?.title?.length > 0 ? (
-                          <article className="flex">
+                          <Link
+                            href={fourthCard?.href}
+                            target="_blank"
+                            className="flex"
+                          >
                             <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                               {fourthCard?.title}
                             </p>
@@ -160,10 +179,14 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                             <div className="flex items-center font-bold text-3xl text-white bg-[#404546] p-12 h-full w-full">
                               {fourthCard?.subtitle}
                             </div>
-                          </article>
+                          </Link>
                         ) : null}
                         {fifthCard?.title?.length > 0 ? (
-                          <article className="flex">
+                          <Link
+                            href={fifthCard?.href}
+                            target="_blank"
+                            className="flex"
+                          >
                             <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
                               {fifthCard?.title}
                             </p>
@@ -176,7 +199,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                             <div className="flex items-center font-bold text-3xl text-black bg-white p-12 h-full w-full">
                               {fifthCard?.subtitle}
                             </div>
-                          </article>
+                          </Link>
                         ) : null}
                       </div>
                     </div>

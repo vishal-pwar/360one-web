@@ -55,7 +55,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
               slidesPerView: 3,
             },
             1600: {
-              slidesPerView: 4,
+              slidesPerView: 4.5,
             },
           }}
         >
@@ -63,7 +63,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
             return (
               <SwiperSlide
                 key={i}
-                className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-20"
+                className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-12"
               >
                 <div className="flex flex-col py-6 px-[22px]">
                   <div>

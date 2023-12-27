@@ -40,7 +40,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative text-black">
-      <div className="tablet:absolute tablet:w-[50%] desktop:w-[55%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
+      <div className="tablet:absolute tablet:w-[50%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
         <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
         </div>
@@ -99,7 +99,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1200: {
-            slidesPerView: totalCards >= 7 ? "7" : totalCards,
+            slidesPerView: totalCards >= 4 ? "5" : totalCards,
           },
         }}
       >
@@ -109,7 +109,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               key={i}
               className={`flex ${
                 activeIndex === i
-                  ? "tablet:basis-[600px] desktop:basis-[700px]"
+                  ? "tablet:basis-[600px] desktop:basis-[830px]"
                   : ""
               }`}
             >
@@ -118,7 +118,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 <img
                   key={i}
                   src={data?.media?.data?.attributes?.url}
-                  alt="slider Image"
+                  alt={data?.media?.data?.attributes?.alternativeText}
                   className={`object-cover w-full ${
                     activeIndex === i
                       ? "h-[265px] phablet:h-[440px] tablet:h-[460px]"

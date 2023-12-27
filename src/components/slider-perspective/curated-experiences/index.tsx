@@ -39,8 +39,8 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const totalCards = response?.cards?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16 tablet:pt-20">
-      <div className="tablet:absolute tablet:w-[55%] tablet:top-[15%]">
+    <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
+      <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
         <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
           {response?.title}
         </div>
@@ -111,7 +111,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               key={i}
               className={`flex ${
                 activeIndex === i
-                  ? "tablet:basis-[450px] desktop:basis-[560px]"
+                  ? "tablet:basis-[450px] desktop:basis-[650px]"
                   : ""
               }`}
             >
@@ -120,10 +120,10 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 <img
                   key={i}
                   src={data?.media?.data?.attributes?.url}
-                  alt="slider Image"
+                  alt={data?.media?.data?.attributes?.alternativeText}
                   className={`object-cover w-full ${
                     activeIndex === i
-                      ? "h-[366px] tablet:h-[521px] desktop:h-[800px] opacity-60"
+                      ? "h-[366px] tablet:h-[521px] desktop:h-[700px] opacity-60"
                       : "h-[366px] tablet:h-48 desktop:h-60"
                   }`}
                 />

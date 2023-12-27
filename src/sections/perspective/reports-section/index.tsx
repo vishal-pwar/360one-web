@@ -5,9 +5,9 @@ import { getReportsSection } from "@/services/perspective";
 const Reports = async () => {
   const response = await getReportsSection();
   return (
-    <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 desktop:pl-20 desktop:pt-24">
+    <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 desktop:pl-20 desktop:pt-16">
       <div className="flex flex-col desktop:flex-row desktop:gap-10">
-        <div className="flex mt-14 flex-col bg-black desktop:flex-[5]">
+        <div className="flex mt-[5%] flex-col bg-black desktop:flex-[5]">
           <div className="text-white font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
             {response?.data?.attributes?.Reports?.title}
           </div>
@@ -49,7 +49,10 @@ const Reports = async () => {
                   response?.data?.attributes?.Reports?.featured?.data
                     ?.attributes?.thumbnail?.data?.attributes?.url
                 }
-                alt="featured card"
+                alt={
+                  response?.data?.attributes?.Reports?.featured?.data
+                    ?.attributes?.thumbnail?.data?.attributes?.alternativeText
+                }
                 className="flex w-full desktop:flex-[5] h-44 phablet:h-72 tablet:h-52 desktop:h-96 object-cover"
               />
             }

@@ -26,7 +26,7 @@ const MediaCard = ({ mediaType, media, href, className }: MediaCardProps) => {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={media?.data?.attributes?.url}
-            alt="Image"
+            alt={media?.data?.attributes?.alternativeText}
             className={className}
           />
         );

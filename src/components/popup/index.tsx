@@ -67,7 +67,6 @@ const Popup = (props: PopupDetails) => {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageUrl}
-                    // alt="Image"
                     alt={
                       popup?.attributes?.image?.data?.attributes
                         ?.alternativeText
