@@ -9,6 +9,7 @@ import { getPopup } from "@/services/pop-up";
 import React from "react";
 import { hankenGrotesk, spaceGrotesk } from "./fonts";
 import "./globals.css";
+import clsx from "clsx";
 
 // export const metadata: Metadata = {
 //   title: "Asset and Wealth Management Services in India - 360 ONE",
@@ -50,7 +51,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html className="scroll-smooth" lang="en">
+    <html className={clsx(spaceGrotesk.className, "scroll-smooth")} lang="en">
       <head>
         {/* Add Google Tag Manager script */}
         {/* eslint-disable-next-line @next/next/next-script-for-ga */}
