@@ -1,12 +1,10 @@
-import React from "react";
 import Header from "@/components/header";
-import Viewpoint from "@/sections/perspective/viewpoint-section";
-import Newsletter from "@/sections/perspective/newsletter-section";
+import Banner from "@/sections/perspective/banner-section";
 import CuratedExperence from "@/sections/perspective/curatedExperiences-section";
+import Media from "@/sections/perspective/inMedia-section";
 import OurIps from "@/sections/perspective/ourIP-section";
 import Reports from "@/sections/perspective/reports-section";
-import Media from "@/sections/perspective/inMedia-section";
-import Banner from "@/sections/perspective/banner-section";
+import Viewpoint from "@/sections/perspective/viewpoint-section";
 
 const page = () => {
   return (

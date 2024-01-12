@@ -1,4 +1,3 @@
-import React from "react";
 import { getInMediaSection } from "@/services/perspective/index";
 import { formatDate } from "@/utils/api-helpers";
 import Link from "next/link";
@@ -50,7 +49,10 @@ const Media = async () => {
           {response?.data?.attributes?.media?.featured?.data?.attributes?.title}
         </div>
         <Link
-          href={response.data?.attributes.media.featured.data.attributes.link}
+          href={
+            response?.data?.attributes?.media?.featured?.data?.attributes
+              ?.link || ""
+          }
           target="_blank"
         >
           <button className="border-2 border-white py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52">
