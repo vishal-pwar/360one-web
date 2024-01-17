@@ -1,13 +1,13 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
-import { Swiper as SwiperType } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
+import Image from "next/image";
+import React from "react";
+import { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface reportsprops {
   response: any;
@@ -86,12 +86,12 @@ const ReportsSlider = ({ response }: reportsprops) => {
       <div className="tablet:pr-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
         <CustomProgressBar
           currentIndex={activeIndex}
-          totalSlides={response.blog_posts.data?.length}
+          totalSlides={response?.blog_posts?.data?.length}
         />
         <div className="text-white flex justify-between">
           <div className="text-white flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
             activeIndex + 1
-          } / ${response.blog_posts.data?.length}`}</div>
+          } / ${response?.blog_posts?.data?.length}`}</div>
           <div className="text-white z-[5] gap-4 items-center hidden tablet:flex">
             <button
               // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""
