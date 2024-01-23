@@ -2,17 +2,20 @@ image: docker:stable
 
 services:
   - name: docker:dind
-    alias: docker
-  
-
-before_script:
-  - apk add --no-cache python3 py3-pip
-  - pip install awscli
-
+    alias: thedockerhost
 
 stages:
   - build
-  #- deploy
+
+variables:
+  GIT_STRATEGY: clone
+  DOCKER_HOST: tcp://thedockerhost:2375/
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+before_script:
+  - apk update && apk add git
+  - apk add aws-cli
 
 build:
   stage: build
