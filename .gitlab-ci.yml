@@ -1,17 +1,17 @@
-image: docker:stable
+image: docker:24.0.5
 
 services:
-  - name: docker:dind
+  - name: docker:24.0.5-dind
     alias: docker
 
 stages:
   - build
 
-# variables:
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
 #   GIT_STRATEGY: clone
 #   DOCKER_HOST: tcp://thedockerhost:2375/
 #   DOCKER_DRIVER: overlay2
-#   DOCKER_TLS_CERTDIR: ""
 
 before_script:
   - apk update && apk add git
