@@ -16,8 +16,8 @@ stages:
 
 build:
   stage: build
-  # rules: 
-  #     - if: '$CI_COMMIT_BRANCH == "develop"'
+  rules: 
+      - if: '$CI_COMMIT_BRANCH == "develop"'
   tags:
       - holdco
   script:
@@ -26,5 +26,5 @@ build:
     - docker tag $ECR_REPOSITORY:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
-  only:
-    - develop
+  # only:
+  #   - develop
