@@ -2,16 +2,16 @@ image: docker:stable
 
 services:
   - name: docker:dind
-    alias: thedockerhost
+    alias: docker
 
 stages:
   - build
 
-variables:
-  GIT_STRATEGY: clone
-  DOCKER_HOST: tcp://thedockerhost:2375/
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: ""
+# variables:
+#   GIT_STRATEGY: clone
+#   DOCKER_HOST: tcp://thedockerhost:2375/
+#   DOCKER_DRIVER: overlay2
+#   DOCKER_TLS_CERTDIR: ""
 
 before_script:
   - apk update && apk add git
@@ -29,5 +29,3 @@ build:
     - docker tag $ECR_REPOSITORY:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
-  # only:
-  #   - develop
