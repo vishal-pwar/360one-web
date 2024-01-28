@@ -1,14 +1,21 @@
-import VideoPlayer from "../video-player";
+"use client";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
-
+import VideoPLayer from "../video-player";
 interface MediaCardProps {
   mediaType: "image" | "video" | "Youtube Link";
   media: any;
+  thumbnail: any;
   href: string;
   className: any;
 }
 
-const MediaCard = ({ mediaType, media, href, className }: MediaCardProps) => {
+const MediaCard = ({
+  mediaType,
+  media,
+  href,
+  thumbnail,
+  className,
+}: MediaCardProps) => {
   const getYouTubeVideoId = (url: any) => {
     // Regular expression to match YouTube video ID
     const regex =
@@ -32,14 +39,20 @@ const MediaCard = ({ mediaType, media, href, className }: MediaCardProps) => {
         );
       case "video":
         return (
-          <>
-            <div className="relative">
-              <video className={className} muted playsInline loop autoPlay>
-                <source src={media?.attributes?.url} type="video/mp4" />
-              </video>
+          <div className="relative flex items-center justify-center">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={thumbnail?.data?.attributes?.url}
+                alt={thumbnail?.data?.attributes?.alternativeText}
+                className={className}
+              />
             </div>
-            <VideoPlayer iconUrl={PlayIcon} videoUrl={media?.attributes?.url} />
-          </>
+            <VideoPLayer
+              iconUrl={PlayIcon}
+              videoUrl={media?.data?.attributes?.url}
+            />
+          </div>
         );
       case "Youtube Link":
         return (

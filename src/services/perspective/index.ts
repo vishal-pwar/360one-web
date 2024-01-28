@@ -7,7 +7,7 @@ export async function getBannerSection() {
     populate: {
       Banner: {
         populate: {
-          cards: {
+          curated_experiences_cards: {
             populate: {
               media: true,
               article: {
@@ -21,6 +21,22 @@ export async function getBannerSection() {
               },
             },
           },
+          viewpoint_cards: { populate: { media: true } },
+          ips_cards: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          reports_and_publications_cards: { populate: { media: true } },
         },
       },
     },
@@ -35,7 +51,11 @@ export async function getViewpointSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      viewpoint: { populate: { cards: { populate: { media: true } } } },
+      viewpoint: {
+        populate: {
+          viewpoint_cards: { populate: { media: true, thumbnail: true } },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -50,7 +70,7 @@ export async function getCuratedExperienceSection() {
     populate: {
       experiences: {
         populate: {
-          cards: {
+          curated_experiences_cards: {
             populate: {
               media: true,
               article: {
@@ -80,7 +100,7 @@ export async function getOurIpsSection() {
     populate: {
       Ips: {
         populate: {
-          cards: {
+          ips_cards: {
             populate: {
               media: true,
               article: {
@@ -111,8 +131,10 @@ export async function getReportsSection() {
     populate: {
       Reports: {
         populate: {
-          blog_posts: { populate: { thumbnail: true, body: true } },
-          featured: { populate: { thumbnail: true } },
+          reports_and_publications_cards: {
+            populate: { media: true },
+          },
+          featured: { populate: { media: true } },
         },
       },
     },
@@ -129,8 +151,35 @@ export async function getInMediaSection() {
     populate: {
       media: {
         populate: {
-          blog_posts: { populate: { thumbnail: true, body: true } },
-          featured: { populate: { thumbnail: true } },
+          media_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          featured: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },

@@ -1,5 +1,5 @@
-import { getCuratedExperienceSection } from "@/services/perspective";
 import CuratedExperienceSlider from "@/components/slider-perspective/curated-experiences";
+import { getCuratedExperienceSection } from "@/services/perspective";
 
 const CuratedExperence = async () => {
   const response = await getCuratedExperienceSection();

@@ -1,4 +1,3 @@
-import React from "react";
 import ReportsSlider from "@/components/slider-perspective/slider-reports";
 import { getReportsSection } from "@/services/perspective";
 
@@ -47,7 +46,7 @@ const Reports = async () => {
               <img
                 src={
                   response?.data?.attributes?.Reports?.featured?.data
-                    ?.attributes?.thumbnail?.data?.attributes?.url
+                    ?.attributes?.media?.data?.attributes?.url
                 }
                 alt={
                   response?.data?.attributes?.Reports?.featured?.data

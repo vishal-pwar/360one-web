@@ -1,16 +1,14 @@
 "use client";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination } from "swiper/modules";
-import { Swiper as SwiperType } from "swiper";
-import Image from "next/image";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
-import playIcon from "@/public/assets/icons/playIcon.svg";
-import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React from "react";
+import { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface BannerSliderProps {
   response: any;
@@ -36,9 +34,16 @@ const CustomProgressBar = ({
 };
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
+  const cards = [
+    ...response.reports_and_publications_cards.data,
+    ...response.curated_experiences_cards.data,
+    ...response.ips_cards.data,
+    ...response.viewpoint_cards.data,
+  ];
+
   const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = response?.cards?.length;
+  const totalCards = cards?.length;
   const swiperRef = React.useRef<SwiperType>();
 
   return (
@@ -67,11 +72,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           className="curated-swiper w-full"
           breakpoints={{
             1200: {
-              slidesPerView: totalCards >= 3 ? "5" : totalCards,
+              slidesPerView: totalCards >= 3 ? 4 : totalCards,
             },
           }}
         >
-          {response?.cards?.map((data: any, i: any) => {
+          {cards?.map((data: any, i: any) => {
             return (
               <SwiperSlide
                 key={i}
@@ -83,7 +88,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
               >
                 <div className="tablet:relative bg-black">
                   <div className="hidden desktop:flex desktop:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
-                    {data?.category}
+                    {data?.attributes?.component_name}
                   </div>
                   <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
                     <div
@@ -91,18 +96,20 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         activeIndex === i ? `hidden` : ""
                       } `}
                     >
-                      {data?.title}
+                      {data?.attributes?.banner_tag}
                     </div>
                     <div
                       className={`flex items-end text-left font-bold tablet:text-xl desktop:text-2xl text-white ${
                         activeIndex === i ? `hidden` : ""
                       }`}
                     >
-                      {data?.subtitle}
+                      {data?.attributes?.title}
                     </div>
                   </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {data?.media?.data?.attributes?.mime?.startsWith("video/") ? (
+                  {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
+                    "video/"
+                  ) ? (
                     <video
                       muted
                       playsInline
@@ -115,7 +122,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                       }`}
                     >
                       <source
-                        src={data?.media?.data?.attributes?.url}
+                        src={data?.attributes?.media?.data?.attributes?.url}
                         type="video/mp4"
                       />
                     </video>
@@ -123,8 +130,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       key={i}
-                      src={data?.media?.data?.attributes?.url}
-                      alt={data?.media?.data?.attributes?.alternativeText}
+                      src={data?.attributes?.media?.data?.attributes?.url}
+                      alt={
+                        data?.attributes?.media?.data?.attributes
+                          ?.alternativeText
+                      }
                       className={`object-cover w-full ${
                         activeIndex === i
                           ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px] object-cover"
@@ -137,31 +147,33 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   <div className="flex flex-row-reverse justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
                     <div className="flex flex-col items-end">
                       <div className="flex items-end text-left font-normal text-sm text-white">
-                        {data?.title}
+                        {data?.attributes?.banner_tag}
                       </div>
                       <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">
-                        {data?.subtitle}
+                        {data?.attributes?.title}
                       </div>
                     </div>
+
                     <div>
-                      {data?.media?.data?.attributes?.mime?.startsWith(
+                      {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
                         "video/"
                       ) ? (
                         <div>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <Image src={playIcon} alt="play" />
+                          {/* <Image src={playIcon} alt="play" /> */}
                         </div>
                       ) : (
-                        <button
-                          className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
-                          onClick={() => {
-                            router.push(
-                              `/perspective/Banner/${data?.article.data.id}/${data?.article?.data?.attributes?.article_url}`
-                            );
-                          }}
-                        >
-                          READ MORE
-                        </button>
+                        <></>
+                        // <button
+                        //   className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                        //   onClick={() => {
+                        //     router.push(
+                        //       `/perspective/Banner/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}`
+                        //     );
+                        //   }}
+                        // >
+                        //   READ MORE
+                        // </button>
                       )}
                     </div>
                   </div>
@@ -174,11 +186,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
       <div className="bg-[#F4F0EF] flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col w-full gap-5 pt-7 px-6 phablet:px-11 tablet:px-16">
         <CustomProgressBar
           currentIndex={activeIndex}
-          totalSlides={response?.cards?.length}
+          totalSlides={cards?.length}
         />
         <div className="flex tablet:justify-between">
           <div className="flex font-bold text-base tablet:text-2xl">
-            {`${activeIndex + 1} / ${response?.cards?.length}`}
+            {`${activeIndex + 1} / ${cards?.length}`}
           </div>
           <div className="tablet:flex hidden z-[5] gap-4 items-center">
             <button
