@@ -21,7 +21,7 @@ export async function getBannerSection() {
               },
             },
           },
-          viewpoint_cards: { populate: { media: true } },
+          viewpoint_cards: { populate: { media: true, thumbnail: true } },
           ips_cards: {
             populate: {
               media: true,

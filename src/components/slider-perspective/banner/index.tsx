@@ -1,5 +1,7 @@
 "use client";
+import VideoPLayer from "@/components/video-player";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -110,22 +112,22 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
                     "video/"
                   ) ? (
-                    <video
-                      muted
-                      playsInline
-                      loop
-                      autoPlay
-                      className={`object-cover w-full ${
-                        activeIndex === i
-                          ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px] object-cover"
-                          : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px] opacity-60 object-cover"
-                      }`}
-                    >
-                      <source
-                        src={data?.attributes?.media?.data?.attributes?.url}
-                        type="video/mp4"
+                    // <div className="relative flex items-center justify-center">
+                    <div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={data?.attributes?.thumbnail?.data?.attributes?.url}
+                        alt={
+                          data?.attributes?.thumbnail?.data?.attributes
+                            ?.alternativeText
+                        }
+                        className={`object-cover w-full ${
+                          activeIndex === i
+                            ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px] object-cover"
+                            : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px] opacity-60 object-cover"
+                        }`}
                       />
-                    </video>
+                    </div>
                   ) : (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -160,20 +162,43 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                       ) ? (
                         <div>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          {/* <Image src={playIcon} alt="play" /> */}
+                          <VideoPLayer
+                            iconUrl={PlayIcon}
+                            videoUrl={
+                              data?.attributes?.media?.data?.attributes?.url
+                            }
+                          />
                         </div>
                       ) : (
-                        <></>
-                        // <button
-                        //   className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
-                        //   onClick={() => {
-                        //     router.push(
-                        //       `/perspective/Banner/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}`
-                        //     );
-                        //   }}
-                        // >
-                        //   READ MORE
-                        // </button>
+                        <>
+                          {data?.attributes.article === undefined ? null : (
+                            <button
+                              className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                              onClick={() => {
+                                let componentPath = "";
+                                if (
+                                  data?.attributes?.component_name.includes(
+                                    "Curated"
+                                  )
+                                ) {
+                                  componentPath = "experiences";
+                                } else if (
+                                  data?.attributes?.component_name.includes(
+                                    "Our"
+                                  )
+                                ) {
+                                  componentPath = "Ips";
+                                }
+
+                                router.push(
+                                  `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}`
+                                );
+                              }}
+                            >
+                              READ MORE
+                            </button>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
