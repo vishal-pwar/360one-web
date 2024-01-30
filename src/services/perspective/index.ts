@@ -116,9 +116,13 @@ export async function getCuratedExperienceSection() {
                       image: true,
                     },
                   },
-                  curated_experiences_cards: true,
-                  ips_cards: true,
-                  viewpoint_cards: true,
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
+                  },
                 },
               },
             },
@@ -149,9 +153,13 @@ export async function getOurIpsSection() {
                       image: true,
                     },
                   },
-                  curated_experiences_cards: true,
-                  ips_cards: true,
-                  viewpoint_cards: true,
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
+                  },
                 },
               },
             },
@@ -174,9 +182,9 @@ export async function getReportsSection() {
       reports: {
         populate: {
           reports_and_publications_cards: {
-            populate: { media: true },
+            populate: { media: true, pdf: true },
           },
-          featured: { populate: { media: true } },
+          featured: { populate: { media: true, pdf: true } },
         },
       },
     },

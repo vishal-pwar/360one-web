@@ -5,8 +5,6 @@ interface ArticleResponse {
 }
 
 const Article = ({ response: articleResponse }: ArticleResponse) => {
-  console.log("responseresponse", articleResponse);
-
   const relatedcards = [
     ...(articleResponse?.attributes?.article?.data?.attributes
       ?.curated_experiences_cards?.data || []),

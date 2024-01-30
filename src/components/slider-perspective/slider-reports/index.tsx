@@ -1,6 +1,7 @@
 "use client";
 import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
@@ -75,9 +76,13 @@ const ReportsSlider = ({ response }: reportsprops) => {
                         {card?.attributes?.subtitle}
                       </div>
                     </div>
-                    <button className="font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white">
-                      DOWNLOAD NOW
-                    </button>
+                    <Link
+                      href={card?.attributes?.pdf?.data?.attributes?.url || ""}
+                      target="_blank"
+                      className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
+                    >
+                      <button>DOWNLOAD NOW</button>
+                    </Link>
                   </div>
                 </SwiperSlide>
               );

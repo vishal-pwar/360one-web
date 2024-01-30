@@ -1,8 +1,10 @@
 import ReportsSlider from "@/components/slider-perspective/slider-reports";
 import { getReportsSection } from "@/services/perspective";
+import Link from "next/link";
 
 const Reports = async () => {
   const response = await getReportsSection();
+
   return (
     <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 desktop:pl-20 desktop:pt-16">
       <div className="flex flex-col desktop:flex-row desktop:gap-10">
@@ -33,9 +35,17 @@ const Reports = async () => {
                 }
               </div>
             </div>
-            <button className="border-2 border-black py-4 font-bold text-sm phablet:w-full tablet:h-12 tablet:w-52">
-              DOWNLOAD NOW
-            </button>
+            <Link
+              href={
+                response?.data?.attributes?.reports?.featured?.data?.attributes
+                  ?.pdf?.data?.attributes?.url || ""
+              }
+              target="_blank"
+            >
+              <button className="border-2 border-black py-4 font-bold text-sm phablet:w-full tablet:h-12 tablet:w-52">
+                DOWNLOAD NOW
+              </button>
+            </Link>
           </div>
           <div className="flex tablet:flex-[3] relative">
             <div className="phablet:hidden absolute tablet:flex desktop:hidden bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 tablet:px-16 tablet:py-4 tablet:mt-6">
