@@ -3,6 +3,7 @@ import VideoPLayer from "@/components/video-player";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -37,10 +38,11 @@ const CustomProgressBar = ({
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
   const cards = [
-    ...response.reports_and_publications_cards.data,
-    ...response.curated_experiences_cards.data,
-    ...response.ips_cards.data,
-    ...response.viewpoint_cards.data,
+    ...(response?.Reports_and_publications_cards?.data || []),
+    ...(response?.curated_experiences_cards?.data || []),
+    ...(response?.Ips_cards?.data || []),
+    ...(response?.viewpoint_cards?.data || []),
+    ...(response?.media_cards?.data || []),
   ];
 
   const router = useRouter();
@@ -74,7 +76,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           className="curated-swiper w-full"
           breakpoints={{
             1200: {
-              slidesPerView: totalCards >= 3 ? 4 : totalCards,
+              slidesPerView: totalCards >= 3 ? 1 : totalCards,
             },
           }}
         >
@@ -171,9 +173,24 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         </div>
                       ) : (
                         <>
-                          {data?.attributes.article === undefined ? null : (
+                          {data?.attributes?.component_name.includes(
+                            "in the media"
+                          ) ? (
+                            <Link
+                              href={data?.attributes?.link || ""}
+                              target="_blank"
+                            >
+                              <button
+                                className="hidden desktop:flex w-28 p-3 border-2
+                              border-white text-white text-sm font-bold
+                              font-space-grotesk"
+                              >
+                                Read More
+                              </button>
+                            </Link>
+                          ) : data?.attributes.article === undefined ? null : (
                             <button
-                              className=" hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                              className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
                               onClick={() => {
                                 let componentPath = "";
                                 if (
@@ -187,7 +204,13 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                                     "Our"
                                   )
                                 ) {
-                                  componentPath = "Ips";
+                                  componentPath = "ips";
+                                } else if (
+                                  data?.attributes?.component_name.includes(
+                                    "Viewpoint"
+                                  )
+                                ) {
+                                  componentPath = "viewpoint";
                                 }
 
                                 router.push(

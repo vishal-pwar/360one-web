@@ -8,10 +8,10 @@ const Reports = async () => {
       <div className="flex flex-col desktop:flex-row desktop:gap-10">
         <div className="flex mt-[5%] flex-col bg-black desktop:flex-[5]">
           <div className="text-white font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
-            {response?.data?.attributes?.Reports?.title}
+            {response?.data?.attributes?.reports?.title}
           </div>
           <div className="font-normal text-white text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-9 tablet:mt-4 tablet:mb-8">
-            {response?.data?.attributes?.Reports?.subtitle}
+            {response?.data?.attributes?.reports?.subtitle}
           </div>
         </div>
         <div className="flex flex-col-reverse phablet:flex-row tablet:flex-col-reverse desktop:flex-row bg-white desktop:flex-[7] justify-between">
@@ -22,13 +22,13 @@ const Reports = async () => {
             <div className="tablet:max-w-sm phablet:mt-16 tablet:mt-0 desktop:mt-24">
               <div className="text-black font-bold text-base tablet:text-2xl desktop:text-[32px]">
                 {
-                  response?.data?.attributes?.Reports?.featured?.data
+                  response?.data?.attributes?.reports?.featured?.data
                     ?.attributes?.title
                 }
               </div>
               <div className="text-black font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-8 tablet:mt-4 ">
                 {
-                  response?.data?.attributes?.Reports?.featured?.data
+                  response?.data?.attributes?.reports?.featured?.data
                     ?.attributes?.subtitle
                 }
               </div>
@@ -45,11 +45,11 @@ const Reports = async () => {
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={
-                  response?.data?.attributes?.Reports?.featured?.data
+                  response?.data?.attributes?.reports?.featured?.data
                     ?.attributes?.media?.data?.attributes?.url
                 }
                 alt={
-                  response?.data?.attributes?.Reports?.featured?.data
+                  response?.data?.attributes?.reports?.featured?.data
                     ?.attributes?.thumbnail?.data?.attributes?.alternativeText
                 }
                 className="flex w-full desktop:flex-[5] h-44 phablet:h-72 tablet:h-52 desktop:h-96 object-cover"
@@ -58,7 +58,7 @@ const Reports = async () => {
           </div>
         </div>
       </div>
-      <ReportsSlider response={response?.data?.attributes?.Reports} />
+      <ReportsSlider response={response?.data?.attributes?.reports} />
     </section>
   );
 };

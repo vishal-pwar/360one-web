@@ -1,6 +1,7 @@
 import {
   getCuratedExperienceSection,
   getOurIpsSection,
+  getViewpointSection,
 } from "@/services/perspective";
 import ArticlePost from "../../../../../components/perspective-article";
 
@@ -13,8 +14,10 @@ const PerspectiveArticle = async ({
   let page = params?.type;
   if (params.type === "experiences") {
     response = await getCuratedExperienceSection();
-  } else if (params.type === "Ips") {
+  } else if (params.type === "ips") {
     response = await getOurIpsSection();
+  } else if (params.type === "viewpoint") {
+    response = await getViewpointSection();
   }
 
   return (
@@ -28,10 +31,20 @@ const PerspectiveArticle = async ({
                   response?.data?.attributes?.[page]?.curated_experiences_cards
                     .data[parseInt(params?.id) - 1]
                 }
-                relatedcards={response?.data?.attributes?.[page]}
+                // relatedcards={response?.data?.attributes?.[page]}
               />
             );
-          case "Ips":
+          case "viewpoint":
+            return (
+              <ArticlePost
+                response={
+                  response?.data?.attributes?.[page]?.viewpoint_cards.data[
+                    parseInt(params?.id) - 1
+                  ]
+                }
+              />
+            );
+          case "ips":
             return (
               <ArticlePost
                 response={
@@ -39,7 +52,6 @@ const PerspectiveArticle = async ({
                     parseInt(params?.id) - 1
                   ]
                 }
-                relatedcards={response?.data?.attributes?.[page]}
               />
             );
           default:

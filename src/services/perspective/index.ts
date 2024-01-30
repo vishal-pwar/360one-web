@@ -5,7 +5,7 @@ export async function getBannerSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Banner: {
+      banner: {
         populate: {
           curated_experiences_cards: {
             populate: {
@@ -21,7 +21,21 @@ export async function getBannerSection() {
               },
             },
           },
-          viewpoint_cards: { populate: { media: true, thumbnail: true } },
+          viewpoint_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
           ips_cards: {
             populate: {
               media: true,
@@ -37,6 +51,7 @@ export async function getBannerSection() {
             },
           },
           reports_and_publications_cards: { populate: { media: true } },
+          media_cards: { populate: { media: true, thumbnail: true } },
         },
       },
     },
@@ -53,7 +68,28 @@ export async function getViewpointSection() {
     populate: {
       viewpoint: {
         populate: {
-          viewpoint_cards: { populate: { media: true, thumbnail: true } },
+          viewpoint_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -80,6 +116,9 @@ export async function getCuratedExperienceSection() {
                       image: true,
                     },
                   },
+                  curated_experiences_cards: true,
+                  ips_cards: true,
+                  viewpoint_cards: true,
                 },
               },
             },
@@ -98,7 +137,7 @@ export async function getOurIpsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Ips: {
+      ips: {
         populate: {
           ips_cards: {
             populate: {
@@ -110,6 +149,9 @@ export async function getOurIpsSection() {
                       image: true,
                     },
                   },
+                  curated_experiences_cards: true,
+                  ips_cards: true,
+                  viewpoint_cards: true,
                 },
               },
             },
@@ -129,7 +171,7 @@ export async function getReportsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Reports: {
+      reports: {
         populate: {
           reports_and_publications_cards: {
             populate: { media: true },
@@ -162,6 +204,9 @@ export async function getInMediaSection() {
                       image: true,
                     },
                   },
+                  curated_experiences_cards: true,
+                  ips_cards: true,
+                  viewpoint_cards: true,
                 },
               },
             },

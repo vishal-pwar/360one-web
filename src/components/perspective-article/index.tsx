@@ -2,13 +2,22 @@
 
 interface ArticleResponse {
   response: any;
-  relatedcards: any;
 }
 
-const Article = ({
-  response: articleResponse,
-  relatedcards,
-}: ArticleResponse) => {
+const Article = ({ response: articleResponse }: ArticleResponse) => {
+  console.log("responseresponse", articleResponse);
+
+  const relatedcards = [
+    ...(articleResponse?.attributes?.article?.data?.attributes
+      ?.curated_experiences_cards?.data || []),
+    ...(articleResponse?.attributes?.article?.data?.attributes?.ips_cards
+      ?.data || []),
+    ...(articleResponse?.attributes?.article?.data?.attributes?.viewpoint_cards
+      ?.data || []),
+  ];
+
+  console.log("relatedcards", articleResponse);
+
   return (
     <section>
       <div className="flex flex-col gap-14 bg-black pt-40 px-72">
@@ -113,11 +122,11 @@ const Article = ({
           <div className="flex flex-col align-center justify-start">
             <div className="font-bold text-[42px]">Related</div>
             <div className="font-bold text-[42px]">
-              {articleResponse?.attributes?.category}
+              {articleResponse?.attributes?.component_name}
             </div>
           </div>
         </div>
-        {relatedcards?.cards?.map((i: any) => {
+        {relatedcards?.map((i: any) => {
           return (
             <div
               key={i}
@@ -125,19 +134,28 @@ const Article = ({
             >
               <div className="bg-white p-4">
                 <div className="absolute font-bold text-xs px-5 py-3 bg-[#FD7740] text-white mt-4">
-                  {i?.category}
+                  {i?.attributes?.banner_tag}
                 </div>
                 <div>
                   {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={i?.media?.data?.attributes?.url}
-                      alt={i?.media?.data?.attributes?.alternativeText}
+                      src={i?.attributes?.media?.data?.attributes?.url}
+                      alt={
+                        i?.attributes?.attributes?.media?.data?.attributes
+                          ?.alternativeText
+                      }
                       className="w-full h-64 object-cover"
                     />
                   }
                 </div>
-                <div className="mt-4 font-bold text-[22px]">{i?.subtitle}</div>
+                <div className="mt-4 font-bold text-[22px]">
+                  {i?.attributes?.title}
+                </div>
+
+                <div className="mt-4 font-bold text-[22px]">
+                  {i?.attributes?.publication_source}
+                </div>
               </div>
             </div>
           );

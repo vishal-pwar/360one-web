@@ -2,6 +2,7 @@
 import MediaCard from "@/components/perspective-mediaCard";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
@@ -15,6 +16,7 @@ interface viewpointprops {
 }
 
 const ViewpointSlider = ({ response }: viewpointprops) => {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [firstPost, setFirstPost] = React.useState(1);
   const [secondPost, setSecondPost] = React.useState(2);
@@ -99,16 +101,25 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   <div className="flex flex-col gap-11 bg-[#F4F0EF]">
                     <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 desktop:gap-6 w-full">
                       {firstCard?.attributes?.title?.length > 0 ? (
-                        <div className="flex tablet:flex-[7] flex-col bg-black">
+                        <div
+                          className="flex tablet:flex-[7] flex-col bg-black cursor-pointer"
+                          onClick={() => {
+                            if (firstCard?.attributes?.mediaType === "image") {
+                              router.push(
+                                `/perspective/viewpoint/${firstCard?.id}/${firstCard?.attributes.article?.data?.attributes?.params_url}`
+                              );
+                            }
+                          }}
+                        >
                           <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
-                            {firstCard?.attributes?.tag}
+                            {firstCard?.attributes?.banner_tag}
                           </p>
                           <MediaCard
                             mediaType={firstCard?.attributes?.mediaType}
                             media={firstCard?.attributes?.media}
                             thumbnail={firstCard?.attributes?.thumbnail}
                             href={firstCard?.attributes?.youTube_link || ""}
-                            className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
+                            className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                           />
                           <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 desktop:p-10">
                             <div className="flex items-center font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
@@ -122,16 +133,25 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                       ) : null}
 
                       {secondCard?.attributes?.title?.length > 0 ? (
-                        <div className="flex tablet:flex-[5] flex-col">
+                        <div
+                          className="flex tablet:flex-[5] flex-col cursor-pointer"
+                          onClick={() => {
+                            if (secondCard?.attributes?.mediaType === "image") {
+                              router.push(
+                                `/perspective/viewpoint/${secondCard?.id}/${secondCard?.attributes.article?.data?.attributes?.params_url}`
+                              );
+                            }
+                          }}
+                        >
                           <p className="flex z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
-                            {secondCard?.attributes?.tag}
+                            {secondCard?.attributes?.banner_tag}
                           </p>
                           <MediaCard
                             mediaType={secondCard?.attributes?.mediaType}
                             media={secondCard?.attributes?.media}
-                            thumbnail={firstCard?.attributes?.thumbnail}
+                            thumbnail={secondCard?.attributes?.thumbnail}
                             href={secondCard?.attributes?.youTube_link || ""}
-                            className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px]"
+                            className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                           />
                           <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                             <div className="flex items-center font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
@@ -144,18 +164,28 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                         </div>
                       ) : null}
                     </div>
+
                     <div className="hidden desktop:flex gap-6 w-full">
                       {thirdCard?.attributes?.title?.length > 0 ? (
-                        <div className="flex flex-[4] flex-col">
+                        <div
+                          className="flex flex-[4] flex-col cursor-pointer"
+                          onClick={() => {
+                            if (thirdCard?.attributes?.mediaType === "image") {
+                              router.push(
+                                `/perspective/viewpoint/${thirdCard?.id}/${thirdCard?.attributes.article?.data?.attributes?.params_url}`
+                              );
+                            }
+                          }}
+                        >
                           <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
-                            {thirdCard?.attributes?.tag}
+                            {thirdCard?.attributes?.banner_tag}
                           </p>
                           <MediaCard
                             mediaType={thirdCard?.attributes?.mediaType}
                             media={thirdCard?.attributes?.media}
-                            thumbnail={firstCard?.attributes?.thumbnail}
+                            thumbnail={thirdCard?.attributes?.thumbnail}
                             href={thirdCard?.attributes?.youTube_link || ""}
-                            className="object-cover w-full h-[310px]"
+                            className="object-cover w-full h-[310px] "
                           />
                           <div className=" flex flex-col gap-6 h-full text-white bg-[#404546] p-9">
                             <div className="flex items-center font-bold text-xl">
@@ -169,16 +199,27 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                       ) : null}
                       <div className="flex flex-col flex-[8] gap-6">
                         {fourthCard?.attributes?.title?.length > 0 ? (
-                          <div className="flex">
+                          <div
+                            className="flex cursor-pointer"
+                            onClick={() => {
+                              if (
+                                fourthCard?.attributes?.mediaType === "image"
+                              ) {
+                                router.push(
+                                  `/perspective/viewpoint/${fourthCard?.id}/${fourthCard?.attributes.article?.data?.attributes?.params_url}`
+                                );
+                              }
+                            }}
+                          >
                             <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
-                              {fourthCard?.attributes?.tag}
+                              {fourthCard?.attributes?.banner_tag}
                             </p>
                             <MediaCard
                               mediaType={fourthCard?.attributes?.mediaType}
                               media={fourthCard?.attributes?.media}
-                              thumbnail={firstCard?.attributes?.thumbnail}
+                              thumbnail={fourthCard?.attributes?.thumbnail}
                               href={fourthCard?.attributes?.youTube_link || ""}
-                              className="object-cover w-[400px] h-[230px]"
+                              className="object-cover w-[400px] h-[230px] "
                             />
                             <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12">
                               <div className="flex items-center font-bold text-3xl">
@@ -191,16 +232,27 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                           </div>
                         ) : null}
                         {fifthCard?.attributes?.title?.length > 0 ? (
-                          <div className="flex">
+                          <div
+                            className="flex cursor-pointer"
+                            onClick={() => {
+                              if (
+                                fifthCard?.attributes?.mediaType === "image"
+                              ) {
+                                router.push(
+                                  `/perspective/viewpoint/${fifthCard?.id}/${fifthCard?.attributes.article?.data?.attributes?.params_url}`
+                                );
+                              }
+                            }}
+                          >
                             <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
-                              {fifthCard?.attributes?.tag}
+                              {fifthCard?.attributes?.banner_tag}
                             </p>
                             <MediaCard
                               mediaType={fifthCard?.attributes?.mediaType}
                               media={fifthCard?.attributes?.media}
-                              thumbnail={firstCard?.attributes?.thumbnail}
+                              thumbnail={fifthCard?.attributes?.thumbnail}
                               href={fifthCard?.attributes?.youTube_link || ""}
-                              className="object-cover w-[400px] h-[230px]"
+                              className="object-cover w-[400px] h-[230px] "
                             />
                             <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12">
                               <div className="flex items-center font-bold text-3xl">

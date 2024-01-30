@@ -140,7 +140,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
                     onClick={() => {
                       router.push(
-                        `/perspective/Ips/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
+                        `/perspective/ips/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
                       );
                     }}
                   >
