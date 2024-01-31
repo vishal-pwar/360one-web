@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import CancelIcon from "../../../public/assets/icons/icons8-cancel.svg";
 
@@ -15,6 +15,12 @@ const VideoPLayer = ({
   const handleClose = () => {
     setIsVisible(false);
   };
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
+
+  if (!isMounted) return;
 
   const portal = createPortal(
     <div className="fixed top-0 left-0 right-0 bottom-0 h-full w-full z-[400] bg-black m-0 p-0 overflow-hidden flex items-center justify-center no-scrollbar">
