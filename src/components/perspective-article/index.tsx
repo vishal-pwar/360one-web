@@ -1,5 +1,7 @@
 "use client";
 
+import { formatDate } from "@/utils/api-helpers";
+
 interface ArticleResponse {
   response: any;
 }
@@ -20,19 +22,21 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
     <section>
       <div className="flex flex-col gap-14 bg-black pt-40 px-72">
         <div className="flex justify-between">
-          <div>
+          <div className="p-5">
             <div className="font-hanken-grotesk font-semibold text-base text-white">
-              {articleResponse?.attributes?.title}
+              {articleResponse?.attributes?.tag}
             </div>
             <div className="font-bold text-4xl text-white my-5">
-              {articleResponse?.attributes?.subtitle}
+              {articleResponse?.attributes?.title}
             </div>
             <div className="font-hanken-grotesk font-semibold text-base text-white">
-              {articleResponse?.attributes?.article?.data?.attributes?.date}
+              {formatDate(
+                articleResponse?.attributes?.article?.data?.attributes?.date
+              )}
             </div>
           </div>
           <div className="h-200 bg-[#4F4F4F] w-[1px]"></div>
-          <div>
+          <div className="p-8">
             <div className="font-normal text-sm text-[#9A9A9A]">
               written by:
             </div>
@@ -57,9 +61,9 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           </div>
         </div>
         <div className="flex">
-          {articleResponse?.attributes?.category?.length > 0 ? (
+          {articleResponse?.attributes?.component_name?.length > 0 ? (
             <div className="absolute mt-14 text-lg font-bold text-white bg-[#FD7740] py-3 px-6">
-              {articleResponse?.attributes?.attributes?.category}
+              {articleResponse?.attributes?.component_name}
             </div>
           ) : null}
           {articleResponse?.attributes?.media?.data?.attributes?.url?.length >

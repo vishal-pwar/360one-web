@@ -35,7 +35,8 @@ const VideoPLayer = ({
         ></video>
       </div>
     </div>,
-    document.querySelector("#portal") as Element
+    (typeof window !== "undefined" &&
+      document.querySelector("#portal")) as Element
   );
 
   return (
