@@ -16,8 +16,6 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
       ?.data || []),
   ];
 
-  console.log("relatedcards", articleResponse);
-
   return (
     <section>
       <div className="flex flex-col gap-14 bg-black pt-40 px-72">
