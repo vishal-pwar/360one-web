@@ -38,9 +38,9 @@ const CustomProgressBar = ({
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
   const cards = [
-    ...(response?.Reports_and_publications_cards?.data || []),
+    ...(response?.reports_and_publications_cards?.data || []),
     ...(response?.curated_experiences_cards?.data || []),
-    ...(response?.Ips_cards?.data || []),
+    ...(response?.ips_cards?.data || []),
     ...(response?.viewpoint_cards?.data || []),
     ...(response?.media_cards?.data || []),
   ];
@@ -53,11 +53,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
   return (
     <>
       <div className="relative bg-black p-6 phablet:p-12 tablet:p-0">
-        <div className="tablet:absolute tablet:w-[55%] tablet:top-[20%] tablet:pl-16">
+        <div className="tablet:absolute tablet:w-[50%] tablet:top-[20%] tablet:pl-16">
           <div className="font-bold text-[28px] tablet:text-[52px] tablet:text-6xl text-white">
             The 360 ONE
           </div>
-          <div className="font-bold text-[28px] tablet:text-[52px] tablet:text-6xl text-[#FD7740]">
+          <div className="mb-4 font-bold text-[28px] tablet:text-[52px] tablet:text-6xl text-[#FD7740]">
             Perspective
           </div>
           <div className="font-normal text-lg phablet:text-xl text-white mt-2 mb-8">
@@ -76,7 +76,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           className="curated-swiper w-full"
           breakpoints={{
             1200: {
-              slidesPerView: totalCards >= 3 ? 1 : totalCards,
+              slidesPerView: totalCards >= 3 ? 4 : totalCards,
             },
           }}
         >
@@ -84,7 +84,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
             return (
               <SwiperSlide
                 key={i}
-                className={`flex ${
+                className={`flex pl-7 ${
                   activeIndex === i
                     ? "tablet:basis-[500px] desktop:basis-[730px]"
                     : ""
@@ -96,7 +96,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   </div>
                   <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
                     <div
-                      className={`flex items-end text-left font-normal tablet:text-sm text-white ${
+                      className={` flex items-end text-left font-normal tablet:text-sm text-white mb-2 ${
                         activeIndex === i ? `hidden` : ""
                       } `}
                     >
@@ -114,8 +114,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
                     "video/"
                   ) ? (
-                    // <div className="relative flex items-center justify-center">
-                    <div>
+                    <div className="relative flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={data?.attributes?.thumbnail?.data?.attributes?.url}
@@ -150,7 +149,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                 {activeIndex === i ? (
                   <div className="flex flex-row-reverse justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
                     <div className="flex flex-col items-end">
-                      <div className="flex items-end text-left font-normal text-sm text-white">
+                      <div className="flex items-end text-left font-normal text-sm text-white mb-2">
                         {data?.attributes?.banner_tag}
                       </div>
                       <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">

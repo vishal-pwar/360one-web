@@ -121,7 +121,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                             href={firstCard?.attributes?.youTube_link || ""}
                             className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                           />
-                          <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 desktop:p-10">
+                          <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 desktop:p-12">
                             <div className="flex items-center font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                               {firstCard?.attributes?.title}
                             </div>

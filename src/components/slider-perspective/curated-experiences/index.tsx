@@ -109,7 +109,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
           return (
             <SwiperSlide
               key={i}
-              className={`flex ${
+              className={`flex pl-7 ${
                 activeIndex === i
                   ? "tablet:basis-[450px] desktop:basis-[650px]"
                   : ""

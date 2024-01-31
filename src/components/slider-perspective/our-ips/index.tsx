@@ -99,7 +99,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
         className="curated-swiper w-full"
         breakpoints={{
           1200: {
-            slidesPerView: totalCards >= 4 ? "5" : totalCards,
+            slidesPerView: totalCards >= 4 ? 4 : totalCards,
           },
         }}
       >
@@ -107,7 +107,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           return (
             <SwiperSlide
               key={i}
-              className={`flex ${
+              className={`flex pl-7 ${
                 activeIndex === i
                   ? "tablet:basis-[600px] desktop:basis-[830px]"
                   : ""

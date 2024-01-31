@@ -68,72 +68,71 @@ const Media = async () => {
             ?.slice(0, 13)
             ?.map((blog: any, index: number) => (
               <>
-                <Link
-                  href={blog?.attributes?.link || ""}
-                  target="_blank"
-                  key={index}
-                  className={`flex flex-col phablet:flex-row phablet:gap-4 tablet:gap-0 tablet:flex-col ${
-                    index >= 3 ? "hidden tablet:block" : ""
-                  }`}
-                >
-                  {blog?.attributes?.media?.data !== null && (
-                    <>
-                      {blog?.attributes?.media?.data?.attributes?.mime.includes(
-                        "image"
-                      ) ? (
-                        // eslint-disable-next-line @next/next/no-img-element
+                {blog?.attributes?.media?.data !== null && (
+                  <>
+                    {blog?.attributes?.media?.data?.attributes?.mime.includes(
+                      "image"
+                    ) ? (
+                      <Link
+                        href={blog?.attributes?.link || ""}
+                        target="_blank"
+                        key={index}
+                        className={`flex flex-col phablet:flex-row phablet:gap-4 tablet:gap-0 tablet:flex-col ${
+                          index >= 3 ? "hidden tablet:block" : ""
+                        }`}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={blog?.attributes?.media?.data?.attributes?.url}
                           alt={
                             blog?.attributes?.media?.data?.attributes
                               ?.alternativeText
                           }
-                          className="w-full object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] tablet:w-96 desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
+                          className="w-full object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
                         />
-                      ) : (
-                        <div className="relative flex items-center justify-center">
-                          <div>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={
-                                blog?.attributes?.thumbnail?.data?.attributes
-                                  ?.url
-                              }
-                              alt={
-                                blog?.attributes?.thumbnail?.data?.attributes
-                                  ?.alternativeText
-                              }
-                              className="w-full object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] tablet:w-96 desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
-                            />
-                          </div>
-                          <VideoPLayer
-                            iconUrl={PlayIcon}
-                            videoUrl={
-                              blog?.attributes?.media?.data?.attributes?.url
+                      </Link>
+                    ) : (
+                      <div className="w-full relative flex items-center justify-center">
+                        <div className="w-full">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={
+                              blog?.attributes?.thumbnail?.data?.attributes?.url
                             }
+                            alt={
+                              blog?.attributes?.thumbnail?.data?.attributes
+                                ?.alternativeText
+                            }
+                            className="flex w-[100%] object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
                           />
                         </div>
-                      )}
-                    </>
-                  )}
+                        <VideoPLayer
+                          iconUrl={PlayIcon}
+                          videoUrl={
+                            blog?.attributes?.media?.data?.attributes?.url
+                          }
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
 
-                  <div>
-                    <div className="font-light text-sm mt-5 mb-2">
-                      {blog?.attributes?.tag}
-                    </div>
-                    <div className="font-medium tablet:font-bold text-base">
-                      {blog?.attributes?.title}
-                    </div>
-                    <div className="flex font-normal text-sm mt-3 mb-6">
-                      <div>{blog?.attributes?.publishers}</div>
-                      <div className="mx-1">|</div>
-                      <div>{formatDate(blog?.attributes?.publishedAt)}</div>
-                    </div>
+                <div>
+                  <div className="font-light text-sm mt-5 mb-2">
+                    {blog?.attributes?.tag}
                   </div>
-                  <div className="phablet:hidden tablet:flex w-full bg-black h-[2px] opacity-5">
-                    -
+                  <div className="font-medium tablet:font-bold text-base">
+                    {blog?.attributes?.title}
                   </div>
-                </Link>
+                  <div className="flex font-normal text-sm mt-3 mb-6">
+                    <div>{blog?.attributes?.publishers}</div>
+                    <div className="mx-1">|</div>
+                    <div>{formatDate(blog?.attributes?.publishedAt)}</div>
+                  </div>
+                </div>
+                <div className="phablet:hidden tablet:flex w-full bg-black h-[2px] opacity-5">
+                  -
+                </div>
 
                 <div
                   className={`hidden phablet:flex tablet:hidden w-full ${
