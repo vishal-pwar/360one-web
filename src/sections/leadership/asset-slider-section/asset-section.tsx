@@ -1,7 +1,7 @@
 "use client";
-import { useRef, useState } from "react";
-import SliderSection from "@/components/slider-section";
 import SliderContent from "@/components/slider-content";
+import SliderSection from "@/components/slider-section";
+import { useRef, useState } from "react";
 
 const AssetSliderSection = ({
   cards,

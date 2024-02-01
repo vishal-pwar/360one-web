@@ -1,19 +1,19 @@
 "use client";
-import React, {
+import { getStrapiMedia } from "@/utils/api-helpers";
+import Image from "next/image";
+import {
   Dispatch,
   MutableRefObject,
   SetStateAction,
   useEffect,
   useState,
 } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
-import Image from "next/image";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import CloseIcon from "../../../public/assets/icons/icons8-cancel.svg";
-import { getStrapiMedia } from "@/utils/api-helpers";
 
 export type Card = {
   id: number;
@@ -112,8 +112,8 @@ const SwiperCardsNavigation = ({
         spaceBetween={spaceBetween}
         loop
         navigation={{
-          prevEl: prevSwiperRef.current,
-          nextEl: nextSwiperRef.current,
+          prevEl: prevSwiperRef?.current,
+          nextEl: nextSwiperRef?.current,
         }}
         modules={[Pagination, Navigation]}
         onSwiper={(swiper) => {
@@ -121,10 +121,10 @@ const SwiperCardsNavigation = ({
           setTimeout(() => {
             // @ts-ignore
             // eslint-disable-next-line no-param-reassign
-            swiper.params.navigation.prevEl = prevSwiperRef.current;
+            swiper.params.navigation.prevEl = prevSwiperRef?.current;
             // @ts-ignore
             // eslint-disable-next-line no-param-reassign
-            swiper.params.navigation.nextEl = nextSwiperRef.current;
+            swiper.params.navigation.nextEl = nextSwiperRef?.current;
             swiper.navigation.destroy();
             swiper.navigation.init();
             swiper.navigation.update();
@@ -139,7 +139,7 @@ const SwiperCardsNavigation = ({
                   ? "max-sm:!w-[calc(331*var(--scale))] max-sm:after:w-0 max-md:!w-[calc(714*var(--scale))] max-lg:!w-[calc(743*var(--scale))] !w-[calc(992*var(--scale))]"
                   : "max-sm:!w-[291.1px] max-md:!w-[calc(232*var(--scale))] max-lg:!w-[calc(232*var(--scale))] !w-[calc(326*var(--scale))]"
               } relative shrink-0 h-full max-sm:after:w-[291.1px] max-md:after:w-[calc(232*var(--scale))] max-lg:after:w-[calc(232*var(--scale))] after:w-[calc(326*var(--scale))] after:content-[''] after:absolute after:h-[calc(270*var(--scale))] after:bottom-0 after:left-0 after:bg-gradient-to-b after:from-[#00000000] after:to-[#0b0b0b]`}
-              key={card.name}
+              key={card?.name}
               onClick={() => handleOpenDetailsPanel(index)}
             >
               <div

@@ -35,7 +35,7 @@
   }
   @media screen and (min-width: 1024px) {
     .curated-swiper .swiper-wrapper {
-      gap: 30px;
+      gap: 0px;
     }
   }
 }

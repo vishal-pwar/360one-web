@@ -1,6 +1,5 @@
-import { getViewpointSection } from "@/services/perspective";
-import MediaCard from "@/components/perspective-mediaCard";
 import ViewpointSlider from "@/components/slider-perspective/viewpoint";
+import { getViewpointSection } from "@/services/perspective";
 
 const Viewpoint = async () => {
   const response = await getViewpointSection();

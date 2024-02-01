@@ -9,7 +9,7 @@ const BodSliderSection = ({ cards, content }: { cards: any; content: any }) => {
   const swiperNavNextRef = useRef<HTMLDivElement>(null);
   const [currentSlideId, setCurrentSlideId] = useState<number>(1);
   const [activeSlideId, setActiveSlideId] = useState(-1);
-  const length = cards.length;
+  const length = cards?.length;
   const handleNext = () => {
     setCurrentSlideId((prevNumber) =>
       prevNumber < length ? prevNumber + 1 : 1
@@ -59,7 +59,7 @@ const BodSliderSection = ({ cards, content }: { cards: any; content: any }) => {
             handleNext={handleNext}
             handlePrevious={handlePrevious}
             currentSlideId={currentSlideId}
-            totalSlides={cards.length}
+            totalSlides={cards?.length}
             content={content}
             contentFillColor="black"
           />

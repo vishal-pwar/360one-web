@@ -5,9 +5,9 @@ export async function getBannerSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Banner: {
+      banner: {
         populate: {
-          cards: {
+          curated_experiences_cards: {
             populate: {
               media: true,
               article: {
@@ -21,6 +21,37 @@ export async function getBannerSection() {
               },
             },
           },
+          viewpoint_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          ips_cards: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          reports_and_publications_cards: { populate: { media: true } },
+          media_cards: { populate: { media: true, thumbnail: true } },
         },
       },
     },
@@ -35,7 +66,32 @@ export async function getViewpointSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      viewpoint: { populate: { cards: { populate: { media: true } } } },
+      viewpoint: {
+        populate: {
+          viewpoint_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -50,7 +106,7 @@ export async function getCuratedExperienceSection() {
     populate: {
       experiences: {
         populate: {
-          cards: {
+          curated_experiences_cards: {
             populate: {
               media: true,
               article: {
@@ -59,6 +115,13 @@ export async function getCuratedExperienceSection() {
                     populate: {
                       image: true,
                     },
+                  },
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
                   },
                 },
               },
@@ -78,9 +141,9 @@ export async function getOurIpsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Ips: {
+      ips: {
         populate: {
-          cards: {
+          ips_cards: {
             populate: {
               media: true,
               article: {
@@ -89,6 +152,13 @@ export async function getOurIpsSection() {
                     populate: {
                       image: true,
                     },
+                  },
+                  curated_experiences_cards: {
+                    populate: { media: true },
+                  },
+                  ips_cards: { populate: { media: true } },
+                  viewpoint_cards: {
+                    populate: { media: true, thumbnail: true },
                   },
                 },
               },
@@ -109,10 +179,12 @@ export async function getReportsSection() {
   const path = `/perspective`;
   const urlParamsObject = {
     populate: {
-      Reports: {
+      reports: {
         populate: {
-          blog_posts: { populate: { thumbnail: true, body: true } },
-          featured: { populate: { thumbnail: true } },
+          reports_and_publications_cards: {
+            populate: { media: true, pdf: true },
+          },
+          featured: { populate: { media: true, pdf: true } },
         },
       },
     },
@@ -129,8 +201,38 @@ export async function getInMediaSection() {
     populate: {
       media: {
         populate: {
-          blog_posts: { populate: { thumbnail: true, body: true } },
-          featured: { populate: { thumbnail: true } },
+          media_cards: {
+            populate: {
+              media: true,
+              thumbnail: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                  curated_experiences_cards: true,
+                  ips_cards: true,
+                  viewpoint_cards: true,
+                },
+              },
+            },
+          },
+          featured: {
+            populate: {
+              media: true,
+              article: {
+                populate: {
+                  card: {
+                    populate: {
+                      image: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },

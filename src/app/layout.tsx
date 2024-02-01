@@ -6,10 +6,10 @@ import Popup from "@/components/popup";
 import { getMetadata } from "@/services/meta-data";
 import { getOrganizationCanonical } from "@/services/organization-canonical";
 import { getPopup } from "@/services/pop-up";
+import clsx from "clsx";
 import React from "react";
 import { hankenGrotesk, spaceGrotesk } from "./fonts";
 import "./globals.css";
-import clsx from "clsx";
 
 // export const metadata: Metadata = {
 //   title: "Asset and Wealth Management Services in India - 360 ONE",
@@ -92,6 +92,7 @@ export default async function RootLayout({
         <Mixpanel />
         {popupData ? <Popup popup={popupData} /> : null}
         {children}
+        <div id="portal" />
       </body>
     </html>
   );

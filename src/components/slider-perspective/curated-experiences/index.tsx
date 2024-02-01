@@ -1,14 +1,14 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination } from "swiper/modules";
-import { Swiper as SwiperType } from "swiper";
-import Image from "next/image";
 import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React from "react";
+import { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface curatedExperienceProps {
   response: any;
@@ -36,7 +36,7 @@ const CustomProgressBar = ({
 const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = response?.cards?.length;
+  const totalCards = response?.curated_experiences_cards?.data?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
@@ -50,12 +50,12 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         <div className="hidden desktop:flex flex-col gap-5 mt-28">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response?.cards?.length}
+            totalSlides={response?.curated_experiences_cards?.data?.length}
           />
           <div>
             <div className="flex font-bold text-2xl">{`${
               activeIndex + 1
-            } / ${response?.cards?.length}`}</div>
+            } / ${response?.curated_experiences_cards?.data?.length}`}</div>
             <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
               <button
                 className={`p-0 mt-[3px] ${
@@ -105,11 +105,11 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
           },
         }}
       >
-        {response?.cards?.map((data: any, i: any) => {
+        {response?.curated_experiences_cards?.data?.map((data: any, i: any) => {
           return (
             <SwiperSlide
               key={i}
-              className={`flex ${
+              className={`flex pl-7 ${
                 activeIndex === i
                   ? "tablet:basis-[450px] desktop:basis-[650px]"
                   : ""
@@ -119,8 +119,10 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   key={i}
-                  src={data?.media?.data?.attributes?.url}
-                  alt={data?.media?.data?.attributes?.alternativeText}
+                  src={data?.attributes?.media?.data?.attributes?.url}
+                  alt={
+                    data?.attributes?.media?.data?.attributes?.alternativeText
+                  }
                   className={`object-cover w-full ${
                     activeIndex === i
                       ? "h-[366px] tablet:h-[521px] desktop:h-[700px] opacity-60"
@@ -131,16 +133,16 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               {activeIndex === i ? (
                 <div className="flex flex-col items-end p-4 phablet:p-9 desktop:p-12 gap-2 desktop:gap-4 w-full bottom-0 absolute">
                   <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
-                    {data?.title}
+                    {data?.attributes?.title}
                   </div>
                   <div className="flex items-end text-left font-medium text-sm tablet:text-lg desktop:text-xl text-white">
-                    {data?.subtitle}
+                    {data?.attributes?.subtitle}
                   </div>
                   <button
                     className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
                     onClick={() => {
                       router.push(
-                        `/perspective/experiences/${data?.article?.data?.id}/${data?.article?.data?.attributes?.article_url}`
+                        `/perspective/experiences/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
                       );
                     }}
                   >
@@ -156,12 +158,12 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
         <div className="desktop:hidden w-full tablet:basis-[450px] desktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
           <CustomProgressBar
             currentIndex={activeIndex}
-            totalSlides={response?.cards?.length}
+            totalSlides={response?.curated_experiences_cards?.data?.length}
           />
           <div className="flex justify-between">
             <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
               activeIndex + 1
-            } / ${response?.cards?.length}`}</div>
+            } / ${response?.curated_experiences_cards?.data?.length}`}</div>
             <div className="z-[5] gap-4 hidden tablet:flex">
               <button
                 className={`p-0 mt-[3px] ${
