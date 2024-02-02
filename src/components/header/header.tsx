@@ -79,9 +79,19 @@ const responsiveNavItems = [
       },
     ],
   },
+  {
+    title: "Perspective",
+
+    external: false,
+    url: "/perspective",
+  },
 ];
 
 export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
+  const [showDropdown, setShowDropdown] = useState<{
+    [key: string]: boolean;
+  }>({});
+
   const [small, setSmall] = useState(false);
   const [responsiveNavActive, setResponsiveNavActive] = useState(false);
   const [activeId, setActiveId] = useState<number>(-1);
@@ -180,17 +190,38 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                       >
                         <ul className="flex flex-col gap-5">
                           {navItem.children?.map((child: any) => (
-                            <li key={child.name}>
-                              <Link
-                                href={child?.href || "/"}
-                                target={`${child?.external ? "_blank" : ""}`}
-                                key={child?.title}
-                                className={`text-[calc(1*var(--size-18))] ${
-                                  navItem.href === pathname && "font-bold"
-                                } peer`}
+                            <li key={child.title}>
+                              <span
+                                onClick={() => {
+                                  setShowDropdown((prevState) => ({
+                                    ...prevState,
+                                    [child.title]:
+                                      !prevState[child.title] || false,
+                                  }));
+                                }}
                               >
-                                {child?.title}
-                              </Link>
+                                {child.title}{" "}
+                                {showDropdown[child.title] ? "v" : "^"}
+                              </span>
+                              {child.subChildren.data.length > 0 &&
+                                showDropdown[child.title] && (
+                                  <ul>
+                                    {child.subChildren.data.map(
+                                      (subChild: any) => (
+                                        <li key={subChild.attributes.title}>
+                                          <Link
+                                            href={subChild?.href || "/"}
+                                            target={`${
+                                              subChild?.external ? "_blank" : ""
+                                            }`}
+                                          >
+                                            {subChild?.attributes?.title}
+                                          </Link>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                )}
                             </li>
                           ))}
                         </ul>
