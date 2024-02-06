@@ -118,31 +118,34 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           <div className="mt-10">
             {articleResponse?.attributes?.article?.data?.attributes
               .publication_source !== null ? (
-              <Link
-                className="underline text-blue-600 text-2xl font-semibold"
-                href={
-                  articleResponse?.attributes?.article?.data?.attributes
-                    .publication_source_link || "#"
-                }
-                target="_blank"
-              >
-                {
-                  articleResponse?.attributes?.article?.data?.attributes
-                    .publication_source
-                }
-              </Link>
+              <div className="flex gap-2 items-center text-2xl font-normal">
+                <div>Original Article :</div>
+                <Link
+                  className="underline text-blue-600 text-2xl font-semibold"
+                  href={
+                    articleResponse?.attributes?.article?.data?.attributes
+                      .publication_source_link || "#"
+                  }
+                  target="_blank"
+                >
+                  {
+                    articleResponse?.attributes?.article?.data?.attributes
+                      .publication_source
+                  }
+                </Link>
+              </div>
             ) : null}
           </div>
         </div>
         <div>
           {articleResponse?.attributes?.article?.data?.attributes?.seo_dropdown
             .length > 0 ? (
-            <div className="flex mx-72 flex-wrap">
+            <div className="flex mx-[268px] flex-wrap">
               {articleResponse?.attributes?.article?.data?.attributes?.seo_dropdown?.map(
                 (values: any) => {
                   return (
-                    <div key={values?.id} className="p-8">
-                      <div className="text-[#B1532D] px-4 py-2 bg-[#FFE4D9]">
+                    <div key={values?.id} className="p-6">
+                      <div className="text-[#B1532D] p-3 bg-[#FFE4D9]">
                         {values}
                       </div>
                     </div>

@@ -175,42 +175,46 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             </div>
                           ) : (
                             <>
-                              <button
-                                className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
-                                onClick={() => {
-                                  let componentPath = "";
-                                  if (
-                                    data?.attributes?.component_name.includes(
-                                      "Curated"
-                                    )
-                                  ) {
-                                    componentPath = "experiences";
-                                  } else if (
-                                    data?.attributes?.component_name.includes(
-                                      "Our"
-                                    )
-                                  ) {
-                                    componentPath = "ips";
-                                  } else if (
-                                    data?.attributes?.component_name.includes(
-                                      "Viewpoint"
-                                    )
-                                  ) {
-                                    componentPath = "viewpoint";
-                                  } else if (
-                                    data?.attributes?.component_name?.includes(
-                                      "media"
-                                    )
-                                  ) {
-                                    componentPath = "media";
-                                  }
-                                  router.push(
-                                    `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}?from=banner`
-                                  );
-                                }}
-                              >
-                                READ MORE
-                              </button>
+                              {data?.attributes?.component_name.includes(
+                                "reports"
+                              ) ? null : (
+                                <button
+                                  className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                                  onClick={() => {
+                                    let componentPath = "";
+                                    if (
+                                      data?.attributes?.component_name.includes(
+                                        "Curated"
+                                      )
+                                    ) {
+                                      componentPath = "experiences";
+                                    } else if (
+                                      data?.attributes?.component_name.includes(
+                                        "Our"
+                                      )
+                                    ) {
+                                      componentPath = "ips";
+                                    } else if (
+                                      data?.attributes?.component_name.includes(
+                                        "Viewpoint"
+                                      )
+                                    ) {
+                                      componentPath = "viewpoint";
+                                    } else if (
+                                      data?.attributes?.component_name?.includes(
+                                        "media"
+                                      )
+                                    ) {
+                                      componentPath = "media";
+                                    }
+                                    router.push(
+                                      `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}?from=banner`
+                                    );
+                                  }}
+                                >
+                                  READ MORE
+                                </button>
+                              )}
                             </>
                           )}
                         </div>
