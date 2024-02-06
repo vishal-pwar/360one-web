@@ -2,6 +2,8 @@
 import { Link } from "@/components/link";
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
+import DropDown from "@/public/assets/icons/dropdown-arrow.svg";
+import clsx from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -44,6 +46,12 @@ const responsiveNavItems = [
     url: "https://www.iiflwealth.com/Connect/Reach-Us",
   },
   {
+    title: "Perspective",
+
+    external: false,
+    url: "/perspective",
+  },
+  {
     title: "Client Login",
     url: "#",
     children: [
@@ -78,12 +86,6 @@ const responsiveNavItems = [
         external: true,
       },
     ],
-  },
-  {
-    title: "Perspective",
-
-    external: false,
-    url: "/perspective",
   },
 ];
 
@@ -190,25 +192,28 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                       >
                         <ul className="flex flex-col gap-5">
                           {navItem.children?.map((child: any) => (
-                            <li key={child.title}>
-                              <span
-                                onClick={() => {
-                                  setShowDropdown((prevState) => ({
-                                    ...prevState,
-                                    [child.title]:
-                                      !prevState[child.title] || false,
-                                  }));
-                                }}
-                              >
-                                {child.title}{" "}
-                                {showDropdown[child.title] ? "v" : "^"}
-                              </span>
-                              {child.subChildren.data.length > 0 &&
-                                showDropdown[child.title] && (
-                                  <ul>
-                                    {child.subChildren.data.map(
+                            <li
+                              key={child.title}
+                              className="group block relative cursor-pointer"
+                            >
+                              <div className="w-full flex">
+                                <Image
+                                  src={DropDown}
+                                  alt="arrow"
+                                  className="mr-6"
+                                />
+                                {child.title}
+                              </div>
+                              {child.subChildren.data.length > 0 ? (
+                                <div
+                                  className={clsx(
+                                    "hidden p-3 group-hover:block absolute hover:block z-[9999] w-60 bg-white border border-gray-300 rounded shadow-lg right-[110%] bottom-[-460%]"
+                                  )}
+                                >
+                                  <ul className="flex flex-col gap-6">
+                                    {child?.subChildren?.data?.map(
                                       (subChild: any) => (
-                                        <li key={subChild.attributes.title}>
+                                        <li key={subChild?.attributes?.title}>
                                           <Link
                                             href={subChild?.href || "/"}
                                             target={`${
@@ -221,7 +226,8 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                                       )
                                     )}
                                   </ul>
-                                )}
+                                </div>
+                              ) : null}
                             </li>
                           ))}
                         </ul>

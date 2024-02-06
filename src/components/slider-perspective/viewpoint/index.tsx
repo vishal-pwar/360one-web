@@ -84,7 +84,6 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                 setActiveIndex(e.realIndex);
               }}
             >
-              ?{" "}
               <>
                 {Array(
                   Math.ceil(

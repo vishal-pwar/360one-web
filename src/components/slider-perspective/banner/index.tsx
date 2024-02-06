@@ -3,7 +3,6 @@ import VideoPLayer from "@/components/video-player";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -176,55 +175,42 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             </div>
                           ) : (
                             <>
-                              {data?.attributes?.component_name.includes(
-                                "in the media"
-                              ) ? (
-                                <Link
-                                  href={data?.attributes?.link || ""}
-                                  target="_blank"
-                                >
-                                  <button
-                                    className="hidden desktop:flex w-28 p-3 border-2
-                              border-white text-white text-sm font-bold
-                              font-space-grotesk"
-                                  >
-                                    Read More
-                                  </button>
-                                </Link>
-                              ) : data?.attributes?.article ===
-                                undefined ? null : (
-                                <button
-                                  className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
-                                  onClick={() => {
-                                    let componentPath = "";
-                                    if (
-                                      data?.attributes?.component_name.includes(
-                                        "Curated"
-                                      )
-                                    ) {
-                                      componentPath = "experiences";
-                                    } else if (
-                                      data?.attributes?.component_name.includes(
-                                        "Our"
-                                      )
-                                    ) {
-                                      componentPath = "ips";
-                                    } else if (
-                                      data?.attributes?.component_name.includes(
-                                        "Viewpoint"
-                                      )
-                                    ) {
-                                      componentPath = "viewpoint";
-                                    }
-
-                                    router.push(
-                                      `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}`
-                                    );
-                                  }}
-                                >
-                                  READ MORE
-                                </button>
-                              )}
+                              <button
+                                className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                                onClick={() => {
+                                  let componentPath = "";
+                                  if (
+                                    data?.attributes?.component_name.includes(
+                                      "Curated"
+                                    )
+                                  ) {
+                                    componentPath = "experiences";
+                                  } else if (
+                                    data?.attributes?.component_name.includes(
+                                      "Our"
+                                    )
+                                  ) {
+                                    componentPath = "ips";
+                                  } else if (
+                                    data?.attributes?.component_name.includes(
+                                      "Viewpoint"
+                                    )
+                                  ) {
+                                    componentPath = "viewpoint";
+                                  } else if (
+                                    data?.attributes?.component_name?.includes(
+                                      "media"
+                                    )
+                                  ) {
+                                    componentPath = "media";
+                                  }
+                                  router.push(
+                                    `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}?from=banner`
+                                  );
+                                }}
+                              >
+                                READ MORE
+                              </button>
                             </>
                           )}
                         </div>
