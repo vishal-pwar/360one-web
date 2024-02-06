@@ -56,34 +56,47 @@ const responsiveNavItems = [
     url: "#",
     children: [
       {
-        title: "Portfolio Login",
-        href: "https://wealthlogin.360.one/Wealth/#/login",
-        external: true,
+        title: "AMC",
+        href: "#",
+        subChildren: [
+          {
+            title: "Portfolio Login",
+            href: "https://wealthlogin.360.one/Wealth/#/login",
+            external: true,
+          },
+          {
+            title: "Online Trading",
+            href: "https://onlinetrade.360.one/Express5/login#",
+            external: true,
+          },
+          {
+            title: "360 ONE Private Login",
+            href: "https://wapp-private.360.one/wealthspectrum/app/loginWith",
+            external: true,
+          },
+        ],
       },
+
       {
-        title: "Online Trading",
-        href: "https://onlinetrade.360.one/Express5/login#",
-        external: true,
-      },
-      {
-        title: "360 ONE Private Login",
-        href: "https://wapp-private.360.one/wealthspectrum/app/loginWith",
-        external: true,
-      },
-      {
-        title: "View PMS portfolio",
-        href: "https://wappamc.360.one/wealthspectrum/app/login",
-        external: true,
-      },
-      {
-        title: "Invest in MF online",
-        href: "https://iiflmf.com/",
-        external: true,
-      },
-      {
-        title: "Distributor Login",
-        href: "https://wappamc.360.one/wealthspectrum/app/login",
-        external: true,
+        title: "Wealth",
+        href: "#",
+        subChildren: [
+          {
+            title: "View PMS portfolio",
+            href: "https://wappamc.360.one/wealthspectrum/app/login",
+            external: true,
+          },
+          {
+            title: "Invest in MF online",
+            href: "https://iiflmf.com/",
+            external: true,
+          },
+          {
+            title: "Distributor Login",
+            href: "https://wappamc.360.one/wealthspectrum/app/login",
+            external: true,
+          },
+        ],
       },
     ],
   },
@@ -282,16 +295,34 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                           {item.children?.map((c) => {
                             return (
                               <li key={c.title}>
-                                <Link
+                                <div
                                   className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
-                                  href={c.href}
-                                  target={`${c.external ? "_blank" : ""}`}
                                   onClick={handleResponsiveNav}
                                 >
-                                  <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
-                                    | {c?.title}
+                                  <span className="max-sm:items-start flex flex-col gap-2  items-center text-white leading-[1.17] font-bold">
+                                    <div>{c?.title}</div>
+                                    <div className="flex flex-col gap-2">
+                                      {c.subChildren.map((i: any) => {
+                                        return (
+                                          <li key={i.title}>
+                                            <Link
+                                              href={i?.href}
+                                              target={`${
+                                                i.external ? "_blank" : ""
+                                              }`}
+                                              className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
+                                              onClick={handleResponsiveNav}
+                                            >
+                                              <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
+                                                | {i?.title}
+                                              </span>
+                                            </Link>
+                                          </li>
+                                        );
+                                      })}
+                                    </div>
                                   </span>
-                                </Link>
+                                </div>
                               </li>
                             );
                           })}
