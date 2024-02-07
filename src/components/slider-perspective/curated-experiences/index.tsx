@@ -41,7 +41,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   return (
     <>
       {response?.curated_experiences_cards?.data?.length > 0 ? (
-        <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
+        <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 windowDesktop:pl-16">
           <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
             <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
               {response?.title}
@@ -49,7 +49,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
               {response?.subtitle}
             </div>
-            <div className="hidden desktop:flex flex-col gap-5 mt-28">
+            <div className="hidden windowDesktop:flex flex-col gap-5 mt-28">
               <CustomProgressBar
                 currentIndex={activeIndex}
                 totalSlides={response?.curated_experiences_cards?.data?.length}
@@ -114,7 +114,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                     key={i}
                     className={`flex pl-7 ${
                       activeIndex === i
-                        ? "tablet:basis-[450px] desktop:basis-[650px]"
+                        ? "tablet:basis-[450px] windowDesktop:basis-[600px]"
                         : ""
                     }`}
                   >
@@ -129,21 +129,25 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                         }
                         className={`object-cover w-full ${
                           activeIndex === i
-                            ? "h-[366px] tablet:h-[521px] desktop:h-[700px] opacity-60"
-                            : "h-[366px] tablet:h-48 desktop:h-60"
+                            ? "h-[366px] tablet:h-[521px] windowDesktop:h-[700px] opacity-60"
+                            : "h-[366px] tablet:h-48 windowDesktop:h-60 opacity-90"
                         }`}
                       />
                     </div>
                     {activeIndex === i ? (
-                      <div className="flex flex-col items-end p-4 phablet:p-9 desktop:p-12 gap-2 desktop:gap-4 w-full bottom-0 absolute">
+                      <div className="flex flex-col items-end p-4 phablet:p-9 windowDesktop:p-12 gap-2 windowDesktop:gap-4 w-full bottom-0 absolute">
                         <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
                           {data?.attributes?.title}
                         </div>
-                        <div className="flex items-end text-left font-medium text-sm tablet:text-lg desktop:text-xl text-white">
+                        <div className="flex items-end text-left font-medium text-sm tablet:text-lg windowDesktop:text-xl text-white">
                           {data?.attributes?.subtitle}
                         </div>
                         <button
-                          className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                          className={`hidden ${
+                            data?.attributes?.article?.data === null
+                              ? "hidden"
+                              : "windowDesktop:flex"
+                          }  py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
                           onClick={() => {
                             router.push(
                               `/perspective/experiences/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
@@ -160,7 +164,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             )}
           </Swiper>
           <div className="flex justify-end">
-            <div className="desktop:hidden w-full tablet:basis-[450px] desktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
+            <div className="windowDesktop:hidden w-full tablet:basis-[450px] windowDesktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
               <CustomProgressBar
                 currentIndex={activeIndex}
                 totalSlides={response?.curated_experiences_cards?.data?.length}

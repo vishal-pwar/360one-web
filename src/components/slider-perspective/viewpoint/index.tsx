@@ -62,7 +62,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
   return (
     <>
       {response?.viewpoint_cards?.data?.length ? (
-        <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 desktop:pl-16 desktop:py-[75px]">
+        <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 windowDesktop:pl-16 windowDesktop:py-[75px]">
           <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
             {title}
           </div>
@@ -106,10 +106,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                     return (
                       <SwiperSlide
                         key={i}
-                        className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-10"
+                        className="bg-[#333333] mt-3 phablet:mt-4 windowDesktop:mt-10"
                       >
                         <div className="flex flex-col gap-11 bg-[#F4F0EF]">
-                          <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 desktop:gap-6 w-full">
+                          <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 windowDesktop:gap-6 w-full">
                             {firstCard?.attributes?.title?.length > 0 ? (
                               <div
                                 className="flex tablet:flex-[7] flex-col bg-black cursor-pointer"
@@ -135,11 +135,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                                 />
-                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 desktop:p-12">
-                                  <div className="flex items-center font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12">
+                                  <div className="line-clamp-1 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                     {firstCard?.attributes?.title}
                                   </div>
-                                  <div>
+                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
                                     {firstCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -172,11 +172,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                                 />
-                                <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 desktop:p-12">
-                                  <div className="flex items-center font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12">
+                                  <div className="line-clamp-1 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                     {secondCard?.attributes?.title}
                                   </div>
-                                  <div>
+                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
                                     {secondCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -184,7 +184,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                             ) : null}
                           </div>
 
-                          <div className="hidden desktop:flex gap-6 w-full">
+                          <div className="hidden windowDesktop:flex gap-6 w-full">
                             {thirdCard?.attributes?.title?.length > 0 ? (
                               <div
                                 className="flex flex-[4] flex-col cursor-pointer"
@@ -211,10 +211,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   className="object-cover w-full h-[310px] "
                                 />
                                 <div className=" flex flex-col gap-6 h-full text-white bg-[#404546] p-9">
-                                  <div className="flex items-center font-bold text-xl">
+                                  <div className="line-clamp-1 font-bold text-xl">
                                     {thirdCard?.attributes?.title}
                                   </div>
-                                  <div>
+                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
                                     {thirdCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -251,11 +251,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                     className="object-cover w-[400px] h-[230px] "
                                   />
-                                  <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12">
-                                    <div className="flex items-center font-bold text-3xl">
+                                  <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12 justify-center">
+                                    <div className="line-clamp-1 font-bold text-xl">
                                       {fourthCard?.attributes?.title}
                                     </div>
-                                    <div>
+                                    <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
                                       {
                                         fourthCard?.attributes
                                           ?.publication_source
@@ -278,7 +278,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                   }}
                                 >
-                                  <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
+                                  <p className="flex justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6 z-50">
                                     {fifthCard?.attributes?.banner_tag}
                                   </p>
                                   <MediaCard
@@ -290,11 +290,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                     className="object-cover w-[400px] h-[230px] "
                                   />
-                                  <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12">
-                                    <div className="flex items-center font-bold text-3xl">
+                                  <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12 justify-center">
+                                    <div className="line-clamp-1 font-bold text-xl">
                                       {fifthCard?.attributes?.title}
                                     </div>
-                                    <div>
+                                    <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
                                       {
                                         fifthCard?.attributes
                                           ?.publication_source
@@ -313,7 +313,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
             </Swiper>
           ) : null}
 
-          <div className="mt-2 phablet:mt-8 desktop:mt-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
+          <div className="mt-2 phablet:mt-8 windowDesktop:mt-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
             <CustomProgressBar
               currentIndex={Math.min(
                 activeIndex + 5,

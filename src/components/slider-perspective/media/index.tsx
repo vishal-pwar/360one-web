@@ -93,7 +93,7 @@ export default function InMediaCards({ response }: inMediaProps) {
                         </div>
                       ) : (
                         <div className="w-full relative flex items-center justify-center">
-                          <div className="w-full">
+                          <div className="w-full bg-black">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={
@@ -104,7 +104,7 @@ export default function InMediaCards({ response }: inMediaProps) {
                                 blog?.attributes?.thumbnail?.data?.attributes
                                   ?.alternativeText
                               }
-                              className="flex w-[100%] object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0"
+                              className="flex w-[100%] object-cover h-[135px] phablet:h-[135px] tablet:h-[300px] desktop:h-[326px] mt-5 tablet:mb-5 desktop:mb-0 opacity-60"
                             />
                           </div>
                           <VideoPLayer

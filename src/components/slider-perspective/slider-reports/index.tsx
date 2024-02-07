@@ -55,7 +55,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
             1200: {
               slidesPerView: 3,
             },
-            1600: {
+            1450: {
               slidesPerView: 4.5,
             },
           }}
@@ -65,24 +65,28 @@ const ReportsSlider = ({ response }: reportsprops) => {
               return (
                 <SwiperSlide
                   key={i}
-                  className="bg-[#333333] mt-3 phablet:mt-4 desktop:mt-12"
+                  className="bg-[#333333] mt-3 phablet:mt-4 windowDesktop:mt-12"
                 >
-                  <div className="flex flex-col py-6 px-[22px]">
+                  <div className="flex flex-col py-6 px-[22px] h-80">
                     <div>
-                      <div className="font-bold text-white text-base phablet:text-2xl">
+                      <div className="line-clamp-2 font-bold text-white text-base phablet:text-2xl">
                         {card?.attributes?.title}
                       </div>
-                      <div className="font-normal text-white mt-1 mb-6 tablet:mt-4 tablet:mb-14 text-sm tablet:text-xl">
+                      <div className="line-clamp-3 font-normal text-white mt-1 mb-6 tablet:mt-4 tablet:mb-14 text-sm tablet:text-xl">
                         {card?.attributes?.subtitle}
                       </div>
                     </div>
-                    <Link
-                      href={card?.attributes?.pdf?.data?.attributes?.url || "#"}
-                      target="_blank"
-                      className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
-                    >
-                      <button>DOWNLOAD NOW</button>
-                    </Link>
+                    {card?.attributes?.pdf?.data === null ? null : (
+                      <Link
+                        href={
+                          card?.attributes?.pdf?.data?.attributes?.url || "#"
+                        }
+                        target="_blank"
+                        className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
+                      >
+                        <button>DOWNLOAD NOW</button>
+                      </Link>
+                    )}
                   </div>
                 </SwiperSlide>
               );
