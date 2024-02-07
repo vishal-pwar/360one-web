@@ -80,7 +80,9 @@ export async function getBannerSection() {
               },
             },
           },
-          reports_and_publications_cards: { populate: { media: true } },
+          reports_and_publications_cards: {
+            populate: { media: true, pdf: true },
+          },
           media_cards: {
             populate: {
               media: true,

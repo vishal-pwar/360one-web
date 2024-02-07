@@ -3,6 +3,7 @@ import VideoPLayer from "@/components/video-player";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -92,7 +93,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     }`}
                   >
                     <div className="tablet:relative bg-black">
-                      <div className="hidden desktop:flex desktop:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
+                      <div className="hidden tablet:flex tablet:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
                         {data?.attributes?.component_name}
                       </div>
                       <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
@@ -108,7 +109,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             activeIndex === i ? `hidden` : ""
                           }`}
                         >
-                          {data?.attributes?.title}
+                          <p className="line-clamp-1">
+                            {data?.attributes?.title}
+                          </p>
                         </div>
                       </div>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -156,7 +159,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             {data?.attributes?.banner_tag}
                           </div>
                           <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">
-                            {data?.attributes?.title}
+                            <p className="line-clamp-1">
+                              {data?.attributes?.title}
+                            </p>
                           </div>
                         </div>
 
@@ -177,9 +182,28 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             <>
                               {data?.attributes?.component_name.includes(
                                 "reports"
-                              ) ? null : (
+                              ) ? (
+                                <Link
+                                  href={
+                                    data?.attributes?.pdf?.data?.attributes
+                                      ?.url || "#"
+                                  }
+                                  target="_blank"
+                                  className={`hidden ${
+                                    data?.attributes?.pdf?.data === null
+                                      ? "hidden"
+                                      : "tablet:flex"
+                                  } justify-center font-bold text-sm w-32 py-3 border-2 border-white text-white`}
+                                >
+                                  <button>DOWNLOAD NOW</button>
+                                </Link>
+                              ) : (
                                 <button
-                                  className="hidden desktop:flex w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                                  className={`hidden ${
+                                    data?.attributes?.article?.data === null
+                                      ? "hidden"
+                                      : "tablet:flex"
+                                  } w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
                                   onClick={() => {
                                     let componentPath = "";
                                     if (

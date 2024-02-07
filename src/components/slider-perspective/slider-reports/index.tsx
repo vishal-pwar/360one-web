@@ -77,7 +77,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
                       </div>
                     </div>
                     <Link
-                      href={card?.attributes?.pdf?.data?.attributes?.url || ""}
+                      href={card?.attributes?.pdf?.data?.attributes?.url || "#"}
                       target="_blank"
                       className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
                     >

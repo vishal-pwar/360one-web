@@ -220,7 +220,7 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                               {child.subChildren.data.length > 0 ? (
                                 <div
                                   className={clsx(
-                                    "hidden p-3 group-hover:block absolute hover:block z-[9999] w-60 bg-white border border-gray-300 rounded shadow-lg right-[110%] bottom-[-460%]"
+                                    "hidden p-3 group-hover:block absolute hover:block z-[9999] w-60 bg-white border border-gray-300 rounded shadow-lg right-[100%] bottom-[-460%]"
                                   )}
                                 >
                                   <ul className="flex flex-col gap-6">
