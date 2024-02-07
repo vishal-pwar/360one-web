@@ -1,72 +1,19 @@
-import {
-  getBannerSection,
-  getCuratedExperienceSection,
-  getInMediaSection,
-  getOurIpsSection,
-  getViewpointSection,
-} from "@/services/perspective";
-import ArticlePost from "../../../../../components/perspective-article";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import PerspectiveArticlePage from "@/sections/perspective/article";
 
-const PerspectiveArticle = async ({
+export default function PerspectiveArticle({
   params,
   searchParams,
 }: {
   params: { type: string; id: string };
   searchParams: { from: string };
-}) => {
-  let response;
-  let page = params?.type;
-  if (searchParams.from === "banner") {
-    response = await getBannerSection();
-  } else if (params.type === "experiences") {
-    response = await getCuratedExperienceSection();
-  } else if (params.type === "ips") {
-    response = await getOurIpsSection();
-  } else if (params.type === "viewpoint") {
-    response = await getViewpointSection();
-  } else if (params.type === "media") {
-    response = await getInMediaSection();
-  }
-
-  const cardKey = (() => {
-    if (page === "experiences") {
-      return "curated_experiences_cards";
-    }
-    if (page === "media") {
-      return "media_cards";
-    }
-    if (page === "viewpoint") {
-      return "viewpoint_cards";
-    }
-    if (page === "ips") {
-      return "ips_cards";
-    }
-    return "";
-  })();
-
+}) {
   return (
-    <>
-      {(() => {
-        if (searchParams.from === "banner") {
-          return (
-            <ArticlePost
-              response={response?.data?.attributes?.banner?.[cardKey].data.find(
-                (f: any) => f.id === +params.id
-              )}
-            />
-          );
-        } else {
-          return (
-            <ArticlePost
-              response={response?.data?.attributes?.[page]?.[cardKey].data.find(
-                (f: any) => f.id === +params.id
-              )}
-            />
-          );
-        }
-      })()}
-    </>
+    <div className="mt-16">
+      <Header />
+      <PerspectiveArticlePage params={params} searchParams={searchParams} />
+      <Footer />
+    </div>
   );
-};
-
-export default PerspectiveArticle;
+}

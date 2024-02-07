@@ -139,7 +139,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
         </div>
         <div>
           {articleResponse?.attributes?.article?.data?.attributes?.seo_dropdown
-            .length > 0 ? (
+            ?.length > 0 ? (
             <div className="flex mx-[268px] flex-wrap">
               {articleResponse?.attributes?.article?.data?.attributes?.seo_dropdown?.map(
                 (values: any) => {
