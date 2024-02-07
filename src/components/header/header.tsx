@@ -304,7 +304,7 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                                     <div className="flex flex-col gap-2">
                                       {c.subChildren.map((i: any) => {
                                         return (
-                                          <li key={i.title}>
+                                          <div key={i.title}>
                                             <Link
                                               href={i?.href}
                                               target={`${
@@ -317,7 +317,7 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                                                 | {i?.title}
                                               </span>
                                             </Link>
-                                          </li>
+                                          </div>
                                         );
                                       })}
                                     </div>
