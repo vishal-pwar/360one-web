@@ -76,17 +76,19 @@ const ReportsSlider = ({ response }: reportsprops) => {
                         {card?.attributes?.subtitle}
                       </div>
                     </div>
-                    {card?.attributes?.pdf?.data === null ? null : (
-                      <Link
-                        href={
-                          card?.attributes?.pdf?.data?.attributes?.url || "#"
-                        }
-                        target="_blank"
-                        className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
-                      >
-                        <button>DOWNLOAD NOW</button>
-                      </Link>
-                    )}
+
+                    <Link
+                      href={
+                        card?.attributes?.report_type === "pdf"
+                          ? card?.attributes?.pdf?.data?.attributes?.url || "#"
+                          : card?.attributes?.campaign?.data?.attributes?.url ||
+                            "#"
+                      }
+                      target="_blank"
+                      className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"
+                    >
+                      <button>DOWNLOAD NOW</button>
+                    </Link>
                   </div>
                 </SwiperSlide>
               );

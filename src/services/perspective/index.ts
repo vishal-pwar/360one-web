@@ -247,9 +247,8 @@ export async function getReportsSection() {
       reports: {
         populate: {
           reports_and_publications_cards: {
-            populate: { media: true, pdf: true },
+            populate: { media: true, pdf: true, campaign: true },
           },
-          featured: { populate: { media: true, pdf: true } },
         },
       },
     },
