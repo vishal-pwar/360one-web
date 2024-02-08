@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 const Page = async ({ params }: { params: { path: string[] } }) => {
   const url = "/campaign/" + params.path.join("/");
 
-  const response = await getCampaignDetailByCampaignUrl(url);
+  const response: any = await getCampaignDetailByCampaignUrl(url);
 
   if (response.data?.length !== 1) {
     notFound();
@@ -13,7 +13,7 @@ const Page = async ({ params }: { params: { path: string[] } }) => {
 
   return (
     <>
-      <CampaignSection responseData={response.data} />
+      <CampaignSection responseData={response?.data} />
     </>
   );
 };

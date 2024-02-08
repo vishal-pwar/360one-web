@@ -82,6 +82,7 @@ const CampaignSection = async ({ responseData }: { responseData: any }) => {
         {/* image section */}
         <div
           style={{
+            // @ts-ignore
             "--image-url-mobile": `url(${image_mobile})`,
             "--image-url-phablet": `url(${image_phablet})`,
             "--image-url-tablet": `url(${image_tablet})`,
