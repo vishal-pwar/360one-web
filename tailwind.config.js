@@ -19,6 +19,7 @@ module.exports = {
         sm: "450px",
         phablet: "600px",
         tablet: "1200px",
+        windowDesktop: "1480px",
         desktop: "1600px",
       },
       fontFamily: {

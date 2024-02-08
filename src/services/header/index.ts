@@ -6,7 +6,14 @@ export async function getHeader() {
   const urlParamsObject = {
     populate: {
       links: {
-        populate: ["children"],
+        // populate: ["children"],
+        populate: {
+          children: {
+            populate: {
+              subChildren: true,
+            },
+          },
+        },
       },
     },
   };

@@ -39,164 +39,175 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const totalCards = response?.curated_experiences_cards?.data?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
-      <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
-        <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
-          {response?.title}
-        </div>
-        <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
-          {response?.subtitle}
-        </div>
-        <div className="hidden desktop:flex flex-col gap-5 mt-28">
-          <CustomProgressBar
-            currentIndex={activeIndex}
-            totalSlides={response?.curated_experiences_cards?.data?.length}
-          />
-          <div>
-            <div className="flex font-bold text-2xl">{`${
-              activeIndex + 1
-            } / ${response?.curated_experiences_cards?.data?.length}`}</div>
-            <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
-              <button
-                className={`p-0 mt-[3px] ${
-                  activeIndex === 0 ? "opacity-25" : ""
-                }`}
-                disabled={activeIndex === 0}
-                onClick={() => swiperRef.current?.slidePrev()}
-              >
-                <Image
-                  src={arrowImage}
-                  alt="left arrow"
-                  className="rotate-180"
-                  onClick={() => swiperRef.current?.slidePrev()}
-                />
-              </button>
-              <button
-                className={`p-0 ${
-                  activeIndex === totalCards - 1 ? "opacity-25" : ""
-                }`}
-                disabled={activeIndex === totalCards - 1}
-                onClick={() => swiperRef.current?.slideNext()}
-              >
-                <Image
-                  src={arrowImage}
-                  alt="right arrow"
-                  // className='bg-black'
-                  onClick={() => swiperRef.current?.slideNext()}
-                />
-              </button>
+    <>
+      {response?.curated_experiences_cards?.data?.length > 0 ? (
+        <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 windowDesktop:pl-16">
+          <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
+            <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+              {response?.title}
             </div>
-          </div>
-        </div>
-      </div>
-      <Swiper
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        modules={[Pagination]}
-        dir="rtl"
-        slidesPerView={1}
-        loop={true}
-        onSlideChange={(e) => setActiveIndex(e.realIndex)}
-        className="curated-swiper w-full"
-        breakpoints={{
-          1200: {
-            slidesPerView: totalCards >= 4 ? 4 : totalCards,
-          },
-        }}
-      >
-        {response?.curated_experiences_cards?.data?.map((data: any, i: any) => {
-          return (
-            <SwiperSlide
-              key={i}
-              className={`flex pl-7 ${
-                activeIndex === i
-                  ? "tablet:basis-[450px] desktop:basis-[650px]"
-                  : ""
-              }`}
-            >
-              <div className="bg-black">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  key={i}
-                  src={data?.attributes?.media?.data?.attributes?.url}
-                  alt={
-                    data?.attributes?.media?.data?.attributes?.alternativeText
-                  }
-                  className={`object-cover w-full ${
-                    activeIndex === i
-                      ? "h-[366px] tablet:h-[521px] desktop:h-[700px] opacity-60"
-                      : "h-[366px] tablet:h-48 desktop:h-60"
-                  }`}
-                />
-              </div>
-              {activeIndex === i ? (
-                <div className="flex flex-col items-end p-4 phablet:p-9 desktop:p-12 gap-2 desktop:gap-4 w-full bottom-0 absolute">
-                  <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
-                    {data?.attributes?.title}
-                  </div>
-                  <div className="flex items-end text-left font-medium text-sm tablet:text-lg desktop:text-xl text-white">
-                    {data?.attributes?.subtitle}
-                  </div>
+            <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
+              {response?.subtitle}
+            </div>
+            <div className="hidden windowDesktop:flex flex-col gap-5 mt-28">
+              <CustomProgressBar
+                currentIndex={activeIndex}
+                totalSlides={response?.curated_experiences_cards?.data?.length}
+              />
+              <div>
+                <div className="flex font-bold text-2xl">{`${
+                  activeIndex + 1
+                } / ${response?.curated_experiences_cards?.data?.length}`}</div>
+                <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
                   <button
-                    className="hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
-                    onClick={() => {
-                      router.push(
-                        `/perspective/experiences/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
-                      );
-                    }}
+                    className={`p-0 mt-[3px] ${
+                      activeIndex === 0 ? "opacity-25" : ""
+                    }`}
+                    disabled={activeIndex === 0}
+                    onClick={() => swiperRef.current?.slidePrev()}
                   >
-                    READ MORE
+                    <Image
+                      src={arrowImage}
+                      alt="left arrow"
+                      className="rotate-180"
+                      onClick={() => swiperRef.current?.slidePrev()}
+                    />
+                  </button>
+                  <button
+                    className={`p-0 ${
+                      activeIndex === totalCards - 1 ? "opacity-25" : ""
+                    }`}
+                    disabled={activeIndex === totalCards - 1}
+                    onClick={() => swiperRef.current?.slideNext()}
+                  >
+                    <Image
+                      src={arrowImage}
+                      alt="right arrow"
+                      // className='bg-black'
+                      onClick={() => swiperRef.current?.slideNext()}
+                    />
                   </button>
                 </div>
-              ) : null}
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-      <div className="flex justify-end">
-        <div className="desktop:hidden w-full tablet:basis-[450px] desktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
-          <CustomProgressBar
-            currentIndex={activeIndex}
-            totalSlides={response?.curated_experiences_cards?.data?.length}
-          />
-          <div className="flex justify-between">
-            <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
-              activeIndex + 1
-            } / ${response?.curated_experiences_cards?.data?.length}`}</div>
-            <div className="z-[5] gap-4 hidden tablet:flex">
-              <button
-                className={`p-0 mt-[3px] ${
-                  activeIndex === 0 ? "opacity-25" : ""
-                }`}
-                disabled={activeIndex === 0}
-                onClick={() => swiperRef.current?.slidePrev()}
-              >
-                <Image
-                  src={arrowImage}
-                  alt="left arrow"
-                  className="rotate-180 opacity-5"
-                  onClick={() => swiperRef.current?.slidePrev()}
-                />
-              </button>
-              <button
-                className={`p-0 ${
-                  activeIndex === totalCards - 1 ? "opacity-25" : ""
-                }`}
-                disabled={activeIndex === totalCards - 1}
-                onClick={() => swiperRef.current?.slideNext()}
-              >
-                <Image
-                  src={arrowImage}
-                  alt="right arrow"
-                  onClick={() => swiperRef.current?.slideNext()}
-                />
-              </button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+          <Swiper
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            modules={[Pagination]}
+            dir="rtl"
+            slidesPerView={1}
+            loop={true}
+            onSlideChange={(e) => setActiveIndex(e.realIndex)}
+            className="curated-swiper w-full"
+            breakpoints={{
+              1200: {
+                slidesPerView: totalCards >= 4 ? 4 : totalCards,
+              },
+            }}
+          >
+            {response?.curated_experiences_cards?.data?.map(
+              (data: any, i: any) => {
+                return (
+                  <SwiperSlide
+                    key={i}
+                    className={`flex pl-7 ${
+                      activeIndex === i
+                        ? "tablet:basis-[450px] windowDesktop:basis-[600px]"
+                        : ""
+                    }`}
+                  >
+                    <div className="bg-black">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        key={i}
+                        src={data?.attributes?.media?.data?.attributes?.url}
+                        alt={
+                          data?.attributes?.media?.data?.attributes
+                            ?.alternativeText
+                        }
+                        className={`object-cover w-full ${
+                          activeIndex === i
+                            ? "h-[366px] tablet:h-[521px] windowDesktop:h-[700px] opacity-60"
+                            : "h-[366px] tablet:h-48 windowDesktop:h-60 opacity-90"
+                        }`}
+                      />
+                    </div>
+                    {activeIndex === i ? (
+                      <div className="flex flex-col items-end p-4 phablet:p-9 windowDesktop:p-12 gap-2 windowDesktop:gap-4 w-full bottom-0 absolute">
+                        <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
+                          {data?.attributes?.title}
+                        </div>
+                        <div className="flex items-end text-left font-medium text-sm tablet:text-lg windowDesktop:text-xl text-white">
+                          {data?.attributes?.subtitle}
+                        </div>
+                        <button
+                          className={`hidden ${
+                            data?.attributes?.article?.data === null
+                              ? "hidden"
+                              : "windowDesktop:flex"
+                          }  py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
+                          onClick={() => {
+                            router.push(
+                              `/perspective/experiences/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
+                            );
+                          }}
+                        >
+                          READ MORE
+                        </button>
+                      </div>
+                    ) : null}
+                  </SwiperSlide>
+                );
+              }
+            )}
+          </Swiper>
+          <div className="flex justify-end">
+            <div className="windowDesktop:hidden w-full tablet:basis-[450px] windowDesktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
+              <CustomProgressBar
+                currentIndex={activeIndex}
+                totalSlides={response?.curated_experiences_cards?.data?.length}
+              />
+              <div className="flex justify-between">
+                <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
+                  activeIndex + 1
+                } / ${response?.curated_experiences_cards?.data?.length}`}</div>
+                <div className="z-[5] gap-4 hidden tablet:flex">
+                  <button
+                    className={`p-0 mt-[3px] ${
+                      activeIndex === 0 ? "opacity-25" : ""
+                    }`}
+                    disabled={activeIndex === 0}
+                    onClick={() => swiperRef.current?.slidePrev()}
+                  >
+                    <Image
+                      src={arrowImage}
+                      alt="left arrow"
+                      className="rotate-180 opacity-5"
+                      onClick={() => swiperRef.current?.slidePrev()}
+                    />
+                  </button>
+                  <button
+                    className={`p-0 ${
+                      activeIndex === totalCards - 1 ? "opacity-25" : ""
+                    }`}
+                    disabled={activeIndex === totalCards - 1}
+                    onClick={() => swiperRef.current?.slideNext()}
+                  >
+                    <Image
+                      src={arrowImage}
+                      alt="right arrow"
+                      onClick={() => swiperRef.current?.slideNext()}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+    </>
   );
 };
 

@@ -1,4 +1,8 @@
 "use client";
+
+import PlayIcon from "@/public/assets/icons/playIcon.svg";
+import VideoPLayer from "../video-player";
+
 interface props {
   response: any;
 }
@@ -15,13 +19,10 @@ export default function Logo_360one({ response }: props) {
           loop={true}
           className="h-[700px] opacity-10 w-full"
         />
-        {/* <Image
-          src={PlayIcon}
-          alt="playIcon"
-          width={100}
-          height={100}
-          className="flex justify-center"
-        /> */}
+        <VideoPLayer
+          iconUrl={PlayIcon}
+          videoUrl={response?.data?.attributes?.media?.data?.attributes?.url}
+        />
       </div>
       <div className="flex justify-center">
         <div className="flex text-white bg-black p-8 w-[80%]">

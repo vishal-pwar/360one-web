@@ -12,10 +12,34 @@ import { hankenGrotesk, spaceGrotesk } from "./fonts";
 import "./globals.css";
 
 // export const metadata: Metadata = {
-//   title: "Asset and Wealth Management Services in India - 360 ONE",
-//   description:
-//     "360 ONE is the leading financial services provider, offering specialised solutions in the fields of wealth and asset management. Find out how we help people manage and distribute the capital they need to reach their goals.",
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Your title",
+//     description: "Your description",
+//     creator: "@author_here",
+//     images: [
+//       {
+//         url: "you_url_here",
+
+//         width: 1200,
+//         height: 630,
+//         alt: "Your alt text",
+//       },
+//     ],
+//   },
 // };
+
+// export const metadata = {
+//   openGraph: {
+//     title: "this is open graph title for testing",
+//     description: "Some description",
+//   },
+// };
+
+enum Meta {
+  TWITTER = "twitter",
+  OG = "openGraph",
+}
 
 export async function generateMetadata() {
   const headersList = headers();
@@ -26,7 +50,15 @@ export async function generateMetadata() {
     (m) => m?.attributes?.page?.data?.attributes?.url === url
   );
   const tags = metaTags?.attributes?.metaTag?.reduce((tag: any, item: any) => {
-    tag[item?.name] = item?.content;
+    if (item.name.includes(Meta.TWITTER) || item.name.includes(Meta.OG)) {
+      const [category, property] = item?.name?.split(":");
+      if (!tag[category]) {
+        tag[category] = {};
+      }
+      tag[category][property] = item.content;
+    } else {
+      tag[item?.name] = item?.content;
+    }
     return tag;
   }, {});
 

@@ -2,6 +2,8 @@
 import { Link } from "@/components/link";
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
+import DropDown from "@/public/assets/icons/dropdown-arrow.svg";
+import clsx from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -44,44 +46,67 @@ const responsiveNavItems = [
     url: "https://www.iiflwealth.com/Connect/Reach-Us",
   },
   {
+    title: "Perspective",
+
+    external: false,
+    url: "/perspective",
+  },
+  {
     title: "Client Login",
     url: "#",
     children: [
       {
-        title: "Portfolio Login",
-        href: "https://wealthlogin.360.one/Wealth/#/login",
-        external: true,
+        title: "AMC",
+        href: "#",
+        subChildren: [
+          {
+            title: "Portfolio Login",
+            href: "https://wealthlogin.360.one/Wealth/#/login",
+            external: true,
+          },
+          {
+            title: "Online Trading",
+            href: "https://onlinetrade.360.one/Express5/login#",
+            external: true,
+          },
+          {
+            title: "360 ONE Private Login",
+            href: "https://wapp-private.360.one/wealthspectrum/app/loginWith",
+            external: true,
+          },
+        ],
       },
+
       {
-        title: "Online Trading",
-        href: "https://onlinetrade.360.one/Express5/login#",
-        external: true,
-      },
-      {
-        title: "360 ONE Private Login",
-        href: "https://wapp-private.360.one/wealthspectrum/app/loginWith",
-        external: true,
-      },
-      {
-        title: "View PMS portfolio",
-        href: "https://wappamc.360.one/wealthspectrum/app/login",
-        external: true,
-      },
-      {
-        title: "Invest in MF online",
-        href: "https://iiflmf.com/",
-        external: true,
-      },
-      {
-        title: "Distributor Login",
-        href: "https://wappamc.360.one/wealthspectrum/app/login",
-        external: true,
+        title: "Wealth",
+        href: "#",
+        subChildren: [
+          {
+            title: "View PMS portfolio",
+            href: "https://wappamc.360.one/wealthspectrum/app/login",
+            external: true,
+          },
+          {
+            title: "Invest in MF online",
+            href: "https://iiflmf.com/",
+            external: true,
+          },
+          {
+            title: "Distributor Login",
+            href: "https://wappamc.360.one/wealthspectrum/app/login",
+            external: true,
+          },
+        ],
       },
     ],
   },
 ];
 
 export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
+  const [showDropdown, setShowDropdown] = useState<{
+    [key: string]: boolean;
+  }>({});
+
   const [small, setSmall] = useState(false);
   const [responsiveNavActive, setResponsiveNavActive] = useState(false);
   const [activeId, setActiveId] = useState<number>(-1);
@@ -180,17 +205,42 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                       >
                         <ul className="flex flex-col gap-5">
                           {navItem.children?.map((child: any) => (
-                            <li key={child.name}>
-                              <Link
-                                href={child?.href || "/"}
-                                target={`${child?.external ? "_blank" : ""}`}
-                                key={child?.title}
-                                className={`text-[calc(1*var(--size-18))] ${
-                                  navItem.href === pathname && "font-bold"
-                                } peer`}
-                              >
-                                {child?.title}
-                              </Link>
+                            <li
+                              key={child.title}
+                              className="group block relative cursor-pointer"
+                            >
+                              <div className="w-full flex">
+                                <Image
+                                  src={DropDown}
+                                  alt="arrow"
+                                  className="mr-6"
+                                />
+                                {child.title}
+                              </div>
+                              {child.subChildren.data.length > 0 ? (
+                                <div
+                                  className={clsx(
+                                    "hidden p-3 group-hover:block absolute hover:block z-[9999] w-60 bg-white border border-gray-300 rounded shadow-lg right-[100%] bottom-[-460%]"
+                                  )}
+                                >
+                                  <ul className="flex flex-col gap-6">
+                                    {child?.subChildren?.data?.map(
+                                      (subChild: any) => (
+                                        <li key={subChild?.attributes?.title}>
+                                          <Link
+                                            href={subChild?.href || "/"}
+                                            target={`${
+                                              subChild?.external ? "_blank" : ""
+                                            }`}
+                                          >
+                                            {subChild?.attributes?.title}
+                                          </Link>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              ) : null}
                             </li>
                           ))}
                         </ul>
@@ -245,16 +295,34 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                           {item.children?.map((c) => {
                             return (
                               <li key={c.title}>
-                                <Link
+                                <div
                                   className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
-                                  href={c.href}
-                                  target={`${c.external ? "_blank" : ""}`}
                                   onClick={handleResponsiveNav}
                                 >
-                                  <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
-                                    | {c?.title}
+                                  <span className="max-sm:items-start flex flex-col gap-2  items-center text-white leading-[1.17] font-bold">
+                                    <div>{c?.title}</div>
+                                    <div className="flex flex-col gap-2">
+                                      {c.subChildren.map((i: any) => {
+                                        return (
+                                          <div key={i.title}>
+                                            <Link
+                                              href={i?.href}
+                                              target={`${
+                                                i.external ? "_blank" : ""
+                                              }`}
+                                              className="max-sm:items-start flex flex-col items-center text-white leading-[1.17] font-bold"
+                                              onClick={handleResponsiveNav}
+                                            >
+                                              <span className="max-sm:text-[calc(14*var(--scale))] text-[calc(1*var(--size-20))]">
+                                                | {i?.title}
+                                              </span>
+                                            </Link>
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
                                   </span>
-                                </Link>
+                                </div>
                               </li>
                             );
                           })}
