@@ -371,7 +371,7 @@ const FormComponent = ({
             {fieldConfig.mobileNumber ? (
               <div className="gap-[4px]">
                 <div
-                  className={`bg-greyscale-50 p-[16px] flex relative border-[1px] ${
+                  className={`bg-greyscale-50 flex relative border-[1px] ${
                     userDataError.mobileNumber
                       ? "border-red-300"
                       : "border-transparent"
@@ -379,7 +379,7 @@ const FormComponent = ({
                 >
                   {/* country code */}
                   <button
-                    className="inline-flex items-center gap-[4px]"
+                    className="pl-[16px] py-[16px] inline-flex items-center gap-[4px]"
                     onClick={() =>
                       setToogleCountryCodeDropdown(!toogleCountryCodeDropdown)
                     }
@@ -390,7 +390,7 @@ const FormComponent = ({
                   </button>
                   {toogleCountryCodeDropdown ? (
                     <div
-                      className="z-10 absolute top-[50px] bg-white shadow-[0_20px_36px_0_rgba(0,0,0,0.04)] w-[90%] h-[200px] overflow-y-auto scrollbar"
+                      className="z-10 absolute top-[50px] bg-white shadow-[0_20px_36px_0_rgba(0,0,0,0.04)] w-[90%] max-h-[200px] overflow-y-auto scrollbar"
                       ref={countryCodeDropdownRef}
                     >
                       <ul className="p-[8px]">
@@ -422,7 +422,7 @@ const FormComponent = ({
                   <input
                     type="tel"
                     placeholder="Mobile Number"
-                    className="bg-transparent pl-[16px] outline-none w-full text-[14px]"
+                    className="bg-transparent p-[16px] outline-none w-full text-[14px]"
                     value={userData.mobileNumber}
                     onChange={(e) => handleMobileNumberChange(e.target.value)}
                   />
@@ -458,9 +458,9 @@ const FormComponent = ({
 
             {/* job title */}
             {fieldConfig.jobTitle ? (
-              <div className="bg-greyscale-50 p-[16px]">
+              <div className="bg-greyscale-50 pr-[16px]">
                 <select
-                  className={`bg-transparent pr-[24px] outline-none w-full truncate text-[14px] ${
+                  className={`bg-transparent p-[16px] outline-none w-full truncate text-[14px] ${
                     !userData.jobTitle ? "text-greyscale-200" : ""
                   }`}
                   value={userData.jobTitle}
