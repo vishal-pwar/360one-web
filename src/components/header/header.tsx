@@ -2,8 +2,6 @@
 import { Link } from "@/components/link";
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
-import DropDown from "@/public/assets/icons/dropdown-arrow.svg";
-import clsx from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -201,29 +199,20 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                     {navItem.children?.length > 0 && (
                       <div
                         key={navItem.name}
-                        className="hidden p-3 peer-hover:block hover:block absolute right-0 w-40 bg-white border border-gray-300 rounded shadow-lg z-10"
+                        className="hidden peer-hover:block hover:block absolute right-0 w-60 bg-white border border-gray-300 rounded shadow-lg z-10"
                       >
-                        <ul className="flex flex-col gap-5">
+                        <ul className="flex flex-col gap-1">
                           {navItem.children?.map((child: any) => (
                             <li
                               key={child.title}
                               className="group block relative cursor-pointer"
                             >
-                              <div className="w-full flex">
-                                <Image
-                                  src={DropDown}
-                                  alt="arrow"
-                                  className="mr-6"
-                                />
+                              <div className="w-full p-2 text-[14px] font-bold text-wealth-orange flex">
                                 {child.title}
                               </div>
                               {child.subChildren.data.length > 0 ? (
-                                <div
-                                  className={clsx(
-                                    "hidden p-3 group-hover:block absolute hover:block z-[9999] w-60 bg-white border border-gray-300 rounded shadow-lg right-[100%] bottom-[-460%]"
-                                  )}
-                                >
-                                  <ul className="flex flex-col gap-6">
+                                <div>
+                                  <ul className="flex flex-col">
                                     {child?.subChildren?.data?.map(
                                       (subChild: any) => (
                                         <li key={subChild?.attributes?.title}>
@@ -232,6 +221,7 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
                                             target={`${
                                               subChild?.external ? "_blank" : ""
                                             }`}
+                                            className="px-2 py-1"
                                           >
                                             {subChild?.attributes?.title}
                                           </Link>
