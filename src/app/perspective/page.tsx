@@ -9,17 +9,14 @@ import Viewpoint from "@/sections/perspective/viewpoint-section";
 const page = () => {
   return (
     <main className="relative">
-      <section>
-        <Header />
-        <Banner />
-        <Viewpoint />
-        {/* <Newsletter /> */}
-        <CuratedExperence />
-        <OurIps />
-        <Reports />
-        <div className="w-full h-[80px] tablet:h-24 desktop:h-28 bg-[#F4F0EF]" />
-        <Media />
-      </section>
+      <Header />
+      <Banner />
+      <Viewpoint />
+      {/* <Newsletter /> */}
+      <CuratedExperence />
+      <OurIps />
+      <Reports />
+      <Media />
     </main>
   );
 };
