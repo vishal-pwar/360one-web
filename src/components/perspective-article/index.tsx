@@ -74,7 +74,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
                 articleResponse?.attributes?.media?.data?.attributes
                   ?.alternativeText
               }
-              className="w-full h-[426px] object-cover mt-8"
+              className="w-full object-cover mt-8"
             />
           ) : null}
         </div>
@@ -103,7 +103,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
                     <img
                       src={i?.image?.data?.attributes?.url}
                       alt={i?.image?.data?.attributes?.alternativeText}
-                      className="w-full h-[500px]"
+                      className="w-full"
                     />
                   ) : null}
                   {i?.text?.length > 0 ? (
