@@ -36,11 +36,11 @@ const CustomProgressBar = ({
 const OurIpsSlider = ({ response }: ourIPsProps) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = response?.ips_cards?.data?.length;
+  const totalCards = response?.articles?.data?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <>
-      {response?.ips_cards?.data?.length > 0 ? (
+      {response?.articles?.data?.length > 0 ? (
         <section className="relative text-black">
           <div className="tablet:absolute tablet:w-[50%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
             <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
@@ -52,12 +52,12 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             <div className="hidden tablet:flex flex-col gap-5">
               <CustomProgressBar
                 currentIndex={activeIndex}
-                totalSlides={response?.ips_cards?.data?.length}
+                totalSlides={response?.articles?.data?.length}
               />
               <div className="flex justify-between">
                 <div className="flex font-bold text-2xl">{`${
                   activeIndex + 1
-                } / ${response?.ips_cards?.data?.length}`}</div>
+                } / ${response?.articles?.data?.length}`}</div>
                 <div className="flex z-[5] gap-4 items-center">
                   <button
                     className={`p-0 ${activeIndex === 0 ? "opacity-25" : ""}`}
@@ -105,7 +105,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               },
             }}
           >
-            {response?.ips_cards?.data?.map((data: any, i: any) => {
+            {response?.articles?.data?.map((data: any, i: any) => {
               return (
                 <SwiperSlide
                   key={i}
@@ -119,9 +119,9 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       key={i}
-                      src={data?.attributes?.media?.data?.attributes?.url}
+                      src={data?.attributes?.cover?.data?.attributes?.url}
                       alt={
-                        data?.attributes?.media?.data?.attributes
+                        data?.attributes?.cover?.data?.attributes
                           ?.alternativeText
                       }
                       className={`object-cover w-full ${
@@ -134,16 +134,16 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                   {activeIndex === i ? (
                     <div className="flex flex-col items-end p-5 phablet:p-9 tablet:p-12 gap-2 tablet:gap-4 w-full bg-[#FD7740]">
                       <div className="flex items-end text-left font-bold text-lg phablet:text-2xl tablet:text-[28px] text-white">
-                        {data?.attributes?.title}
+                        {data?.attributes?.tag}
                       </div>
                       <div className="flex items-end text-left font-medium text-sm tablet:text-xl text-white">
-                        {data?.attributes?.subtitle}
+                        {data?.attributes?.title}
                       </div>
                       <button
                         className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
                         onClick={() => {
                           router.push(
-                            `/perspective/ips/${data?.id}/${data?.attributes?.article?.data?.attributes?.params_url}`
+                            `/perspective/${data?.attributes?.type}/${data?.id}/${data?.attributes?.params_url}`
                           );
                         }}
                       >
@@ -160,12 +160,12 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             <div className="tablet:hidden tablet:basis-[500px] gap-5 pt-5 px-6 tablet:px-0 mb-10 flex whitespace-nowrap items-center w-full text-white">
               <CustomProgressBar
                 currentIndex={activeIndex}
-                totalSlides={response?.ips_cards?.data?.length}
+                totalSlides={response?.articles?.data?.length}
               />
               <div className="flex justify-between">
                 <div className="flex font-bold text-sm sm:text-base tablet:text-desktop">{`${
                   activeIndex + 1
-                } / ${response?.ips_cards?.data?.length}`}</div>
+                } / ${response?.articles?.data?.length}`}</div>
                 <div className="z-[5] gap-4 items-center hidden tablet:flex">
                   <button
                     className={`p-0 mt-[3px] ${

@@ -7,105 +7,10 @@ export async function getBannerSection() {
     populate: {
       banner: {
         populate: {
-          curated_experiences_cards: {
+          articles: {
             populate: {
-              media: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
-            },
-          },
-          viewpoint_cards: {
-            populate: {
-              media: true,
+              cover: true,
               thumbnail: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
-            },
-          },
-          ips_cards: {
-            populate: {
-              media: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
-            },
-          },
-          reports_and_publications_cards: {
-            populate: { media: true, pdf: true, campaign: true },
-          },
-          media_cards: {
-            populate: {
-              media: true,
-              thumbnail: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
             },
           },
         },
@@ -124,29 +29,10 @@ export async function getViewpointSection() {
     populate: {
       viewpoint: {
         populate: {
-          viewpoint_cards: {
+          articles: {
             populate: {
-              media: true,
+              cover: true,
               thumbnail: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
             },
           },
         },
@@ -165,28 +51,10 @@ export async function getCuratedExperienceSection() {
     populate: {
       experiences: {
         populate: {
-          curated_experiences_cards: {
+          articles: {
             populate: {
-              media: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
+              cover: true,
+              thumbnail: true,
             },
           },
         },
@@ -205,28 +73,10 @@ export async function getOurIpsSection() {
     populate: {
       ips: {
         populate: {
-          ips_cards: {
+          articles: {
             populate: {
-              media: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
+              cover: true,
+              thumbnail: true,
             },
           },
         },
@@ -265,29 +115,10 @@ export async function getInMediaSection() {
     populate: {
       media: {
         populate: {
-          media_cards: {
+          articles: {
             populate: {
-              media: true,
+              cover: true,
               thumbnail: true,
-              article: {
-                populate: {
-                  card: {
-                    populate: {
-                      image: true,
-                    },
-                  },
-                  curated_experiences_cards: {
-                    populate: { media: true },
-                  },
-                  ips_cards: { populate: { media: true } },
-                  viewpoint_cards: {
-                    populate: { media: true, thumbnail: true },
-                  },
-                  media_cards: {
-                    populate: { media: true },
-                  },
-                },
-              },
             },
           },
         },
