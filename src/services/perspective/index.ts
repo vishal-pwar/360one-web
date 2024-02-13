@@ -81,7 +81,7 @@ export async function getBannerSection() {
             },
           },
           reports_and_publications_cards: {
-            populate: { media: true, pdf: true, campaign: true },
+            populate: { media: true, pdf: true },
           },
           media_cards: {
             populate: {
@@ -247,7 +247,7 @@ export async function getReportsSection() {
       reports: {
         populate: {
           reports_and_publications_cards: {
-            populate: { media: true, pdf: true, campaign: true },
+            populate: { media: true, pdf: true },
           },
         },
       },

@@ -5,22 +5,28 @@ export async function getCampaignDetailByCampaignUrl(
   campaign_url: string = ""
 ) {
   const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
-  const path = `/campaigns`;
+  const path = `/campaign`;
   const urlParamsObject = {
     filters: {
-      url: {
-        $endsWith: campaign_url,
+      campaigns: {
+        disable_campaign: {
+          $eq: false,
+        },
+        url: {
+          $endsWith: campaign_url,
+        },
       },
     },
-    pagination: {
-      pageSize: 1,
-    },
     populate: {
-      logo: true,
-      image_mobile: true,
-      image_phablet: true,
-      image_tablet: true,
-      image_desktop: true,
+      campaigns: {
+        populate: {
+          logo: true,
+          image_mobile: true,
+          image_phablet: true,
+          image_tablet: true,
+          image_desktop: true,
+        },
+      },
     },
   };
   const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -35,7 +41,7 @@ export async function saveCampaignUserInterest(
   try {
     const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
     const requestUrl = `${getStrapiURL(
-      `/api/campaign/save-customer-interest/${campaignId}`
+      `/api/campaign-user/save-customer-interest/${campaignId}`
     )}`;
     const options = {
       method: "POST",

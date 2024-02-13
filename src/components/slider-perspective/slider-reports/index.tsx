@@ -81,8 +81,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
                       href={
                         card?.attributes?.report_type === "pdf"
                           ? card?.attributes?.pdf?.data?.attributes?.url || "#"
-                          : card?.attributes?.campaign?.data?.attributes?.url ||
-                            "#"
+                          : card?.attributes?.campaign_url || "#"
                       }
                       target="_blank"
                       className="flex justify-center font-bold text-sm py-3 2xl:py-4 border-2 border-white text-white"

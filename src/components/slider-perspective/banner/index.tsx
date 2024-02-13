@@ -188,13 +188,12 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                                     data?.attributes?.report_type === "pdf"
                                       ? data?.attributes?.pdf?.data?.attributes
                                           ?.url || "#"
-                                      : data?.attributes?.campaign?.data
-                                          ?.attributes?.url || "#"
+                                      : data?.attributes?.campaign_url || "#"
                                   }
                                   target="_blank"
                                   className={`hidden ${
                                     data?.attributes?.pdf?.data === null &&
-                                    data?.attributes?.campaign?.data === null
+                                    data?.attributes?.campaign_url === null
                                       ? "hidden"
                                       : "tablet:flex"
                                   } justify-center font-bold text-sm w-32 py-3 border-2 border-white text-white`}
