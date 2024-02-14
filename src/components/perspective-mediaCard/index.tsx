@@ -2,7 +2,7 @@
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import VideoPLayer from "../video-player";
 interface MediaCardProps {
-  mediaType: "image" | "video" | "Youtube Link";
+  mediaType: "image" | "video" | "youtube_link";
   media: any;
   thumbnail: any;
   href: string;
@@ -54,7 +54,7 @@ const MediaCard = ({
             />
           </div>
         );
-      case "Youtube Link":
+      case "youtube_link":
         return (
           <iframe
             className={className}

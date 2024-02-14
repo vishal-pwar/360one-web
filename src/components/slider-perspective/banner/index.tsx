@@ -4,7 +4,6 @@ import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
@@ -37,22 +36,21 @@ const CustomProgressBar = ({
 };
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
-  const cards = [
-    ...(response?.reports_and_publications_cards?.data || []),
-    ...(response?.curated_experiences_cards?.data || []),
-    ...(response?.ips_cards?.data || []),
-    ...(response?.viewpoint_cards?.data || []),
-    ...(response?.media_cards?.data || []),
-  ];
-
-  const router = useRouter();
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const totalCards = cards?.length;
+  const [activeIndex, setActiveIndex] = React.useState(2);
+  const cards = response?.articles?.data?.concat(
+    response?.articles?.data?.length < 8
+      ? [...(response?.articles?.data || [])]
+      : []
+  );
+  const totalCards = cards?.length || 0;
   const swiperRef = React.useRef<SwiperType>();
+
+  const needsDuplicates = response?.articles?.data?.length < 8;
+  const duplicates = response?.articles?.data?.length;
 
   return (
     <>
-      {cards?.length > 0 ? (
+      {totalCards > 0 ? (
         <>
           <div className="relative bg-black p-6 phablet:p-12 tablet:p-0">
             <div className="tablet:absolute tablet:w-[50%] tablet:top-[20%] tablet:pl-16">
@@ -71,10 +69,12 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                 swiperRef.current = swiper;
               }}
               modules={[Pagination]}
-              dir="rtl"
+              dir="ltr"
               slidesPerView={1}
               loop={true}
-              onSlideChange={(e) => setActiveIndex(e?.realIndex)}
+              onSlideChange={(e) =>
+                setActiveIndex((e?.realIndex + 2) % cards?.length)
+              }
               className="curated-swiper w-full"
               breakpoints={{
                 1200: {
@@ -93,8 +93,8 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     }`}
                   >
                     <div className="tablet:relative bg-black">
-                      <div className="hidden tablet:flex tablet:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
-                        {data?.attributes?.component_name}
+                      <div className="hidden uppercase tablet:flex tablet:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
+                        {data?.attributes?.type}
                       </div>
                       <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
                         <div
@@ -102,7 +102,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             activeIndex === i ? `hidden` : ""
                           } `}
                         >
-                          {data?.attributes?.banner_tag}
+                          {data?.attributes?.tag}
                         </div>
                         <div
                           className={`flex items-end text-left font-bold tablet:text-xl desktop:text-2xl text-white ${
@@ -139,9 +139,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={i}
-                          src={data?.attributes?.media?.data?.attributes?.url}
+                          src={data?.attributes?.cover?.data?.attributes?.url}
                           alt={
-                            data?.attributes?.media?.data?.attributes
+                            data?.attributes?.cover?.data?.attributes
                               ?.alternativeText
                           }
                           className={`object-cover w-full ${
@@ -153,7 +153,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                       )}
                     </div>
                     {activeIndex === i ? (
-                      <div className="flex flex-row-reverse justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
+                      <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
                         <div className="flex flex-col items-end">
                           <div className="flex items-end text-left font-normal text-sm text-white mb-2">
                             {data?.attributes?.banner_tag}
@@ -180,7 +180,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             </div>
                           ) : (
                             <>
-                              {data?.attributes?.component_name.includes(
+                              {data?.attributes?.component_name?.includes(
                                 "reports"
                               ) ? (
                                 <Link
@@ -201,46 +201,19 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                                   <button>DOWNLOAD NOW</button>
                                 </Link>
                               ) : (
-                                <button
-                                  className={`hidden ${
-                                    data?.attributes?.article?.data === null
-                                      ? "hidden"
-                                      : "tablet:flex"
-                                  } w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
-                                  onClick={() => {
-                                    let componentPath = "";
-                                    if (
-                                      data?.attributes?.component_name.includes(
-                                        "Curated"
-                                      )
-                                    ) {
-                                      componentPath = "experiences";
-                                    } else if (
-                                      data?.attributes?.component_name.includes(
-                                        "Our"
-                                      )
-                                    ) {
-                                      componentPath = "ips";
-                                    } else if (
-                                      data?.attributes?.component_name.includes(
-                                        "Viewpoint"
-                                      )
-                                    ) {
-                                      componentPath = "viewpoint";
-                                    } else if (
-                                      data?.attributes?.component_name?.includes(
-                                        "media"
-                                      )
-                                    ) {
-                                      componentPath = "media";
-                                    }
-                                    router.push(
-                                      `/perspective/${componentPath}/${data?.id}/${data?.attributes.article?.data?.attributes?.params_url}?from=banner`
-                                    );
-                                  }}
+                                <Link
+                                  href={`/perspective/${data?.attributes?.type}/${data?.id}/${data?.attributes?.params_url}`}
                                 >
-                                  READ MORE
-                                </button>
+                                  <button
+                                    className={`hidden ${
+                                      data?.attributes?.article?.data === null
+                                        ? "hidden"
+                                        : "tablet:flex"
+                                    } w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
+                                  >
+                                    READ MORE
+                                  </button>
+                                </Link>
                               )}
                             </>
                           )}
@@ -254,19 +227,26 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
           </div>
           <div className="bg-[#F4F0EF] flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col w-full gap-5 pt-7 px-6 phablet:px-11 tablet:px-16">
             <CustomProgressBar
-              currentIndex={activeIndex}
-              totalSlides={cards?.length}
+              currentIndex={
+                needsDuplicates
+                  ? (activeIndex + duplicates - 2) % duplicates
+                  : activeIndex
+              }
+              totalSlides={needsDuplicates ? duplicates : cards?.length}
             />
             <div className="flex tablet:justify-between">
               <div className="flex font-bold text-base tablet:text-2xl">
-                {`${activeIndex + 1} / ${cards?.length}`}
+                {needsDuplicates
+                  ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
+                      cards?.length - duplicates
+                    }`
+                  : `${
+                      ((activeIndex + cards?.length - 2) % cards?.length) + 1
+                    } / ${cards?.length}`}
               </div>
               <div className="tablet:flex hidden z-[5] gap-4 items-center">
                 <button
-                  className={`p-0 mt-[3px] ${
-                    activeIndex === 0 ? "opacity-25" : ""
-                  }`}
-                  disabled={activeIndex === 0}
+                  className={`p-0 mt-[3px]`}
                   onClick={() => swiperRef.current?.slidePrev()}
                 >
                   <Image
@@ -277,10 +257,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                   />
                 </button>
                 <button
-                  className={`p-0 ${
-                    activeIndex === totalCards - 1 ? "opacity-25" : ""
-                  }`}
-                  disabled={activeIndex === totalCards - 1}
+                  className={`p-0`}
                   onClick={() => swiperRef.current?.slideNext()}
                 >
                   <Image
