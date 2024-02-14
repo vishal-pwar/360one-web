@@ -56,7 +56,9 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
     setFifthPost(a + 4);
 
     const breakpoint = "1600px";
-    setCardsPerSlide(screen.width < parseInt(breakpoint.toString()) ? 2 : 5);
+    setCardsPerSlide(
+      window.innerWidth < parseInt(breakpoint.toString()) ? 2 : 5
+    );
   }, [activeIndex, cardsPerSlide]);
 
   return (
@@ -329,9 +331,11 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
             <div className="flex justify-between pb-12">
               <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
                 activeIndex + 1
-              } / ${Math.max(
-                response?.articles?.data?.length / cardsPerSlide
-              )}`}</div>
+              } / ${
+                cardsPerSlide === 2
+                  ? Math.ceil(response?.articles?.data?.length / cardsPerSlide)
+                  : Math.floor(response?.articles?.data?.length / cardsPerSlide)
+              }`}</div>
               <div className="hidden tablet:flex z-[5] gap-4 items-center">
                 <button
                   // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""

@@ -108,3 +108,7 @@ body {
     --size-42: calc(20 * var(--scale));
   }
 }
+
+.markdown a {
+  @apply underline text-blue-600 font-semibold
+}

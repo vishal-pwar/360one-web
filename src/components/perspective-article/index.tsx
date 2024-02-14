@@ -3,7 +3,8 @@
 import { formatDate } from "@/utils/api-helpers";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import ReactHtmlParser from "react-html-parser";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 interface ArticleResponse {
   response: any;
@@ -75,7 +76,9 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
             </span>
           ) : null}
           <div className="text-[20px] leading-[32px]">
-            {ReactHtmlParser(articleResponse?.attributes?.body)}
+            <Markdown rehypePlugins={[rehypeRaw]} className="markdown">
+              {articleResponse?.attributes?.body}
+            </Markdown>
           </div>
           <div className="mt-10">
             {articleResponse?.attributes?.article?.data?.attributes

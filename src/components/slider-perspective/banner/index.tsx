@@ -96,7 +96,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                       <div className="hidden uppercase tablet:flex tablet:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
                         {data?.attributes?.type}
                       </div>
-                      <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full tablet:items-end bottom-0 pl-6 pb-5 z-20">
+                      <div className="hidden tablet:flex flex-col tablet:absolute tablet:w-full bottom-0 pl-6 pb-5 z-20">
                         <div
                           className={` flex items-end text-left font-normal tablet:text-sm text-white mb-2 ${
                             activeIndex === i ? `hidden` : ""
@@ -109,7 +109,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             activeIndex === i ? `hidden` : ""
                           }`}
                         >
-                          <p className="line-clamp-1">
+                          <p className="line-clamp-2">
                             {data?.attributes?.title}
                           </p>
                         </div>
@@ -154,9 +154,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     </div>
                     {activeIndex === i ? (
                       <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
-                        <div className="flex flex-col items-end">
+                        <div className="flex flex-col">
                           <div className="flex items-end text-left font-normal text-sm text-white mb-2">
-                            {data?.attributes?.banner_tag}
+                            {data?.attributes?.tag}
                           </div>
                           <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">
                             <p className="line-clamp-1">

@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    fontSize: {
+      base: "calc(1*var(--size-20))",
+    },
     extend: {
       container: {
         center: true,
