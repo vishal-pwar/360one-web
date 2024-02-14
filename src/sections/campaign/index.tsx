@@ -14,9 +14,10 @@ type FieldConfigModel = {
 };
 
 const CampaignSection = async ({ responseData }: { responseData: any }) => {
-  const campaignId: number = responseData?.[0].id;
+  const campaignObj = responseData?.campaigns?.[0];
 
-  const campaignObj = responseData?.[0].attributes;
+  const campaignId: number = campaignObj?.id;
+  const campaignUrl: string = campaignObj?.url;
 
   const background_color: string = campaignObj?.background_color || "";
   const logo: string = campaignObj?.logo?.data?.attributes?.url || "";
@@ -34,9 +35,9 @@ const CampaignSection = async ({ responseData }: { responseData: any }) => {
   const button_label: string = campaignObj?.button_label || "";
 
   const countryCodeOptions: CountryCodeModel[] = Array.isArray(
-    campaignObj?.country_code_options
+    responseData?.country_code_options
   )
-    ? campaignObj.country_code_options.map((obj: any) => ({
+    ? responseData.country_code_options.map((obj: any) => ({
         flag: obj.flag || "",
         name: obj.name || "",
         code: obj.code || "",
@@ -95,6 +96,7 @@ const CampaignSection = async ({ responseData }: { responseData: any }) => {
         <div className="w-full tablet:w-[35%] desktop:w-[35%]">
           <FormComponent
             campaignId={campaignId}
+            campaignUrl={campaignUrl}
             title={title}
             disclaimer={disclaimer}
             button_label={button_label}

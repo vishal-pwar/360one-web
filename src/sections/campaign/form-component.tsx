@@ -55,6 +55,7 @@ const DropdownArrow = (
 
 const FormComponent = ({
   campaignId,
+  campaignUrl,
   title,
   disclaimer,
   button_label,
@@ -63,6 +64,7 @@ const FormComponent = ({
   fieldConfig,
 }: {
   campaignId: number;
+  campaignUrl: string;
   title: string;
   disclaimer: string;
   button_label: string;
@@ -286,6 +288,7 @@ const FormComponent = ({
     // saving user details
     try {
       const payload = {
+        campaignUrl: campaignUrl,
         fullName: userData.fullName,
         email: userData.email,
         countryCode: userData.countryCode?.code,

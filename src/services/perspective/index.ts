@@ -97,7 +97,7 @@ export async function getReportsSection() {
       reports: {
         populate: {
           reports_and_publications_cards: {
-            populate: { media: true, pdf: true, campaign: true },
+            populate: { media: true, pdf: true },
           },
         },
       },
