@@ -110,5 +110,9 @@ body {
 }
 
 .markdown a {
-  @apply underline text-blue-600 font-semibold
+  @apply underline text-blue-600 font-semibold;
+}
+
+.markdown p {
+  @apply my-4;
 }

@@ -5,7 +5,6 @@ const Media = async () => {
   const response = await getInMediaSection();
 
   const mediaData = response?.data?.attributes?.media;
-  console.log(mediaData);
   return (
     <>
       {mediaData?.title !== null &&

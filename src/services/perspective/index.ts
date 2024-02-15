@@ -10,7 +10,7 @@ export async function getBannerSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -32,7 +32,7 @@ export async function getViewpointSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -54,7 +54,7 @@ export async function getCuratedExperienceSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -76,7 +76,7 @@ export async function getOurIpsSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -118,7 +118,7 @@ export async function getInMediaSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },

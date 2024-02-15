@@ -30,9 +30,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           </div>
           <div className="h-200 bg-[#4F4F4F] w-[1px]"></div>
           <div className="p-8">
-            <div className="font-normal text-sm text-[#9A9A9A]">
-              written by:
-            </div>
+            <div className="font-normal text-sm text-[#9A9A9A]">By:</div>
             <div className="font-medium text-[22px] text-white my-1">
               {articleResponse?.attributes?.written_by}
             </div>
@@ -67,13 +65,15 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
       <div className="bg-[#F8F8F8]">
         <div className="bg-white mx-72 p-10">
           {articleResponse?.attributes?.read_time?.length > 0 ? (
-            <span className="w-48 whitespace-nowrap mb-6 flex flex-row font-hanken-grotesk font-semibold text-base text-[#B1532D] px-4 py-2 bg-[#FFE4D9]">
-              <span>Read time - </span>
-              <span className="mx-1">
-                {articleResponse?.attributes?.read_time}
+            <div className="mb-6">
+              <span className="whitespace-nowrap font-hanken-grotesk font-semibold text-base text-[#B1532D] px-4 py-2 bg-[#FFE4D9]">
+                <span>Read time - </span>
+                <span className="mx-1">
+                  {articleResponse?.attributes?.read_time}
+                </span>
+                <span>mins</span>
               </span>
-              <span>mins</span>
-            </span>
+            </div>
           ) : null}
           <div className="text-[20px] leading-[32px]">
             <Markdown rehypePlugins={[rehypeRaw]} className="markdown">

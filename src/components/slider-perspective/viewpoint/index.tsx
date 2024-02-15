@@ -133,8 +133,8 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                                 />
-                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12">
-                                  <div className="line-clamp-1 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12 tablet:h-[100%]">
+                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                     {firstCard?.attributes?.title}
                                   </div>
                                   <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -172,8 +172,8 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
                                 />
-                                <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12">
-                                  <div className="line-clamp-1 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12 tablet:h-[100%]">
+                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                     {secondCard?.attributes?.title}
                                   </div>
                                   <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -211,10 +211,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   href={
                                     thirdCard?.attributes?.youtube_link || ""
                                   }
-                                  className="object-cover w-full h-[310px] "
+                                  className="object-cover w-full h-full"
                                 />
-                                <div className=" flex flex-col gap-6 h-full text-white bg-[#404546] p-9">
-                                  <div className="line-clamp-1 font-bold text-xl">
+                                <div className=" flex flex-col gap-6 text-white bg-[#404546] p-9">
+                                  <div className="line-clamp-2 font-bold text-xl">
                                     {thirdCard?.attributes?.title}
                                   </div>
                                   <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -255,7 +255,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     className="object-cover w-[400px] h-[230px] "
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12 justify-center">
-                                    <div className="line-clamp-1 font-bold text-xl">
+                                    <div className="line-clamp-2 font-bold text-xl">
                                       {fourthCard?.attributes?.title}
                                     </div>
                                     <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -298,7 +298,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     className="object-cover w-[400px] h-[230px] "
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12 justify-center">
-                                    <div className="line-clamp-1 font-bold text-xl">
+                                    <div className="line-clamp-2 font-bold text-xl">
                                       {fifthCard?.attributes?.title}
                                     </div>
                                     <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">

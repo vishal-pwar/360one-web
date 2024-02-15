@@ -9,7 +9,7 @@ export async function getArticle(id: string) {
       related_articles: {
         populate: {
           cover: true,
-          thumbnail: true,
+          video_thumbnail: true,
         },
       },
     },
