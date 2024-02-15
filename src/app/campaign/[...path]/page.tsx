@@ -7,13 +7,20 @@ const Page = async ({ params }: { params: { path: string[] } }) => {
 
   const response = await getCampaignDetailByCampaignUrl(url);
 
-  if (response.data?.attributes?.campaigns?.length !== 1) {
+  const currentCampaignObj = response.data?.attributes?.campaigns?.find(
+    (obj: any) => obj?.url?.endsWith(url)
+  );
+
+  if (!currentCampaignObj) {
     notFound();
   }
 
   return (
     <>
-      <CampaignSection responseData={response.data?.attributes} />
+      <CampaignSection
+        respCountryCodeOptions={response.data?.attributes?.country_code_options}
+        campaignObj={currentCampaignObj}
+      />
     </>
   );
 };
