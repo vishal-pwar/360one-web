@@ -214,7 +214,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   className="object-cover w-full h-full"
                                 />
                                 <div className=" flex flex-col gap-6 text-white bg-[#404546] p-9">
-                                  <div className="line-clamp-2 font-bold text-xl">
+                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                     {thirdCard?.attributes?.title}
                                   </div>
                                   <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -255,7 +255,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     className="object-cover w-[400px] h-[230px] "
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12 justify-center">
-                                    <div className="line-clamp-2 font-bold text-xl">
+                                    <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                       {fourthCard?.attributes?.title}
                                     </div>
                                     <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
@@ -298,7 +298,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     className="object-cover w-[400px] h-[230px] "
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12 justify-center">
-                                    <div className="line-clamp-2 font-bold text-xl">
+                                    <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
                                       {fifthCard?.attributes?.title}
                                     </div>
                                     <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">

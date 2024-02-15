@@ -61,6 +61,7 @@ const MediaCard = ({
             src={`https://www.youtube.com/embed/${getYouTubeVideoId(href)}`}
             title="YouTube video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
           ></iframe>
         );
       default:

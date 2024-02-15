@@ -36,12 +36,21 @@ const CustomProgressBar = ({
 const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const cards = response?.articles?.data?.concat(
+    response?.articles?.data?.length < 8
+      ? [...(response?.articles?.data || [])]
+      : []
+  );
   const totalCards = response?.articles?.data?.length;
   const swiperRef = React.useRef<SwiperType>();
 
+  const needsDuplicates = response?.articles?.data?.length < 8;
+  const duplicates = response?.articles?.data?.length;
+
   return (
     <>
-      {response?.articles?.data?.length > 0 ? (
+      {totalCards > 0 ? (
         <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 windowDesktop:pl-16">
           <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
             <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
@@ -52,19 +61,30 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             </div>
             <div className="hidden windowDesktop:flex flex-col gap-5 mt-28">
               <CustomProgressBar
-                currentIndex={activeIndex}
-                totalSlides={response?.articles?.data?.length}
+                currentIndex={
+                  needsDuplicates
+                    ? (activeIndex + duplicates - 2) % duplicates
+                    : activeIndex
+                }
+                totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div>
-                <div className="flex font-bold text-2xl">{`${
-                  activeIndex + 1
-                } / ${response?.articles?.data?.length}`}</div>
+                <div className="flex font-bold text-2xl">
+                  {needsDuplicates
+                    ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
+                        cards?.length - duplicates
+                      }`
+                    : `${
+                        ((activeIndex + cards?.length - 2) % cards?.length) + 1
+                      } / ${cards?.length}`}
+                </div>
                 <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
                   <button
-                    className={`p-0 mt-[3px] ${
-                      activeIndex === 0 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === 0}
+                    // className={`p-0 mt-[3px] ${
+                    //   activeIndex === 0 ? "opacity-25" : ""
+                    // }`}
+                    // disabled={activeIndex === 0}
+                    className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
                     <Image
@@ -75,10 +95,11 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                     />
                   </button>
                   <button
-                    className={`p-0 ${
-                      activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === totalCards - 1}
+                    // className={`p-0 ${
+                    //   activeIndex === totalCards - 1 ? "opacity-25" : ""
+                    // }`}
+                    // disabled={activeIndex === totalCards - 1}
+                    className={`p-0`}
                     onClick={() => swiperRef.current?.slideNext()}
                   >
                     <Image
@@ -108,7 +129,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               },
             }}
           >
-            {response?.articles?.data?.map((data: any, i: any) => {
+            {cards?.map((data: any, i: any) => {
               return (
                 <SwiperSlide
                   key={i}
@@ -143,7 +164,11 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                         {data?.attributes?.title}
                       </div>
                       <button
-                        className={`py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
+                        className={`py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
+                          data?.attributes?.is_article === false
+                            ? "hidden"
+                            : "flex"
+                        }`}
                         onClick={() => {
                           router.push(
                             `/perspective/${data?.attributes?.type}/${data?.id}/${data?.attributes?.params_url}`

@@ -48,7 +48,9 @@ export default function InMediaCards({ response }: inMediaProps) {
           </div>
 
           <button
-            className="border-2 border-white py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52"
+            className={`border-2 border-white py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52 ${
+              featuredCard?.attributes?.is_article === false ? "hidden" : "flex"
+            }`}
             onClick={() =>
               router.push(
                 `/perspective/${featuredCard?.attributes?.type}/${featuredCard?.id}/${featuredCard?.attributes?.params_url}`
@@ -129,10 +131,10 @@ export default function InMediaCards({ response }: inMediaProps) {
                       }
                     >
                       <div>
-                        <div className="font-light text-sm mt-5 mb-2">
+                        {/* <div className="font-light text-sm mt-5 mb-2">
                           {blog?.attributes?.tag}
-                        </div>
-                        <div className="font-medium tablet:font-bold text-base">
+                        </div> */}
+                        <div className="font-medium tablet:font-bold text-base mt-2">
                           {blog?.attributes?.title}
                         </div>
                         <div className="flex font-normal text-sm mt-3 mb-6">

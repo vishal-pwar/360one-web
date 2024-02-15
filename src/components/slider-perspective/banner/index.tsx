@@ -206,7 +206,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                                 >
                                   <button
                                     className={`hidden ${
-                                      data?.attributes?.article?.data === null
+                                      data?.attributes?.is_article === false
                                         ? "hidden"
                                         : "tablet:flex"
                                     } w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
