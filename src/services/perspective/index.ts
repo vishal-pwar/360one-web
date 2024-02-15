@@ -10,7 +10,7 @@ export async function getBannerSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -32,7 +32,7 @@ export async function getViewpointSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -54,7 +54,7 @@ export async function getCuratedExperienceSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -76,7 +76,7 @@ export async function getOurIpsSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },
@@ -99,6 +99,9 @@ export async function getReportsSection() {
           reports_and_publications_cards: {
             populate: { media: true, pdf: true },
           },
+          featured: {
+            populate: { media: true, pdf: true },
+          },
         },
       },
     },
@@ -118,7 +121,7 @@ export async function getInMediaSection() {
           articles: {
             populate: {
               cover: true,
-              thumbnail: true,
+              video_thumbnail: true,
             },
           },
         },

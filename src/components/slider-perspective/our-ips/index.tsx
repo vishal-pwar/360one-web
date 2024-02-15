@@ -34,13 +34,21 @@ const CustomProgressBar = ({
 };
 
 const OurIpsSlider = ({ response }: ourIPsProps) => {
+  const cards = response?.articles?.data?.concat(
+    response?.articles?.data?.length < 8
+      ? [...(response?.articles?.data || [])]
+      : []
+  );
+  const needsDuplicates = response?.articles?.data?.length < 8;
+  const duplicates = response?.articles?.data?.length;
+
   const router = useRouter();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const totalCards = response?.articles?.data?.length;
   const swiperRef = React.useRef<SwiperType>();
   return (
     <>
-      {response?.articles?.data?.length > 0 ? (
+      {totalCards > 0 ? (
         <section className="relative text-black">
           <div className="tablet:absolute tablet:w-[50%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
             <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
@@ -51,17 +59,26 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             </div>
             <div className="hidden tablet:flex flex-col gap-5">
               <CustomProgressBar
-                currentIndex={activeIndex}
-                totalSlides={response?.articles?.data?.length}
+                currentIndex={
+                  needsDuplicates
+                    ? (activeIndex + duplicates - 2) % duplicates
+                    : activeIndex
+                }
+                totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div className="flex justify-between">
-                <div className="flex font-bold text-2xl">{`${
-                  activeIndex + 1
-                } / ${response?.articles?.data?.length}`}</div>
+                <div className="flex font-bold text-base tablet:text-2xl">
+                  {needsDuplicates
+                    ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
+                        cards?.length - duplicates
+                      }`
+                    : `${
+                        ((activeIndex + cards?.length - 2) % cards?.length) + 1
+                      } / ${cards?.length}`}
+                </div>
                 <div className="flex z-[5] gap-4 items-center">
                   <button
-                    className={`p-0 ${activeIndex === 0 ? "opacity-25" : ""}`}
-                    disabled={activeIndex === 0}
+                    className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
                     <Image
@@ -72,10 +89,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     />
                   </button>
                   <button
-                    className={`p-0 ${
-                      activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === totalCards - 1}
+                    className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slideNext()}
                   >
                     <Image
@@ -105,7 +119,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               },
             }}
           >
-            {response?.articles?.data?.map((data: any, i: any) => {
+            {cards?.map((data: any, i: any) => {
               return (
                 <SwiperSlide
                   key={i}
@@ -140,7 +154,11 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                         {data?.attributes?.title}
                       </div>
                       <button
-                        className=" hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk"
+                        className={`hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
+                          data?.attributes?.is_article === false
+                            ? "hidden"
+                            : "flex"
+                        }`}
                         onClick={() => {
                           router.push(
                             `/perspective/${data?.attributes?.type}/${data?.id}/${data?.attributes?.params_url}`
@@ -159,19 +177,29 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
           <div className="flex justify-end bg-[#FD7740] tablet:bg-white">
             <div className="tablet:hidden tablet:basis-[500px] gap-5 pt-5 px-6 tablet:px-0 mb-10 flex whitespace-nowrap items-center w-full text-white">
               <CustomProgressBar
-                currentIndex={activeIndex}
-                totalSlides={response?.articles?.data?.length}
+                currentIndex={
+                  needsDuplicates
+                    ? (activeIndex + duplicates - 2) % duplicates
+                    : activeIndex
+                }
+                totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div className="flex justify-between">
-                <div className="flex font-bold text-sm sm:text-base tablet:text-desktop">{`${
-                  activeIndex + 1
-                } / ${response?.articles?.data?.length}`}</div>
+                <div className="flex font-bold text-base tablet:text-2xl">
+                  {needsDuplicates
+                    ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
+                        cards?.length - duplicates
+                      }`
+                    : `${
+                        ((activeIndex + cards?.length - 2) % cards?.length) + 1
+                      } / ${cards?.length}`}
+                </div>
                 <div className="z-[5] gap-4 items-center hidden tablet:flex">
                   <button
-                    className={`p-0 mt-[3px] ${
-                      activeIndex === 0 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === 0}
+                    // className={`p-0 mt-[3px] ${
+                    //   activeIndex === 0 ? "opacity-25" : ""
+                    // }`}
+                    // disabled={activeIndex === 0}
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
                     <Image
@@ -182,10 +210,10 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     />
                   </button>
                   <button
-                    className={`p-0 ${
-                      activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === totalCards - 1}
+                    // className={`p-0 ${
+                    //   activeIndex === totalCards - 1 ? "opacity-25" : ""
+                    // }`}
+                    // disabled={activeIndex === totalCards - 1}
                     onClick={() => swiperRef.current?.slideNext()}
                   >
                     <Image

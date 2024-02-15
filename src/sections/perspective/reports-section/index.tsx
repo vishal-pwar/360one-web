@@ -5,11 +5,12 @@ import Link from "next/link";
 const Reports = async () => {
   const response = await getReportsSection();
   const reportsData = response?.data?.attributes?.reports;
+
   return (
     <>
-      {reportsData?.title === null &&
-        reportsData?.subtitle === null &&
-        reportsData?.featured?.data === null &&
+      {reportsData?.title !== null &&
+        reportsData?.subtitle !== null &&
+        reportsData?.featured?.data !== null &&
         reportsData?.reports_and_publications_cards?.data?.length !== 0 && (
           <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 windowDesktop:pl-20 windowDesktop:pt-16">
             <div className="flex flex-col windowDesktop:flex-row windowDesktop:gap-10">
@@ -27,7 +28,7 @@ const Reports = async () => {
                     <div className="hidden phablet:flex phablet:absolute tablet:hidden windowDesktop:flex mt-9 px-5 py-2 bg-[#FD7740] font-bold text-sm text-white top-0">
                       FEATURED
                     </div>
-                    <div className="tablet:max-w-sm phablet:mt-16 tablet:mt-0 windowDesktop:mt-24">
+                    <div className="phablet:mt-16 tablet:mt-0 windowDesktop:mt-24">
                       <div className="text-black font-bold text-base tablet:text-2xl windowDesktop:text-[32px]">
                         {
                           response?.data?.attributes?.reports?.featured?.data
@@ -48,7 +49,7 @@ const Reports = async () => {
                       }
                       target="_blank"
                     >
-                      <button className="border-2 border-black py-4 font-bold text-sm phablet:w-full tablet:h-12 tablet:w-52">
+                      <button className="border-2 border-black py-4 font-bold text-sm phablet:w-full tablet:h-12 tablet:w-52 items-center flex justify-center">
                         DOWNLOAD NOW
                       </button>
                     </Link>
@@ -69,7 +70,7 @@ const Reports = async () => {
                             ?.attributes?.thumbnail?.data?.attributes
                             ?.alternativeText
                         }
-                        className="flex w-full windowDesktop:flex-[5] h-44 phablet:h-72 tablet:h-52 windowDesktop:h-96 object-cover"
+                        className="flex w-full windowDesktop:flex-[5] h-44 phablet:h-72 tablet:h-52 windowDesktop:h-full object-cover"
                       />
                     }
                   </div>

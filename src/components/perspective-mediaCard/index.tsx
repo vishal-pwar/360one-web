@@ -2,7 +2,7 @@
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import VideoPLayer from "../video-player";
 interface MediaCardProps {
-  mediaType: "image" | "video" | "youtube_link";
+  mediaType: "image" | "video" | "youtube";
   media: any;
   thumbnail: any;
   href: string;
@@ -54,13 +54,14 @@ const MediaCard = ({
             />
           </div>
         );
-      case "youtube_link":
+      case "youtube":
         return (
           <iframe
             className={className}
             src={`https://www.youtube.com/embed/${getYouTubeVideoId(href)}`}
             title="YouTube video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
           ></iframe>
         );
       default:

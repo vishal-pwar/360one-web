@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Banner from "@/sections/perspective/banner-section";
 import CuratedExperence from "@/sections/perspective/curatedExperiences-section";
@@ -17,6 +18,7 @@ const page = () => {
       <OurIps />
       <Reports />
       <Media />
+      <Footer />
     </main>
   );
 };
