@@ -13,9 +13,13 @@ type FieldConfigModel = {
   companyOrg: boolean;
 };
 
-const CampaignSection = async ({ responseData }: { responseData: any }) => {
-  const campaignObj = responseData?.campaigns?.[0];
-
+const CampaignSection = async ({
+  respCountryCodeOptions,
+  campaignObj,
+}: {
+  respCountryCodeOptions: any;
+  campaignObj: any;
+}) => {
   const campaignId: number = campaignObj?.id;
   const campaignUrl: string = campaignObj?.url;
 
@@ -35,9 +39,9 @@ const CampaignSection = async ({ responseData }: { responseData: any }) => {
   const button_label: string = campaignObj?.button_label || "";
 
   const countryCodeOptions: CountryCodeModel[] = Array.isArray(
-    responseData?.country_code_options
+    respCountryCodeOptions
   )
-    ? responseData.country_code_options.map((obj: any) => ({
+    ? respCountryCodeOptions.map((obj: any) => ({
         flag: obj.flag || "",
         name: obj.name || "",
         code: obj.code || "",
