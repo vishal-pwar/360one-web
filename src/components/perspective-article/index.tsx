@@ -2,7 +2,7 @@
 
 import { formatDate } from "@/utils/api-helpers";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface ArticleResponse {
   response: any;

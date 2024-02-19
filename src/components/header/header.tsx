@@ -143,9 +143,9 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // useEffect(() => {
-  //   if (width > 1024) setResponsiveNavActive(false);
-  // }, [width]);
+  useEffect(() => {
+    if (width > 1024) setResponsiveNavActive(false);
+  }, [width]);
 
   return (
     <React.Fragment>

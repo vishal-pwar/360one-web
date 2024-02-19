@@ -155,7 +155,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           </div>
 
                           <div className="flex items-end text-left font-bold text-base tablet:text-xl windowDesktop:text-2xl text-white">
-                            <p className="line-clamp-1">
+                            <p className="line-clamp-2">
                               {data?.attributes?.title}
                             </p>
                           </div>
