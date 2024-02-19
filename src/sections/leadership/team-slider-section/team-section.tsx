@@ -54,8 +54,8 @@ const TeamSliderSection = ({
           } `}
         >
           <SliderSection
-            nextRef={swiperNavNextRef}
-            prevRef={swiperNavPrevRef}
+            nextRef={swiperNavPrevRef}
+            prevRef={swiperNavNextRef}
             cards={cards}
             activeSlideId={activeSlideId}
             setActiveSlideId={setActiveSlideId}

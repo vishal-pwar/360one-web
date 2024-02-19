@@ -130,7 +130,6 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                   }`}
                 >
                   <div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       key={i}
                       src={data?.attributes?.cover?.data?.attributes?.url}
@@ -156,8 +155,8 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                       <button
                         className={`hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
                           data?.attributes?.is_article === false
-                            ? "hidden"
-                            : "flex"
+                            ? "hidden opacity-0"
+                            : ""
                         }`}
                         onClick={() => {
                           router.push(

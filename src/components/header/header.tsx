@@ -134,6 +134,19 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
     };
   }, []);
 
+  const [width, setWidth] = useState(window.innerWidth);
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // useEffect(() => {
+  //   if (width > 1024) setResponsiveNavActive(false);
+  // }, [width]);
+
   return (
     <React.Fragment>
       {ticker && <Ticker ticker={ticker} />}

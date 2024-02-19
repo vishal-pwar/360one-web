@@ -30,7 +30,6 @@ const MediaCard = ({
     switch (mediaType) {
       case "image":
         return (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={media?.data?.attributes?.url}
             alt={media?.data?.attributes?.alternativeText}
@@ -41,7 +40,6 @@ const MediaCard = ({
         return (
           <div className="relative flex items-center justify-center">
             <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={thumbnail?.data?.attributes?.url}
                 alt={thumbnail?.data?.attributes?.alternativeText}

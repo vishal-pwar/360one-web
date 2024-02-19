@@ -3,12 +3,11 @@ import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import closeIcon from "@/public/assets/icons/icons8-cancel.svg";
 import ListImage from "@/public/assets/icons/list-image.svg";
 import { getStrapiMedia } from "@/utils/api-helpers";
-import Image from "next/image";
-import { useState } from "react";
-import React from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type PopupDetails = {
   popup: any;
@@ -64,7 +63,6 @@ const Popup = (props: PopupDetails) => {
               </div>
               {popup?.attributes?.image?.data?.attributes?.url?.length > 0 ? (
                 <div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageUrl}
                     alt={

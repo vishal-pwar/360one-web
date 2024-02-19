@@ -2,9 +2,7 @@
 
 import { formatDate } from "@/utils/api-helpers";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import { useRouter } from "next/router";
 
 interface ArticleResponse {
   response: any;
@@ -12,6 +10,18 @@ interface ArticleResponse {
 
 const Article = ({ response: articleResponse }: ArticleResponse) => {
   const router = useRouter();
+
+  const centerAlignImages = (content: any) => {
+    // Regular expression to match image Markdown syntax ![...](...)
+    const imageRegex = /!\[.*?\]\((.*?)\)/g;
+    // Replace images with centered images
+    const centeredContent = content.replace(
+      imageRegex,
+      (match: any, p1: any) =>
+        `<img src="${p1}" style="display: block; margin: 0 auto;" />`
+    );
+    return <div dangerouslySetInnerHTML={{ __html: centeredContent }} />;
+  };
 
   return (
     <section>
@@ -50,7 +60,6 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           ) : null}
           {articleResponse?.attributes?.cover?.data?.attributes?.url?.length >
           0 ? (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={articleResponse?.attributes?.cover?.data?.attributes?.url}
               alt={
@@ -76,10 +85,11 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
             </div>
           ) : null}
           <div className="text-[20px] leading-[32px]">
-            <Markdown rehypePlugins={[rehypeRaw]} className="markdown">
-              {articleResponse?.attributes?.body}
-            </Markdown>
+            {articleResponse && articleResponse.attributes && (
+              <div>{centerAlignImages(articleResponse.attributes.body)}</div>
+            )}
           </div>
+
           <div className="mt-10">
             {articleResponse?.attributes?.article?.data?.attributes
               .publication_source !== null ? (
@@ -140,7 +150,6 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
                 <div>
                   <div>
                     {
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={i?.attributes?.cover?.data?.attributes?.url}
                         alt={

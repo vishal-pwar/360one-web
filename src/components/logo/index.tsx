@@ -48,19 +48,16 @@ export default function Logo_360one({ response }: props) {
                   key={logo.id}
                   className="flex justify-between items-center my-16"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_348x348?.data?.attributes?.url}
                     alt={logo?.logo_348x348?.data?.attributes?.alternativeText}
                     className="w-[348px] h-[348px] p-2"
                   />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_278x278?.data?.attributes?.url}
                     alt={logo?.logo_278x278?.data?.attributes?.alternativeText}
                     className="w-[278px] h-[278px] p-8"
                   />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_200x200?.data?.attributes?.url}
                     alt={logo?.logo_200x200?.data?.attributes?.alternativeText}
@@ -82,7 +79,6 @@ export default function Logo_360one({ response }: props) {
                     key={logo.id}
                     className="flex justify-between items-center my-16"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={logo?.logo_348x348?.data?.attributes?.url}
                       alt={
@@ -90,7 +86,6 @@ export default function Logo_360one({ response }: props) {
                       }
                       className="w-[348px] h-[348px] p-2"
                     />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={logo?.logo_278x278?.data?.attributes?.url}
                       alt={
@@ -98,7 +93,6 @@ export default function Logo_360one({ response }: props) {
                       }
                       className="w-[278px] h-[278px] p-8"
                     />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={logo?.logo_200x200?.data?.attributes?.url}
                       alt={
@@ -122,19 +116,16 @@ export default function Logo_360one({ response }: props) {
                   key={logo.id}
                   className="flex justify-between items-center my-16"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_348x348?.data?.attributes?.url}
                     alt={logo?.logo_348x348?.data?.attributes?.alternativeText}
                     className="w-[348px] h-[348px] p-2"
                   />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_278x278?.data?.attributes?.url}
                     alt={logo?.logo_278x278?.data?.attributes?.alternativeText}
                     className="w-[278px] h-[278px] p-8"
                   />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo?.logo_200x200?.data?.attributes?.url}
                     alt={logo?.logo_200x200?.data?.attributes?.alternativeText}

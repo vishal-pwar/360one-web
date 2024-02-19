@@ -1,7 +1,5 @@
 "use client";
 import MediaCard from "@/components/perspective-mediaCard";
-import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -64,7 +62,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
   return (
     <>
       {response?.articles?.data?.length > 3 ? (
-        <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 windowDesktop:pl-16 windowDesktop:py-[75px]">
+        <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 windowDesktop:pl-16 windowDesktop:pt-[75px] windowDesktop:py-[35px]">
           <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
             {title}
           </div>
@@ -343,8 +341,8 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   // disabled={activeIndex === 0}
                   onClick={() => swiperRef.current?.slidePrev()}
                 >
-                  <Image
-                    src={arrowImage}
+                  <img
+                    src={"assets/icons/Right-arrow-black.svg"}
                     alt="left arrow"
                     className="rotate-180"
                     onClick={() => swiperRef.current?.slidePrev()}
@@ -356,10 +354,9 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   // disabled={activeIndex === totalCards - 1}
                   onClick={() => swiperRef.current?.slideNext()}
                 >
-                  <Image
-                    src={arrowImage}
+                  <img
+                    src={"assets/icons/Right-arrow-black.svg"}
                     alt="right arrow"
-                    // className='bg-black'
                     onClick={() => swiperRef.current?.slideNext()}
                   />
                 </button>

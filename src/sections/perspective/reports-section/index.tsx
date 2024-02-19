@@ -59,7 +59,6 @@ const Reports = async () => {
                       FEATURED
                     </div>
                     {
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={
                           response?.data?.attributes?.reports?.featured?.data
