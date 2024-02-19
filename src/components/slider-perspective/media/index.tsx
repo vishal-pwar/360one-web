@@ -15,8 +15,8 @@ export default function InMediaCards({ response }: inMediaProps) {
 
   return (
     <>
-      <div className="w-full h-[80px] tablet:h-24 desktop:h-28 bg-[#F4F0EF]" />
-      <section className="tablet:flex flex-1 tablet:h-[950px] mb-36">
+      <div className="w-full h-[80px] tablet:h-24 desktop:h-16 bg-[#F4F0EF]" />
+      <section className="tablet:flex flex-1 tablet:h-[950px] mb-12">
         <div className="bg-black flex flex-col tablet:flex-[6] px-6 py-10 phablet:p-12 tablet:py-14 tablet:px-20">
           <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px] text-white">
             {response?.data?.attributes?.media?.title}
@@ -48,7 +48,7 @@ export default function InMediaCards({ response }: inMediaProps) {
           </div>
 
           <button
-            className={`border-2 border-white py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52 ${
+            className={`border-2 border-white justify-center py-3 text-white mt-6 mb-11 tablet:mt-9 w-full sm:w-52 ${
               featuredCard?.attributes?.is_article === false ? "hidden" : "flex"
             }`}
             onClick={() =>

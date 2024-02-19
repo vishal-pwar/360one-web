@@ -1,7 +1,6 @@
 "use client";
 import VideoPLayer from "@/components/video-player";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
-import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -36,6 +35,8 @@ const CustomProgressBar = ({
 };
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
+  // console.log("vishalbannerresp", response);
+
   const [activeIndex, setActiveIndex] = React.useState(2);
   const cards = response?.articles?.data?.concat(
     response?.articles?.data?.length < 8
@@ -47,6 +48,8 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
 
   const needsDuplicates = response?.articles?.data?.length < 8;
   const duplicates = response?.articles?.data?.length;
+
+  console.log("vishalbannerresp", cards[1].attributes);
 
   return (
     <>
@@ -114,19 +117,18 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           </p>
                         </div>
                       </div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
-                        "video/"
-                      ) ? (
+
+                      {data?.attributes?.media_type?.includes("video") ? (
                         <div className="relative flex items-center justify-center">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={
-                              data?.attributes?.thumbnail?.data?.attributes?.url
+                              data?.attributes?.video_thumbnail?.data
+                                ?.attributes?.url
                             }
                             alt={
-                              data?.attributes?.thumbnail?.data?.attributes
-                                ?.alternativeText
+                              data?.attributes?.video_thumbnail?.data
+                                ?.attributes?.alternativeText
                             }
                             className={`object-cover w-full ${
                               activeIndex === i
@@ -153,11 +155,12 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                       )}
                     </div>
                     {activeIndex === i ? (
-                      <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740]">
+                      <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740] min-h-[250px]">
                         <div className="flex flex-col">
                           <div className="flex items-end text-left font-normal text-sm text-white mb-2">
                             {data?.attributes?.tag}
                           </div>
+
                           <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">
                             <p className="line-clamp-1">
                               {data?.attributes?.title}
@@ -166,18 +169,13 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         </div>
 
                         <div>
-                          {data?.attributes?.media?.data?.attributes?.mime?.startsWith(
-                            "video/"
-                          ) ? (
-                            <div>
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <VideoPLayer
-                                iconUrl={PlayIcon}
-                                videoUrl={
-                                  data?.attributes?.media?.data?.attributes?.url
-                                }
-                              />
-                            </div>
+                          {data?.attributes?.media_type?.includes("video") ? (
+                            <VideoPLayer
+                              iconUrl={"assets/icons/playIcon.svg"}
+                              videoUrl={
+                                data?.attributes?.cover?.data?.attributes?.url
+                              }
+                            />
                           ) : (
                             <>
                               {data?.attributes?.component_name?.includes(
@@ -209,7 +207,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                                       data?.attributes?.is_article === false
                                         ? "hidden"
                                         : "tablet:flex"
-                                    } w-28 p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
+                                    } w-32 justify-center p-3 border-2 border-white text-white text-sm font-bold font-space-grotesk`}
                                   >
                                     READ MORE
                                   </button>

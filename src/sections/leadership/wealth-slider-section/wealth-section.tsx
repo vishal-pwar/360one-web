@@ -1,7 +1,7 @@
 "use client";
-import { useRef, useState } from "react";
-import SliderSection from "@/components/slider-section";
 import SliderContent from "@/components/slider-content";
+import SliderSection from "@/components/slider-section";
+import { useRef, useState } from "react";
 
 const WealthSliderSection = ({
   cards,
@@ -44,8 +44,8 @@ const WealthSliderSection = ({
         }`}
       >
         <SliderSection
-          nextRef={swiperNavNextRef}
-          prevRef={swiperNavPrevRef}
+          nextRef={swiperNavPrevRef}
+          prevRef={swiperNavNextRef}
           cards={cards}
           activeSlideId={activeSlideId}
           setActiveSlideId={setActiveSlideId}

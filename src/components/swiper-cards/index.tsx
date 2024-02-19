@@ -136,7 +136,7 @@ const SwiperCardsNavigation = ({
             <SwiperSlide
               className={`max-lg:overflow-hidden flex ${
                 activeSlideId === index
-                  ? "max-sm:!w-[calc(331*var(--scale))] max-sm:after:w-0 max-md:!w-[calc(714*var(--scale))] max-lg:!w-[calc(743*var(--scale))] !w-[calc(992*var(--scale))]"
+                  ? "max-sm:!w-[calc(331*var(--scale))] max-sm:after:w-0 max-md:!w-[calc(714*var(--scale))] max-lg:!w-[calc(743*var(--scale))] !w-[calc(892*var(--scale))]"
                   : "max-sm:!w-[291.1px] max-md:!w-[calc(232*var(--scale))] max-lg:!w-[calc(232*var(--scale))] !w-[calc(326*var(--scale))]"
               } relative shrink-0 h-full max-sm:after:w-[291.1px] max-md:after:w-[calc(232*var(--scale))] max-lg:after:w-[calc(232*var(--scale))] after:w-[calc(326*var(--scale))] after:content-[''] after:absolute after:h-[calc(270*var(--scale))] after:bottom-0 after:left-0 after:bg-gradient-to-b after:from-[#00000000] after:to-[#0b0b0b]`}
               key={card?.name}
@@ -167,7 +167,7 @@ const SwiperCardsNavigation = ({
               <div
                 className={`absolute top-0 bg-white h-full flex flex-col p-0 transition-[width] duration-300 ease-[ease] ${
                   activeSlideId === index
-                    ? "max-sm:w-[calc(331*var(--scale))] max-md:w-[calc(482*var(--scale))] max-lg:w-[calc(511*var(--scale))] w-[calc(666*var(--scale))] max-sm:left-0 max-lg:left-[calc(232*var(--scale))] left-[calc(326*var(--scale))] max-sm:p-[calc(24*var(--scale))] max-sm:pr-[calc(30*var(--scale))] max-md:py-[calc(31*var(--scale))] max-md:pl-[calc(41*var(--scale))] max-md:pr-[calc(28*var(--scale))] max-lg:p-[calc(40*var(--scale))] max-lg:pr-[calc(70*var(--scale))] py-[calc(60*var(--scale))] pl-[calc(70*var(--scale))] pr-[calc(57*var(--scale))] z-10"
+                    ? "max-sm:w-[calc(331*var(--scale))] max-md:w-[calc(482*var(--scale))] max-lg:w-[calc(511*var(--scale))] w-[calc(566*var(--scale))] max-sm:left-0 max-lg:left-[calc(232*var(--scale))] left-[calc(326*var(--scale))] max-sm:p-[calc(24*var(--scale))] max-sm:pr-[calc(30*var(--scale))] max-md:py-[calc(31*var(--scale))] max-md:pl-[calc(41*var(--scale))] max-md:pr-[calc(28*var(--scale))] max-lg:p-[calc(40*var(--scale))] max-lg:pr-[calc(70*var(--scale))] py-[calc(60*var(--scale))] pl-[calc(70*var(--scale))] pr-[calc(57*var(--scale))] z-10"
                     : "w-0 p-0 -z-10 opacity-0"
                 }`}
               >
