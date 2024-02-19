@@ -140,7 +140,6 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   }`}
                 >
                   <div className="bg-black">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       key={i}
                       src={data?.attributes?.cover?.data?.attributes?.url}

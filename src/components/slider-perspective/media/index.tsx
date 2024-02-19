@@ -28,7 +28,6 @@ export default function InMediaCards({ response }: inMediaProps) {
             <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 tablet:px-16 tablet:py-4 tablet:mt-6">
               FEATURED
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={featuredCard?.attributes?.cover?.data?.attributes?.url}
               alt={
@@ -83,7 +82,6 @@ export default function InMediaCards({ response }: inMediaProps) {
                               )
                             }
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={
                                 blog?.attributes?.cover?.data?.attributes?.url
@@ -98,7 +96,6 @@ export default function InMediaCards({ response }: inMediaProps) {
                         ) : (
                           <div className="w-full relative flex items-center justify-center">
                             <div className="w-full bg-black">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
                                 src={
                                   blog?.attributes?.thumbnail?.data?.attributes

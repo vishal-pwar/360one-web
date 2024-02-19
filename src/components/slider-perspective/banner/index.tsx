@@ -35,8 +35,6 @@ const CustomProgressBar = ({
 };
 
 const BannerSlider = ({ response }: BannerSliderProps) => {
-  // console.log("vishalbannerresp", response);
-
   const [activeIndex, setActiveIndex] = React.useState(2);
   const cards = response?.articles?.data?.concat(
     response?.articles?.data?.length < 8
@@ -48,8 +46,6 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
 
   const needsDuplicates = response?.articles?.data?.length < 8;
   const duplicates = response?.articles?.data?.length;
-
-  console.log("vishalbannerresp", cards[1].attributes);
 
   return (
     <>
@@ -117,10 +113,8 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           </p>
                         </div>
                       </div>
-
                       {data?.attributes?.media_type?.includes("video") ? (
                         <div className="relative flex items-center justify-center">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={
                               data?.attributes?.video_thumbnail?.data
@@ -132,13 +126,12 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                             }
                             className={`object-cover w-full ${
                               activeIndex === i
-                                ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px] object-cover"
-                                : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px] opacity-60 object-cover"
+                                ? "h-[165px] phablet:h-[270px] tablet:h-[365px] windowDesktop:h-[444px] object-cover"
+                                : "h-[165px] phablet:h-[270px] tablet:h-[146px] windowDesktop:h-[213px] opacity-60 object-cover"
                             }`}
                           />
                         </div>
                       ) : (
-                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={i}
                           src={data?.attributes?.cover?.data?.attributes?.url}
@@ -148,20 +141,20 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           }
                           className={`object-cover w-full ${
                             activeIndex === i
-                              ? "h-[165px] phablet:h-[270px] tablet:h-[365px] desktop:h-[444px] object-cover"
-                              : "h-[165px] phablet:h-[270px] tablet:h-[146px] desktop:h-[213px] opacity-40 object-cover"
+                              ? "h-[165px] phablet:h-[270px] tablet:h-[365px] windowDesktop:h-[444px] object-cover"
+                              : "h-[165px] phablet:h-[270px] tablet:h-[146px] windowDesktop:h-[213px] opacity-40 object-cover"
                           }`}
                         />
                       )}
                     </div>
                     {activeIndex === i ? (
-                      <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 desktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740] min-h-[250px]">
+                      <div className="flex justify-between items-center p-6 phablet:p-8 tablet:p-10 windowDesktop:p-16 gap-1 phablet:gap-2 w-full bg-[#FD7740] windowDesktop:min-h-[200px]">
                         <div className="flex flex-col">
                           <div className="flex items-end text-left font-normal text-sm text-white mb-2">
                             {data?.attributes?.tag}
                           </div>
 
-                          <div className="flex items-end text-left font-bold text-base tablet:text-xl desktop:text-2xl text-white">
+                          <div className="flex items-end text-left font-bold text-base tablet:text-xl windowDesktop:text-2xl text-white">
                             <p className="line-clamp-1">
                               {data?.attributes?.title}
                             </p>

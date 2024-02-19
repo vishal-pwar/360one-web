@@ -50,7 +50,6 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           ) : null}
           {articleResponse?.attributes?.cover?.data?.attributes?.url?.length >
           0 ? (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={articleResponse?.attributes?.cover?.data?.attributes?.url}
               alt={
@@ -140,7 +139,6 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
                 <div>
                   <div>
                     {
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={i?.attributes?.cover?.data?.attributes?.url}
                         alt={

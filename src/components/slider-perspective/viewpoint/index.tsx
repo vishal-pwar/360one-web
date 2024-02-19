@@ -341,7 +341,6 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   // disabled={activeIndex === 0}
                   onClick={() => swiperRef.current?.slidePrev()}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={"assets/icons/Right-arrow-black.svg"}
                     alt="left arrow"
@@ -355,7 +354,6 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                   // disabled={activeIndex === totalCards - 1}
                   onClick={() => swiperRef.current?.slideNext()}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={"assets/icons/Right-arrow-black.svg"}
                     alt="right arrow"
