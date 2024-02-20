@@ -1,7 +1,6 @@
 "use client";
 
 import { formatDate } from "@/utils/api-helpers";
-import { paramCase } from "@pantelwar/js-utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Markdown from "react-markdown";
@@ -28,20 +27,20 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
 
   return (
     <section>
-      <div className="flex flex-col gap-14 bg-black pt-40 px-72">
-        <div className="flex justify-between">
+      <div className="flex flex-col lg:gap-14 bg-black lg:pt-40 lg:px-72">
+        <div className="flex flex-col lg:flex-row lg:justify-between">
           <div className="p-5">
-            <div className="font-hanken-grotesk font-semibold text-[16px] text-white">
+            <div className="font-hanken-grotesk font-semibold text-[12px] lg:text-[16px] text-white">
               {articleResponse?.attributes?.tag}
             </div>
-            <div className="font-bold text-[36px] text-white my-5">
+            <div className="font-bold text-[26px] lg:text-[36px] text-white my-5">
               {articleResponse?.attributes?.title}
             </div>
-            <div className="font-hanken-grotesk font-semibold text-[16px] text-white">
+            <div className="font-hanken-grotesk font-semibold text-[12px] lg:text-[16px] text-white">
               {formatDate(articleResponse?.attributes?.date)}
             </div>
           </div>
-          <div className="h-200 bg-[#4F4F4F] w-[1px]"></div>
+          <div className="hidden lg:flex h-200 bg-[#4F4F4F] w-[1px]"></div>
           <div className="p-8">
             <div className="font-normal text-sm text-[#9A9A9A]">By:</div>
             <div className="font-medium text-[22px] text-white my-1">
@@ -75,7 +74,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
         </div>
       </div>
       <div className="bg-[#F8F8F8]">
-        <div className="bg-white mx-72 p-10">
+        <div className="bg-white lg:mx-72 p-4 lg:p-10">
           {articleResponse?.attributes?.read_time?.length > 0 ? (
             <div className="mb-6">
               <span className="whitespace-nowrap font-hanken-grotesk font-semibold text-base text-[#B1532D] px-4 py-2 bg-[#FFE4D9]">
@@ -116,7 +115,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
         </div>
         <div>
           {articleResponse?.attributes?.seo_dropdown?.length > 0 ? (
-            <div className="flex mx-[268px] flex-wrap">
+            <div className="flex lg:mx-[268px] flex-wrap">
               {articleResponse?.attributes?.seo_dropdown?.map((values: any) => {
                 return (
                   <div key={values?.id} className="p-6">
@@ -130,7 +129,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
           ) : null}
         </div>
       </div>
-      <div className="bg-[#F8F8F8] px-32 py-28 flex flex-wrap gap-7">
+      <div className="bg-[#F8F8F8] p-4 lg:px-32 py-14 lg:py-28 flex flex-wrap gap-7">
         <div className="flex gap-9 h-full flex-row align-end justify-start w-full phablet:w-[calc(50%-16px)] tablet:w-[calc(33%-16px)] mt-[5%]">
           <div className="w-2 h-32 bg-[#FD7740]"></div>
           <div className="flex flex-col align-center justify-start">
