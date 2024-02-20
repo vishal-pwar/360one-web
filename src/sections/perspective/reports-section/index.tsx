@@ -12,30 +12,30 @@ const Reports = async () => {
         reportsData?.subtitle !== null &&
         reportsData?.featured?.data !== null &&
         reportsData?.reports_and_publications_cards?.data?.length !== 0 && (
-          <section className="bg-black p-6 phablet:p-12 tablet:pl-20 tablet:pr-0 windowDesktop:pl-20 windowDesktop:pt-16">
-            <div className="flex flex-col windowDesktop:flex-row windowDesktop:gap-10">
-              <div className="flex mt-[5%] flex-col bg-black windowDesktop:flex-[5]">
-                <div className="text-white font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+          <section className="bg-black p-6 sm:p-12 md:pr-0 xl:pl-20 xl:pt-16">
+            <div className="flex flex-col xl:flex-row xl:gap-10">
+              <div className="flex mt-[5%] flex-col bg-black xl:flex-[5]">
+                <div className="text-white font-bold text-[28px] sm:text-[32px] md:text-[42px]">
                   {response?.data?.attributes?.reports?.title}
                 </div>
-                <div className="font-normal text-white text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-9 tablet:mt-4 tablet:mb-8">
+                <div className="font-normal text-white text-base sm:text-lg md:text-xl mt-3 mb-6 sm:mb-9 md:mt-4 md:mb-8">
                   {response?.data?.attributes?.reports?.subtitle}
                 </div>
               </div>
               {reportsData?.featured?.data !== null && (
-                <div className="flex flex-col-reverse phablet:flex-row tablet:flex-col-reverse windowDesktop:flex-row bg-white windowDesktop:flex-[7] justify-between">
-                  <div className="flex flex-col py-6 px-4 tablet:py-8 tablet:px-14 tablet:justify-between tablet:items-center tablet:flex-row windowDesktop:flex-col tablet:flex-[4] windowDesktop:items-start phablet:relative ">
-                    <div className="hidden phablet:flex phablet:absolute tablet:hidden windowDesktop:flex mt-9 px-5 py-2 bg-[#FD7740] font-bold text-sm text-white top-0">
+                <div className="flex flex-col-reverse sm:flex-row md:flex-col-reverse xl:flex-row bg-white xl:flex-[7] justify-between">
+                  <div className="flex flex-col py-6 px-4 md:py-8 md:px-14 md:justify-between md:items-center md:flex-row xl:flex-col md:flex-[4] xl:items-start sm:relative ">
+                    <div className="hidden sm:flex sm:absolute md:hidden xl:flex mt-9 px-5 py-2 bg-[#FD7740] font-bold text-sm text-white top-0">
                       FEATURED
                     </div>
-                    <div className="phablet:mt-16 tablet:mt-0 windowDesktop:mt-24">
-                      <div className="text-black font-bold text-base tablet:text-2xl windowDesktop:text-[32px]">
+                    <div className="sm:mt-16 md:mt-0 xl:mt-24">
+                      <div className="text-black font-bold text-base md:text-2xl xl:text-[32px]">
                         {
                           response?.data?.attributes?.reports?.featured?.data
                             ?.attributes?.title
                         }
                       </div>
-                      <div className="text-black font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-8 tablet:mt-4 ">
+                      <div className="text-black font-normal text-base sm:text-lg md:text-xl mt-3 mb-6 sm:mb-8 md:mt-4 ">
                         {
                           response?.data?.attributes?.reports?.featured?.data
                             ?.attributes?.subtitle
@@ -49,13 +49,13 @@ const Reports = async () => {
                       }
                       target="_blank"
                     >
-                      <button className="border-2 border-black py-4 font-bold text-sm phablet:w-full tablet:h-12 tablet:w-52 items-center flex justify-center">
+                      <button className="border-2 border-black py-2 font-bold text-sm w-full md:h-12 md:w-52 items-center flex justify-center">
                         DOWNLOAD NOW
                       </button>
                     </Link>
                   </div>
-                  <div className="flex tablet:flex-[3] relative">
-                    <div className="phablet:hidden absolute tablet:flex windowDesktop:hidden bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 tablet:px-16 tablet:py-4 tablet:mt-6">
+                  <div className="flex md:flex-[3] relative">
+                    <div className="sm:hidden absolute md:flex xl:hidden bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 md:px-16 md:py-4 md:mt-6">
                       FEATURED
                     </div>
                     {
@@ -69,7 +69,7 @@ const Reports = async () => {
                             ?.attributes?.thumbnail?.data?.attributes
                             ?.alternativeText
                         }
-                        className="flex w-full windowDesktop:flex-[5] h-44 phablet:h-72 tablet:h-52 windowDesktop:h-full object-cover"
+                        className="flex w-full xl:flex-[5] h-44 sm:h-72 md:h-52 xl:h-full object-cover"
                       />
                     }
                   </div>

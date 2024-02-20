@@ -36,7 +36,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const swiperRef = React.useRef<SwiperType>();
   return (
-    <div className="flex flex-col gap-4 phablet:gap-8 tablet:gap-10 2xl:gap-12">
+    <div className="flex flex-col gap-4 sm:gap-8 md:gap-10 2xl:gap-12">
       <div>
         <Swiper
           onBeforeInit={(swiper) => {
@@ -65,14 +65,14 @@ const ReportsSlider = ({ response }: reportsprops) => {
               return (
                 <SwiperSlide
                   key={i}
-                  className="bg-[#333333] mt-3 phablet:mt-4 windowDesktop:mt-12"
+                  className="bg-[#333333] mt-3 sm:mt-4 xl:mt-12"
                 >
-                  <div className="flex flex-col py-6 px-[22px] h-80">
+                  <div className="flex flex-col py-6 px-[22px] md:h-72">
                     <div>
-                      <div className="line-clamp-2 font-bold text-white text-base phablet:text-2xl">
+                      <div className="line-clamp-2 font-bold text-white text-base sm:text-2xl">
                         {card?.attributes?.title}
                       </div>
-                      <div className="line-clamp-3 font-normal text-white mt-1 mb-6 tablet:mt-4 tablet:mb-14 text-sm tablet:text-xl">
+                      <div className="line-clamp-3 font-normal text-white mt-1 mb-6 md:mt-4 md:mb-14 text-sm md:text-xl">
                         {card?.attributes?.subtitle}
                       </div>
                     </div>
@@ -95,16 +95,16 @@ const ReportsSlider = ({ response }: reportsprops) => {
           )}
         </Swiper>
       </div>
-      <div className="tablet:pr-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
+      <div className="md:pr-12 flex whitespace-nowrap items-baseline md:items-stretch md:flex-col w-full gap-5">
         <CustomProgressBar
           currentIndex={activeIndex}
           totalSlides={response?.reports_and_publications_cards?.data?.length}
         />
         <div className="text-white flex justify-between">
-          <div className="text-white flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
+          <div className="text-white flex font-bold text-sm sm:text-base md:text-2xl">{`${
             activeIndex + 1
           } / ${response?.reports_and_publications_cards?.data?.length}`}</div>
-          <div className="text-white z-[5] gap-4 items-center hidden tablet:flex">
+          <div className="text-white z-[5] gap-4 items-center hidden md:flex">
             <button
               // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""
               //     }`}
