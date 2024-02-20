@@ -2,6 +2,7 @@
 import VideoPLayer from "@/components/video-player";
 import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import { formatDate } from "@/utils/api-helpers";
+import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
 
 interface inMediaProps {
@@ -52,7 +53,9 @@ export default function InMediaCards({ response }: inMediaProps) {
             }`}
             onClick={() =>
               router.push(
-                `/perspective/${featuredCard?.attributes?.type}/${featuredCard?.id}/${featuredCard?.attributes?.params_url}`
+                `/perspective/${paramCase(
+                  featuredCard?.attributes?.type
+                )}/${featuredCard?.id}/${featuredCard?.attributes?.params_url}`
               )
             }
           >
@@ -78,7 +81,9 @@ export default function InMediaCards({ response }: inMediaProps) {
                             }`}
                             onClick={() =>
                               router.push(
-                                `/perspective/${blog?.attributes?.type}/${blog?.id}/${blog?.attributes?.params_url}`
+                                `/perspective/${paramCase(
+                                  blog?.attributes?.type
+                                )}/${blog?.id}/${blog?.attributes?.params_url}`
                               )
                             }
                           >
@@ -123,7 +128,9 @@ export default function InMediaCards({ response }: inMediaProps) {
                       className="cursor-pointer"
                       onClick={() =>
                         router.push(
-                          `/perspective/${blog?.attributes?.type}/${blog?.id}/${blog?.attributes?.params_url}`
+                          `/perspective/${paramCase(
+                            blog?.attributes?.type
+                          )}/${blog?.id}/${blog?.attributes?.params_url}`
                         )
                       }
                     >

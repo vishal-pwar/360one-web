@@ -1,6 +1,7 @@
 "use client";
 
 import { formatDate } from "@/utils/api-helpers";
+import { paramCase } from "@pantelwar/js-utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Markdown from "react-markdown";
@@ -143,7 +144,8 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
               key={i}
               onClick={() =>
                 router.push(
-                  `/perspective/${i?.attributes?.type}/${i?.id}/${i?.attributes?.params_url}`
+                  `/perspective/${paramCase(i?.attributes?.type)}/${i?.id}/${i
+                    ?.attributes?.params_url}`
                 )
               }
               className="w-full cursor-pointer h-[450px] phablet:w-[calc(50%-16px)] tablet:w-[calc(33%-16px)]"

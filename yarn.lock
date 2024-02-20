@@ -397,6 +397,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@pantelwar/js-utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@pantelwar/js-utils/-/js-utils-0.2.1.tgz#418940319965f2f293c8f57cb934ed6e09803eab"
+  integrity sha512-umAShpG0c55wRLHXnJIFuR+dcWLwrtojxBn7FAO8S5NWhMAqrOinFQlwgBiAMtjsys9EAmT0CIaDaUfuOjx4vQ==
+
 "@pkgr/utils@^2.3.1":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.4.2.tgz#9e638bbe9a6a6f165580dc943f138fd3309a2cbc"

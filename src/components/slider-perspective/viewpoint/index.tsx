@@ -1,5 +1,6 @@
 "use client";
 import MediaCard from "@/components/perspective-mediaCard";
+import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -112,7 +113,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     "image"
                                   ) {
                                     router.push(
-                                      `/perspective/${firstCard?.attributes?.type}/${firstCard?.id}/${firstCard?.attributes?.params_url}`
+                                      `/perspective/${paramCase(
+                                        firstCard?.attributes?.type
+                                      )}/${firstCard?.id}/${firstCard
+                                        ?.attributes?.params_url}`
                                     );
                                   }
                                 }}
@@ -151,7 +155,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     "image"
                                   ) {
                                     router.push(
-                                      `/perspective/${secondCard?.attributes?.type}/${secondCard?.id}/${secondCard?.attributes?.params_url}`
+                                      `/perspective/${paramCase(
+                                        secondCard?.attributes?.type
+                                      )}/${secondCard?.id}/${secondCard
+                                        ?.attributes?.params_url}`
                                     );
                                   }
                                 }}
@@ -192,7 +199,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     "image"
                                   ) {
                                     router.push(
-                                      `/perspective/${thirdCard?.attributes?.type}/${thirdCard?.id}/${thirdCard?.attributes?.params_url}`
+                                      `/perspective/${paramCase(
+                                        thirdCard?.attributes?.type
+                                      )}/${thirdCard?.id}/${thirdCard
+                                        ?.attributes?.params_url}`
                                     );
                                   }
                                 }}
@@ -231,7 +241,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                       "image"
                                     ) {
                                       router.push(
-                                        `/perspective/${fourthCard?.attributes?.type}/${fourthCard?.id}/${fourthCard?.attributes?.params_url}`
+                                        `/perspective/${paramCase(
+                                          fourthCard?.attributes?.type
+                                        )}/${fourthCard?.id}/${fourthCard
+                                          ?.attributes?.params_url}`
                                       );
                                     }
                                   }}
@@ -274,7 +287,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                       "image"
                                     ) {
                                       router.push(
-                                        `/perspective/${fifthCard?.attributes?.type}/${fifthCard?.id}/${fifthCard?.attributes?.params_url}`
+                                        `/perspective/${paramCase(
+                                          fifthCard?.attributes?.type
+                                        )}/${fifthCard?.id}/${fifthCard
+                                          ?.attributes?.params_url}`
                                       );
                                     }
                                   }}

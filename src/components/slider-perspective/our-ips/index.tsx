@@ -1,5 +1,6 @@
 "use client";
 import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
+import { paramCase } from "@pantelwar/js-utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -160,7 +161,9 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                         }`}
                         onClick={() => {
                           router.push(
-                            `/perspective/${data?.attributes?.type}/${data?.id}/${data?.attributes?.params_url}`
+                            `/perspective/${paramCase(
+                              data?.attributes?.type
+                            )}/${data?.id}/${data?.attributes?.params_url}`
                           );
                         }}
                       >
