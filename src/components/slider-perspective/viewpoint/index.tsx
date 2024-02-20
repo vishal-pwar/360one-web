@@ -65,7 +65,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
   return (
     <>
       {response?.articles?.data?.length > 3 ? (
-        <section className="px-6 pt-10 sm:pt-7 sm:px-12 md:pt-12 md:pl-20 xl:pl-16 xl:pt-[75px] xl:py-[35px]">
+        <section className="px-6 pt-10 sm:pt-7 sm:px-12 md:pt-12 xl:pl-16 xl:pt-[75px] xl:py-[35px]">
           <div className="font-bold text-[28px] sm:text-[32px] md:text-[42px]">
             {title}
           </div>

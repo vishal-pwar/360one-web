@@ -1,7 +1,5 @@
 "use client";
-import arrowImage from "@/public/assets/icons/right-arrow-white.svg";
 import { paramCase } from "@pantelwar/js-utils";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -52,15 +50,15 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
   return (
     <>
       {totalCards > 0 ? (
-        <section className="relative text-white p-6 phablet:p-12 tablet:pl-20 windowDesktop:pl-16">
-          <div className="tablet:absolute tablet:w-[50%] tablet:top-[15%]">
-            <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+        <section className="relative text-white p-6 sm:p-12 xl:pl-16">
+          <div className="xl:absolute xl:w-[50%] xl:top-[15%]">
+            <div className="flex font-bold text-[28px] sm:text-[32px] xl:text-[42px]">
               {response?.title}
             </div>
-            <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-4 phablet:mb-6 tablet:mt-4">
+            <div className="flex font-normal text-base sm:text-lg xl:text-xl mt-3 mb-4 sm:mb-6 xl:mt-4">
               {response?.subtitle}
             </div>
-            <div className="hidden windowDesktop:flex flex-col gap-5 mt-28">
+            <div className="hidden xl:flex flex-col gap-5 mt-28">
               <CustomProgressBar
                 currentIndex={
                   needsDuplicates
@@ -81,32 +79,23 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                 </div>
                 <div className="flex absolute right-0 bottom-0 z-[5] gap-4 items-center">
                   <button
-                    // className={`p-0 mt-[3px] ${
-                    //   activeIndex === 0 ? "opacity-25" : ""
-                    // }`}
-                    // disabled={activeIndex === 0}
                     className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
-                    <Image
-                      src={arrowImage}
+                    <img
+                      src={"assets/icons/right-arrow-white.svg"}
                       alt="left arrow"
                       className="rotate-180"
                       onClick={() => swiperRef.current?.slidePrev()}
                     />
                   </button>
                   <button
-                    // className={`p-0 ${
-                    //   activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    // }`}
-                    // disabled={activeIndex === totalCards - 1}
                     className={`p-0`}
                     onClick={() => swiperRef.current?.slideNext()}
                   >
-                    <Image
-                      src={arrowImage}
+                    <img
+                      src={"assets/icons/right-arrow-white.svg"}
                       alt="right arrow"
-                      // className='bg-black'
                       onClick={() => swiperRef.current?.slideNext()}
                     />
                   </button>
@@ -125,7 +114,7 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             onSlideChange={(e) => setActiveIndex(e.realIndex)}
             className="curated-swiper w-full"
             breakpoints={{
-              1200: {
+              1280: {
                 slidesPerView: totalCards >= 4 ? 4 : totalCards,
               },
             }}
@@ -134,9 +123,9 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
               return (
                 <SwiperSlide
                   key={i}
-                  className={`flex pl-7 ${
+                  className={`flex xl:pl-7 ${
                     activeIndex === i
-                      ? "tablet:basis-[450px] windowDesktop:basis-[600px]"
+                      ? "xl:basis-[500px] 2xl:basis-[650px]"
                       : ""
                   }`}
                 >
@@ -150,17 +139,17 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                       }
                       className={`object-cover w-full ${
                         activeIndex === i
-                          ? "h-[366px] tablet:h-[521px] windowDesktop:h-[700px] opacity-60"
-                          : "h-[366px] tablet:h-48 windowDesktop:h-60 opacity-90"
+                          ? "h-[366px] md:h-[521px] xl:h-[700px] opacity-60"
+                          : "h-[366px] md:h-48 xl:h-60 opacity-90"
                       }`}
                     />
                   </div>
                   {activeIndex === i ? (
-                    <div className="flex flex-col items-end p-4 phablet:p-9 windowDesktop:p-12 gap-2 windowDesktop:gap-4 w-full bottom-0 absolute">
-                      <div className="flex items-end text-left font-bold text-lg phablet:text-[28px] text-white">
+                    <div className="flex flex-col items-end p-4 sm:p-6 xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
+                      <div className="flex items-end text-left font-bold text-lg sm:text-[28px] text-white">
                         {data?.attributes?.tag}
                       </div>
-                      <div className="flex items-end text-left font-medium text-sm tablet:text-lg windowDesktop:text-xl text-white">
+                      <div className="flex items-end text-left font-medium text-sm md:text-lg xl:text-xl text-white">
                         {data?.attributes?.title}
                       </div>
                       <button
@@ -186,39 +175,38 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
             })}
           </Swiper>
           <div className="flex justify-end">
-            <div className="windowDesktop:hidden w-full tablet:basis-[450px] windowDesktop::basis-[800px] gap-5 mt-4 phablet:mt-8 tablet:mt-9 flex whitespace-nowrap items-center tablet:items-stretch tablet:flex-col">
+            <div className="xl:hidden w-full gap-5 mt-4 sm:mt-8 md:mt-9 flex whitespace-nowrap items-center md:items-stretch md:flex-col">
               <CustomProgressBar
-                currentIndex={activeIndex}
-                totalSlides={response?.articles?.data?.length}
+                currentIndex={
+                  needsDuplicates
+                    ? (activeIndex + duplicates - 2) % duplicates
+                    : activeIndex
+                }
+                totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div className="flex justify-between">
-                <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl text-white">{`${
-                  activeIndex + 1
-                } / ${response?.articles?.data?.length}`}</div>
-                <div className="z-[5] gap-4 hidden tablet:flex">
-                  <button
-                    className={`p-0 mt-[3px] ${
-                      activeIndex === 0 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === 0}
-                    onClick={() => swiperRef.current?.slidePrev()}
-                  >
-                    <Image
-                      src={arrowImage}
+                <div className="flex font-bold text-sm sm:text-base md:text-2xl text-white">
+                  {/* {`${activeIndex + 1} / ${response?.articles?.data?.length}`} */}
+                  {needsDuplicates
+                    ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
+                        cards?.length - duplicates
+                      }`
+                    : `${
+                        ((activeIndex + cards?.length - 2) % cards?.length) + 1
+                      } / ${cards?.length}`}
+                </div>
+                <div className="z-[5] gap-4 hidden md:flex">
+                  <button onClick={() => swiperRef.current?.slidePrev()}>
+                    <img
+                      src={"assets/icons/right-arrow-white.svg"}
                       alt="left arrow"
                       className="rotate-180"
                       onClick={() => swiperRef.current?.slidePrev()}
                     />
                   </button>
-                  <button
-                    className={`p-0 ${
-                      activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    }`}
-                    disabled={activeIndex === totalCards - 1}
-                    onClick={() => swiperRef.current?.slideNext()}
-                  >
-                    <Image
-                      src={arrowImage}
+                  <button onClick={() => swiperRef.current?.slideNext()}>
+                    <img
+                      src={"assets/icons/right-arrow-white.svg"}
                       alt="right arrow"
                       onClick={() => swiperRef.current?.slideNext()}
                     />
