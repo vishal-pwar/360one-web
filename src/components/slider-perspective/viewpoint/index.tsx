@@ -1,5 +1,6 @@
 "use client";
 import MediaCard from "@/components/perspective-mediaCard";
+import useWindowDimensions from "@/hooks/dimensions";
 import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -16,6 +17,7 @@ interface viewpointprops {
 
 const ViewpointSlider = ({ response }: viewpointprops) => {
   const router = useRouter();
+  const windowDimensions = useWindowDimensions();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [firstPost, setFirstPost] = React.useState(1);
   const [secondPost, setSecondPost] = React.useState(2);
@@ -54,20 +56,20 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
     setFourthPost(a + 3);
     setFifthPost(a + 4);
 
-    const breakpoint = "1600px";
+    const breakpoint = "1280px";
     setCardsPerSlide(
-      window.innerWidth < parseInt(breakpoint.toString()) ? 2 : 5
+      windowDimensions.width < parseInt(breakpoint.toString()) ? 2 : 5
     );
-  }, [activeIndex, cardsPerSlide]);
+  }, [activeIndex, cardsPerSlide, windowDimensions]);
 
   return (
     <>
       {response?.articles?.data?.length > 3 ? (
-        <section className="px-6 pt-10 phablet:pt-7 phablet:px-12 tablet:pt-12 tablet:pl-20 windowDesktop:pl-16 windowDesktop:pt-[75px] windowDesktop:py-[35px]">
-          <div className="font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+        <section className="px-6 pt-10 sm:pt-7 sm:px-12 md:pt-12 md:pl-20 xl:pl-16 xl:pt-[75px] xl:py-[35px]">
+          <div className="font-bold text-[28px] sm:text-[32px] md:text-[42px]">
             {title}
           </div>
-          <div className="font-normal text-base phablet:text-lg tablet:text-xl mt-3 mb-6 phablet:mb-10 tablet:mb-0 tablet:mt-4 tablet:max-w-4xl">
+          <div className="font-normal text-base sm:text-lg md:text-xl mt-2 mb-3 sm:mb-10 md:mb-0 md:mt-4 md:max-w-4xl">
             {description}
           </div>
 
@@ -100,13 +102,13 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                     return (
                       <SwiperSlide
                         key={i}
-                        className="bg-[#333333] mt-3 phablet:mt-4 windowDesktop:mt-10"
+                        className="bg-[#333333] mt-3 sm:mt-4 xl:mt-10"
                       >
                         <div className="flex flex-col gap-11 bg-[#F4F0EF]">
-                          <div className="flex flex-col gap-3 phablet:gap-4 tablet:flex-row tablet:gap-3 windowDesktop:gap-6 w-full">
+                          <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:gap-3 xl:gap-6 w-full">
                             {firstCard?.attributes?.title?.length > 0 ? (
                               <div
-                                className="flex  tablet:flex-[7] flex-col bg-black cursor-pointer"
+                                className="flex  md:flex-[7] flex-col bg-black cursor-pointer"
                                 onClick={() => {
                                   if (
                                     firstCard?.attributes?.media_type ===
@@ -121,7 +123,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                 }}
                               >
-                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
+                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-orange-400 p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {firstCard?.attributes?.tag}
                                 </p>
                                 <MediaCard
@@ -133,13 +135,13 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   href={
                                     firstCard?.attributes?.youtube_link || ""
                                   }
-                                  className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
+                                  className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
                                 />
-                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12 tablet:h-[100%]">
-                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
+                                  <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {firstCard?.attributes?.title}
                                   </div>
-                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
+                                  <div className="font-normal text-xs sm:text-sm md:text-base xl:text-lg">
                                     {firstCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -148,7 +150,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
 
                             {secondCard?.attributes?.title?.length > 0 ? (
                               <div
-                                className="flex tablet:flex-[5] flex-col cursor-pointer"
+                                className="flex md:flex-[5] flex-col cursor-pointer"
                                 onClick={() => {
                                   if (
                                     secondCard?.attributes?.media_type ===
@@ -163,7 +165,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                 }}
                               >
-                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs phablet:text-sm text-white bg-orange-400 p-2 tablet:py-4 tablet:px-8 absolute mt-3 phablet:mt-6 tablet:mt-8">
+                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-orange-400 p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {secondCard?.attributes?.tag}
                                 </p>
                                 <MediaCard
@@ -175,13 +177,13 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   href={
                                     secondCard?.attributes?.youtube_link || ""
                                   }
-                                  className="object-cover w-full h-[140px] phablet:h-[380px] tablet:h-[400px] "
+                                  className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
                                 />
-                                <div className="flex flex-col gap-6 text-black bg-white p-3 phablet:p-6 tablet:p-9 windowDesktop:p-12 tablet:h-[100%]">
-                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                <div className="flex flex-col gap-6 text-black bg-white p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
+                                  <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {secondCard?.attributes?.title}
                                   </div>
-                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
+                                  <div className="font-normal text-xs sm:text-sm md:text-base xl:text-lg">
                                     {secondCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -189,7 +191,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                             ) : null}
                           </div>
 
-                          <div className="hidden windowDesktop:flex gap-6 w-full">
+                          <div className="hidden xl:flex gap-6 w-full">
                             {thirdCard?.attributes?.title?.length > 0 ? (
                               <div
                                 className="flex flex-[4] flex-col cursor-pointer"
@@ -222,10 +224,10 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   className="object-cover w-full h-full"
                                 />
                                 <div className=" flex flex-col gap-6 text-white bg-[#404546] p-9">
-                                  <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                  <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {thirdCard?.attributes?.title}
                                   </div>
-                                  <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
+                                  <div className="font-normal text-xs sm:text-sm md:text-base xl:text-lg">
                                     {thirdCard?.attributes?.publication_source}
                                   </div>
                                 </div>
@@ -263,13 +265,13 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     href={
                                       fourthCard?.attributes?.youtube_link || ""
                                     }
-                                    className="object-cover w-[400px] h-[230px] "
+                                    className="object-cover w-[400px] h-[300px]"
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12 justify-center">
-                                    <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                    <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                       {fourthCard?.attributes?.title}
                                     </div>
-                                    <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
+                                    <div className="font-normal text-xs sm:text-sm md:text-base xl:text-lg">
                                       {
                                         fourthCard?.attributes
                                           ?.publication_source
@@ -309,13 +311,13 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     href={
                                       fifthCard?.attributes?.youtube_link || ""
                                     }
-                                    className="object-cover w-[400px] h-[230px] "
+                                    className="object-cover w-[400px] h-[300px] "
                                   />
                                   <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12 justify-center">
-                                    <div className="line-clamp-2 font-medium phablet:font-bold text-sm phablet:text-base tablet:text-xl">
+                                    <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                       {fifthCard?.attributes?.title}
                                     </div>
-                                    <div className="font-normal text-xs phablet:text-sm tablet:text-base windowDesktop:text-lg">
+                                    <div className="font-normal text-xs sm:text-sm md:text-base xl:text-lg">
                                       {
                                         fifthCard?.attributes
                                           ?.publication_source
@@ -334,7 +336,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
             </Swiper>
           ) : null}
 
-          <div className="mt-2 phablet:mt-8 windowDesktop:mt-12 flex whitespace-nowrap items-baseline tablet:items-stretch tablet:flex-col w-full gap-5">
+          <div className="mt-2 sm:mt-8 xl:mt-12 flex whitespace-nowrap items-baseline md:items-stretch md:flex-col w-full gap-5">
             <CustomProgressBar
               currentIndex={Math.min(
                 activeIndex + 5,
@@ -343,14 +345,14 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
               totalSlides={response?.articles?.data?.length}
             />
             <div className="flex justify-between pb-12">
-              <div className="flex font-bold text-sm phablet:text-base tablet:text-2xl">{`${
+              <div className="flex font-bold text-sm sm:text-base md:text-2xl">{`${
                 activeIndex + 1
               } / ${
                 cardsPerSlide === 2
                   ? Math.ceil(response?.articles?.data?.length / cardsPerSlide)
                   : Math.floor(response?.articles?.data?.length / cardsPerSlide)
               }`}</div>
-              <div className="hidden tablet:flex z-[5] gap-4 items-center">
+              <div className="hidden md:flex z-[5] gap-4 items-center">
                 <button
                   // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""
                   //     }`}

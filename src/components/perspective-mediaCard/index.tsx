@@ -1,5 +1,4 @@
 "use client";
-import PlayIcon from "@/public/assets/icons/playIcon.svg";
 import VideoPLayer from "../video-player";
 interface MediaCardProps {
   mediaType: "image" | "video" | "youtube";
@@ -47,7 +46,7 @@ const MediaCard = ({
               />
             </div>
             <VideoPLayer
-              iconUrl={PlayIcon}
+              iconUrl={"assets/icons/playIcon.svg"}
               videoUrl={media?.data?.attributes?.url}
             />
           </div>

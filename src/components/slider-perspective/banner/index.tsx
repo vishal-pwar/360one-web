@@ -220,7 +220,7 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
               })}
             </Swiper>
           </div>
-          <div className="bg-[#F4F0EF] flex whitespace-nowrap items-center md:items-stretch md:flex-col w-full gap-5 py-6 px-6 sm:px-11 md:px-16">
+          <div className="bg-[#F4F0EF] flex whitespace-nowrap items-center md:items-stretch md:flex-col w-full gap-5 pt-6 px-6 sm:px-11 md:px-16">
             <CustomProgressBar
               currentIndex={
                 needsDuplicates
