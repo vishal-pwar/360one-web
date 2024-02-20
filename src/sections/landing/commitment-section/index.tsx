@@ -29,7 +29,7 @@ const CommitmentSection = async () => {
         <p className="max-sm:mb-[calc(22*var(--scale))] max-md:mb-[calc(16*var(--scale))] max-md:leading-[1.5] max-lg:mb-[calc(24*var(--scale))] max-lg:max-w-[calc(822*var(--scale))] text-[calc(1*var(--size-20))] mt-0 mb-[calc(32*var(--scale))] max-w-[calc(1278*var(--scale))] leading-[1.5]">
           {text}
         </p>
-        <div className="max-sm:h-[calc(172*var(--scale))] max-sm:ml-[calc(22*var(--scale))] max-md:h-[calc(268*var(--scale))] max-lg:h-[calc(358*var(--scale))] w-full h-[calc(560*var(--scale))] relative">
+        <div className="max-sm:h-[calc(172*var(--scale))] max-sm:ml-[calc(22*var(--scale))] max-md:h-[calc(268*var(--scale))] max-lg:h-[calc(358*var(--scale))] w-full h-[calc(560*var(--scale))] relative z-10">
           <ScrollImage
             src={clearImageUrl}
             blurImageUrl={blurImageUrl}

@@ -44,7 +44,7 @@ export const ScrollImage = ({
   return (
     <>
       <Image
-        className="absolute top-0 left-0 w-full h-full object-cover object-[left_center]"
+        className="absolute top-0 left-0 w-full h-full object-[left_center]"
         src={src}
         alt={alt}
         title={title}
@@ -52,7 +52,7 @@ export const ScrollImage = ({
         height={height}
       />
       <Image
-        className={`absolute top-0 left-0 w-full h-full object-cover object-[left_center] transition-all duration-300 ease-in ${
+        className={`absolute top-0 left-0 w-full h-full object-[left_center] transition-all duration-300 ease-in ${
           isScrolling ? "opacity-[1]" : "opacity-0"
         }`}
         src={blurImageUrl}
