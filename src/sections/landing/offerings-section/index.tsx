@@ -46,7 +46,7 @@ const OfferingsSection = async () => {
         </p>
         <div className="max-sm:flex max-sm:flex-col max-sm:h-auto max-sm:items-center max-md:ml-0 max-md:h-[calc(303*var(--scale))] max-lg:h-[calc(404*var(--scale))] max-lg:ml-[calc(50*var(--scale))] w-full h-[calc(632*var(--scale))] relative">
           {/* translate-y-[11.315px] transition ease-linear duration-150 */}
-          <div className="max-sm:ml-0 max-sm:w-[111.5%] max-sm:h-[calc(303*var(--scale))] max-md:w-[92%] max-md:ml-[calc(98*var(--scale))] h-full w-[91.4%] ml-auto relative">
+          <div className="max-sm:ml-0 max-sm:w-[111.5%] max-sm:h-[calc(303*var(--scale))] max-md:w-[92%] max-md:ml-[calc(98*var(--scale))] h-full w-[91.4%] ml-auto relative object-contain">
             <ScrollImage
               src={firstClearImageUrl}
               blurImageUrl={firstBlurImageUrl}
