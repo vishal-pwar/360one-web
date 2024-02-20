@@ -67,7 +67,7 @@ const ReportsSlider = ({ response }: reportsprops) => {
                   key={i}
                   className="bg-[#333333] mt-3 sm:mt-4 xl:mt-12"
                 >
-                  <div className="flex flex-col py-6 px-[22px] md:h-72">
+                  <div className="flex flex-col py-6 px-[22px] md:h-72 xl:h-80">
                     <div>
                       <div className="line-clamp-2 font-bold text-white text-base sm:text-2xl">
                         {card?.attributes?.title}
