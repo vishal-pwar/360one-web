@@ -1,7 +1,5 @@
 "use client";
-import arrowImage from "@/public/assets/icons/Right-arrow-black.svg";
 import { paramCase } from "@pantelwar/js-utils";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Swiper as SwiperType } from "swiper";
@@ -25,9 +23,9 @@ const CustomProgressBar = ({
   const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
 
   return (
-    <div className="w-full relative flex h-[2px] bg-[#FEA079] tablet:bg-gray-200">
+    <div className="w-full relative flex h-[2px] bg-[#FEA079] md:bg-gray-200">
       <div
-        className="absolute top-0 left-0 h-full bg-white tablet:bg-black transition-all duration-300"
+        className="absolute top-0 left-0 h-full bg-white md:bg-black transition-all duration-300"
         style={{ width: `${progressPercentage}%` }}
       />
     </div>
@@ -51,14 +49,14 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
     <>
       {totalCards > 0 ? (
         <section className="relative text-black">
-          <div className="tablet:absolute tablet:w-[50%] tablet:top-[5%] p-6 phablet:p-12 tablet:pl-20 desktop:pl-16">
-            <div className="flex font-bold text-[28px] phablet:text-[32px] tablet:text-[42px]">
+          <div className="xl:absolute xl:w-[50%] xl:top-[5%] px-6 sm:px-12 xl:pl-16">
+            <div className="flex font-bold text-[28px] sm:text-[32px] md:text-[42px]">
               {response?.title}
             </div>
-            <div className="flex font-normal text-base phablet:text-lg tablet:text-xl mt-3 phablet:mb-9 tablet:mt-4 tablet:mb-12">
+            <div className="flex font-normal text-base sm:text-lg md:text-xl mt-3 sm:mb-9 md:mt-4 md:mb-12">
               {response?.subtitle}
             </div>
-            <div className="hidden tablet:flex flex-col gap-5">
+            <div className="hidden xl:flex flex-col gap-5">
               <CustomProgressBar
                 currentIndex={
                   needsDuplicates
@@ -68,7 +66,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div className="flex justify-between">
-                <div className="flex font-bold text-base tablet:text-2xl">
+                <div className="flex font-bold text-base md:text-2xl">
                   {needsDuplicates
                     ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
                         cards?.length - duplicates
@@ -82,8 +80,8 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slidePrev()}
                   >
-                    <Image
-                      src={arrowImage}
+                    <img
+                      src={"assets/icons/Right-arrow-black.svg"}
                       alt="left arrow"
                       className="rotate-180"
                       onClick={() => swiperRef.current?.slidePrev()}
@@ -93,8 +91,8 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     className={`p-0 mt-[3px]`}
                     onClick={() => swiperRef.current?.slideNext()}
                   >
-                    <Image
-                      src={arrowImage}
+                    <img
+                      src={"assets/icons/Right-arrow-black.svg"}
                       alt="right arrow"
                       onClick={() => swiperRef.current?.slideNext()}
                     />
@@ -115,7 +113,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             onSlideChange={(e) => setActiveIndex(e.realIndex)}
             className="curated-swiper w-full"
             breakpoints={{
-              1200: {
+              1280: {
                 slidesPerView: totalCards >= 4 ? 4 : totalCards,
               },
             }}
@@ -126,7 +124,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                   key={i}
                   className={`flex pl-7 ${
                     activeIndex === i
-                      ? "tablet:basis-[600px] desktop:basis-[830px]"
+                      ? "xl:basis-[700px] 2xl:basis-[830px]"
                       : ""
                   }`}
                 >
@@ -140,21 +138,21 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                       }
                       className={`object-cover w-full ${
                         activeIndex === i
-                          ? "h-[265px] phablet:h-[440px] tablet:h-[460px]"
-                          : "h-[265px] phablet:h-[440px] tablet:h-64"
+                          ? "h-[265px] sm:h-[440px] md:h-[460px]"
+                          : "h-[265px] sm:h-[440px] md:h-64"
                       }`}
                     />
                   </div>
                   {activeIndex === i ? (
-                    <div className="flex flex-col items-end p-5 phablet:p-9 tablet:p-12 gap-2 tablet:gap-4 w-full bg-[#FD7740]">
-                      <div className="flex items-end text-left font-bold text-lg phablet:text-2xl tablet:text-[28px] text-white">
+                    <div className="flex flex-col items-end p-5 sm:p-9 md:p-12 gap-2 md:gap-4 w-full bg-[#FD7740]">
+                      <div className="flex items-end text-left font-bold text-lg sm:text-2xl md:text-[28px] text-white">
                         {data?.attributes?.tag}
                       </div>
-                      <div className="flex items-end text-left font-medium text-sm tablet:text-xl text-white">
+                      <div className="flex items-end text-left font-medium text-sm md:text-xl text-white">
                         {data?.attributes?.title}
                       </div>
                       <button
-                        className={`hidden desktop:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
+                        className={`hidden xl:flex py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
                           data?.attributes?.is_article === false
                             ? "hidden opacity-0"
                             : ""
@@ -176,8 +174,8 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             })}
           </Swiper>
 
-          <div className="flex justify-end bg-[#FD7740] tablet:bg-white">
-            <div className="tablet:hidden tablet:basis-[500px] gap-5 pt-5 px-6 tablet:px-0 mb-10 flex whitespace-nowrap items-center w-full text-white">
+          <div className="flex justify-end bg-[#FD7740] md:bg-white">
+            <div className="xl:hidden gap-5 pt-5 px-6 mb-10 flex whitespace-nowrap items-center w-full text-white">
               <CustomProgressBar
                 currentIndex={
                   needsDuplicates
@@ -187,7 +185,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                 totalSlides={needsDuplicates ? duplicates : cards?.length}
               />
               <div className="flex justify-between">
-                <div className="flex font-bold text-base tablet:text-2xl">
+                <div className="flex font-bold text-base md:text-2xl">
                   {needsDuplicates
                     ? `${((activeIndex + duplicates - 2) % duplicates) + 1} / ${
                         cards?.length - duplicates
@@ -196,30 +194,18 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                         ((activeIndex + cards?.length - 2) % cards?.length) + 1
                       } / ${cards?.length}`}
                 </div>
-                <div className="z-[5] gap-4 items-center hidden tablet:flex">
-                  <button
-                    // className={`p-0 mt-[3px] ${
-                    //   activeIndex === 0 ? "opacity-25" : ""
-                    // }`}
-                    // disabled={activeIndex === 0}
-                    onClick={() => swiperRef.current?.slidePrev()}
-                  >
-                    <Image
-                      src={arrowImage}
+                <div className="z-[5] gap-4 items-center hidden md:flex">
+                  <button onClick={() => swiperRef.current?.slidePrev()}>
+                    <img
+                      src={"assets/icons/Right-arrow-black.svg"}
                       alt="left arrow"
                       className="rotate-180"
                       onClick={() => swiperRef.current?.slidePrev()}
                     />
                   </button>
-                  <button
-                    // className={`p-0 ${
-                    //   activeIndex === totalCards - 1 ? "opacity-25" : ""
-                    // }`}
-                    // disabled={activeIndex === totalCards - 1}
-                    onClick={() => swiperRef.current?.slideNext()}
-                  >
-                    <Image
-                      src={arrowImage}
+                  <button onClick={() => swiperRef.current?.slideNext()}>
+                    <img
+                      src={"assets/icons/Right-arrow-black.svg"}
                       alt="right arrow"
                       onClick={() => swiperRef.current?.slideNext()}
                     />
