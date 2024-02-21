@@ -1,4 +1,5 @@
 "use client";
+import MediaCard from "@/components/perspective-mediaCard";
 import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -130,13 +131,11 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   }`}
                 >
                   <div className="bg-black">
-                    <img
-                      key={i}
-                      src={data?.attributes?.cover?.data?.attributes?.url}
-                      alt={
-                        data?.attributes?.cover?.data?.attributes
-                          ?.alternativeText
-                      }
+                    <MediaCard
+                      mediaType={data?.attributes?.media_type}
+                      media={data?.attributes?.cover}
+                      thumbnail={data?.attributes?.video_thumbnail}
+                      href={data?.attributes?.youtube_link || ""}
                       className={`object-cover w-full ${
                         activeIndex === i
                           ? "h-[366px] md:h-[521px] xl:h-[700px] opacity-60"
@@ -146,12 +145,18 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                   </div>
                   {activeIndex === i ? (
                     <div className="flex flex-col items-end p-4 sm:p-6 xl:p-12 gap-2 xl:gap-4 w-full bottom-0 absolute">
-                      <div className="flex items-end text-left font-bold text-lg sm:text-[28px] text-white">
+                      <div
+                        dir="ltr"
+                        className="flex items-end text-left font-bold text-lg sm:text-[28px] text-white"
+                      >
                         {data?.attributes?.tag}
                       </div>
-                      <div className="flex items-end text-left font-medium text-sm md:text-lg xl:text-xl text-white">
+                      <p
+                        dir="ltr"
+                        className="flex items-end text-left font-medium text-sm md:text-lg xl:text-xl text-white"
+                      >
                         {data?.attributes?.title}
-                      </div>
+                      </p>
                       <button
                         className={`py-4 px-7 border-2 border-white text-white text-sm font-bold font-space-grotesk ${
                           data?.attributes?.is_article === false

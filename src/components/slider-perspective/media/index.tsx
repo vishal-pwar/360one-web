@@ -1,5 +1,5 @@
 "use client";
-import VideoPLayer from "@/components/video-player";
+import MediaCard from "@/components/perspective-mediaCard";
 import { formatDate } from "@/utils/api-helpers";
 import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,11 @@ interface inMediaProps {
 }
 
 export default function InMediaCards({ response }: inMediaProps) {
+  console.log(
+    response?.data?.attributes.media.articles.data[1]?.attributes?.cover?.data
+      ?.attributes?.url
+  );
+
   const featuredCard = response?.data?.attributes?.media?.articles?.data?.[0];
   const router = useRouter();
 
@@ -24,8 +29,8 @@ export default function InMediaCards({ response }: inMediaProps) {
             {response?.data?.attributes?.media?.subtitle}
           </div>
           <div className="relative">
-            <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 md:px-16 md:py-4 md:mt-6">
-              FEATURED
+            <div className="absolute bg-[#FD7740] font-bold text-sm text-white px-6 py-2 mt-6 md:px-10 md:py-3 md:mt-6">
+              Featured
             </div>
             <img
               src={featuredCard?.attributes?.cover?.data?.attributes?.url}
@@ -68,70 +73,80 @@ export default function InMediaCards({ response }: inMediaProps) {
                 ?.slice(0, 13)
                 ?.map((blog: any, index: number) => (
                   <>
-                    {blog?.attributes?.cover?.data !== null && (
-                      <>
-                        {blog?.attributes?.cover?.data?.attributes?.mime.includes(
-                          "image"
-                        ) ? (
-                          <div
-                            className={`flex flex-col cursor-pointer sm:flex-row sm:gap-4 md:gap-0 md:flex-col ${
-                              index >= 3 ? "hidden lg:block" : ""
-                            }`}
-                            onClick={() =>
-                              router.push(
-                                `/perspective/${paramCase(
-                                  blog?.attributes?.type
-                                )}/${blog?.id}/${blog?.attributes?.params_url}`
-                              )
-                            }
-                          >
-                            <img
-                              src={
-                                blog?.attributes?.cover?.data?.attributes?.url
-                              }
-                              alt={
-                                blog?.attributes?.cover?.data?.attributes
-                                  ?.alternativeText
-                              }
-                              className="w-full object-cover h-[135px] sm:h-[135px] md:h-[300px] xl:h-[326px] mt-5 md:mb-5 xl:mb-0"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-full relative flex items-center justify-center">
-                            <div className="w-full bg-black">
-                              <img
-                                src={
-                                  blog?.attributes?.thumbnail?.data?.attributes
-                                    ?.url
-                                }
-                                alt={
-                                  blog?.attributes?.thumbnail?.data?.attributes
-                                    ?.alternativeText
-                                }
-                                className="flex w-[100%] object-cover h-[135px] sm:h-[135px] md:h-[300px] xl:h-[326px] mt-5 md:mb-5 xl:mb-0 opacity-60"
-                              />
-                            </div>
-                            <VideoPLayer
-                              iconUrl={"assets/icons/playIcon.svg"}
-                              videoUrl={
-                                blog?.attributes?.cover?.data?.attributes?.url
-                              }
-                            />
-                          </div>
-                        )}
-                      </>
+                    {blog?.attributes?.media_type.includes("image") ? null : (
+                      <MediaCard
+                        mediaType={blog?.attributes?.media_type}
+                        media={blog?.attributes?.cover}
+                        thumbnail={blog?.attributes?.video_thumbnail}
+                        href={blog?.attributes?.youtube_link || ""}
+                        className={`flex w-[100%] object-cover h-[135px] sm:h-[135px] md:h-[300px] xl:h-[326px] mt-5 md:mb-5 xl:mb-0 opacity-60 ${
+                          index >= 3 ? "hidden lg:block" : ""
+                        }`}
+                      />
                     )}
+
+                    {/* {blog?.attributes?.media_type.includes("youtube") ? (
+                      <div
+                        className={`flex flex-col cursor-pointer sm:flex-row sm:gap-4 md:gap-0 md:flex-col ${
+                          index >= 3 ? "hidden lg:block" : ""
+                        }`}
+                      >
+                        <img
+                          src={
+                            blog?.attributes?.video_thumbnail?.data?.attributes
+                              ?.url
+                          }
+                          alt={
+                            blog?.attributes?.video_thumbnail?.data?.attributes
+                              ?.alternativeText
+                          }
+                          className="w-full object-cover h-[135px] sm:h-[135px] md:h-[300px] xl:h-[326px] mt-5 md:mb-5 xl:mb-0"
+                        />
+                      </div>
+                    ) : blog?.attributes?.media_type.includes("video") ? (
+                      <div className="w-full relative flex items-center justify-center">
+                        <div className="w-full bg-black">
+                          <img
+                            src={
+                              blog?.attributes?.video_thumbnail?.data
+                                ?.attributes?.url
+                            }
+                            alt={
+                              blog?.attributes?.video_thumbnail?.data
+                                ?.attributes?.alternativeText
+                            }
+                            className="flex w-[100%] object-cover h-[135px] sm:h-[135px] md:h-[300px] xl:h-[326px] mt-5 md:mb-5 xl:mb-0 opacity-60"
+                          />
+                        </div>
+                        <VideoPLayer
+                          iconUrl={"assets/icons/playIcon.svg"}
+                          videoUrl={
+                            blog?.attributes?.cover?.data?.attributes?.url
+                          }
+                        />
+                      </div>
+                    ) : null} */}
 
                     <div
                       className={`cursor-pointer ${
                         index >= 3 ? "hidden lg:block" : ""
                       }`}
-                      onClick={() =>
-                        router.push(
-                          `/perspective/${paramCase(
-                            blog?.attributes?.type
-                          )}/${blog?.id}/${blog?.attributes?.params_url}`
-                        )
+                      // onClick={() =>
+                      //   router.push(
+                      //     `/perspective/${paramCase(
+                      //       blog?.attributes?.type
+                      //     )}/${blog?.id}/${blog?.attributes?.params_url}`
+                      //   )
+                      // }
+                      onClick={
+                        blog?.attributes?.media_type.includes("image")
+                          ? () =>
+                              router.push(
+                                `/perspective/${paramCase(
+                                  blog?.attributes?.type
+                                )}/${blog?.id}/${blog?.attributes?.params_url}`
+                              )
+                          : undefined
                       }
                     >
                       <div>

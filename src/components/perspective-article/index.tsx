@@ -1,6 +1,7 @@
 "use client";
 
 import { formatDate } from "@/utils/api-helpers";
+import { paramCase } from "@pantelwar/js-utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Markdown from "react-markdown";
@@ -41,7 +42,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
             </div>
           </div>
           <div className="hidden lg:flex h-200 bg-[#4F4F4F] w-[1px]"></div>
-          <div className="p-8">
+          <div className="p-4 xl:p-8">
             <div className="font-normal text-sm text-[#9A9A9A]">By:</div>
             <div className="font-medium text-[22px] text-white my-1">
               {articleResponse?.attributes?.written_by}
@@ -118,7 +119,7 @@ const Article = ({ response: articleResponse }: ArticleResponse) => {
             <div className="flex lg:mx-[268px] flex-wrap">
               {articleResponse?.attributes?.seo_dropdown?.map((values: any) => {
                 return (
-                  <div key={values?.id} className="p-6">
+                  <div key={values?.id} className="p-3 xl:p-6">
                     <div className="text-[#B1532D] p-3 bg-[#FFE4D9]">
                       {values}
                     </div>

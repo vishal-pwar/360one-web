@@ -58,7 +58,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
 
     const breakpoint = "1280px";
     setCardsPerSlide(
-      windowDimensions.width < parseInt(breakpoint.toString()) ? 2 : 5
+      windowDimensions.width < parseInt(breakpoint.toString()) ? 1 : 5
     );
   }, [activeIndex, cardsPerSlide, windowDimensions]);
 
@@ -108,7 +108,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                           <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:gap-3 xl:gap-6 w-full">
                             {firstCard?.attributes?.title?.length > 0 ? (
                               <div
-                                className="flex  md:flex-[7] flex-col bg-black cursor-pointer"
+                                className="flex md:flex-[7] flex-col bg-black cursor-pointer"
                                 onClick={() => {
                                   if (
                                     firstCard?.attributes?.media_type ===
@@ -123,7 +123,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                 }}
                               >
-                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-orange-400 p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
+                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-[#FD7740] p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {firstCard?.attributes?.tag}
                                 </p>
                                 <MediaCard
@@ -137,7 +137,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
                                 />
-                                <div className="bg-[#333333] text-white flex flex-col gap-6 p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
+                                <div className="bg-[#333333] hover:bg-white text-white hover:text-black flex flex-col gap-6 p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
                                   <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {firstCard?.attributes?.title}
                                   </div>
@@ -150,7 +150,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
 
                             {secondCard?.attributes?.title?.length > 0 ? (
                               <div
-                                className="flex md:flex-[5] flex-col cursor-pointer"
+                                className="hidden xl:flex md:flex-[5] flex-col cursor-pointer"
                                 onClick={() => {
                                   if (
                                     secondCard?.attributes?.media_type ===
@@ -165,7 +165,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                 }}
                               >
-                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-orange-400 p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
+                                <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-[#FD7740] p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {secondCard?.attributes?.tag}
                                 </p>
                                 <MediaCard
@@ -179,7 +179,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
                                 />
-                                <div className="flex flex-col gap-6 text-black bg-white p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
+                                <div className="flex flex-col gap-6 text-white bg-[#333333] hover:bg-white hover:text-black p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
                                   <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {secondCard?.attributes?.title}
                                   </div>
@@ -209,7 +209,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                 }}
                               >
-                                <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
+                                <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-[#FD7740] py-4 px-10 absolute mt-6">
                                   {thirdCard?.attributes?.tag}
                                 </p>
                                 <MediaCard
@@ -223,7 +223,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   }
                                   className="object-cover w-full h-full"
                                 />
-                                <div className=" flex flex-col gap-6 text-white bg-[#404546] p-9">
+                                <div className=" flex flex-col gap-6 text-white bg-[#333333] hover:bg-white hover:text-black p-9">
                                   <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {thirdCard?.attributes?.title}
                                   </div>
@@ -251,7 +251,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                   }}
                                 >
-                                  <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6">
+                                  <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-[#FD7740] py-4 px-10 absolute mt-6">
                                     {fourthCard?.attributes?.tag}
                                   </p>
                                   <MediaCard
@@ -267,7 +267,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                     className="object-cover w-[400px] h-[300px]"
                                   />
-                                  <div className="flex flex-col gap-6 h-full w-full text-white bg-[#404546] p-12 justify-center">
+                                  <div className="flex flex-col gap-6 h-full w-full text-white bg-[#333333] hover:bg-white hover:text-black p-12 justify-center">
                                     <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                       {fourthCard?.attributes?.title}
                                     </div>
@@ -297,7 +297,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                   }}
                                 >
-                                  <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-orange-400 py-4 px-10 absolute mt-6 z-50">
+                                  <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-[#FD7740] py-4 px-10 absolute mt-6 z-50">
                                     {fifthCard?.attributes?.tag}
                                   </p>
                                   <MediaCard
@@ -313,7 +313,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                     }
                                     className="object-cover w-[400px] h-[300px] "
                                   />
-                                  <div className="flex flex-col gap-6 h-full w-full text-black bg-white p-12 justify-center">
+                                  <div className="flex flex-col gap-6 h-full w-full text-white bg-[#333333] hover:bg-white hover:text-black p-12 justify-center">
                                     <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                       {fifthCard?.attributes?.title}
                                     </div>
@@ -348,17 +348,12 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
               <div className="flex font-bold text-sm sm:text-base md:text-2xl">{`${
                 activeIndex + 1
               } / ${
-                cardsPerSlide === 2
+                cardsPerSlide === 1
                   ? Math.ceil(response?.articles?.data?.length / cardsPerSlide)
                   : Math.floor(response?.articles?.data?.length / cardsPerSlide)
               }`}</div>
               <div className="hidden md:flex z-[5] gap-4 items-center">
-                <button
-                  // className={`p-0 mt-[3px] ${activeIndex === 0 ? "opacity-25" : ""
-                  //     }`}
-                  // disabled={activeIndex === 0}
-                  onClick={() => swiperRef.current?.slidePrev()}
-                >
+                <button onClick={() => swiperRef.current?.slidePrev()}>
                   <img
                     src={"assets/icons/Right-arrow-black.svg"}
                     alt="left arrow"
@@ -366,12 +361,7 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                     onClick={() => swiperRef.current?.slidePrev()}
                   />
                 </button>
-                <button
-                  // className={`p-0 ${activeIndex === totalCards - 1 ? "opacity-25" : ""
-                  //     }`}
-                  // disabled={activeIndex === totalCards - 1}
-                  onClick={() => swiperRef.current?.slideNext()}
-                >
+                <button onClick={() => swiperRef.current?.slideNext()}>
                   <img
                     src={"assets/icons/Right-arrow-black.svg"}
                     alt="right arrow"

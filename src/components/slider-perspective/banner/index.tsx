@@ -1,5 +1,5 @@
 "use client";
-import VideoPLayer from "@/components/video-player";
+import MediaCard from "@/components/perspective-mediaCard";
 import useWindowDimensions from "@/hooks/dimensions";
 import Link from "next/link";
 import React from "react";
@@ -53,14 +53,14 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
       {totalCards > 0 ? (
         <>
           <div className="relative bg-black p-6 sm:px-12 sm:pt-12 xl:p-0">
-            <div className="xl:absolute xl:w-[50%] xl:top-[20%] xl:pl-16">
+            <div className="xl:absolute xl:w-[40%] xl:top-[20%] xl:pl-16">
               <div className="font-bold text-[28px] md:text-[52px] xl:text-2xl text-white">
                 The 360 ONE
               </div>
-              <div className="mb-4 font-bold text-[28px] md:text-[52px] xl:text-6xl text-[#FD7740]">
+              <div className="font-bold text-[28px] md:text-[52px] xl:text-6xl text-[#FD7740] leading-[0.6]">
                 Perspective
               </div>
-              <div className="font-normal text-lg sm:text-xl text-white my-2">
+              <div className="font-normal text-lg sm:text-xl text-white my-11">
                 {response?.subtitle}
               </div>
             </div>
@@ -91,12 +91,16 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                     }`}
                   >
                     <div className="xl:relative bg-black">
-                      <div className="hidden uppercase xl:flex md:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20">
+                      <div
+                        className={`hidden uppercase md:absolute bg-white left-0 mt-5 text-black font-bold text-sm py-2 px-5 z-20 ${
+                          activeIndex === i ? "xl:flex" : "hidden"
+                        }`}
+                      >
                         {data?.attributes?.type}
                       </div>
                       <div className="hidden xl:flex flex-col md:absolute md:w-full bottom-0 pl-6 pb-5 z-20">
                         <div
-                          className={` flex items-end text-left font-normal md:text-sm text-white mb-2 ${
+                          className={`uppercase flex items-end text-left font-normal md:text-sm text-white mb-2 ${
                             activeIndex === i ? `hidden` : ""
                           } `}
                         >
@@ -112,45 +116,23 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           </p>
                         </div>
                       </div>
-                      {data?.attributes?.media_type?.includes("video") ? (
-                        <div className="relative flex items-center justify-center">
-                          <img
-                            src={
-                              data?.attributes?.video_thumbnail?.data
-                                ?.attributes?.url
-                            }
-                            alt={
-                              data?.attributes?.video_thumbnail?.data
-                                ?.attributes?.alternativeText
-                            }
-                            className={`object-cover w-full ${
-                              activeIndex === i
-                                ? "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[444px] object-cover"
-                                : "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[213px] opacity-60 object-cover"
-                            }`}
-                          />
-                        </div>
-                      ) : (
-                        <img
-                          key={i}
-                          src={data?.attributes?.cover?.data?.attributes?.url}
-                          alt={
-                            data?.attributes?.cover?.data?.attributes
-                              ?.alternativeText
-                          }
-                          className={`object-cover w-full ${
-                            activeIndex === i
-                              ? "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[444px] object-cover"
-                              : "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[213px] opacity-40 object-cover"
-                          }`}
-                        />
-                      )}
+                      <MediaCard
+                        mediaType={data?.attributes?.media_type}
+                        media={data?.attributes?.cover}
+                        thumbnail={data?.attributes?.video_thumbnail}
+                        href={data?.attributes?.youtube_link || ""}
+                        className={`object-cover w-full ${
+                          activeIndex === i
+                            ? "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[444px] object-cover"
+                            : "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[213px] opacity-60 object-cover"
+                        }`}
+                      />
                     </div>
 
                     {activeIndex ===
                     i + (windowDimensions.width < 1280 ? 2 : 0) ? (
-                      <div className="flex justify-between items-center p-6 sm:p-8 md:p-10 xl:p-16 gap-1 sm:gap-2 w-full bg-[#FD7740] xl:min-h-[200px]">
-                        <div className="flex flex-col flex-[11]">
+                      <div className="flex justify-between items-center p-6 sm:p-8 md:p-10 xl:p-16 gap-2 sm:gap-2 w-full bg-[#FD7740] xl:min-h-[200px]">
+                        <div className="flex flex-col flex-[10]">
                           <div className="flex uppercase items-end text-left font-normal text-sm text-white mb-2">
                             {data?.attributes?.tag}
                           </div>
@@ -162,15 +144,15 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                           </div>
                         </div>
 
-                        <div className="flex-[1]">
-                          {data?.attributes?.media_type?.includes("video") ? (
-                            <VideoPLayer
-                              iconUrl={"assets/icons/playIcon.svg"}
-                              videoUrl={
-                                data?.attributes?.cover?.data?.attributes?.url
-                              }
-                            />
-                          ) : (
+                        <div className="flex-[2]">
+                          {data?.attributes?.media_type?.includes(
+                            "video"
+                          ) ? //   videoUrl={ //   iconUrl={"assets/icons/playIcon.svg"} // <VideoPLayer
+                          //     data?.attributes?.cover?.data?.attributes?.url
+                          //   }
+                          // />
+
+                          null : (
                             <>
                               {data?.attributes?.media_type?.includes(
                                 "youtube"

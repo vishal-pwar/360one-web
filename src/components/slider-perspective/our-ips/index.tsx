@@ -1,4 +1,5 @@
 "use client";
+import MediaCard from "@/components/perspective-mediaCard";
 import { paramCase } from "@pantelwar/js-utils";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -53,7 +54,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
             <div className="flex font-bold text-[28px] sm:text-[32px] md:text-[42px]">
               {response?.title}
             </div>
-            <div className="flex font-normal text-base sm:text-lg md:text-xl mt-3 sm:mb-9 md:mt-4 md:mb-12">
+            <div className="flex font-normal text-base sm:text-lg md:text-xl my-2 sm:mb-9 md:mt-4 md:mb-12">
               {response?.subtitle}
             </div>
             <div className="hidden xl:flex flex-col gap-5">
@@ -122,20 +123,18 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
               return (
                 <SwiperSlide
                   key={i}
-                  className={`flex pl-7 ${
+                  className={`flex ${
                     activeIndex === i
                       ? "xl:basis-[700px] 2xl:basis-[830px]"
                       : ""
                   }`}
                 >
                   <div>
-                    <img
-                      key={i}
-                      src={data?.attributes?.cover?.data?.attributes?.url}
-                      alt={
-                        data?.attributes?.cover?.data?.attributes
-                          ?.alternativeText
-                      }
+                    <MediaCard
+                      mediaType={data?.attributes?.media_type}
+                      media={data?.attributes?.cover}
+                      thumbnail={data?.attributes?.video_thumbnail}
+                      href={data?.attributes?.youtube_link || ""}
                       className={`object-cover w-full ${
                         activeIndex === i
                           ? "h-[265px] sm:h-[440px] md:h-[460px]"
@@ -145,10 +144,16 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                   </div>
                   {activeIndex === i ? (
                     <div className="flex flex-col items-end p-5 sm:p-9 md:p-12 gap-2 md:gap-4 w-full bg-[#FD7740]">
-                      <div className="flex items-end text-left font-bold text-lg sm:text-2xl md:text-[28px] text-white">
+                      <div
+                        dir="ltr"
+                        className="flex items-end text-left font-bold text-lg sm:text-2xl md:text-[28px] text-white"
+                      >
                         {data?.attributes?.tag}
                       </div>
-                      <div className="flex items-end text-left font-medium text-sm md:text-xl text-white">
+                      <div
+                        dir="ltr"
+                        className="flex items-end text-left font-medium text-sm md:text-xl text-white"
+                      >
                         {data?.attributes?.title}
                       </div>
                       <button
