@@ -126,17 +126,21 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                 <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-[#FD7740] p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {firstCard?.attributes?.tag}
                                 </p>
-                                <MediaCard
-                                  mediaType={firstCard?.attributes?.media_type}
-                                  media={firstCard?.attributes?.cover}
-                                  thumbnail={
-                                    firstCard?.attributes?.video_thumbnail
-                                  }
-                                  href={
-                                    firstCard?.attributes?.youtube_link || ""
-                                  }
-                                  className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
-                                />
+                                <div>
+                                  <MediaCard
+                                    mediaType={
+                                      firstCard?.attributes?.media_type
+                                    }
+                                    media={firstCard?.attributes?.cover}
+                                    thumbnail={
+                                      firstCard?.attributes?.video_thumbnail
+                                    }
+                                    href={
+                                      firstCard?.attributes?.youtube_link || ""
+                                    }
+                                    className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
+                                  />
+                                </div>
                                 <div className="bg-[#333333] hover:bg-white text-white hover:text-black flex flex-col gap-6 p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
                                   <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {firstCard?.attributes?.title}
@@ -168,17 +172,21 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                 <p className="flex uppercase z-10 justify-center items-center font-semibold text-xs sm:text-sm text-white bg-[#FD7740] p-2 md:py-4 md:px-8 absolute mt-3 sm:mt-6 md:mt-8">
                                   {secondCard?.attributes?.tag}
                                 </p>
-                                <MediaCard
-                                  mediaType={secondCard?.attributes?.media_type}
-                                  media={secondCard?.attributes?.cover}
-                                  thumbnail={
-                                    secondCard?.attributes?.video_thumbnail
-                                  }
-                                  href={
-                                    secondCard?.attributes?.youtube_link || ""
-                                  }
-                                  className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
-                                />
+                                <div>
+                                  <MediaCard
+                                    mediaType={
+                                      secondCard?.attributes?.media_type
+                                    }
+                                    media={secondCard?.attributes?.cover}
+                                    thumbnail={
+                                      secondCard?.attributes?.video_thumbnail
+                                    }
+                                    href={
+                                      secondCard?.attributes?.youtube_link || ""
+                                    }
+                                    className="object-cover w-full h-[140px] sm:h-[380px] md:h-[400px] "
+                                  />
+                                </div>
                                 <div className="flex flex-col gap-6 text-white bg-[#333333] hover:bg-white hover:text-black p-3 sm:p-6 md:p-9 xl:p-12 md:h-[100%]">
                                   <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                     {secondCard?.attributes?.title}
@@ -300,19 +308,22 @@ const ViewpointSlider = ({ response }: viewpointprops) => {
                                   <p className="flex uppercase justify-center items-center font-bold text-sm text-white bg-[#FD7740] py-4 px-10 absolute mt-6 z-50">
                                     {fifthCard?.attributes?.tag}
                                   </p>
-                                  <MediaCard
-                                    mediaType={
-                                      fifthCard?.attributes?.media_type
-                                    }
-                                    media={fifthCard?.attributes?.cover}
-                                    thumbnail={
-                                      fifthCard?.attributes?.video_thumbnail
-                                    }
-                                    href={
-                                      fifthCard?.attributes?.youtube_link || ""
-                                    }
-                                    className="object-cover w-[400px] h-[300px] "
-                                  />
+                                  <div>
+                                    <MediaCard
+                                      mediaType={
+                                        fifthCard?.attributes?.media_type
+                                      }
+                                      media={fifthCard?.attributes?.cover}
+                                      thumbnail={
+                                        fifthCard?.attributes?.video_thumbnail
+                                      }
+                                      href={
+                                        fifthCard?.attributes?.youtube_link ||
+                                        ""
+                                      }
+                                      className="object-cover w-[400px] h-[300px] "
+                                    />
+                                  </div>
                                   <div className="flex flex-col gap-6 h-full w-full text-white bg-[#333333] hover:bg-white hover:text-black p-12 justify-center">
                                     <div className="line-clamp-2 font-medium sm:font-bold text-sm sm:text-base md:text-xl">
                                       {fifthCard?.attributes?.title}

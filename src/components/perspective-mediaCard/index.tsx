@@ -5,6 +5,7 @@ interface MediaCardProps {
   media: any;
   thumbnail: any;
   href: string;
+  active?: boolean;
   className: any;
 }
 
@@ -12,6 +13,7 @@ const MediaCard = ({
   mediaType,
   media,
   href,
+  active,
   thumbnail,
   className,
 }: MediaCardProps) => {
@@ -45,10 +47,12 @@ const MediaCard = ({
                 className={className}
               />
             </div>
-            <VideoPLayer
-              iconUrl={"assets/icons/playIcon.svg"}
-              videoUrl={media?.data?.attributes?.url}
-            />
+            {active && (
+              <VideoPLayer
+                iconUrl={"assets/icons/playIcon.svg"}
+                videoUrl={media?.data?.attributes?.url}
+              />
+            )}
           </div>
         );
       case "youtube":

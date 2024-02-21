@@ -133,6 +133,7 @@ const OurIpsSlider = ({ response }: ourIPsProps) => {
                     <MediaCard
                       mediaType={data?.attributes?.media_type}
                       media={data?.attributes?.cover}
+                      active={activeIndex === i}
                       thumbnail={data?.attributes?.video_thumbnail}
                       href={data?.attributes?.youtube_link || ""}
                       className={`object-cover w-full ${

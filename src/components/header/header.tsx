@@ -1,5 +1,6 @@
 "use client";
 import { Link } from "@/components/link";
+import useWindowDimensions from "@/hooks/dimensions";
 import BrandLogoBlack from "@/public/assets/icons/360-one-brand-logo-black.svg";
 import BrandLogoWhite from "@/public/assets/icons/360-one-brand-logo-white.svg";
 import Image from "next/image";
@@ -134,18 +135,11 @@ export const Header = ({ items, ticker }: { items?: any[]; ticker: any }) => {
     };
   }, []);
 
-  const [width, setWidth] = useState(window.innerWidth);
-  function handleResize() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const dimensions = useWindowDimensions();
 
   useEffect(() => {
-    if (width > 1024) setResponsiveNavActive(false);
-  }, [width]);
+    if (dimensions.width > 1024) setResponsiveNavActive(false);
+  }, [dimensions]);
 
   return (
     <React.Fragment>

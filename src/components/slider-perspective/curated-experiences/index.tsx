@@ -135,10 +135,11 @@ const CuratedExperienceSlider = ({ response }: curatedExperienceProps) => {
                       mediaType={data?.attributes?.media_type}
                       media={data?.attributes?.cover}
                       thumbnail={data?.attributes?.video_thumbnail}
+                      active={activeIndex === i}
                       href={data?.attributes?.youtube_link || ""}
                       className={`object-cover w-full ${
                         activeIndex === i
-                          ? "h-[366px] md:h-[521px] xl:h-[700px] opacity-60"
+                          ? "h-[366px] md:h-[521px] xl:h-[700px] opacity-50"
                           : "h-[366px] md:h-48 xl:h-60 opacity-90"
                       }`}
                     />

@@ -121,10 +121,11 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         media={data?.attributes?.cover}
                         thumbnail={data?.attributes?.video_thumbnail}
                         href={data?.attributes?.youtube_link || ""}
+                        active={activeIndex === i}
                         className={`object-cover w-full ${
                           activeIndex === i
                             ? "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[444px] object-cover"
-                            : "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[213px] opacity-60 object-cover"
+                            : "h-[165px] sm:h-[270px] md:h-[465px] xl:h-[213px] opacity-40 object-cover"
                         }`}
                       />
                     </div>
@@ -145,14 +146,9 @@ const BannerSlider = ({ response }: BannerSliderProps) => {
                         </div>
 
                         <div className="flex-[2]">
-                          {data?.attributes?.media_type?.includes(
-                            "video"
-                          ) ? //   videoUrl={ //   iconUrl={"assets/icons/playIcon.svg"} // <VideoPLayer
-                          //     data?.attributes?.cover?.data?.attributes?.url
-                          //   }
-                          // />
-
-                          null : (
+                          {data?.attributes?.media_type?.includes("video") ? (
+                            <></>
+                          ) : (
                             <>
                               {data?.attributes?.media_type?.includes(
                                 "youtube"
